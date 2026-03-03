@@ -1,4 +1,6 @@
 name: TIBCO
+segments:
+  - iPaaS
 description: APIs and services provided by TIBCO Software Inc., a global leader in integration, API management, and analytics software
 image: https://www.tibco.com/sites/tibco/files/media_entity/2021-04/TIBCO-logo.svg
 url: https://www.tibco.com
