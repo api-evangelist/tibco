@@ -5,7 +5,7 @@ description: APIs and services provided by TIBCO Software Inc., a global leader 
 image: https://www.tibco.com/sites/tibco/files/media_entity/2021-04/TIBCO-logo.svg
 url: https://www.tibco.com
 created: '2024'
-modified: '2024'
+modified: '2026-03-04'
 specificationVersion: '0.18'
 tags:
 - Integration
@@ -32,6 +32,8 @@ apis:
     url: https://integration.cloud.tibco.com/docs/api/openapi.json
   - type: Authentication
     url: https://integration.cloud.tibco.com/docs/authentication
+  - type: OpenAPI
+    url: openapi/tibco-cloud-integration-openapi.yml
 - name: TIBCO Mashery API Management
   description: API management platform for designing, building, securing, and analyzing APIs
   image: https://www.tibco.com/sites/tibco/files/media_entity/2021-04/TIBCO-logo.svg
@@ -48,6 +50,8 @@ apis:
     url: https://developer.mashery.com/io-docs
   - type: Portal
     url: https://developer.mashery.com
+  - type: OpenAPI
+    url: openapi/tibco-mashery-openapi.yml
 - name: TIBCO BusinessEvents API
   description: Complex event processing and decision management API for real-time business operations
   image: https://www.tibco.com/sites/tibco/files/media_entity/2021-04/TIBCO-logo.svg
@@ -62,6 +66,8 @@ apis:
     url: https://docs.tibco.com/products/tibco-businessevents
   - type: SDK
     url: https://docs.tibco.com/products/tibco-businessevents/sdk
+  - type: OpenAPI
+    url: openapi/tibco-businessevents-openapi.yml
 - name: TIBCO Messaging API
   description: Enterprise messaging API supporting EMS (Enterprise Message Service) and FTL (Fast Transport Layer)
   image: https://www.tibco.com/sites/tibco/files/media_entity/2021-04/TIBCO-logo.svg
@@ -76,6 +82,8 @@ apis:
     url: https://docs.tibco.com/products/tibco-enterprise-message-service
   - type: Protocol
     url: https://docs.tibco.com/products/tibco-enterprise-message-service/protocol-reference
+  - type: AsyncAPI
+    url: asyncapi/tibco-messaging-asyncapi.yml
 - name: TIBCO Spotfire Analytics API
   description: Analytics and data visualization API for embedded analytics and automated workflows
   image: https://www.tibco.com/sites/tibco/files/media_entity/2021-04/TIBCO-logo.svg
@@ -92,6 +100,8 @@ apis:
     url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
+  - type: OpenAPI
+    url: openapi/tibco-spotfire-openapi.yml
 common:
 - type: Portal
   url: https://developer.tibco.com
@@ -113,7 +123,12 @@ common:
   url: https://www.tibco.com/legal/terms-of-use
 - type: Privacy Policy
   url: https://www.tibco.com/legal/privacy
+- type: JSON-LD
+  url: json-ld/tibco-context.jsonld
+- type: JSONSchema
+  url: json-schema/tibco-integration-app-schema.json
+- type: JSONSchema
+  url: json-schema/tibco-api-service-schema.json
 maintainers:
-- name: TIBCO Software Inc.
-  email: info@tibco.com
-  url: https://www.tibco.com
+- FN: Kin Lane
+  email: kin@apievangelist.com

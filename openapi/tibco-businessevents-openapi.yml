@@ -1,0 +1,824 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents API
+  description: >-
+    Complex event processing and decision management API for real-time business
+    operations. Provides programmatic access to manage rules, decision tables,
+    events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents
+servers:
+  - url: https://api.tibco.com/businessevents/v1
+    description: TIBCO BusinessEvents Production
+tags:
+  - name: Rules
+    description: Manage business rules and rule sets
+  - name: Decision Tables
+    description: Manage decision tables for rule evaluation
+  - name: Events
+    description: Submit and query complex events
+  - name: Agents
+    description: Manage inference agents
+  - name: Scorecards
+    description: Manage metric scorecards and dashboards
+  - name: Channels
+    description: Manage event channels and destinations
+security:
+  - bearerAuth: []
+paths:
+  /rules:
+    get:
+      operationId: listRules
+      summary: List business rules
+      description: >-
+        Retrieve all business rules defined in the project.
+      tags:
+        - Rules
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: List of business rules
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Rule'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createRule
+      summary: Create a business rule
+      description: >-
+        Create a new business rule in the project.
+      tags:
+        - Rules
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRuleRequest'
+      responses:
+        '201':
+          description: Rule created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rule'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /rules/{ruleId}:
+    get:
+      operationId: getRule
+      summary: Get a business rule
+      description: >-
+        Retrieve details of a specific business rule.
+      tags:
+        - Rules
+      parameters:
+        - $ref: '#/components/parameters/ruleId'
+      responses:
+        '200':
+          description: Rule details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rule'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateRule
+      summary: Update a business rule
+      description: >-
+        Update an existing business rule.
+      tags:
+        - Rules
+      parameters:
+        - $ref: '#/components/parameters/ruleId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRuleRequest'
+      responses:
+        '200':
+          description: Rule updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rule'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteRule
+      summary: Delete a business rule
+      description: >-
+        Delete a business rule from the project.
+      tags:
+        - Rules
+      parameters:
+        - $ref: '#/components/parameters/ruleId'
+      responses:
+        '204':
+          description: Rule deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /decision-tables:
+    get:
+      operationId: listDecisionTables
+      summary: List decision tables
+      description: >-
+        Retrieve all decision tables in the project.
+      tags:
+        - Decision Tables
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: List of decision tables
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DecisionTable'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createDecisionTable
+      summary: Create a decision table
+      description: >-
+        Create a new decision table in the project.
+      tags:
+        - Decision Tables
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDecisionTableRequest'
+      responses:
+        '201':
+          description: Decision table created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DecisionTable'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /decision-tables/{tableId}:
+    get:
+      operationId: getDecisionTable
+      summary: Get a decision table
+      description: >-
+        Retrieve details of a specific decision table.
+      tags:
+        - Decision Tables
+      parameters:
+        - $ref: '#/components/parameters/tableId'
+      responses:
+        '200':
+          description: Decision table details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DecisionTable'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateDecisionTable
+      summary: Update a decision table
+      description: >-
+        Update an existing decision table.
+      tags:
+        - Decision Tables
+      parameters:
+        - $ref: '#/components/parameters/tableId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDecisionTableRequest'
+      responses:
+        '200':
+          description: Decision table updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DecisionTable'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteDecisionTable
+      summary: Delete a decision table
+      description: >-
+        Delete a decision table from the project.
+      tags:
+        - Decision Tables
+      parameters:
+        - $ref: '#/components/parameters/tableId'
+      responses:
+        '204':
+          description: Decision table deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /events:
+    post:
+      operationId: submitEvent
+      summary: Submit an event
+      description: >-
+        Submit a complex event for processing by the inference engine.
+      tags:
+        - Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitEventRequest'
+      responses:
+        '202':
+          description: Event accepted for processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    get:
+      operationId: listEvents
+      summary: List processed events
+      description: >-
+        Retrieve a list of processed events with optional filters.
+      tags:
+        - Events
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - name: eventType
+          in: query
+          description: Filter by event type
+          schema:
+            type: string
+        - name: startTime
+          in: query
+          description: Filter events after this time
+          schema:
+            type: string
+            format: date-time
+        - name: endTime
+          in: query
+          description: Filter events before this time
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: List of events
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Event'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /events/{eventId}:
+    get:
+      operationId: getEvent
+      summary: Get an event
+      description: >-
+        Retrieve details and processing result of a specific event.
+      tags:
+        - Events
+      parameters:
+        - $ref: '#/components/parameters/eventId'
+      responses:
+        '200':
+          description: Event details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /agents:
+    get:
+      operationId: listAgents
+      summary: List inference agents
+      description: >-
+        Retrieve all inference agents and their current status.
+      tags:
+        - Agents
+      responses:
+        '200':
+          description: List of agents
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Agent'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /agents/{agentId}:
+    get:
+      operationId: getAgent
+      summary: Get an inference agent
+      description: >-
+        Retrieve details and status of a specific inference agent.
+      tags:
+        - Agents
+      parameters:
+        - $ref: '#/components/parameters/agentId'
+      responses:
+        '200':
+          description: Agent details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /agents/{agentId}/start:
+    post:
+      operationId: startAgent
+      summary: Start an inference agent
+      description: >-
+        Start a stopped inference agent.
+      tags:
+        - Agents
+      parameters:
+        - $ref: '#/components/parameters/agentId'
+      responses:
+        '200':
+          description: Agent started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /agents/{agentId}/stop:
+    post:
+      operationId: stopAgent
+      summary: Stop an inference agent
+      description: >-
+        Stop a running inference agent.
+      tags:
+        - Agents
+      parameters:
+        - $ref: '#/components/parameters/agentId'
+      responses:
+        '200':
+          description: Agent stopped
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /scorecards:
+    get:
+      operationId: listScorecards
+      summary: List scorecards
+      description: >-
+        Retrieve all metric scorecards for monitoring rule performance.
+      tags:
+        - Scorecards
+      responses:
+        '200':
+          description: List of scorecards
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Scorecard'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /channels:
+    get:
+      operationId: listChannels
+      summary: List event channels
+      description: >-
+        Retrieve all configured event channels and destinations.
+      tags:
+        - Channels
+      responses:
+        '200':
+          description: List of channels
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Channel'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+  parameters:
+    ruleId:
+      name: ruleId
+      in: path
+      required: true
+      description: Rule unique identifier
+      schema:
+        type: string
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      description: Decision table unique identifier
+      schema:
+        type: string
+    eventId:
+      name: eventId
+      in: path
+      required: true
+      description: Event unique identifier
+      schema:
+        type: string
+    agentId:
+      name: agentId
+      in: path
+      required: true
+      description: Agent unique identifier
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+    BadRequest:
+      description: The request body or parameters are invalid
+    NotFound:
+      description: The requested resource was not found
+  schemas:
+    Rule:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the rule
+        name:
+          type: string
+          description: Rule name
+        description:
+          type: string
+          description: Rule description
+        priority:
+          type: integer
+          description: Rule execution priority
+        condition:
+          type: string
+          description: Rule condition expression
+        action:
+          type: string
+          description: Rule action expression
+        enabled:
+          type: boolean
+          description: Whether the rule is enabled
+        ruleSetId:
+          type: string
+          description: Parent rule set identifier
+        createdTime:
+          type: string
+          format: date-time
+        modifiedTime:
+          type: string
+          format: date-time
+    CreateRuleRequest:
+      type: object
+      required:
+        - name
+        - condition
+        - action
+      properties:
+        name:
+          type: string
+          description: Rule name
+          minLength: 1
+        description:
+          type: string
+        priority:
+          type: integer
+          default: 5
+        condition:
+          type: string
+          description: Rule condition expression
+        action:
+          type: string
+          description: Rule action expression
+        enabled:
+          type: boolean
+          default: true
+        ruleSetId:
+          type: string
+    DecisionTable:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the decision table
+        name:
+          type: string
+          description: Decision table name
+        description:
+          type: string
+          description: Decision table description
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/DecisionTableColumn'
+          description: Table columns (conditions and actions)
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/DecisionTableRow'
+          description: Table rows (rules)
+        createdTime:
+          type: string
+          format: date-time
+        modifiedTime:
+          type: string
+          format: date-time
+    DecisionTableColumn:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+            - condition
+            - action
+        dataType:
+          type: string
+          enum:
+            - string
+            - integer
+            - double
+            - boolean
+            - datetime
+    DecisionTableRow:
+      type: object
+      properties:
+        id:
+          type: string
+        values:
+          type: array
+          items:
+            type: string
+          description: Cell values in column order
+        enabled:
+          type: boolean
+    CreateDecisionTableRequest:
+      type: object
+      required:
+        - name
+        - columns
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/DecisionTableColumn'
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/DecisionTableRow'
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the event
+        type:
+          type: string
+          description: Event type name
+        payload:
+          type: object
+          additionalProperties: true
+          description: Event data payload
+        timestamp:
+          type: string
+          format: date-time
+          description: When the event occurred
+        status:
+          type: string
+          enum:
+            - received
+            - processing
+            - processed
+            - error
+          description: Event processing status
+        result:
+          type: object
+          additionalProperties: true
+          description: Processing result data
+    SubmitEventRequest:
+      type: object
+      required:
+        - type
+        - payload
+      properties:
+        type:
+          type: string
+          description: Event type name
+        payload:
+          type: object
+          additionalProperties: true
+          description: Event data payload
+        correlationId:
+          type: string
+          description: Correlation identifier for event tracking
+    EventResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Assigned event identifier
+        status:
+          type: string
+          description: Initial processing status
+        correlationId:
+          type: string
+          description: Correlation identifier
+    Agent:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the agent
+        name:
+          type: string
+          description: Agent name
+        status:
+          type: string
+          enum:
+            - running
+            - stopped
+            - error
+          description: Agent status
+        type:
+          type: string
+          description: Agent type
+        rulesLoaded:
+          type: integer
+          description: Number of rules loaded by the agent
+        eventsProcessed:
+          type: integer
+          description: Total events processed by the agent
+        startTime:
+          type: string
+          format: date-time
+          description: When the agent was last started
+        uptime:
+          type: string
+          description: Agent uptime duration
+    Scorecard:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the scorecard
+        name:
+          type: string
+          description: Scorecard name
+        description:
+          type: string
+          description: Scorecard description
+        metrics:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: number
+              unit:
+                type: string
+              threshold:
+                type: number
+          description: Metrics tracked by the scorecard
+    Channel:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the channel
+        name:
+          type: string
+          description: Channel name
+        type:
+          type: string
+          enum:
+            - jms
+            - http
+            - kafka
+            - local
+          description: Channel transport type
+        destination:
+          type: string
+          description: Channel destination name or URI
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+          description: Channel status

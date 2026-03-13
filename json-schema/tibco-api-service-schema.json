@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.tibco.com/schemas/tibco/api-service.json",
+  "title": "TIBCO Mashery API Service",
+  "description": "An API service definition in TIBCO Mashery, representing a managed API with endpoints, authentication, rate limiting, and traffic management configuration.",
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the API service"
+    },
+    "name": {
+      "type": "string",
+      "description": "API service name",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the API service"
+    },
+    "version": {
+      "type": "string",
+      "description": "API service version"
+    },
+    "qpsLimitOverall": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Overall queries-per-second rate limit for all endpoints"
+    },
+    "revisionNumber": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Service configuration revision number"
+    },
+    "robotsPolicy": {
+      "type": "string",
+      "description": "Robots.txt policy for the service"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the service was created"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the service was last updated"
+    },
+    "endpoints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Endpoint"
+      },
+      "description": "API endpoints defined within the service"
+    }
+  },
+  "$defs": {
+    "Endpoint": {
+      "type": "object",
+      "description": "An API endpoint within a Mashery service, defining the public-facing path, backend system, and security configuration",
+      "required": ["name", "requestAuthenticationType", "requestProtocol"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Endpoint unique identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Endpoint display name"
+        },
+        "requestAuthenticationType": {
+          "type": "string",
+          "enum": ["apiKey", "apiKeyAndSecret", "oauth"],
+          "description": "Authentication type required for the endpoint"
+        },
+        "requestProtocol": {
+          "type": "string",
+          "enum": ["rest", "soap", "xml-rpc"],
+          "description": "Request protocol type"
+        },
+        "requestPathAlias": {
+          "type": "string",
+          "description": "Public path alias for the endpoint"
+        },
+        "supportedHttpMethods": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["get", "post", "put", "delete", "head", "patch", "options"]
+          },
+          "description": "HTTP methods supported by this endpoint"
+        },
+        "trafficManagerDomain": {
+          "type": "string",
+          "description": "Traffic manager domain routing requests"
+        }
+      }
+    }
+  }
+}

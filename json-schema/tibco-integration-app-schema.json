@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.tibco.com/schemas/tibco/integration-app.json",
+  "title": "TIBCO Cloud Integration App",
+  "description": "An integration application in TIBCO Cloud Integration, representing a Flogo, BusinessWorks, or Node.js app that defines integration flows, connections, and deployment configuration.",
+  "type": "object",
+  "required": ["name", "type"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the integration app"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the integration app",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the integration app"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["flogo", "businessworks", "node"],
+      "description": "Integration app type determining the runtime engine"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "running", "stopped", "error"],
+      "description": "Current operational status of the app"
+    },
+    "version": {
+      "type": "string",
+      "description": "App version identifier"
+    },
+    "createdTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the app was created"
+    },
+    "modifiedTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the app was last modified"
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "User who created the app"
+    },
+    "flows": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Flow"
+      },
+      "description": "Integration flows defined within the app"
+    },
+    "connections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ConnectionRef"
+      },
+      "description": "Connections used by the app"
+    }
+  },
+  "$defs": {
+    "Flow": {
+      "type": "object",
+      "description": "An integration flow defining a sequence of activities triggered by an event",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Flow unique identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Flow name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Flow description"
+        },
+        "type": {
+          "type": "string",
+          "description": "Flow trigger type (e.g., REST, Timer, Message)"
+        }
+      }
+    },
+    "ConnectionRef": {
+      "type": "object",
+      "description": "Reference to a connector connection used by the app",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Connection identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Connection name"
+        },
+        "type": {
+          "type": "string",
+          "description": "Connector type"
+        }
+      }
+    }
+  }
+}

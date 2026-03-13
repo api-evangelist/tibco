@@ -1,0 +1,1042 @@
+openapi: 3.1.0
+info:
+  title: TIBCO Mashery API Management
+  description: >-
+    API management platform for designing, building, securing, and analyzing
+    APIs. The Mashery V3 API provides programmatic access to manage API
+    definitions, packages, plans, keys, services, endpoints, and analytics
+    data within the TIBCO API management platform.
+  version: '3.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+externalDocs:
+  description: TIBCO Mashery API Documentation
+  url: https://developer.mashery.com/docs
+servers:
+  - url: https://api.mashery.com/v3
+    description: Mashery API v3 Production
+tags:
+  - name: Services
+    description: Manage API service definitions
+  - name: Endpoints
+    description: Manage API endpoints within services
+  - name: Packages
+    description: Manage API packages for bundling services
+  - name: Plans
+    description: Manage subscription plans within packages
+  - name: Keys
+    description: Manage application API keys
+  - name: Members
+    description: Manage developer portal members
+  - name: Applications
+    description: Manage developer applications
+  - name: Reports
+    description: API usage reporting and analytics
+security:
+  - oauth2: []
+paths:
+  /rest/services:
+    get:
+      operationId: listServices
+      summary: List API services
+      description: >-
+        Retrieve all API service definitions managed by the platform.
+      tags:
+        - Services
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/sort'
+      responses:
+        '200':
+          description: List of API services
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Service'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createService
+      summary: Create an API service
+      description: >-
+        Create a new API service definition.
+      tags:
+        - Services
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServiceRequest'
+      responses:
+        '200':
+          description: Service created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /rest/services/{serviceId}:
+    get:
+      operationId: getService
+      summary: Get an API service
+      description: >-
+        Retrieve details of a specific API service definition.
+      tags:
+        - Services
+      parameters:
+        - $ref: '#/components/parameters/serviceId'
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Service details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateService
+      summary: Update an API service
+      description: >-
+        Update an existing API service definition.
+      tags:
+        - Services
+      parameters:
+        - $ref: '#/components/parameters/serviceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServiceRequest'
+      responses:
+        '200':
+          description: Service updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteService
+      summary: Delete an API service
+      description: >-
+        Delete an API service definition.
+      tags:
+        - Services
+      parameters:
+        - $ref: '#/components/parameters/serviceId'
+      responses:
+        '200':
+          description: Service deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /rest/services/{serviceId}/endpoints:
+    get:
+      operationId: listEndpoints
+      summary: List service endpoints
+      description: >-
+        Retrieve all endpoints for a specific API service.
+      tags:
+        - Endpoints
+      parameters:
+        - $ref: '#/components/parameters/serviceId'
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: List of endpoints
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Endpoint'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createEndpoint
+      summary: Create a service endpoint
+      description: >-
+        Create a new endpoint for an API service.
+      tags:
+        - Endpoints
+      parameters:
+        - $ref: '#/components/parameters/serviceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEndpointRequest'
+      responses:
+        '200':
+          description: Endpoint created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /rest/services/{serviceId}/endpoints/{endpointId}:
+    get:
+      operationId: getEndpoint
+      summary: Get a service endpoint
+      description: >-
+        Retrieve details of a specific service endpoint.
+      tags:
+        - Endpoints
+      parameters:
+        - $ref: '#/components/parameters/serviceId'
+        - $ref: '#/components/parameters/endpointId'
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Endpoint details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateEndpoint
+      summary: Update a service endpoint
+      description: >-
+        Update an existing service endpoint.
+      tags:
+        - Endpoints
+      parameters:
+        - $ref: '#/components/parameters/serviceId'
+        - $ref: '#/components/parameters/endpointId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEndpointRequest'
+      responses:
+        '200':
+          description: Endpoint updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteEndpoint
+      summary: Delete a service endpoint
+      description: >-
+        Delete a specific service endpoint.
+      tags:
+        - Endpoints
+      parameters:
+        - $ref: '#/components/parameters/serviceId'
+        - $ref: '#/components/parameters/endpointId'
+      responses:
+        '200':
+          description: Endpoint deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /rest/packages:
+    get:
+      operationId: listPackages
+      summary: List packages
+      description: >-
+        Retrieve all API packages for the organization.
+      tags:
+        - Packages
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: List of packages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Package'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createPackage
+      summary: Create a package
+      description: >-
+        Create a new API package for bundling services.
+      tags:
+        - Packages
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePackageRequest'
+      responses:
+        '200':
+          description: Package created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Package'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /rest/packages/{packageId}:
+    get:
+      operationId: getPackage
+      summary: Get a package
+      description: >-
+        Retrieve details of a specific API package.
+      tags:
+        - Packages
+      parameters:
+        - $ref: '#/components/parameters/packageId'
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Package details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Package'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updatePackage
+      summary: Update a package
+      description: >-
+        Update an existing API package.
+      tags:
+        - Packages
+      parameters:
+        - $ref: '#/components/parameters/packageId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePackageRequest'
+      responses:
+        '200':
+          description: Package updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Package'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deletePackage
+      summary: Delete a package
+      description: >-
+        Delete an API package.
+      tags:
+        - Packages
+      parameters:
+        - $ref: '#/components/parameters/packageId'
+      responses:
+        '200':
+          description: Package deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /rest/packages/{packageId}/plans:
+    get:
+      operationId: listPlans
+      summary: List plans in a package
+      description: >-
+        Retrieve all subscription plans within an API package.
+      tags:
+        - Plans
+      parameters:
+        - $ref: '#/components/parameters/packageId'
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: List of plans
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Plan'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createPlan
+      summary: Create a plan
+      description: >-
+        Create a new subscription plan within an API package.
+      tags:
+        - Plans
+      parameters:
+        - $ref: '#/components/parameters/packageId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlanRequest'
+      responses:
+        '200':
+          description: Plan created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /rest/applications:
+    get:
+      operationId: listApplications
+      summary: List applications
+      description: >-
+        Retrieve all registered developer applications.
+      tags:
+        - Applications
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: List of applications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Application'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /rest/applications/{applicationId}:
+    get:
+      operationId: getApplication
+      summary: Get an application
+      description: >-
+        Retrieve details of a specific developer application.
+      tags:
+        - Applications
+      parameters:
+        - $ref: '#/components/parameters/applicationId'
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Application details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /rest/members:
+    get:
+      operationId: listMembers
+      summary: List portal members
+      description: >-
+        Retrieve all developer portal members.
+      tags:
+        - Members
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: List of members
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Member'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /rest/members/{memberId}:
+    get:
+      operationId: getMember
+      summary: Get a portal member
+      description: >-
+        Retrieve details of a specific developer portal member.
+      tags:
+        - Members
+      parameters:
+        - $ref: '#/components/parameters/memberId'
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Member details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /rest/reports/calls:
+    get:
+      operationId: getCallReport
+      summary: Get API call report
+      description: >-
+        Retrieve API call volume and performance metrics for
+        the specified time range.
+      tags:
+        - Reports
+      parameters:
+        - name: startDate
+          in: query
+          required: true
+          description: Report start date (ISO 8601)
+          schema:
+            type: string
+            format: date-time
+        - name: endDate
+          in: query
+          required: true
+          description: Report end date (ISO 8601)
+          schema:
+            type: string
+            format: date-time
+        - name: serviceId
+          in: query
+          description: Filter by service ID
+          schema:
+            type: string
+        - name: endpointId
+          in: query
+          description: Filter by endpoint ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Call report data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallReport'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.mashery.com/v3/token
+          scopes: {}
+      description: OAuth 2.0 client credentials for Mashery API access
+  parameters:
+    serviceId:
+      name: serviceId
+      in: path
+      required: true
+      description: API service unique identifier
+      schema:
+        type: string
+    endpointId:
+      name: endpointId
+      in: path
+      required: true
+      description: Endpoint unique identifier
+      schema:
+        type: string
+    packageId:
+      name: packageId
+      in: path
+      required: true
+      description: Package unique identifier
+      schema:
+        type: string
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: Application unique identifier
+      schema:
+        type: string
+    memberId:
+      name: memberId
+      in: path
+      required: true
+      description: Member unique identifier
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 20
+    fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response
+      schema:
+        type: string
+    filter:
+      name: filter
+      in: query
+      description: Filter expression for narrowing results
+      schema:
+        type: string
+    sort:
+      name: sort
+      in: query
+      description: Sort expression (field and direction)
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+    BadRequest:
+      description: The request body or parameters are invalid
+    NotFound:
+      description: The requested resource was not found
+  schemas:
+    Service:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the API service
+        name:
+          type: string
+          description: API service name
+        description:
+          type: string
+          description: Service description
+        version:
+          type: string
+          description: Service version
+        qpsLimitOverall:
+          type: integer
+          description: Overall queries-per-second rate limit
+        revisionNumber:
+          type: integer
+          description: Service revision number
+        robotsPolicy:
+          type: string
+          description: Robots policy for the service
+        created:
+          type: string
+          format: date-time
+          description: When the service was created
+        updated:
+          type: string
+          format: date-time
+          description: When the service was last updated
+        endpoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/Endpoint'
+          description: Endpoints associated with this service
+    CreateServiceRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: API service name
+          minLength: 1
+        description:
+          type: string
+          description: Service description
+        version:
+          type: string
+          description: Service version
+        qpsLimitOverall:
+          type: integer
+          description: Overall queries-per-second rate limit
+    Endpoint:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the endpoint
+        name:
+          type: string
+          description: Endpoint name
+        requestAuthenticationType:
+          type: string
+          enum:
+            - apiKey
+            - apiKeyAndSecret
+            - oauth
+          description: Authentication type required
+        requestProtocol:
+          type: string
+          enum:
+            - rest
+            - soap
+            - xml-rpc
+          description: Request protocol
+        publicDomains:
+          type: array
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+          description: Public-facing domain addresses
+        systemDomains:
+          type: array
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+          description: Backend system domain addresses
+        requestPathAlias:
+          type: string
+          description: Public path alias for the endpoint
+        supportedHttpMethods:
+          type: array
+          items:
+            type: string
+            enum:
+              - get
+              - post
+              - put
+              - delete
+              - head
+              - patch
+              - options
+          description: Supported HTTP methods
+        trafficManagerDomain:
+          type: string
+          description: Traffic manager domain for the endpoint
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+    CreateEndpointRequest:
+      type: object
+      required:
+        - name
+        - requestAuthenticationType
+        - requestProtocol
+      properties:
+        name:
+          type: string
+          description: Endpoint name
+        requestAuthenticationType:
+          type: string
+          enum:
+            - apiKey
+            - apiKeyAndSecret
+            - oauth
+        requestProtocol:
+          type: string
+          enum:
+            - rest
+            - soap
+            - xml-rpc
+        requestPathAlias:
+          type: string
+        publicDomains:
+          type: array
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+        systemDomains:
+          type: array
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+        supportedHttpMethods:
+          type: array
+          items:
+            type: string
+    Package:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the package
+        name:
+          type: string
+          description: Package name
+        description:
+          type: string
+          description: Package description
+        notifyDeveloperPeriod:
+          type: string
+          description: Period for developer notifications
+        notifyDeveloperNearQuota:
+          type: boolean
+          description: Whether to notify when near quota
+        notifyDeveloperOverQuota:
+          type: boolean
+          description: Whether to notify when over quota
+        notifyAdminPeriod:
+          type: string
+        notifyAdminNearQuota:
+          type: boolean
+        notifyAdminOverQuota:
+          type: boolean
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+    CreatePackageRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Package name
+        description:
+          type: string
+        notifyDeveloperNearQuota:
+          type: boolean
+        notifyDeveloperOverQuota:
+          type: boolean
+    Plan:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the plan
+        name:
+          type: string
+          description: Plan name
+        description:
+          type: string
+          description: Plan description
+        maxNumKeysAllowed:
+          type: integer
+          description: Maximum number of keys allowed
+        numKeysBeforeReview:
+          type: integer
+          description: Number of keys before review required
+        qpsLimitCeiling:
+          type: integer
+          description: QPS limit ceiling for this plan
+        rateLimitCeiling:
+          type: integer
+          description: Rate limit ceiling
+        rateLimitPeriod:
+          type: string
+          enum:
+            - second
+            - minute
+            - hour
+            - day
+            - month
+          description: Rate limit period
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+          description: Plan status
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+    CreatePlanRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        maxNumKeysAllowed:
+          type: integer
+        qpsLimitCeiling:
+          type: integer
+        rateLimitCeiling:
+          type: integer
+        rateLimitPeriod:
+          type: string
+          enum:
+            - second
+            - minute
+            - hour
+            - day
+            - month
+    Application:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the application
+        name:
+          type: string
+          description: Application name
+        description:
+          type: string
+          description: Application description
+        username:
+          type: string
+          description: Owner username
+        isPackaged:
+          type: boolean
+          description: Whether the application uses package keys
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+    Key:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the key
+        apikey:
+          type: string
+          description: API key value
+        secret:
+          type: string
+          description: API key secret
+        status:
+          type: string
+          enum:
+            - active
+            - waiting
+            - disabled
+          description: Key status
+        rateLimitCeiling:
+          type: integer
+        qpsLimitCeiling:
+          type: integer
+        created:
+          type: string
+          format: date-time
+    Member:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the member
+        username:
+          type: string
+          description: Portal username
+        email:
+          type: string
+          format: email
+          description: Member email address
+        displayName:
+          type: string
+          description: Display name
+        company:
+          type: string
+          description: Company name
+        registrationDate:
+          type: string
+          format: date-time
+          description: When the member registered
+    CallReport:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        totalCalls:
+          type: integer
+          description: Total API call count
+        successfulCalls:
+          type: integer
+          description: Number of successful calls
+        blockedCalls:
+          type: integer
+          description: Number of blocked calls
+        otherCalls:
+          type: integer
+          description: Number of other calls
+        averageResponseTime:
+          type: number
+          format: double
+          description: Average response time in milliseconds
+        callsByEndpoint:
+          type: array
+          items:
+            type: object
+            properties:
+              endpointId:
+                type: string
+              endpointName:
+                type: string
+              totalCalls:
+                type: integer
+              averageResponseTime:
+                type: number
+                format: double

@@ -1,0 +1,225 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "tibco": "https://developer.tibco.com/schemas/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "IntegrationApp": {
+      "@id": "tibco:IntegrationApp",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "type": "tibco:appType",
+        "status": "tibco:appStatus",
+        "version": "schema:version",
+        "createdTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "modifiedTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "createdBy": "dcterms:creator"
+      }
+    },
+
+    "Connection": {
+      "@id": "tibco:Connection",
+      "@context": {
+        "name": "schema:name",
+        "type": "tibco:connectorType",
+        "status": "tibco:connectionStatus",
+        "createdTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "modifiedTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Flow": {
+      "@id": "tibco:Flow",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "type": "tibco:flowTriggerType"
+      }
+    },
+
+    "Deployment": {
+      "@id": "tibco:Deployment",
+      "@context": {
+        "appName": "schema:name",
+        "status": "tibco:deploymentStatus",
+        "instanceCount": {
+          "@id": "tibco:instanceCount",
+          "@type": "xsd:integer"
+        },
+        "endpoint": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "createdTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "ApiService": {
+      "@id": "tibco:ApiService",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "version": "schema:version",
+        "qpsLimitOverall": {
+          "@id": "tibco:qpsLimitOverall",
+          "@type": "xsd:integer"
+        },
+        "created": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updated": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "ApiEndpoint": {
+      "@id": "tibco:ApiEndpoint",
+      "@context": {
+        "name": "schema:name",
+        "requestAuthenticationType": "tibco:authType",
+        "requestProtocol": "tibco:protocol",
+        "requestPathAlias": "tibco:pathAlias",
+        "trafficManagerDomain": "tibco:trafficDomain"
+      }
+    },
+
+    "Package": {
+      "@id": "tibco:Package",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "created": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updated": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Plan": {
+      "@id": "tibco:Plan",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "maxNumKeysAllowed": {
+          "@id": "tibco:maxKeys",
+          "@type": "xsd:integer"
+        },
+        "qpsLimitCeiling": {
+          "@id": "tibco:qpsLimit",
+          "@type": "xsd:integer"
+        },
+        "rateLimitCeiling": {
+          "@id": "tibco:rateLimit",
+          "@type": "xsd:integer"
+        },
+        "rateLimitPeriod": "tibco:ratePeriod",
+        "status": "tibco:planStatus"
+      }
+    },
+
+    "Rule": {
+      "@id": "tibco:Rule",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "priority": {
+          "@id": "tibco:priority",
+          "@type": "xsd:integer"
+        },
+        "condition": "tibco:ruleCondition",
+        "action": "tibco:ruleAction",
+        "enabled": {
+          "@id": "tibco:enabled",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "Event": {
+      "@id": "tibco:Event",
+      "@context": {
+        "type": "tibco:eventType",
+        "status": "tibco:eventStatus",
+        "timestamp": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Agent": {
+      "@id": "tibco:Agent",
+      "@context": {
+        "name": "schema:name",
+        "status": "tibco:agentStatus",
+        "type": "tibco:agentType",
+        "rulesLoaded": {
+          "@id": "tibco:rulesLoaded",
+          "@type": "xsd:integer"
+        },
+        "eventsProcessed": {
+          "@id": "tibco:eventsProcessed",
+          "@type": "xsd:integer"
+        },
+        "startTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Analysis": {
+      "@id": "tibco:Analysis",
+      "@context": {
+        "title": "schema:name",
+        "description": "schema:description",
+        "path": "tibco:libraryPath",
+        "version": "schema:version",
+        "createdBy": "dcterms:creator",
+        "createdDate": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "modifiedDate": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "DataSource": {
+      "@id": "tibco:DataSource",
+      "@context": {
+        "name": "schema:name",
+        "type": "tibco:dataSourceType",
+        "provider": "tibco:provider",
+        "status": "tibco:connectionStatus"
+      }
+    }
+  }
+}

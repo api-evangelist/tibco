@@ -1,0 +1,1136 @@
+openapi: 3.1.0
+info:
+  title: TIBCO Spotfire Analytics API
+  description: >-
+    Analytics and data visualization REST API for TIBCO Spotfire Server.
+    Provides programmatic access to manage analysis files, library items,
+    data sources, users, groups, and scheduled tasks for embedded analytics
+    and automated reporting workflows.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+externalDocs:
+  description: TIBCO Spotfire Server API Documentation
+  url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+servers:
+  - url: https://spotfire.cloud.tibco.com/api/rest/v1
+    description: TIBCO Spotfire Cloud Production
+  - url: https://{spotfire-server}/spotfire/api/rest/v1
+    description: TIBCO Spotfire Server On-Premise
+    variables:
+      spotfire-server:
+        default: localhost
+        description: On-premise Spotfire Server hostname
+tags:
+  - name: Library
+    description: Manage Spotfire library items and folders
+  - name: Analyses
+    description: Manage Spotfire analysis files
+  - name: Data Sources
+    description: Manage data source connections
+  - name: Users
+    description: Manage Spotfire users
+  - name: Groups
+    description: Manage user groups
+  - name: Scheduled Updates
+    description: Manage scheduled analysis updates
+  - name: Nodes
+    description: Manage Spotfire Server nodes and services
+security:
+  - bearerAuth: []
+  - basicAuth: []
+paths:
+  /library:
+    get:
+      operationId: listLibraryItems
+      summary: List library items
+      description: >-
+        Retrieve library items from the Spotfire library with optional
+        filtering by path, type, or search query.
+      tags:
+        - Library
+      parameters:
+        - name: path
+          in: query
+          description: Library folder path to list items from
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: Filter by item type
+          schema:
+            type: string
+            enum:
+              - spotfire.dxp
+              - spotfire.folder
+              - spotfire.sbdf
+              - spotfire.dataconnection
+              - spotfire.colorscheme
+              - spotfire.mod
+        - name: search
+          in: query
+          description: Search query for item names
+          schema:
+            type: string
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: List of library items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LibraryItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /library/{itemId}:
+    get:
+      operationId: getLibraryItem
+      summary: Get a library item
+      description: >-
+        Retrieve details of a specific library item by ID.
+      tags:
+        - Library
+      parameters:
+        - $ref: '#/components/parameters/itemId'
+      responses:
+        '200':
+          description: Library item details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateLibraryItem
+      summary: Update a library item
+      description: >-
+        Update metadata of a library item such as name or description.
+      tags:
+        - Library
+      parameters:
+        - $ref: '#/components/parameters/itemId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateLibraryItemRequest'
+      responses:
+        '200':
+          description: Library item updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryItem'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteLibraryItem
+      summary: Delete a library item
+      description: >-
+        Delete a library item by ID.
+      tags:
+        - Library
+      parameters:
+        - $ref: '#/components/parameters/itemId'
+      responses:
+        '204':
+          description: Library item deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /library/{itemId}/permissions:
+    get:
+      operationId: getLibraryItemPermissions
+      summary: Get library item permissions
+      description: >-
+        Retrieve access permissions for a specific library item.
+      tags:
+        - Library
+      parameters:
+        - $ref: '#/components/parameters/itemId'
+      responses:
+        '200':
+          description: Item permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permissions'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateLibraryItemPermissions
+      summary: Update library item permissions
+      description: >-
+        Update access permissions for a specific library item.
+      tags:
+        - Library
+      parameters:
+        - $ref: '#/components/parameters/itemId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Permissions'
+      responses:
+        '200':
+          description: Permissions updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permissions'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /analyses:
+    get:
+      operationId: listAnalyses
+      summary: List analyses
+      description: >-
+        Retrieve all Spotfire analysis files accessible to the authenticated user.
+      tags:
+        - Analyses
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: List of analyses
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Analysis'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /analyses/{analysisId}:
+    get:
+      operationId: getAnalysis
+      summary: Get an analysis
+      description: >-
+        Retrieve details and metadata of a specific analysis file.
+      tags:
+        - Analyses
+      parameters:
+        - $ref: '#/components/parameters/analysisId'
+      responses:
+        '200':
+          description: Analysis details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Analysis'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /analyses/{analysisId}/export:
+    post:
+      operationId: exportAnalysis
+      summary: Export an analysis
+      description: >-
+        Export an analysis to a specified format (PDF, image, data).
+      tags:
+        - Analyses
+      parameters:
+        - $ref: '#/components/parameters/analysisId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportRequest'
+      responses:
+        '200':
+          description: Exported content
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /datasources:
+    get:
+      operationId: listDataSources
+      summary: List data sources
+      description: >-
+        Retrieve all configured data source connections.
+      tags:
+        - Data Sources
+      responses:
+        '200':
+          description: List of data sources
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DataSource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createDataSource
+      summary: Create a data source
+      description: >-
+        Create a new data source connection.
+      tags:
+        - Data Sources
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDataSourceRequest'
+      responses:
+        '201':
+          description: Data source created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /datasources/{dataSourceId}:
+    get:
+      operationId: getDataSource
+      summary: Get a data source
+      description: >-
+        Retrieve details of a specific data source connection.
+      tags:
+        - Data Sources
+      parameters:
+        - $ref: '#/components/parameters/dataSourceId'
+      responses:
+        '200':
+          description: Data source details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteDataSource
+      summary: Delete a data source
+      description: >-
+        Delete a data source connection.
+      tags:
+        - Data Sources
+      parameters:
+        - $ref: '#/components/parameters/dataSourceId'
+      responses:
+        '204':
+          description: Data source deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /users:
+    get:
+      operationId: listUsers
+      summary: List users
+      description: >-
+        Retrieve all Spotfire Server users.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /users/{userId}:
+    get:
+      operationId: getUser
+      summary: Get a user
+      description: >-
+        Retrieve details of a specific Spotfire user.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          description: User details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /groups:
+    get:
+      operationId: listGroups
+      summary: List groups
+      description: >-
+        Retrieve all user groups on the Spotfire Server.
+      tags:
+        - Groups
+      responses:
+        '200':
+          description: List of groups
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Group'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createGroup
+      summary: Create a group
+      description: >-
+        Create a new user group.
+      tags:
+        - Groups
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroupRequest'
+      responses:
+        '201':
+          description: Group created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /groups/{groupId}:
+    get:
+      operationId: getGroup
+      summary: Get a group
+      description: >-
+        Retrieve details of a specific user group.
+      tags:
+        - Groups
+      parameters:
+        - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          description: Group details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteGroup
+      summary: Delete a group
+      description: >-
+        Delete a user group.
+      tags:
+        - Groups
+      parameters:
+        - $ref: '#/components/parameters/groupId'
+      responses:
+        '204':
+          description: Group deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /groups/{groupId}/members:
+    get:
+      operationId: listGroupMembers
+      summary: List group members
+      description: >-
+        Retrieve all members of a specific group.
+      tags:
+        - Groups
+      parameters:
+        - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          description: List of group members
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: addGroupMember
+      summary: Add a member to a group
+      description: >-
+        Add a user to a specific group.
+      tags:
+        - Groups
+      parameters:
+        - $ref: '#/components/parameters/groupId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - userId
+              properties:
+                userId:
+                  type: string
+                  description: User ID to add to the group
+      responses:
+        '200':
+          description: Member added to group
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /scheduled-updates:
+    get:
+      operationId: listScheduledUpdates
+      summary: List scheduled updates
+      description: >-
+        Retrieve all scheduled analysis update tasks.
+      tags:
+        - Scheduled Updates
+      responses:
+        '200':
+          description: List of scheduled updates
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ScheduledUpdate'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createScheduledUpdate
+      summary: Create a scheduled update
+      description: >-
+        Create a new scheduled update task for an analysis.
+      tags:
+        - Scheduled Updates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateScheduledUpdateRequest'
+      responses:
+        '201':
+          description: Scheduled update created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduledUpdate'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /scheduled-updates/{updateId}:
+    get:
+      operationId: getScheduledUpdate
+      summary: Get a scheduled update
+      description: >-
+        Retrieve details of a specific scheduled update task.
+      tags:
+        - Scheduled Updates
+      parameters:
+        - $ref: '#/components/parameters/updateId'
+      responses:
+        '200':
+          description: Scheduled update details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduledUpdate'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteScheduledUpdate
+      summary: Delete a scheduled update
+      description: >-
+        Delete a scheduled update task.
+      tags:
+        - Scheduled Updates
+      parameters:
+        - $ref: '#/components/parameters/updateId'
+      responses:
+        '204':
+          description: Scheduled update deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /nodes:
+    get:
+      operationId: listNodes
+      summary: List server nodes
+      description: >-
+        Retrieve all Spotfire Server nodes and their status.
+      tags:
+        - Nodes
+      responses:
+        '200':
+          description: List of server nodes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Node'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for Spotfire API access
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Basic authentication for on-premise Spotfire Server
+  parameters:
+    itemId:
+      name: itemId
+      in: path
+      required: true
+      description: Library item unique identifier (GUID)
+      schema:
+        type: string
+        format: uuid
+    analysisId:
+      name: analysisId
+      in: path
+      required: true
+      description: Analysis unique identifier (GUID)
+      schema:
+        type: string
+        format: uuid
+    dataSourceId:
+      name: dataSourceId
+      in: path
+      required: true
+      description: Data source unique identifier
+      schema:
+        type: string
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: User unique identifier
+      schema:
+        type: string
+    groupId:
+      name: groupId
+      in: path
+      required: true
+      description: Group unique identifier
+      schema:
+        type: string
+    updateId:
+      name: updateId
+      in: path
+      required: true
+      description: Scheduled update unique identifier
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+    BadRequest:
+      description: The request body or parameters are invalid
+    NotFound:
+      description: The requested resource was not found
+  schemas:
+    LibraryItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the library item
+        title:
+          type: string
+          description: Item display title
+        description:
+          type: string
+          description: Item description
+        path:
+          type: string
+          description: Full library path (e.g., /Users/analyst/reports)
+        type:
+          type: string
+          description: Item content type
+        size:
+          type: integer
+          description: Item size in bytes
+        createdBy:
+          type: string
+          description: User who created the item
+        createdDate:
+          type: string
+          format: date-time
+          description: When the item was created
+        modifiedBy:
+          type: string
+          description: User who last modified the item
+        modifiedDate:
+          type: string
+          format: date-time
+          description: When the item was last modified
+        parentId:
+          type: string
+          format: uuid
+          description: Parent folder ID
+    UpdateLibraryItemRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Updated item title
+        description:
+          type: string
+          description: Updated item description
+    Analysis:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the analysis
+        title:
+          type: string
+          description: Analysis title
+        description:
+          type: string
+          description: Analysis description
+        path:
+          type: string
+          description: Library path of the analysis
+        version:
+          type: string
+          description: Analysis version
+        pages:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              title:
+                type: string
+          description: Analysis pages
+        dataTables:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              rowCount:
+                type: integer
+              columnCount:
+                type: integer
+          description: Data tables within the analysis
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+        modifiedDate:
+          type: string
+          format: date-time
+    ExportRequest:
+      type: object
+      required:
+        - format
+      properties:
+        format:
+          type: string
+          enum:
+            - pdf
+            - png
+            - jpg
+            - csv
+            - xlsx
+          description: Export format
+        pageIndex:
+          type: integer
+          description: Specific page to export (0-based index)
+        width:
+          type: integer
+          description: Export width in pixels (for image formats)
+        height:
+          type: integer
+          description: Export height in pixels (for image formats)
+    DataSource:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the data source
+        name:
+          type: string
+          description: Data source name
+        type:
+          type: string
+          enum:
+            - database
+            - file
+            - web-service
+            - information-link
+            - custom
+          description: Data source type
+        connectionString:
+          type: string
+          description: Connection string (masked)
+        provider:
+          type: string
+          description: Database provider name
+        status:
+          type: string
+          enum:
+            - connected
+            - disconnected
+            - error
+          description: Data source connection status
+        createdDate:
+          type: string
+          format: date-time
+        modifiedDate:
+          type: string
+          format: date-time
+    CreateDataSourceRequest:
+      type: object
+      required:
+        - name
+        - type
+        - connectionString
+      properties:
+        name:
+          type: string
+          description: Data source name
+        type:
+          type: string
+          enum:
+            - database
+            - file
+            - web-service
+            - information-link
+            - custom
+        connectionString:
+          type: string
+          description: Connection string
+        provider:
+          type: string
+          description: Database provider name
+        username:
+          type: string
+          description: Connection username
+        password:
+          type: string
+          format: password
+          description: Connection password
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          description: User unique identifier
+        userName:
+          type: string
+          description: Username
+        displayName:
+          type: string
+          description: User display name
+        email:
+          type: string
+          format: email
+          description: User email address
+        enabled:
+          type: boolean
+          description: Whether the user account is enabled
+        lastLoginDate:
+          type: string
+          format: date-time
+          description: When the user last logged in
+        groups:
+          type: array
+          items:
+            type: string
+          description: Group names the user belongs to
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Group unique identifier
+        name:
+          type: string
+          description: Group name
+        description:
+          type: string
+          description: Group description
+        memberCount:
+          type: integer
+          description: Number of members in the group
+        createdDate:
+          type: string
+          format: date-time
+    CreateGroupRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Group name
+          minLength: 1
+        description:
+          type: string
+          description: Group description
+    Permissions:
+      type: object
+      properties:
+        owner:
+          type: string
+          description: Item owner username
+        entries:
+          type: array
+          items:
+            type: object
+            properties:
+              principal:
+                type: string
+                description: User or group name
+              principalType:
+                type: string
+                enum:
+                  - user
+                  - group
+              permission:
+                type: string
+                enum:
+                  - read
+                  - write
+                  - full-control
+          description: Permission entries
+    ScheduledUpdate:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Scheduled update unique identifier
+        analysisId:
+          type: string
+          format: uuid
+          description: Target analysis ID
+        analysisPath:
+          type: string
+          description: Target analysis library path
+        schedule:
+          type: object
+          properties:
+            frequency:
+              type: string
+              enum:
+                - once
+                - daily
+                - weekly
+                - monthly
+            startTime:
+              type: string
+              format: date-time
+            endTime:
+              type: string
+              format: date-time
+            interval:
+              type: integer
+              description: Interval between runs
+          description: Update schedule configuration
+        enabled:
+          type: boolean
+          description: Whether the scheduled update is enabled
+        lastRunTime:
+          type: string
+          format: date-time
+          description: When the update last ran
+        lastRunStatus:
+          type: string
+          enum:
+            - success
+            - failure
+            - running
+          description: Last run status
+    CreateScheduledUpdateRequest:
+      type: object
+      required:
+        - analysisId
+        - schedule
+      properties:
+        analysisId:
+          type: string
+          format: uuid
+        schedule:
+          type: object
+          required:
+            - frequency
+            - startTime
+          properties:
+            frequency:
+              type: string
+              enum:
+                - once
+                - daily
+                - weekly
+                - monthly
+            startTime:
+              type: string
+              format: date-time
+            endTime:
+              type: string
+              format: date-time
+            interval:
+              type: integer
+        enabled:
+          type: boolean
+          default: true
+    Node:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Node unique identifier
+        hostName:
+          type: string
+          description: Server hostname
+        port:
+          type: integer
+          description: Server port
+        status:
+          type: string
+          enum:
+            - online
+            - offline
+            - degraded
+          description: Node status
+        services:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              status:
+                type: string
+                enum:
+                  - running
+                  - stopped
+                  - error
+          description: Services running on this node
+        startTime:
+          type: string
+          format: date-time
+          description: When the node was started

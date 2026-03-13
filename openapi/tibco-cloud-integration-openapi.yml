@@ -1,0 +1,749 @@
+openapi: 3.1.0
+info:
+  title: TIBCO Cloud Integration API
+  description: >-
+    API for TIBCO Cloud Integration (TCI) platform enabling application
+    integration, API management, and business process automation. Provides
+    programmatic access to manage Flogo apps, Business Studio apps,
+    connections, and deployment environments.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+externalDocs:
+  description: TIBCO Cloud Integration Documentation
+  url: https://integration.cloud.tibco.com/docs/
+servers:
+  - url: https://integration.cloud.tibco.com/api/v1
+    description: TIBCO Cloud Integration Production (US)
+  - url: https://eu.integration.cloud.tibco.com/api/v1
+    description: TIBCO Cloud Integration Production (EU)
+tags:
+  - name: Apps
+    description: Manage integration applications
+  - name: Connections
+    description: Manage connector connections
+  - name: Environments
+    description: Manage deployment environments
+  - name: Flows
+    description: Manage Flogo flows and activities
+  - name: Deployments
+    description: Deploy and manage running app instances
+security:
+  - bearerAuth: []
+paths:
+  /apps:
+    get:
+      operationId: listApps
+      summary: List integration apps
+      description: >-
+        Retrieve a list of all integration applications in the organization,
+        including Flogo and Business Studio apps.
+      tags:
+        - Apps
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - name: filter
+          in: query
+          description: Filter expression for app name or type
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of integration apps
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                    description: Total number of apps matching the query
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/App'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createApp
+      summary: Create an integration app
+      description: >-
+        Create a new integration application by uploading a Flogo JSON
+        manifest or importing from a template.
+      tags:
+        - Apps
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAppRequest'
+      responses:
+        '201':
+          description: App created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/App'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /apps/{appId}:
+    get:
+      operationId: getApp
+      summary: Get an integration app
+      description: >-
+        Retrieve details of a specific integration application by ID.
+      tags:
+        - Apps
+      parameters:
+        - $ref: '#/components/parameters/appId'
+      responses:
+        '200':
+          description: App details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/App'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateApp
+      summary: Update an integration app
+      description: >-
+        Update an existing integration application configuration.
+      tags:
+        - Apps
+      parameters:
+        - $ref: '#/components/parameters/appId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAppRequest'
+      responses:
+        '200':
+          description: App updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/App'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteApp
+      summary: Delete an integration app
+      description: >-
+        Delete an integration application and its associated resources.
+      tags:
+        - Apps
+      parameters:
+        - $ref: '#/components/parameters/appId'
+      responses:
+        '204':
+          description: App deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /apps/{appId}/push:
+    post:
+      operationId: deployApp
+      summary: Deploy an integration app
+      description: >-
+        Push and deploy an integration application to the specified
+        environment.
+      tags:
+        - Deployments
+      parameters:
+        - $ref: '#/components/parameters/appId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeployRequest'
+      responses:
+        '200':
+          description: Deployment initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /apps/{appId}/export:
+    get:
+      operationId: exportApp
+      summary: Export an integration app
+      description: >-
+        Export an integration application as a JSON manifest file.
+      tags:
+        - Apps
+      parameters:
+        - $ref: '#/components/parameters/appId'
+      responses:
+        '200':
+          description: App export data
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Flogo app manifest JSON
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /connections:
+    get:
+      operationId: listConnections
+      summary: List connections
+      description: >-
+        Retrieve all configured connector connections for the organization.
+      tags:
+        - Connections
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: List of connections
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Connection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createConnection
+      summary: Create a connection
+      description: >-
+        Create a new connector connection with the specified configuration.
+      tags:
+        - Connections
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateConnectionRequest'
+      responses:
+        '201':
+          description: Connection created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /connections/{connectionId}:
+    get:
+      operationId: getConnection
+      summary: Get a connection
+      description: >-
+        Retrieve details of a specific connection by ID.
+      tags:
+        - Connections
+      parameters:
+        - $ref: '#/components/parameters/connectionId'
+      responses:
+        '200':
+          description: Connection details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteConnection
+      summary: Delete a connection
+      description: >-
+        Delete a connector connection by ID.
+      tags:
+        - Connections
+      parameters:
+        - $ref: '#/components/parameters/connectionId'
+      responses:
+        '204':
+          description: Connection deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /environments:
+    get:
+      operationId: listEnvironments
+      summary: List environments
+      description: >-
+        Retrieve all deployment environments configured for the organization.
+      tags:
+        - Environments
+      responses:
+        '200':
+          description: List of environments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Environment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /environments/{environmentId}:
+    get:
+      operationId: getEnvironment
+      summary: Get an environment
+      description: >-
+        Retrieve details of a specific deployment environment.
+      tags:
+        - Environments
+      parameters:
+        - $ref: '#/components/parameters/environmentId'
+      responses:
+        '200':
+          description: Environment details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /apps/{appId}/flows:
+    get:
+      operationId: listFlows
+      summary: List flows in an app
+      description: >-
+        Retrieve all flows defined within an integration application.
+      tags:
+        - Flows
+      parameters:
+        - $ref: '#/components/parameters/appId'
+      responses:
+        '200':
+          description: List of flows
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Flow'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /deployments:
+    get:
+      operationId: listDeployments
+      summary: List deployments
+      description: >-
+        Retrieve all active deployments across the organization.
+      tags:
+        - Deployments
+      parameters:
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: List of deployments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Deployment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /deployments/{deploymentId}:
+    get:
+      operationId: getDeployment
+      summary: Get a deployment
+      description: >-
+        Retrieve details and status of a specific deployment.
+      tags:
+        - Deployments
+      parameters:
+        - $ref: '#/components/parameters/deploymentId'
+      responses:
+        '200':
+          description: Deployment details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: undeployApp
+      summary: Undeploy an app
+      description: >-
+        Stop and remove a running deployment.
+      tags:
+        - Deployments
+      parameters:
+        - $ref: '#/components/parameters/deploymentId'
+      responses:
+        '204':
+          description: Deployment removed
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /deployments/{deploymentId}/scale:
+    post:
+      operationId: scaleDeployment
+      summary: Scale a deployment
+      description: >-
+        Scale the number of instances for a running deployment.
+      tags:
+        - Deployments
+      parameters:
+        - $ref: '#/components/parameters/deploymentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - instanceCount
+              properties:
+                instanceCount:
+                  type: integer
+                  minimum: 1
+                  description: Desired number of instances
+      responses:
+        '200':
+          description: Deployment scaled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token obtained from TIBCO Cloud authentication
+  parameters:
+    appId:
+      name: appId
+      in: path
+      required: true
+      description: Integration app unique identifier
+      schema:
+        type: string
+    connectionId:
+      name: connectionId
+      in: path
+      required: true
+      description: Connection unique identifier
+      schema:
+        type: string
+    environmentId:
+      name: environmentId
+      in: path
+      required: true
+      description: Environment unique identifier
+      schema:
+        type: string
+    deploymentId:
+      name: deploymentId
+      in: path
+      required: true
+      description: Deployment unique identifier
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+    BadRequest:
+      description: The request body or parameters are invalid
+    NotFound:
+      description: The requested resource was not found
+  schemas:
+    App:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the app
+        name:
+          type: string
+          description: Name of the integration app
+        description:
+          type: string
+          description: Description of the app
+        type:
+          type: string
+          enum:
+            - flogo
+            - businessworks
+            - node
+          description: Integration app type
+        status:
+          type: string
+          enum:
+            - draft
+            - running
+            - stopped
+            - error
+          description: Current status of the app
+        createdTime:
+          type: string
+          format: date-time
+          description: When the app was created
+        modifiedTime:
+          type: string
+          format: date-time
+          description: When the app was last modified
+        createdBy:
+          type: string
+          description: User who created the app
+        version:
+          type: string
+          description: App version
+    CreateAppRequest:
+      type: object
+      required:
+        - name
+        - type
+      properties:
+        name:
+          type: string
+          description: Name for the new app
+          minLength: 1
+          maxLength: 256
+        description:
+          type: string
+          description: Description of the app
+        type:
+          type: string
+          enum:
+            - flogo
+            - businessworks
+            - node
+          description: Integration app type
+    UpdateAppRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Updated app name
+        description:
+          type: string
+          description: Updated description
+    Connection:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the connection
+        name:
+          type: string
+          description: Connection display name
+        type:
+          type: string
+          description: Connector type (e.g., REST, Database, Salesforce)
+        status:
+          type: string
+          enum:
+            - connected
+            - disconnected
+            - error
+          description: Connection health status
+        configuration:
+          type: object
+          additionalProperties: true
+          description: Connector-specific configuration properties
+        createdTime:
+          type: string
+          format: date-time
+          description: When the connection was created
+        modifiedTime:
+          type: string
+          format: date-time
+          description: When the connection was last modified
+    CreateConnectionRequest:
+      type: object
+      required:
+        - name
+        - type
+      properties:
+        name:
+          type: string
+          description: Connection display name
+        type:
+          type: string
+          description: Connector type
+        configuration:
+          type: object
+          additionalProperties: true
+          description: Connector-specific configuration
+    Environment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the environment
+        name:
+          type: string
+          description: Environment name
+        type:
+          type: string
+          enum:
+            - dev
+            - test
+            - staging
+            - production
+          description: Environment type
+        region:
+          type: string
+          description: Cloud region for the environment
+        status:
+          type: string
+          enum:
+            - active
+            - inactive
+          description: Environment status
+    Flow:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the flow
+        name:
+          type: string
+          description: Flow name
+        description:
+          type: string
+          description: Flow description
+        type:
+          type: string
+          description: Flow trigger type
+        activities:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              type:
+                type: string
+          description: Activities in the flow
+    Deployment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the deployment
+        appId:
+          type: string
+          description: Associated app ID
+        appName:
+          type: string
+          description: Name of the deployed app
+        environmentId:
+          type: string
+          description: Target environment ID
+        status:
+          type: string
+          enum:
+            - deploying
+            - running
+            - stopped
+            - failed
+          description: Deployment status
+        instanceCount:
+          type: integer
+          description: Number of running instances
+        endpoint:
+          type: string
+          format: uri
+          description: Deployed app endpoint URL
+        createdTime:
+          type: string
+          format: date-time
+          description: When the deployment was created
+        modifiedTime:
+          type: string
+          format: date-time
+          description: When the deployment was last modified
+    DeployRequest:
+      type: object
+      properties:
+        environmentId:
+          type: string
+          description: Target environment for deployment
+        instanceCount:
+          type: integer
+          minimum: 1
+          default: 1
+          description: Number of instances to deploy
