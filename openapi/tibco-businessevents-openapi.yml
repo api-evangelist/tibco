@@ -17,18 +17,18 @@ servers:
   - url: https://api.tibco.com/businessevents/v1
     description: TIBCO BusinessEvents Production
 tags:
-  - name: Rules
-    description: Manage business rules and rule sets
+  - name: Agents
+    description: Manage inference agents
+  - name: Channels
+    description: Manage event channels and destinations
   - name: Decision Tables
     description: Manage decision tables for rule evaluation
   - name: Events
     description: Submit and query complex events
-  - name: Agents
-    description: Manage inference agents
+  - name: Rules
+    description: Manage business rules and rule sets
   - name: Scorecards
     description: Manage metric scorecards and dashboards
-  - name: Channels
-    description: Manage event channels and destinations
 security:
   - bearerAuth: []
 paths:

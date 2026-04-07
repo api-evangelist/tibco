@@ -24,20 +24,20 @@ servers:
         default: localhost
         description: On-premise Spotfire Server hostname
 tags:
-  - name: Library
-    description: Manage Spotfire library items and folders
   - name: Analyses
     description: Manage Spotfire analysis files
   - name: Data Sources
     description: Manage data source connections
-  - name: Users
-    description: Manage Spotfire users
   - name: Groups
     description: Manage user groups
-  - name: Scheduled Updates
-    description: Manage scheduled analysis updates
+  - name: Library
+    description: Manage Spotfire library items and folders
   - name: Nodes
     description: Manage Spotfire Server nodes and services
+  - name: Scheduled Updates
+    description: Manage scheduled analysis updates
+  - name: Users
+    description: Manage Spotfire users
 security:
   - bearerAuth: []
   - basicAuth: []

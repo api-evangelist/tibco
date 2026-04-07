@@ -18,20 +18,16 @@ servers:
   - url: https://api.mashery.com/v3
     description: Mashery API v3 Production
 tags:
-  - name: Services
-    description: Manage API service definitions
+  - name: Applications
+    description: Manage developer applications
   - name: Endpoints
     description: Manage API endpoints within services
+  - name: Members
+    description: Manage developer portal members
   - name: Packages
     description: Manage API packages for bundling services
   - name: Plans
     description: Manage subscription plans within packages
-  - name: Keys
-    description: Manage application API keys
-  - name: Members
-    description: Manage developer portal members
-  - name: Applications
-    description: Manage developer applications
   - name: Reports
     description: API usage reporting and analytics
 security:
@@ -43,8 +39,7 @@ paths:
       summary: TIBCO List API services
       description: >-
         Retrieve all API service definitions managed by the platform.
-      tags:
-        - Services
+      tags: []
       parameters:
         - $ref: '#/components/parameters/offset'
         - $ref: '#/components/parameters/limit'
@@ -67,8 +62,7 @@ paths:
       summary: TIBCO Create an API service
       description: >-
         Create a new API service definition.
-      tags:
-        - Services
+      tags: []
       requestBody:
         required: true
         content:
@@ -92,8 +86,7 @@ paths:
       summary: TIBCO Get an API service
       description: >-
         Retrieve details of a specific API service definition.
-      tags:
-        - Services
+      tags: []
       parameters:
         - $ref: '#/components/parameters/serviceId'
         - $ref: '#/components/parameters/fields'
@@ -113,8 +106,7 @@ paths:
       summary: TIBCO Update an API service
       description: >-
         Update an existing API service definition.
-      tags:
-        - Services
+      tags: []
       parameters:
         - $ref: '#/components/parameters/serviceId'
       requestBody:
@@ -141,8 +133,7 @@ paths:
       summary: TIBCO Delete an API service
       description: >-
         Delete an API service definition.
-      tags:
-        - Services
+      tags: []
       parameters:
         - $ref: '#/components/parameters/serviceId'
       responses:

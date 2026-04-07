@@ -24,12 +24,12 @@ tags:
     description: Manage integration applications
   - name: Connections
     description: Manage connector connections
+  - name: Deployments
+    description: Deploy and manage running app instances
   - name: Environments
     description: Manage deployment environments
   - name: Flows
     description: Manage Flogo flows and activities
-  - name: Deployments
-    description: Deploy and manage running app instances
 security:
   - bearerAuth: []
 paths:
