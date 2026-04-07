@@ -45,7 +45,7 @@ paths:
   /library:
     get:
       operationId: listLibraryItems
-      summary: List library items
+      summary: TIBCO List library items
       description: >-
         Retrieve library items from the Spotfire library with optional
         filtering by path, type, or search query.
@@ -95,7 +95,7 @@ paths:
   /library/{itemId}:
     get:
       operationId: getLibraryItem
-      summary: Get a library item
+      summary: TIBCO Get a library item
       description: >-
         Retrieve details of a specific library item by ID.
       tags:
@@ -115,7 +115,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateLibraryItem
-      summary: Update a library item
+      summary: TIBCO Update a library item
       description: >-
         Update metadata of a library item such as name or description.
       tags:
@@ -143,7 +143,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteLibraryItem
-      summary: Delete a library item
+      summary: TIBCO Delete a library item
       description: >-
         Delete a library item by ID.
       tags:
@@ -160,7 +160,7 @@ paths:
   /library/{itemId}/permissions:
     get:
       operationId: getLibraryItemPermissions
-      summary: Get library item permissions
+      summary: TIBCO Get library item permissions
       description: >-
         Retrieve access permissions for a specific library item.
       tags:
@@ -180,7 +180,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateLibraryItemPermissions
-      summary: Update library item permissions
+      summary: TIBCO Update library item permissions
       description: >-
         Update access permissions for a specific library item.
       tags:
@@ -207,7 +207,7 @@ paths:
   /analyses:
     get:
       operationId: listAnalyses
-      summary: List analyses
+      summary: TIBCO List analyses
       description: >-
         Retrieve all Spotfire analysis files accessible to the authenticated user.
       tags:
@@ -234,7 +234,7 @@ paths:
   /analyses/{analysisId}:
     get:
       operationId: getAnalysis
-      summary: Get an analysis
+      summary: TIBCO Get an analysis
       description: >-
         Retrieve details and metadata of a specific analysis file.
       tags:
@@ -255,7 +255,7 @@ paths:
   /analyses/{analysisId}/export:
     post:
       operationId: exportAnalysis
-      summary: Export an analysis
+      summary: TIBCO Export an analysis
       description: >-
         Export an analysis to a specified format (PDF, image, data).
       tags:
@@ -289,7 +289,7 @@ paths:
   /datasources:
     get:
       operationId: listDataSources
-      summary: List data sources
+      summary: TIBCO List data sources
       description: >-
         Retrieve all configured data source connections.
       tags:
@@ -310,7 +310,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createDataSource
-      summary: Create a data source
+      summary: TIBCO Create a data source
       description: >-
         Create a new data source connection.
       tags:
@@ -335,7 +335,7 @@ paths:
   /datasources/{dataSourceId}:
     get:
       operationId: getDataSource
-      summary: Get a data source
+      summary: TIBCO Get a data source
       description: >-
         Retrieve details of a specific data source connection.
       tags:
@@ -355,7 +355,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteDataSource
-      summary: Delete a data source
+      summary: TIBCO Delete a data source
       description: >-
         Delete a data source connection.
       tags:
@@ -372,7 +372,7 @@ paths:
   /users:
     get:
       operationId: listUsers
-      summary: List users
+      summary: TIBCO List users
       description: >-
         Retrieve all Spotfire Server users.
       tags:
@@ -399,7 +399,7 @@ paths:
   /users/{userId}:
     get:
       operationId: getUser
-      summary: Get a user
+      summary: TIBCO Get a user
       description: >-
         Retrieve details of a specific Spotfire user.
       tags:
@@ -420,7 +420,7 @@ paths:
   /groups:
     get:
       operationId: listGroups
-      summary: List groups
+      summary: TIBCO List groups
       description: >-
         Retrieve all user groups on the Spotfire Server.
       tags:
@@ -441,7 +441,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createGroup
-      summary: Create a group
+      summary: TIBCO Create a group
       description: >-
         Create a new user group.
       tags:
@@ -466,7 +466,7 @@ paths:
   /groups/{groupId}:
     get:
       operationId: getGroup
-      summary: Get a group
+      summary: TIBCO Get a group
       description: >-
         Retrieve details of a specific user group.
       tags:
@@ -486,7 +486,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteGroup
-      summary: Delete a group
+      summary: TIBCO Delete a group
       description: >-
         Delete a user group.
       tags:
@@ -503,7 +503,7 @@ paths:
   /groups/{groupId}/members:
     get:
       operationId: listGroupMembers
-      summary: List group members
+      summary: TIBCO List group members
       description: >-
         Retrieve all members of a specific group.
       tags:
@@ -528,7 +528,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: addGroupMember
-      summary: Add a member to a group
+      summary: TIBCO Add a member to a group
       description: >-
         Add a user to a specific group.
       tags:
@@ -559,7 +559,7 @@ paths:
   /scheduled-updates:
     get:
       operationId: listScheduledUpdates
-      summary: List scheduled updates
+      summary: TIBCO List scheduled updates
       description: >-
         Retrieve all scheduled analysis update tasks.
       tags:
@@ -580,7 +580,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createScheduledUpdate
-      summary: Create a scheduled update
+      summary: TIBCO Create a scheduled update
       description: >-
         Create a new scheduled update task for an analysis.
       tags:
@@ -605,7 +605,7 @@ paths:
   /scheduled-updates/{updateId}:
     get:
       operationId: getScheduledUpdate
-      summary: Get a scheduled update
+      summary: TIBCO Get a scheduled update
       description: >-
         Retrieve details of a specific scheduled update task.
       tags:
@@ -625,7 +625,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteScheduledUpdate
-      summary: Delete a scheduled update
+      summary: TIBCO Delete a scheduled update
       description: >-
         Delete a scheduled update task.
       tags:
@@ -642,7 +642,7 @@ paths:
   /nodes:
     get:
       operationId: listNodes
-      summary: List server nodes
+      summary: TIBCO List server nodes
       description: >-
         Retrieve all Spotfire Server nodes and their status.
       tags:
