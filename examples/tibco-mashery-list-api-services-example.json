@@ -1,0 +1,37 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.mashery.com/v3/rest/services",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "items": [
+        {
+          "id": "svc-001ab2cd3ef4",
+          "name": "Payment Processing API",
+          "description": "REST API for payment processing workflows",
+          "version": "v2",
+          "created": "2025-06-01T00:00:00Z",
+          "updated": "2026-03-15T00:00:00Z",
+          "endpoints": [
+            {
+              "id": "ep-001",
+              "name": "Payment Endpoint",
+              "publicDomain": "api.example.com",
+              "trafficManagerDomain": "xyzco.api.mashery.com",
+              "requestAuthenticationType": "apiKey"
+            }
+          ]
+        }
+      ],
+      "totalCount": 1,
+      "page": 1,
+      "pageSize": 25
+    }
+  }
+}

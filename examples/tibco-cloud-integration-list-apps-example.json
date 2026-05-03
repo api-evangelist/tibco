@@ -1,0 +1,40 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://integration.cloud.tibco.com/api/v1/apps?limit=25",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "totalCount": 3,
+      "data": [
+        {
+          "id": "app-f8a2b3c4d5e6",
+          "name": "CustomerOrderProcessor",
+          "description": "Flogo app for processing customer orders via REST and Kafka",
+          "type": "flogo",
+          "status": "running",
+          "version": "2.3.1",
+          "createdAt": "2026-01-15T10:00:00Z",
+          "updatedAt": "2026-04-20T14:30:00Z",
+          "deployments": 1
+        },
+        {
+          "id": "app-9e8d7c6b5a4f",
+          "name": "InvoiceSync",
+          "description": "Business Studio integration flow for SAP invoice synchronization",
+          "type": "business-studio",
+          "status": "stopped",
+          "version": "1.0.4",
+          "createdAt": "2025-11-01T09:00:00Z",
+          "updatedAt": "2026-02-10T11:00:00Z",
+          "deployments": 0
+        }
+      ]
+    }
+  }
+}

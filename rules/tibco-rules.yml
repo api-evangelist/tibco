@@ -1,0 +1,116 @@
+extends:
+  - spectral:oas
+
+rules:
+  tibco-operation-ids-camel-case:
+    description: Operation IDs must use camelCase
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+
+  tibco-tags-title-case:
+    description: All tags must use Title Case
+    severity: warn
+    given: "$.tags[*].name"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9 &-]+$"
+
+  tibco-paths-kebab-case:
+    description: Path segments must use kebab-case or camelCase only
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/[a-zA-Z][a-zA-Z0-9-]*|/\\{[a-zA-Z][a-zA-Z0-9]+\\})*$"
+
+  tibco-security-defined:
+    description: All operations must have security requirements
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: security
+      function: defined
+
+  tibco-responses-200-on-get:
+    description: GET operations must have a 200 response
+    severity: warn
+    given: "$.paths[*].get"
+    then:
+      field: responses.200
+      function: defined
+
+  tibco-responses-401-defined:
+    description: Protected operations should document 401 response
+    severity: info
+    given: "$.paths[*][get,post,put,delete]"
+    then:
+      field: responses.401
+      function: defined
+
+  tibco-request-body-json-schema:
+    description: POST/PUT request bodies must define a JSON schema
+    severity: error
+    given: "$.paths[*][post,put].requestBody.content.application/json"
+    then:
+      field: schema
+      function: defined
+
+  tibco-servers-https-only:
+    description: All server URLs must use HTTPS
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  tibco-info-version-defined:
+    description: API info must specify a version
+    severity: error
+    given: "$.info"
+    then:
+      field: version
+      function: defined
+
+  tibco-info-contact-defined:
+    description: API info must include contact information
+    severity: warn
+    given: "$.info"
+    then:
+      field: contact
+      function: defined
+
+  tibco-component-schemas-use-refs:
+    description: Response schemas should use $ref to component schemas
+    severity: info
+    given: "$.paths[*][*].responses.200.content[*].schema"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          oneOf:
+            - required: ["$ref"]
+            - required: ["type"]
+
+  tibco-ids-in-path-params:
+    description: Resource identifier path parameters should end with 'Id'
+    severity: info
+    given: "$.paths[*][*].parameters[?(@.in == 'path')].name"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^.*[Ii]d$"
+
+  tibco-delete-returns-204:
+    description: DELETE operations should return 204 No Content
+    severity: info
+    given: "$.paths[*].delete"
+    then:
+      field: responses.204
+      function: defined

@@ -1,0 +1,168 @@
+title: TIBCO Vocabulary
+description: >-
+  Domain vocabulary for TIBCO Software APIs covering cloud integration,
+  API management, analytics, and enterprise messaging.
+provider: TIBCO
+created: '2026-05-03'
+modified: '2026-05-03'
+tags:
+  - Analytics
+  - API Management
+  - Cloud Integration
+  - Enterprise Software
+  - Integration
+  - Messaging
+
+terms:
+  - term: Flogo
+    label: Flogo
+    definition: >-
+      TIBCO's open-source, event-driven IoT and integration framework for
+      building lightweight microservices and integration flows. Used as a
+      low-code app type in TIBCO Cloud Integration.
+    tags:
+      - Integration
+      - Low-Code
+      - Microservices
+
+  - term: TCI
+    label: TIBCO Cloud Integration
+    definition: >-
+      TIBCO's iPaaS platform for application integration, API management, and
+      business process automation in the cloud. Supports Flogo and Business
+      Studio app types.
+    tags:
+      - Cloud Integration
+      - iPaaS
+      - Platform
+
+  - term: Mashery
+    label: TIBCO Mashery
+    definition: >-
+      TIBCO's API management platform (formerly acquired from Mashery Inc.)
+      that provides API gateway, portal, analytics, and developer ecosystem
+      management capabilities.
+    tags:
+      - API Gateway
+      - API Management
+      - Developer Portal
+
+  - term: Spotfire
+    label: TIBCO Spotfire
+    definition: >-
+      TIBCO's analytics and data visualization platform offering interactive
+      dashboards, predictive analytics, and embedded analytics capabilities
+      for business intelligence.
+    tags:
+      - Analytics
+      - Business Intelligence
+      - Visualization
+
+  - term: EMS
+    label: TIBCO Enterprise Message Service
+    definition: >-
+      TIBCO's enterprise messaging middleware that implements JMS (Java Message
+      Service) standards for reliable, asynchronous message exchange between
+      applications.
+    tags:
+      - JMS
+      - Messaging
+      - Middleware
+
+  - term: FTL
+    label: TIBCO FTL
+    definition: >-
+      TIBCO's Fast Transport Layer messaging technology designed for
+      ultra-low latency, high-throughput messaging in financial services
+      and other latency-sensitive workloads.
+    tags:
+      - Low Latency
+      - Messaging
+      - Real-Time
+
+  - term: BusinessEvents
+    label: TIBCO BusinessEvents
+    definition: >-
+      TIBCO's complex event processing (CEP) and decision management engine
+      for real-time business operations, fraud detection, and predictive
+      analytics.
+    tags:
+      - CEP
+      - Decision Management
+      - Event Processing
+
+  - term: SCIM
+    label: SCIM
+    definition: >-
+      System for Cross-domain Identity Management standard used in the Mashery
+      API for developer and member provisioning.
+    tags:
+      - Identity
+      - Provisioning
+      - Standard
+
+  - term: Flow
+    label: Flogo Flow
+    definition: >-
+      A Flogo application's processing pipeline, consisting of triggers,
+      activities, and error handlers that define the integration logic.
+    tags:
+      - Flogo
+      - Integration
+
+  - term: Connector
+    label: TIBCO Connector
+    definition: >-
+      A reusable adapter component in TIBCO Cloud Integration that provides
+      pre-built connectivity to external systems such as Salesforce, SAP,
+      databases, and cloud services.
+    tags:
+      - Cloud Integration
+      - Integration
+
+  - term: Plan
+    label: Mashery API Plan
+    definition: >-
+      A configuration in Mashery that defines rate limits, quotas, and access
+      rules for a package of API services. Developers access APIs through plans.
+    tags:
+      - API Management
+      - Rate Limiting
+
+  - term: Service
+    label: Mashery API Service
+    definition: >-
+      A logical representation of an API in Mashery consisting of one or more
+      endpoints that expose backend services through the Mashery API gateway.
+    tags:
+      - API Gateway
+      - API Management
+
+  - term: DXP
+    label: Spotfire DXP File
+    definition: >-
+      The native TIBCO Spotfire analysis file format (.dxp) that encapsulates
+      data, visualizations, filters, and analysis configurations.
+    tags:
+      - Analytics
+      - Spotfire
+
+  - term: Library
+    label: Spotfire Library
+    definition: >-
+      The centralized repository in TIBCO Spotfire Server that stores and
+      manages analysis files, data connections, color schemes, and other
+      shared assets.
+    tags:
+      - Analytics
+      - Spotfire
+
+  - term: Decision Table
+    label: Decision Table
+    definition: >-
+      A tabular representation of business rules in TIBCO BusinessEvents that
+      maps input conditions to output actions, enabling rule-based decision
+      automation.
+    tags:
+      - BusinessEvents
+      - Decision Management

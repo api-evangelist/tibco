@@ -36,7 +36,7 @@ paths:
   /rest/services:
     get:
       operationId: listServices
-      summary: TIBCO List API services
+      summary: List API services
       description: >-
         Retrieve all API service definitions managed by the platform.
       tags: []
@@ -59,7 +59,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createService
-      summary: TIBCO Create an API service
+      summary: Create an API service
       description: >-
         Create a new API service definition.
       tags: []
@@ -83,7 +83,7 @@ paths:
   /rest/services/{serviceId}:
     get:
       operationId: getService
-      summary: TIBCO Get an API service
+      summary: Get an API service
       description: >-
         Retrieve details of a specific API service definition.
       tags: []
@@ -103,7 +103,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateService
-      summary: TIBCO Update an API service
+      summary: Update an API service
       description: >-
         Update an existing API service definition.
       tags: []
@@ -130,7 +130,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteService
-      summary: TIBCO Delete an API service
+      summary: Delete an API service
       description: >-
         Delete an API service definition.
       tags: []
@@ -146,7 +146,7 @@ paths:
   /rest/services/{serviceId}/endpoints:
     get:
       operationId: listEndpoints
-      summary: TIBCO List service endpoints
+      summary: List service endpoints
       description: >-
         Retrieve all endpoints for a specific API service.
       tags:
@@ -169,7 +169,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: createEndpoint
-      summary: TIBCO Create a service endpoint
+      summary: Create a service endpoint
       description: >-
         Create a new endpoint for an API service.
       tags:
@@ -196,7 +196,7 @@ paths:
   /rest/services/{serviceId}/endpoints/{endpointId}:
     get:
       operationId: getEndpoint
-      summary: TIBCO Get a service endpoint
+      summary: Get a service endpoint
       description: >-
         Retrieve details of a specific service endpoint.
       tags:
@@ -218,7 +218,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateEndpoint
-      summary: TIBCO Update a service endpoint
+      summary: Update a service endpoint
       description: >-
         Update an existing service endpoint.
       tags:
@@ -245,7 +245,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     delete:
       operationId: deleteEndpoint
-      summary: TIBCO Delete a service endpoint
+      summary: Delete a service endpoint
       description: >-
         Delete a specific service endpoint.
       tags:
@@ -263,7 +263,7 @@ paths:
   /rest/packages:
     get:
       operationId: listPackages
-      summary: TIBCO List packages
+      summary: List packages
       description: >-
         Retrieve all API packages for the organization.
       tags:
@@ -285,7 +285,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createPackage
-      summary: TIBCO Create a package
+      summary: Create a package
       description: >-
         Create a new API package for bundling services.
       tags:
@@ -310,7 +310,7 @@ paths:
   /rest/packages/{packageId}:
     get:
       operationId: getPackage
-      summary: TIBCO Get a package
+      summary: Get a package
       description: >-
         Retrieve details of a specific API package.
       tags:
@@ -331,7 +331,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updatePackage
-      summary: TIBCO Update a package
+      summary: Update a package
       description: >-
         Update an existing API package.
       tags:
@@ -357,7 +357,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     delete:
       operationId: deletePackage
-      summary: TIBCO Delete a package
+      summary: Delete a package
       description: >-
         Delete an API package.
       tags:
@@ -374,7 +374,7 @@ paths:
   /rest/packages/{packageId}/plans:
     get:
       operationId: listPlans
-      summary: TIBCO List plans in a package
+      summary: List plans in a package
       description: >-
         Retrieve all subscription plans within an API package.
       tags:
@@ -397,7 +397,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: createPlan
-      summary: TIBCO Create a plan
+      summary: Create a plan
       description: >-
         Create a new subscription plan within an API package.
       tags:
@@ -424,7 +424,7 @@ paths:
   /rest/applications:
     get:
       operationId: listApplications
-      summary: TIBCO List applications
+      summary: List applications
       description: >-
         Retrieve all registered developer applications.
       tags:
@@ -447,7 +447,7 @@ paths:
   /rest/applications/{applicationId}:
     get:
       operationId: getApplication
-      summary: TIBCO Get an application
+      summary: Get an application
       description: >-
         Retrieve details of a specific developer application.
       tags:
@@ -469,7 +469,7 @@ paths:
   /rest/members:
     get:
       operationId: listMembers
-      summary: TIBCO List portal members
+      summary: List portal members
       description: >-
         Retrieve all developer portal members.
       tags:
@@ -492,7 +492,7 @@ paths:
   /rest/members/{memberId}:
     get:
       operationId: getMember
-      summary: TIBCO Get a portal member
+      summary: Get a portal member
       description: >-
         Retrieve details of a specific developer portal member.
       tags:
@@ -514,7 +514,7 @@ paths:
   /rest/reports/calls:
     get:
       operationId: getCallReport
-      summary: TIBCO Get API call report
+      summary: Get API call report
       description: >-
         Retrieve API call volume and performance metrics for
         the specified time range.

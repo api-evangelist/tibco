@@ -1,0 +1,209 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: TIBCO Integration Platform
+  description: >-
+    Unified capability for integration engineers and platform administrators to
+    manage TIBCO Cloud Integration applications and Mashery API management
+    services. Combines app lifecycle, connection management, deployments, and
+    API gateway configuration in a single workflow.
+  tags:
+    - TIBCO
+    - API Management
+    - Cloud Integration
+    - Flogo
+    - Integration
+    - iPaaS
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      TIBCO_CLOUD_TOKEN: TIBCO_CLOUD_TOKEN
+      TIBCO_MASHERY_TOKEN: TIBCO_MASHERY_TOKEN
+
+capability:
+  consumes:
+    - import: tibco-tci
+      location: ./shared/cloud-integration.yaml
+    - import: tibco-mashery
+      location: ./shared/mashery.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: tibco-integration-api
+      description: >-
+        Unified REST API for managing TIBCO integration apps and API management
+        services.
+      resources:
+        - path: /v1/integration-apps
+          name: integration-apps
+          description: TIBCO Cloud Integration applications
+          operations:
+            - method: GET
+              name: list-integration-apps
+              description: List all TCI integration applications
+              call: "tibco-tci.list-apps"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/integration-apps/{appId}
+          name: integration-app-detail
+          description: Individual integration app
+          operations:
+            - method: GET
+              name: get-integration-app
+              description: Get TCI integration app details
+              call: "tibco-tci.get-app"
+              with:
+                appId: "rest.appId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/connections
+          name: connections
+          description: Connector connections
+          operations:
+            - method: GET
+              name: list-connections
+              description: List TCI connections
+              call: "tibco-tci.list-connections"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/deployments
+          name: deployments
+          description: App deployments
+          operations:
+            - method: GET
+              name: list-deployments
+              description: List TCI deployments
+              call: "tibco-tci.list-deployments"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/api-services
+          name: api-services
+          description: Mashery managed API services
+          operations:
+            - method: GET
+              name: list-api-services
+              description: List Mashery API services
+              call: "tibco-mashery.list-services"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/api-services/{serviceId}
+          name: api-service-detail
+          description: Individual Mashery API service
+          operations:
+            - method: GET
+              name: get-api-service
+              description: Get Mashery API service details
+              call: "tibco-mashery.get-service"
+              with:
+                serviceId: "rest.serviceId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/api-packages
+          name: api-packages
+          description: Mashery API packages
+          operations:
+            - method: GET
+              name: list-api-packages
+              description: List Mashery API packages
+              call: "tibco-mashery.list-packages"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: tibco-integration-mcp
+      transport: http
+      description: >-
+        MCP server for AI-assisted TIBCO integration platform management
+        including app lifecycle and API gateway operations.
+      tools:
+        - name: tci-list-apps
+          description: List TIBCO Cloud Integration applications (Flogo and Business Studio)
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tibco-tci.list-apps"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: tci-get-app
+          description: Get details for a specific TIBCO Cloud Integration app
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tibco-tci.get-app"
+          with:
+            appId: "tools.appId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: tci-list-connections
+          description: List TIBCO Cloud Integration connector connections
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tibco-tci.list-connections"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: tci-list-deployments
+          description: List TIBCO Cloud Integration running deployments
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tibco-tci.list-deployments"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: mashery-list-api-services
+          description: List Mashery managed API services
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tibco-mashery.list-services"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: mashery-get-api-service
+          description: Get details for a specific Mashery API service including endpoints
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tibco-mashery.get-service"
+          with:
+            serviceId: "tools.serviceId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: mashery-list-packages
+          description: List Mashery API packages and plans
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tibco-mashery.list-packages"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,140 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: TIBCO Mashery API Management
+  description: >-
+    TIBCO Mashery API Management platform REST API for managing API services,
+    endpoints, packages, plans, keys, and developer applications.
+  tags:
+    - TIBCO
+    - API Management
+    - Mashery
+    - Gateway
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      TIBCO_MASHERY_TOKEN: TIBCO_MASHERY_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: tibco-mashery
+      baseUri: https://api.mashery.com/v3/rest
+      description: TIBCO Mashery API Management REST API
+      authentication:
+        type: bearer
+        token: "{{TIBCO_MASHERY_TOKEN}}"
+      resources:
+        - name: services
+          path: /services
+          description: API service management
+          operations:
+            - name: list-services
+              method: GET
+              description: List API services
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: create-service
+              method: POST
+              description: Create a new API service
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  description: "{{tools.description}}"
+
+            - name: get-service
+              method: GET
+              description: Get API service details
+              inputParameters:
+                - name: serviceId
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: packages
+          path: /packages
+          description: API package management
+          operations:
+            - name: list-packages
+              method: GET
+              description: List API packages
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: keys
+          path: /keys
+          description: API key management
+          operations:
+            - name: list-keys
+              method: GET
+              description: List API keys
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8101
+      namespace: tibco-mashery-rest
+      resources:
+        - path: /v1/services
+          name: api-services
+          description: Managed API services
+          operations:
+            - method: GET
+              name: list-services
+              description: List Mashery API services
+              call: "tibco-mashery.list-services"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9101
+      namespace: tibco-mashery-mcp
+      transport: http
+      tools:
+        - name: list-api-services
+          description: List Mashery managed API services
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tibco-mashery.list-services"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-api-service
+          description: Get details for a specific Mashery API service
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tibco-mashery.get-service"
+          with:
+            serviceId: "tools.serviceId"
+          outputParameters:
+            - type: object
+              mapping: "$."

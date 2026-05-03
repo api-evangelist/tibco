@@ -1,0 +1,165 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: TIBCO Spotfire Analytics API
+  description: >-
+    TIBCO Spotfire Server REST API for managing library items, analyses, data
+    sources, users, groups, and scheduled updates for analytics and visualization
+    workflows.
+  tags:
+    - TIBCO
+    - Analytics
+    - Business Intelligence
+    - Spotfire
+    - Visualization
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      TIBCO_SPOTFIRE_TOKEN: TIBCO_SPOTFIRE_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: tibco-spotfire
+      baseUri: https://spotfire.cloud.tibco.com/api/rest/v1
+      description: TIBCO Spotfire Analytics REST API
+      authentication:
+        type: bearer
+        token: "{{TIBCO_SPOTFIRE_TOKEN}}"
+      resources:
+        - name: library
+          path: /library
+          description: Spotfire library management
+          operations:
+            - name: list-library-items
+              method: GET
+              description: List Spotfire library items
+              inputParameters:
+                - name: path
+                  in: query
+                  type: string
+                  required: false
+                - name: type
+                  in: query
+                  type: string
+                  required: false
+                - name: search
+                  in: query
+                  type: string
+                  required: false
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-library-item
+              method: GET
+              description: Get a specific library item
+              inputParameters:
+                - name: itemId
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: analyses
+          path: /analyses
+          description: Spotfire analysis management
+          operations:
+            - name: list-analyses
+              method: GET
+              description: List Spotfire analyses
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: data-sources
+          path: /datasources
+          description: Data source connections
+          operations:
+            - name: list-data-sources
+              method: GET
+              description: List Spotfire data sources
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: users
+          path: /users
+          description: User management
+          operations:
+            - name: list-users
+              method: GET
+              description: List Spotfire users
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8102
+      namespace: tibco-spotfire-rest
+      resources:
+        - path: /v1/library-items
+          name: library-items
+          description: Spotfire library items
+          operations:
+            - method: GET
+              name: list-library-items
+              description: List Spotfire library items
+              call: "tibco-spotfire.list-library-items"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9102
+      namespace: tibco-spotfire-mcp
+      transport: http
+      tools:
+        - name: list-library-items
+          description: List Spotfire library items and analysis files
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tibco-spotfire.list-library-items"
+          with:
+            path: "tools.path"
+            search: "tools.search"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-analyses
+          description: List Spotfire analyses
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tibco-spotfire.list-analyses"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-data-sources
+          description: List Spotfire data sources and connections
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "tibco-spotfire.list-data-sources"
+          outputParameters:
+            - type: object
+              mapping: "$."

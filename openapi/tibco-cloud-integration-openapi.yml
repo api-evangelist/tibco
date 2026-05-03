@@ -36,7 +36,7 @@ paths:
   /apps:
     get:
       operationId: listApps
-      summary: TIBCO List integration apps
+      summary: List integration apps
       description: >-
         Retrieve a list of all integration applications in the organization,
         including Flogo and Business Studio apps.
@@ -69,7 +69,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createApp
-      summary: TIBCO Create an integration app
+      summary: Create an integration app
       description: >-
         Create a new integration application by uploading a Flogo JSON
         manifest or importing from a template.
@@ -95,7 +95,7 @@ paths:
   /apps/{appId}:
     get:
       operationId: getApp
-      summary: TIBCO Get an integration app
+      summary: Get an integration app
       description: >-
         Retrieve details of a specific integration application by ID.
       tags:
@@ -115,7 +115,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateApp
-      summary: TIBCO Update an integration app
+      summary: Update an integration app
       description: >-
         Update an existing integration application configuration.
       tags:
@@ -143,7 +143,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteApp
-      summary: TIBCO Delete an integration app
+      summary: Delete an integration app
       description: >-
         Delete an integration application and its associated resources.
       tags:
@@ -160,7 +160,7 @@ paths:
   /apps/{appId}/push:
     post:
       operationId: deployApp
-      summary: TIBCO Deploy an integration app
+      summary: Deploy an integration app
       description: >-
         Push and deploy an integration application to the specified
         environment.
@@ -190,7 +190,7 @@ paths:
   /apps/{appId}/export:
     get:
       operationId: exportApp
-      summary: TIBCO Export an integration app
+      summary: Export an integration app
       description: >-
         Export an integration application as a JSON manifest file.
       tags:
@@ -212,7 +212,7 @@ paths:
   /connections:
     get:
       operationId: listConnections
-      summary: TIBCO List connections
+      summary: List connections
       description: >-
         Retrieve all configured connector connections for the organization.
       tags:
@@ -238,7 +238,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createConnection
-      summary: TIBCO Create a connection
+      summary: Create a connection
       description: >-
         Create a new connector connection with the specified configuration.
       tags:
@@ -263,7 +263,7 @@ paths:
   /connections/{connectionId}:
     get:
       operationId: getConnection
-      summary: TIBCO Get a connection
+      summary: Get a connection
       description: >-
         Retrieve details of a specific connection by ID.
       tags:
@@ -283,7 +283,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteConnection
-      summary: TIBCO Delete a connection
+      summary: Delete a connection
       description: >-
         Delete a connector connection by ID.
       tags:
@@ -300,7 +300,7 @@ paths:
   /environments:
     get:
       operationId: listEnvironments
-      summary: TIBCO List environments
+      summary: List environments
       description: >-
         Retrieve all deployment environments configured for the organization.
       tags:
@@ -322,7 +322,7 @@ paths:
   /environments/{environmentId}:
     get:
       operationId: getEnvironment
-      summary: TIBCO Get an environment
+      summary: Get an environment
       description: >-
         Retrieve details of a specific deployment environment.
       tags:
@@ -343,7 +343,7 @@ paths:
   /apps/{appId}/flows:
     get:
       operationId: listFlows
-      summary: TIBCO List flows in an app
+      summary: List flows in an app
       description: >-
         Retrieve all flows defined within an integration application.
       tags:
@@ -369,7 +369,7 @@ paths:
   /deployments:
     get:
       operationId: listDeployments
-      summary: TIBCO List deployments
+      summary: List deployments
       description: >-
         Retrieve all active deployments across the organization.
       tags:
@@ -396,7 +396,7 @@ paths:
   /deployments/{deploymentId}:
     get:
       operationId: getDeployment
-      summary: TIBCO Get a deployment
+      summary: Get a deployment
       description: >-
         Retrieve details and status of a specific deployment.
       tags:
@@ -416,7 +416,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: undeployApp
-      summary: TIBCO Undeploy an app
+      summary: Undeploy an app
       description: >-
         Stop and remove a running deployment.
       tags:
@@ -433,7 +433,7 @@ paths:
   /deployments/{deploymentId}/scale:
     post:
       operationId: scaleDeployment
-      summary: TIBCO Scale a deployment
+      summary: Scale a deployment
       description: >-
         Scale the number of instances for a running deployment.
       tags:

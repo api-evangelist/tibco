@@ -1,112 +1,88 @@
-# TIBCO (tibco)
-APIs and services provided by TIBCO Software Inc., a global leader in integration, API management, and analytics software
+# TIBCO
 
-**URL:** [Visit APIs.json URL](https://www.tibco.com)
+APIs and services provided by TIBCO Software Inc., a global leader in integration, API management, and analytics software.
 
-## Tags:
-
- - Integration, API Management, Analytics, Cloud, Enterprise Software, Messaging, Real-time Data
-
-## Timestamps
-
-- **Created:** 2024 
-- **Modified:** 2024 
+**Website:** [https://www.tibco.com](https://www.tibco.com)  
+**Developer Portal:** [https://developer.tibco.com](https://developer.tibco.com)  
+**Documentation:** [https://docs.tibco.com](https://docs.tibco.com)
 
 ## APIs
 
-### TIBCO Cloud Integration API
-API for TIBCO Cloud Integration platform enabling application integration, API management, and business process automation
+| API | Description | Docs |
+|-----|-------------|------|
+| TIBCO Cloud Integration API | App integration, Flogo/Business Studio app management | [Docs](https://integration.cloud.tibco.com/docs/) |
+| TIBCO Mashery API Management | API gateway, portal, and developer ecosystem management | [Docs](https://developer.mashery.com/docs) |
+| TIBCO BusinessEvents API | Complex event processing and decision management | [Docs](https://docs.tibco.com/products/tibco-businessevents) |
+| TIBCO Messaging API | Enterprise messaging (EMS/FTL) for JMS and pub-sub | [Docs](https://docs.tibco.com/products/tibco-enterprise-message-service) |
+| TIBCO Spotfire Analytics API | Analytics, visualization, and BI workflow automation | [Docs](https://docs.tibco.com/products/tibco-spotfire/latest) |
 
-**Human URL:** [https://integration.cloud.tibco.com/](https://integration.cloud.tibco.com/)
+## OpenAPI Specifications
 
+| Spec | Path |
+|------|------|
+| TIBCO Cloud Integration API | [openapi/tibco-cloud-integration-openapi.yml](openapi/tibco-cloud-integration-openapi.yml) |
+| TIBCO Mashery API Management | [openapi/tibco-mashery-openapi.yml](openapi/tibco-mashery-openapi.yml) |
+| TIBCO BusinessEvents API | [openapi/tibco-businessevents-openapi.yml](openapi/tibco-businessevents-openapi.yml) |
+| TIBCO Spotfire Analytics API | [openapi/tibco-spotfire-openapi.yml](openapi/tibco-spotfire-openapi.yml) |
 
-#### Tags:
+## AsyncAPI Specifications
 
- - Integration, Cloud, iPaaS
+| Spec | Path |
+|------|------|
+| TIBCO Messaging API | [asyncapi/tibco-messaging-asyncapi.yml](asyncapi/tibco-messaging-asyncapi.yml) |
 
-#### Properties
+## JSON Schemas
 
-- [Documentation](https://integration.cloud.tibco.com/docs/)
-- [OpenAPI](https://integration.cloud.tibco.com/docs/api/openapi.json)
-- [Authentication](https://integration.cloud.tibco.com/docs/authentication)
+| Schema | Path |
+|--------|------|
+| TIBCO Integration App | [json-schema/tibco-integration-app-schema.json](json-schema/tibco-integration-app-schema.json) |
+| TIBCO API Service | [json-schema/tibco-api-service-schema.json](json-schema/tibco-api-service-schema.json) |
 
-### TIBCO Mashery API Management
-API management platform for designing, building, securing, and analyzing APIs
+## JSON Structure
 
-**Human URL:** [https://www.tibco.com/products/api-management](https://www.tibco.com/products/api-management)
+| Structure | Path |
+|-----------|------|
+| TIBCO Integration App Structure | [json-structure/tibco-integration-app-structure.json](json-structure/tibco-integration-app-structure.json) |
 
+## JSON-LD
 
-#### Tags:
+| Context | Path |
+|---------|------|
+| TIBCO Context | [json-ld/tibco-context.jsonld](json-ld/tibco-context.jsonld) |
 
- - API Management, Security, Analytics
+## Examples
 
-#### Properties
+| Example | Path |
+|---------|------|
+| Cloud Integration List Apps | [examples/tibco-cloud-integration-list-apps-example.json](examples/tibco-cloud-integration-list-apps-example.json) |
+| Mashery List API Services | [examples/tibco-mashery-list-api-services-example.json](examples/tibco-mashery-list-api-services-example.json) |
+| Spotfire List Library Items | [examples/tibco-spotfire-list-library-items-example.json](examples/tibco-spotfire-list-library-items-example.json) |
 
-- [Documentation](https://developer.mashery.com/docs)
-- [OpenAPI](https://developer.mashery.com/io-docs)
-- [Portal](https://developer.mashery.com)
+## Spectral Rules
 
-### TIBCO BusinessEvents API
-Complex event processing and decision management API for real-time business operations
+| Ruleset | Path |
+|---------|------|
+| TIBCO API Rules | [rules/tibco-rules.yml](rules/tibco-rules.yml) |
 
-**Human URL:** [https://www.tibco.com/products/tibco-businessevents](https://www.tibco.com/products/tibco-businessevents)
+## Naftiko Capabilities
 
+### Shared API Definitions
 
-#### Tags:
+| API | Path |
+|-----|------|
+| TIBCO Cloud Integration | [capabilities/shared/cloud-integration.yaml](capabilities/shared/cloud-integration.yaml) |
+| TIBCO Mashery | [capabilities/shared/mashery.yaml](capabilities/shared/mashery.yaml) |
+| TIBCO Spotfire | [capabilities/shared/spotfire.yaml](capabilities/shared/spotfire.yaml) |
 
- - Event Processing, Real-time, Decision Management
+### Workflow Capabilities
 
-#### Properties
+| Workflow | APIs | Description |
+|----------|------|-------------|
+| [Integration Platform](capabilities/integration-platform.yaml) | TCI + Mashery | App lifecycle, connections, deployments, and API gateway management |
+| [Analytics and Reporting](capabilities/analytics-and-reporting.yaml) | Spotfire | Library management, analyses, data sources, and user management |
 
-- [Documentation](https://docs.tibco.com/products/tibco-businessevents)
-- [SDK](https://docs.tibco.com/products/tibco-businessevents/sdk)
+## Vocabulary
 
-### TIBCO Messaging API
-Enterprise messaging API supporting EMS (Enterprise Message Service) and FTL (Fast Transport Layer)
-
-**Human URL:** [https://www.tibco.com/products/tibco-enterprise-message-service](https://www.tibco.com/products/tibco-enterprise-message-service)
-
-
-#### Tags:
-
- - Messaging, JMS, Publish-Subscribe
-
-#### Properties
-
-- [Documentation](https://docs.tibco.com/products/tibco-enterprise-message-service)
-- [Protocol](https://docs.tibco.com/products/tibco-enterprise-message-service/protocol-reference)
-
-### TIBCO Spotfire Analytics API
-Analytics and data visualization API for embedded analytics and automated workflows
-
-**Human URL:** [https://www.tibco.com/products/tibco-spotfire](https://www.tibco.com/products/tibco-spotfire)
-
-
-#### Tags:
-
- - Analytics, Visualization, Business Intelligence
-
-#### Properties
-
-- [Documentation](https://docs.tibco.com/products/tibco-spotfire/latest)
-- [API Reference](https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html)
-- [JavaScript API](https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html)
-
-## Common Properties
-
-- [Portal](https://developer.tibco.com)
-- [Documentation](https://docs.tibco.com)
-- [Support](https://support.tibco.com)
-- [Status](https://status.tibco.com)
-- [Blog](https://www.tibco.com/blog)
-- [GitHub](https://github.com/tibco)
-- [LinkedIn](https://www.linkedin.com/company/tibco)
-- [Twitter](https://twitter.com/tibco)
-- [Terms of Service](https://www.tibco.com/legal/terms-of-use)
-- [Privacy Policy](https://www.tibco.com/legal/privacy)
-
-## Maintainers
-
-**FN:** TIBCO Software Inc.
-
-**Email:** info@tibco.com
+| Vocabulary | Path |
+|------------|------|
+| TIBCO Vocabulary | [vocabulary/tibco-vocabulary.yml](vocabulary/tibco-vocabulary.yml) |

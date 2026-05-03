@@ -7,7 +7,7 @@ description: >-
 image: https://www.tibco.com/sites/tibco/files/media_entity/2021-04/TIBCO-logo.svg
 url: https://www.tibco.com
 created: '2024'
-modified: '2026-03-16'
+modified: '2026-05-03'
 specificationVersion: '0.18'
 tags:
   - Analytics
@@ -139,6 +139,10 @@ common:
     url: json-schema/tibco-integration-app-schema.json
   - type: JSONSchema
     url: json-schema/tibco-api-service-schema.json
+  - type: Spectral
+    url: rules/tibco-rules.yml
+  - type: Vocabulary
+    url: vocabulary/tibco-vocabulary.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

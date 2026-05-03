@@ -1,0 +1,40 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://spotfire.cloud.tibco.com/api/rest/v1/library?path=/Sales%20Analytics&type=spotfire.dxp",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "items": [
+        {
+          "id": "lib-a1b2c3d4e5f6",
+          "title": "Q1 2026 Sales Dashboard",
+          "type": "spotfire.dxp",
+          "path": "/Sales Analytics/Q1 2026 Sales Dashboard",
+          "owner": "jane.smith@example.com",
+          "created": "2026-01-05T08:00:00Z",
+          "modified": "2026-03-31T17:00:00Z",
+          "description": "Interactive sales performance dashboard for Q1 2026"
+        },
+        {
+          "id": "lib-b2c3d4e5f6a1",
+          "title": "Revenue by Region",
+          "type": "spotfire.dxp",
+          "path": "/Sales Analytics/Revenue by Region",
+          "owner": "john.doe@example.com",
+          "created": "2025-09-10T10:30:00Z",
+          "modified": "2026-04-15T14:00:00Z",
+          "description": "Regional revenue breakdown and trend analysis"
+        }
+      ],
+      "totalCount": 2,
+      "offset": 0,
+      "limit": 25
+    }
+  }
+}
