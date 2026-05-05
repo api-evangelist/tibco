@@ -1,0 +1,13 @@
+{
+  "repo": "tibco",
+  "feeds": [
+    {
+      "source": "https://www.tibco.com/blog",
+      "feed_url": "https://www.tibco.com/blog/feed/",
+      "saved": 10,
+      "title": "The TIBCO Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:37:27Z"
+}
