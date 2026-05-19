@@ -1,0 +1,229 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TIBCO Spotfire Analytics API — Groups
+  description: 'TIBCO Spotfire Analytics API — Groups. 6 operations. Lead operation: List groups. Self-contained Naftiko capability
+    covering one Tibco business surface.'
+  tags:
+  - Tibco
+  - Groups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TIBCO_API_KEY: TIBCO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: spotfire-groups
+    baseUri: https://spotfire.cloud.tibco.com/api/rest/v1
+    description: TIBCO Spotfire Analytics API — Groups business capability. Self-contained, no shared references.
+    resources:
+    - name: groups
+      path: /groups
+      operations:
+      - name: listgroups
+        method: GET
+        description: List groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: creategroup
+        method: POST
+        description: Create a group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: groups-groupId
+      path: /groups/{groupId}
+      operations:
+      - name: getgroup
+        method: GET
+        description: Get a group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletegroup
+        method: DELETE
+        description: Delete a group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: groups-groupId-members
+      path: /groups/{groupId}/members
+      operations:
+      - name: listgroupmembers
+        method: GET
+        description: List group members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: addgroupmember
+        method: POST
+        description: Add a member to a group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TIBCO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: spotfire-groups-rest
+    port: 8080
+    description: REST adapter for TIBCO Spotfire Analytics API — Groups. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/groups
+      name: groups
+      description: REST surface for groups.
+      operations:
+      - method: GET
+        name: listgroups
+        description: List groups
+        call: spotfire-groups.listgroups
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: creategroup
+        description: Create a group
+        call: spotfire-groups.creategroup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/groups/{groupid}
+      name: groups-groupid
+      description: REST surface for groups-groupId.
+      operations:
+      - method: GET
+        name: getgroup
+        description: Get a group
+        call: spotfire-groups.getgroup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletegroup
+        description: Delete a group
+        call: spotfire-groups.deletegroup
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/groups/{groupid}/members
+      name: groups-groupid-members
+      description: REST surface for groups-groupId-members.
+      operations:
+      - method: GET
+        name: listgroupmembers
+        description: List group members
+        call: spotfire-groups.listgroupmembers
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addgroupmember
+        description: Add a member to a group
+        call: spotfire-groups.addgroupmember
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: spotfire-groups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TIBCO Spotfire Analytics API — Groups. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-groups
+      description: List groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotfire-groups.listgroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-group
+      description: Create a group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: spotfire-groups.creategroup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-group
+      description: Get a group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotfire-groups.getgroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-group
+      description: Delete a group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: spotfire-groups.deletegroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-group-members
+      description: List group members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotfire-groups.listgroupmembers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-member-group
+      description: Add a member to a group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: spotfire-groups.addgroupmember
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

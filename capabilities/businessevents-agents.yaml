@@ -1,0 +1,166 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TIBCO BusinessEvents API — Agents
+  description: 'TIBCO BusinessEvents API — Agents. 4 operations. Lead operation: List inference agents. Self-contained Naftiko
+    capability covering one Tibco business surface.'
+  tags:
+  - Tibco
+  - Agents
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TIBCO_API_KEY: TIBCO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: businessevents-agents
+    baseUri: https://api.tibco.com/businessevents/v1
+    description: TIBCO BusinessEvents API — Agents business capability. Self-contained, no shared references.
+    resources:
+    - name: agents
+      path: /agents
+      operations:
+      - name: listagents
+        method: GET
+        description: List inference agents
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: agents-agentId
+      path: /agents/{agentId}
+      operations:
+      - name: getagent
+        method: GET
+        description: Get an inference agent
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: agents-agentId-start
+      path: /agents/{agentId}/start
+      operations:
+      - name: startagent
+        method: POST
+        description: Start an inference agent
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: agents-agentId-stop
+      path: /agents/{agentId}/stop
+      operations:
+      - name: stopagent
+        method: POST
+        description: Stop an inference agent
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TIBCO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: businessevents-agents-rest
+    port: 8080
+    description: REST adapter for TIBCO BusinessEvents API — Agents. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/agents
+      name: agents
+      description: REST surface for agents.
+      operations:
+      - method: GET
+        name: listagents
+        description: List inference agents
+        call: businessevents-agents.listagents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/agents/{agentid}
+      name: agents-agentid
+      description: REST surface for agents-agentId.
+      operations:
+      - method: GET
+        name: getagent
+        description: Get an inference agent
+        call: businessevents-agents.getagent
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/agents/{agentid}/start
+      name: agents-agentid-start
+      description: REST surface for agents-agentId-start.
+      operations:
+      - method: POST
+        name: startagent
+        description: Start an inference agent
+        call: businessevents-agents.startagent
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/agents/{agentid}/stop
+      name: agents-agentid-stop
+      description: REST surface for agents-agentId-stop.
+      operations:
+      - method: POST
+        name: stopagent
+        description: Stop an inference agent
+        call: businessevents-agents.stopagent
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: businessevents-agents-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TIBCO BusinessEvents API — Agents. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-inference-agents
+      description: List inference agents
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: businessevents-agents.listagents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-inference-agent
+      description: Get an inference agent
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: businessevents-agents.getagent
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-inference-agent
+      description: Start an inference agent
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: businessevents-agents.startagent
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stop-inference-agent
+      description: Stop an inference agent
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: businessevents-agents.stopagent
+      outputParameters:
+      - type: object
+        mapping: $.

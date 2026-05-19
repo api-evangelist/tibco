@@ -1,0 +1,196 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TIBCO Mashery API Management
+  description: 'TIBCO Mashery API Management. 5 operations. Lead operation: List API services. Self-contained Naftiko capability
+    covering one Tibco business surface.'
+  tags:
+  - Tibco
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TIBCO_API_KEY: TIBCO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mashery-general
+    baseUri: https://api.mashery.com/v3
+    description: TIBCO Mashery API Management business capability. Self-contained, no shared references.
+    resources:
+    - name: rest-services
+      path: /rest/services
+      operations:
+      - name: listservices
+        method: GET
+        description: List API services
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createservice
+        method: POST
+        description: Create an API service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: rest-services-serviceId
+      path: /rest/services/{serviceId}
+      operations:
+      - name: getservice
+        method: GET
+        description: Get an API service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateservice
+        method: PUT
+        description: Update an API service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteservice
+        method: DELETE
+        description: Delete an API service
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TIBCO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: mashery-general-rest
+    port: 8080
+    description: REST adapter for TIBCO Mashery API Management. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/services
+      name: rest-services
+      description: REST surface for rest-services.
+      operations:
+      - method: GET
+        name: listservices
+        description: List API services
+        call: mashery-general.listservices
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createservice
+        description: Create an API service
+        call: mashery-general.createservice
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/services/{serviceid}
+      name: rest-services-serviceid
+      description: REST surface for rest-services-serviceId.
+      operations:
+      - method: GET
+        name: getservice
+        description: Get an API service
+        call: mashery-general.getservice
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateservice
+        description: Update an API service
+        call: mashery-general.updateservice
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteservice
+        description: Delete an API service
+        call: mashery-general.deleteservice
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mashery-general-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TIBCO Mashery API Management. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-api-services
+      description: List API services
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mashery-general.listservices
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-api-service
+      description: Create an API service
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mashery-general.createservice
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-api-service
+      description: Get an API service
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mashery-general.getservice
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-api-service
+      description: Update an API service
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: mashery-general.updateservice
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-api-service
+      description: Delete an API service
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: mashery-general.deleteservice
+      outputParameters:
+      - type: object
+        mapping: $.

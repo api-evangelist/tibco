@@ -1,0 +1,144 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TIBCO Spotfire Analytics API — Analyses
+  description: 'TIBCO Spotfire Analytics API — Analyses. 3 operations. Lead operation: List analyses. Self-contained Naftiko
+    capability covering one Tibco business surface.'
+  tags:
+  - Tibco
+  - Analyses
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TIBCO_API_KEY: TIBCO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: spotfire-analyses
+    baseUri: https://spotfire.cloud.tibco.com/api/rest/v1
+    description: TIBCO Spotfire Analytics API — Analyses business capability. Self-contained, no shared references.
+    resources:
+    - name: analyses
+      path: /analyses
+      operations:
+      - name: listanalyses
+        method: GET
+        description: List analyses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: analyses-analysisId
+      path: /analyses/{analysisId}
+      operations:
+      - name: getanalysis
+        method: GET
+        description: Get an analysis
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: analyses-analysisId-export
+      path: /analyses/{analysisId}/export
+      operations:
+      - name: exportanalysis
+        method: POST
+        description: Export an analysis
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TIBCO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: spotfire-analyses-rest
+    port: 8080
+    description: REST adapter for TIBCO Spotfire Analytics API — Analyses. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/analyses
+      name: analyses
+      description: REST surface for analyses.
+      operations:
+      - method: GET
+        name: listanalyses
+        description: List analyses
+        call: spotfire-analyses.listanalyses
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/analyses/{analysisid}
+      name: analyses-analysisid
+      description: REST surface for analyses-analysisId.
+      operations:
+      - method: GET
+        name: getanalysis
+        description: Get an analysis
+        call: spotfire-analyses.getanalysis
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/analyses/{analysisid}/export
+      name: analyses-analysisid-export
+      description: REST surface for analyses-analysisId-export.
+      operations:
+      - method: POST
+        name: exportanalysis
+        description: Export an analysis
+        call: spotfire-analyses.exportanalysis
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: spotfire-analyses-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TIBCO Spotfire Analytics API — Analyses. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-analyses
+      description: List analyses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotfire-analyses.listanalyses
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-analysis
+      description: Get an analysis
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotfire-analyses.getanalysis
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: export-analysis
+      description: Export an analysis
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: spotfire-analyses.exportanalysis
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

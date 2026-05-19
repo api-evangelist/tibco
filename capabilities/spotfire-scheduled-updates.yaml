@@ -1,0 +1,162 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TIBCO Spotfire Analytics API — Scheduled Updates
+  description: 'TIBCO Spotfire Analytics API — Scheduled Updates. 4 operations. Lead operation: List scheduled updates. Self-contained
+    Naftiko capability covering one Tibco business surface.'
+  tags:
+  - Tibco
+  - Scheduled Updates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TIBCO_API_KEY: TIBCO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: spotfire-scheduled-updates
+    baseUri: https://spotfire.cloud.tibco.com/api/rest/v1
+    description: TIBCO Spotfire Analytics API — Scheduled Updates business capability. Self-contained, no shared references.
+    resources:
+    - name: scheduled-updates
+      path: /scheduled-updates
+      operations:
+      - name: listscheduledupdates
+        method: GET
+        description: List scheduled updates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createscheduledupdate
+        method: POST
+        description: Create a scheduled update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: scheduled-updates-updateId
+      path: /scheduled-updates/{updateId}
+      operations:
+      - name: getscheduledupdate
+        method: GET
+        description: Get a scheduled update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletescheduledupdate
+        method: DELETE
+        description: Delete a scheduled update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TIBCO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: spotfire-scheduled-updates-rest
+    port: 8080
+    description: REST adapter for TIBCO Spotfire Analytics API — Scheduled Updates. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/scheduled-updates
+      name: scheduled-updates
+      description: REST surface for scheduled-updates.
+      operations:
+      - method: GET
+        name: listscheduledupdates
+        description: List scheduled updates
+        call: spotfire-scheduled-updates.listscheduledupdates
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createscheduledupdate
+        description: Create a scheduled update
+        call: spotfire-scheduled-updates.createscheduledupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/scheduled-updates/{updateid}
+      name: scheduled-updates-updateid
+      description: REST surface for scheduled-updates-updateId.
+      operations:
+      - method: GET
+        name: getscheduledupdate
+        description: Get a scheduled update
+        call: spotfire-scheduled-updates.getscheduledupdate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletescheduledupdate
+        description: Delete a scheduled update
+        call: spotfire-scheduled-updates.deletescheduledupdate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: spotfire-scheduled-updates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TIBCO Spotfire Analytics API — Scheduled Updates. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-scheduled-updates
+      description: List scheduled updates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotfire-scheduled-updates.listscheduledupdates
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-scheduled-update
+      description: Create a scheduled update
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: spotfire-scheduled-updates.createscheduledupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-scheduled-update
+      description: Get a scheduled update
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotfire-scheduled-updates.getscheduledupdate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-scheduled-update
+      description: Delete a scheduled update
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: spotfire-scheduled-updates.deletescheduledupdate
+      outputParameters:
+      - type: object
+        mapping: $.

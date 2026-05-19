@@ -1,0 +1,105 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TIBCO Mashery API Management — Plans
+  description: 'TIBCO Mashery API Management — Plans. 2 operations. Lead operation: List plans in a package. Self-contained
+    Naftiko capability covering one Tibco business surface.'
+  tags:
+  - Tibco
+  - Plans
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TIBCO_API_KEY: TIBCO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mashery-plans
+    baseUri: https://api.mashery.com/v3
+    description: TIBCO Mashery API Management — Plans business capability. Self-contained, no shared references.
+    resources:
+    - name: rest-packages-packageId-plans
+      path: /rest/packages/{packageId}/plans
+      operations:
+      - name: listplans
+        method: GET
+        description: List plans in a package
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createplan
+        method: POST
+        description: Create a plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TIBCO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: mashery-plans-rest
+    port: 8080
+    description: REST adapter for TIBCO Mashery API Management — Plans. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/packages/{packageid}/plans
+      name: rest-packages-packageid-plans
+      description: REST surface for rest-packages-packageId-plans.
+      operations:
+      - method: GET
+        name: listplans
+        description: List plans in a package
+        call: mashery-plans.listplans
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createplan
+        description: Create a plan
+        call: mashery-plans.createplan
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mashery-plans-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TIBCO Mashery API Management — Plans. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-plans-package
+      description: List plans in a package
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mashery-plans.listplans
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-plan
+      description: Create a plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mashery-plans.createplan
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

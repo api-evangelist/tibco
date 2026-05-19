@@ -1,0 +1,158 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TIBCO BusinessEvents API — Events
+  description: 'TIBCO BusinessEvents API — Events. 3 operations. Lead operation: Submit an event. Self-contained Naftiko capability
+    covering one Tibco business surface.'
+  tags:
+  - Tibco
+  - Events
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TIBCO_API_KEY: TIBCO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: businessevents-events
+    baseUri: https://api.tibco.com/businessevents/v1
+    description: TIBCO BusinessEvents API — Events business capability. Self-contained, no shared references.
+    resources:
+    - name: events
+      path: /events
+      operations:
+      - name: submitevent
+        method: POST
+        description: Submit an event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listevents
+        method: GET
+        description: List processed events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: eventType
+          in: query
+          type: string
+          description: Filter by event type
+        - name: startTime
+          in: query
+          type: string
+          description: Filter events after this time
+        - name: endTime
+          in: query
+          type: string
+          description: Filter events before this time
+    - name: events-eventId
+      path: /events/{eventId}
+      operations:
+      - name: getevent
+        method: GET
+        description: Get an event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TIBCO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: businessevents-events-rest
+    port: 8080
+    description: REST adapter for TIBCO BusinessEvents API — Events. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/events
+      name: events
+      description: REST surface for events.
+      operations:
+      - method: POST
+        name: submitevent
+        description: Submit an event
+        call: businessevents-events.submitevent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listevents
+        description: List processed events
+        call: businessevents-events.listevents
+        with:
+          eventType: rest.eventType
+          startTime: rest.startTime
+          endTime: rest.endTime
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/events/{eventid}
+      name: events-eventid
+      description: REST surface for events-eventId.
+      operations:
+      - method: GET
+        name: getevent
+        description: Get an event
+        call: businessevents-events.getevent
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: businessevents-events-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TIBCO BusinessEvents API — Events. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: submit-event
+      description: Submit an event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: businessevents-events.submitevent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-processed-events
+      description: List processed events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: businessevents-events.listevents
+      with:
+        eventType: tools.eventType
+        startTime: tools.startTime
+        endTime: tools.endTime
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-event
+      description: Get an event
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: businessevents-events.getevent
+      outputParameters:
+      - type: object
+        mapping: $.

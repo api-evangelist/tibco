@@ -1,0 +1,162 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TIBCO Cloud Integration API — Connections
+  description: 'TIBCO Cloud Integration API — Connections. 4 operations. Lead operation: List connections. Self-contained
+    Naftiko capability covering one Tibco business surface.'
+  tags:
+  - Tibco
+  - Connections
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TIBCO_API_KEY: TIBCO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloud-integration-connections
+    baseUri: https://integration.cloud.tibco.com/api/v1
+    description: TIBCO Cloud Integration API — Connections business capability. Self-contained, no shared references.
+    resources:
+    - name: connections
+      path: /connections
+      operations:
+      - name: listconnections
+        method: GET
+        description: List connections
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createconnection
+        method: POST
+        description: Create a connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: connections-connectionId
+      path: /connections/{connectionId}
+      operations:
+      - name: getconnection
+        method: GET
+        description: Get a connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteconnection
+        method: DELETE
+        description: Delete a connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TIBCO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cloud-integration-connections-rest
+    port: 8080
+    description: REST adapter for TIBCO Cloud Integration API — Connections. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/connections
+      name: connections
+      description: REST surface for connections.
+      operations:
+      - method: GET
+        name: listconnections
+        description: List connections
+        call: cloud-integration-connections.listconnections
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createconnection
+        description: Create a connection
+        call: cloud-integration-connections.createconnection
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/connections/{connectionid}
+      name: connections-connectionid
+      description: REST surface for connections-connectionId.
+      operations:
+      - method: GET
+        name: getconnection
+        description: Get a connection
+        call: cloud-integration-connections.getconnection
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteconnection
+        description: Delete a connection
+        call: cloud-integration-connections.deleteconnection
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloud-integration-connections-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TIBCO Cloud Integration API — Connections. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-connections
+      description: List connections
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-integration-connections.listconnections
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-connection
+      description: Create a connection
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloud-integration-connections.createconnection
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-connection
+      description: Get a connection
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-integration-connections.getconnection
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-connection
+      description: Delete a connection
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloud-integration-connections.deleteconnection
+      outputParameters:
+      - type: object
+        mapping: $.

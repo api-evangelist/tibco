@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TIBCO Spotfire Analytics API — Nodes
+  description: 'TIBCO Spotfire Analytics API — Nodes. 1 operations. Lead operation: List server nodes. Self-contained Naftiko
+    capability covering one Tibco business surface.'
+  tags:
+  - Tibco
+  - Nodes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TIBCO_API_KEY: TIBCO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: spotfire-nodes
+    baseUri: https://spotfire.cloud.tibco.com/api/rest/v1
+    description: TIBCO Spotfire Analytics API — Nodes business capability. Self-contained, no shared references.
+    resources:
+    - name: nodes
+      path: /nodes
+      operations:
+      - name: listnodes
+        method: GET
+        description: List server nodes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TIBCO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: spotfire-nodes-rest
+    port: 8080
+    description: REST adapter for TIBCO Spotfire Analytics API — Nodes. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/nodes
+      name: nodes
+      description: REST surface for nodes.
+      operations:
+      - method: GET
+        name: listnodes
+        description: List server nodes
+        call: spotfire-nodes.listnodes
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: spotfire-nodes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TIBCO Spotfire Analytics API — Nodes. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-server-nodes
+      description: List server nodes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spotfire-nodes.listnodes
+      outputParameters:
+      - type: object
+        mapping: $.
