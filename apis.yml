@@ -185,6 +185,8 @@ common:
   url: rules/tibco-rules.yml
 - type: Vocabulary
   url: vocabulary/tibco-vocabulary.yml
+- type: LLMsTxt
+  url: https://docs.tibco.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
