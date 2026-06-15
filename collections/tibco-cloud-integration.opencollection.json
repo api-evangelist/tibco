@@ -1,0 +1,418 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIBCO Cloud Integration API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Apps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List integration apps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://integration.cloud.tibco.com/api/v1/apps",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter expression for app name or type"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all integration applications in the organization, including Flogo and Business Studio apps."
+        },
+        {
+          "info": {
+            "name": "Create an integration app",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://integration.cloud.tibco.com/api/v1/apps",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new integration application by uploading a Flogo JSON manifest or importing from a template."
+        },
+        {
+          "info": {
+            "name": "Get an integration app",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://integration.cloud.tibco.com/api/v1/apps/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "Integration app unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific integration application by ID."
+        },
+        {
+          "info": {
+            "name": "Update an integration app",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://integration.cloud.tibco.com/api/v1/apps/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "Integration app unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing integration application configuration."
+        },
+        {
+          "info": {
+            "name": "Delete an integration app",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://integration.cloud.tibco.com/api/v1/apps/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "Integration app unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete an integration application and its associated resources."
+        },
+        {
+          "info": {
+            "name": "Export an integration app",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://integration.cloud.tibco.com/api/v1/apps/:appId/export",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "Integration app unique identifier"
+              }
+            ]
+          },
+          "docs": "Export an integration application as a JSON manifest file."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Deployments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deploy an integration app",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://integration.cloud.tibco.com/api/v1/apps/:appId/push",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "Integration app unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Push and deploy an integration application to the specified environment."
+        },
+        {
+          "info": {
+            "name": "List deployments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://integration.cloud.tibco.com/api/v1/deployments",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              }
+            ]
+          },
+          "docs": "Retrieve all active deployments across the organization."
+        },
+        {
+          "info": {
+            "name": "Get a deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://integration.cloud.tibco.com/api/v1/deployments/:deploymentId",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path",
+                "description": "Deployment unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details and status of a specific deployment."
+        },
+        {
+          "info": {
+            "name": "Undeploy an app",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://integration.cloud.tibco.com/api/v1/deployments/:deploymentId",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path",
+                "description": "Deployment unique identifier"
+              }
+            ]
+          },
+          "docs": "Stop and remove a running deployment."
+        },
+        {
+          "info": {
+            "name": "Scale a deployment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://integration.cloud.tibco.com/api/v1/deployments/:deploymentId/scale",
+            "params": [
+              {
+                "name": "deploymentId",
+                "value": "",
+                "type": "path",
+                "description": "Deployment unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Scale the number of instances for a running deployment."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Connections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://integration.cloud.tibco.com/api/v1/connections",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              }
+            ]
+          },
+          "docs": "Retrieve all configured connector connections for the organization."
+        },
+        {
+          "info": {
+            "name": "Create a connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://integration.cloud.tibco.com/api/v1/connections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new connector connection with the specified configuration."
+        },
+        {
+          "info": {
+            "name": "Get a connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://integration.cloud.tibco.com/api/v1/connections/:connectionId",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Connection unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific connection by ID."
+        },
+        {
+          "info": {
+            "name": "Delete a connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://integration.cloud.tibco.com/api/v1/connections/:connectionId",
+            "params": [
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "Connection unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete a connector connection by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Environments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List environments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://integration.cloud.tibco.com/api/v1/environments"
+          },
+          "docs": "Retrieve all deployment environments configured for the organization."
+        },
+        {
+          "info": {
+            "name": "Get an environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://integration.cloud.tibco.com/api/v1/environments/:environmentId",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "Environment unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific deployment environment."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Flows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List flows in an app",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://integration.cloud.tibco.com/api/v1/apps/:appId/flows",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "Integration app unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve all flows defined within an integration application."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

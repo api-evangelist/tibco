@@ -1,0 +1,433 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIBCO BusinessEvents API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List business rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/rules",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              }
+            ]
+          },
+          "docs": "Retrieve all business rules defined in the project."
+        },
+        {
+          "info": {
+            "name": "Create a business rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tibco.com/businessevents/v1/rules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new business rule in the project."
+        },
+        {
+          "info": {
+            "name": "Get a business rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/rules/:ruleId",
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "Rule unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific business rule."
+        },
+        {
+          "info": {
+            "name": "Update a business rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tibco.com/businessevents/v1/rules/:ruleId",
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "Rule unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing business rule."
+        },
+        {
+          "info": {
+            "name": "Delete a business rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tibco.com/businessevents/v1/rules/:ruleId",
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "Rule unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete a business rule from the project."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Decision Tables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List decision tables",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/decision-tables",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              }
+            ]
+          },
+          "docs": "Retrieve all decision tables in the project."
+        },
+        {
+          "info": {
+            "name": "Create a decision table",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tibco.com/businessevents/v1/decision-tables",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new decision table in the project."
+        },
+        {
+          "info": {
+            "name": "Get a decision table",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/decision-tables/:tableId",
+            "params": [
+              {
+                "name": "tableId",
+                "value": "",
+                "type": "path",
+                "description": "Decision table unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific decision table."
+        },
+        {
+          "info": {
+            "name": "Update a decision table",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tibco.com/businessevents/v1/decision-tables/:tableId",
+            "params": [
+              {
+                "name": "tableId",
+                "value": "",
+                "type": "path",
+                "description": "Decision table unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing decision table."
+        },
+        {
+          "info": {
+            "name": "Delete a decision table",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tibco.com/businessevents/v1/decision-tables/:tableId",
+            "params": [
+              {
+                "name": "tableId",
+                "value": "",
+                "type": "path",
+                "description": "Decision table unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete a decision table from the project."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List processed events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/events",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "eventType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by event type"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "Filter events after this time"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "Filter events before this time"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of processed events with optional filters."
+        },
+        {
+          "info": {
+            "name": "Submit an event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tibco.com/businessevents/v1/events",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a complex event for processing by the inference engine."
+        },
+        {
+          "info": {
+            "name": "Get an event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/events/:eventId",
+            "params": [
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path",
+                "description": "Event unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details and processing result of a specific event."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Agents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List inference agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/agents"
+          },
+          "docs": "Retrieve all inference agents and their current status."
+        },
+        {
+          "info": {
+            "name": "Get an inference agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/agents/:agentId",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "Agent unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details and status of a specific inference agent."
+        },
+        {
+          "info": {
+            "name": "Start an inference agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tibco.com/businessevents/v1/agents/:agentId/start",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "Agent unique identifier"
+              }
+            ]
+          },
+          "docs": "Start a stopped inference agent."
+        },
+        {
+          "info": {
+            "name": "Stop an inference agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tibco.com/businessevents/v1/agents/:agentId/stop",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "Agent unique identifier"
+              }
+            ]
+          },
+          "docs": "Stop a running inference agent."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scorecards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List scorecards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/scorecards"
+          },
+          "docs": "Retrieve all metric scorecards for monitoring rule performance."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List event channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/channels"
+          },
+          "docs": "Retrieve all configured event channels and destinations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

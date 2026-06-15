@@ -1,0 +1,3606 @@
+{
+  "item": [
+    {
+      "id": "154373f8-0697-450b-b792-6ee414709494",
+      "name": "Agents",
+      "description": {
+        "content": "Manage inference agents",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bd1c1659-e381-4092-867d-fedd6ea01d62",
+          "name": "List inference agents",
+          "request": {
+            "name": "List inference agents",
+            "description": {
+              "content": "Retrieve all inference agents and their current status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b381f5bf-5506-4d35-ae0f-f74987424f8f",
+              "name": "List of agents",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"running\",\n      \"type\": \"string\",\n      \"rulesLoaded\": 8378,\n      \"eventsProcessed\": 5551,\n      \"startTime\": \"1975-02-07T21:32:26.380Z\",\n      \"uptime\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"running\",\n      \"type\": \"string\",\n      \"rulesLoaded\": 6091,\n      \"eventsProcessed\": 9787,\n      \"startTime\": \"1999-03-24T23:58:33.194Z\",\n      \"uptime\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a97155a-0c94-4b43-9985-3272d60ad0a5",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "397a82f5-83d4-4142-a0c1-1fb3d85936b7",
+          "name": "Get an inference agent",
+          "request": {
+            "name": "Get an inference agent",
+            "description": {
+              "content": "Retrieve details and status of a specific inference agent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":agentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agentId",
+                  "description": "(Required) Agent unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0212818b-6155-4461-8e51-a78a073a4a67",
+              "name": "Agent details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":agentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"running\",\n  \"type\": \"string\",\n  \"rulesLoaded\": 7990,\n  \"eventsProcessed\": 1195,\n  \"startTime\": \"1968-04-23T02:52:34.001Z\",\n  \"uptime\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "271b8130-113b-44f5-b0f3-2589a05a8d89",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":agentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f9cd4c6-7a8d-47ed-bd13-e8377ba526a6",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":agentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18671dd1-bfa6-4d3d-9cdc-526141def044",
+          "name": "Start an inference agent",
+          "request": {
+            "name": "Start an inference agent",
+            "description": {
+              "content": "Start a stopped inference agent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":agentId",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agentId",
+                  "description": "(Required) Agent unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "640a4c7c-307a-4299-b980-572a2ffc2ba8",
+              "name": "Agent started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":agentId",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"running\",\n  \"type\": \"string\",\n  \"rulesLoaded\": 7990,\n  \"eventsProcessed\": 1195,\n  \"startTime\": \"1968-04-23T02:52:34.001Z\",\n  \"uptime\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e5f552c-0457-438a-a591-e450c6d5f611",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":agentId",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a0cb32e7-90e7-4d8c-99a0-43e5de4beced",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":agentId",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1db79023-de04-4e28-a0a8-4f0481f24aca",
+          "name": "Stop an inference agent",
+          "request": {
+            "name": "Stop an inference agent",
+            "description": {
+              "content": "Stop a running inference agent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "agents",
+                ":agentId",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agentId",
+                  "description": "(Required) Agent unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8337feb-89f7-4f54-a76f-4017a4ff5d53",
+              "name": "Agent stopped",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":agentId",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"running\",\n  \"type\": \"string\",\n  \"rulesLoaded\": 7990,\n  \"eventsProcessed\": 1195,\n  \"startTime\": \"1968-04-23T02:52:34.001Z\",\n  \"uptime\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90fd35ca-8c7c-4cf7-b6c9-9d1f004014f6",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":agentId",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cbcd27cf-3abd-4443-a1eb-8bba1079d7ac",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "agents",
+                    ":agentId",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agentId",
+                      "description": "(Required) Agent unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "70441011-bd1f-4245-8f31-18da27d42ae7",
+      "name": "Channels",
+      "description": {
+        "content": "Manage event channels and destinations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d3b07618-2a83-42e8-8aec-ee7d62414388",
+          "name": "List event channels",
+          "request": {
+            "name": "List event channels",
+            "description": {
+              "content": "Retrieve all configured event channels and destinations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "channels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b14226f-0a15-4a39-8614-432889db93a4",
+              "name": "List of channels",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"kafka\",\n      \"destination\": \"string\",\n      \"status\": \"active\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"kafka\",\n      \"destination\": \"string\",\n      \"status\": \"active\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b83c9df1-5f93-497c-b845-b3adaf2b7388",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "47a13644-8852-4d54-8d94-270013a05b6c",
+      "name": "Decision Tables",
+      "description": {
+        "content": "Manage decision tables for rule evaluation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "687477d4-b251-461c-8dd9-51e0f6b52c6e",
+          "name": "List decision tables",
+          "request": {
+            "name": "List decision tables",
+            "description": {
+              "content": "Retrieve all decision tables in the project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "decision-tables"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bce846c4-d7d0-40ab-91ca-60ff4a49843a",
+              "name": "List of decision tables",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "decision-tables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalCount\": 6414,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"columns\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"condition\",\n          \"dataType\": \"datetime\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"action\",\n          \"dataType\": \"datetime\"\n        }\n      ],\n      \"rows\": [\n        {\n          \"id\": \"string\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"enabled\": true\n        },\n        {\n          \"id\": \"string\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"enabled\": false\n        }\n      ],\n      \"createdTime\": \"2024-06-13T23:23:38.345Z\",\n      \"modifiedTime\": \"1950-04-25T13:13:53.659Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"columns\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"condition\",\n          \"dataType\": \"integer\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"action\",\n          \"dataType\": \"datetime\"\n        }\n      ],\n      \"rows\": [\n        {\n          \"id\": \"string\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"enabled\": true\n        },\n        {\n          \"id\": \"string\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"enabled\": false\n        }\n      ],\n      \"createdTime\": \"1992-08-21T23:03:31.172Z\",\n      \"modifiedTime\": \"2006-11-22T07:15:03.246Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84fb35f2-5b97-4894-b304-a2e7a5e5726f",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "decision-tables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82d82523-0a57-45ab-a619-1dba8d28f9b7",
+          "name": "Create a decision table",
+          "request": {
+            "name": "Create a decision table",
+            "description": {
+              "content": "Create a new decision table in the project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "decision-tables"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"dataType\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"dataType\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bcf406ab-7561-4274-83ed-afed1be532e7",
+              "name": "Decision table created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "decision-tables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"double\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"datetime\"\n    }\n  ],\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": true\n    }\n  ],\n  \"createdTime\": \"1946-06-15T11:41:51.044Z\",\n  \"modifiedTime\": \"1951-05-02T21:38:37.134Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "112389a2-e9fe-4928-9743-0740b5991d85",
+              "name": "The request body or parameters are invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "decision-tables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7dd4c15e-00db-4706-a29d-0ad0038f96ed",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "decision-tables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "150f1cc6-d047-4f4c-88ac-02b66a1f606e",
+          "name": "Get a decision table",
+          "request": {
+            "name": "Get a decision table",
+            "description": {
+              "content": "Retrieve details of a specific decision table.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "decision-tables",
+                ":tableId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tableId",
+                  "description": "(Required) Decision table unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "94319caa-6649-45a7-9336-63d2f936d4a4",
+              "name": "Decision table details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "decision-tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Decision table unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"double\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"datetime\"\n    }\n  ],\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": true\n    }\n  ],\n  \"createdTime\": \"1946-06-15T11:41:51.044Z\",\n  \"modifiedTime\": \"1951-05-02T21:38:37.134Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b48dfb6d-74a1-4ce5-9377-a44801731e66",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "decision-tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Decision table unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e2da8b40-ae43-4548-a28f-318d33469d50",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "decision-tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Decision table unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c2aad81-a8db-4dca-a1e2-8e3fe87e7974",
+          "name": "Update a decision table",
+          "request": {
+            "name": "Update a decision table",
+            "description": {
+              "content": "Update an existing decision table.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "decision-tables",
+                ":tableId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tableId",
+                  "description": "(Required) Decision table unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"dataType\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"dataType\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a505ae4b-9832-482a-a4bd-93b79944c0bc",
+              "name": "Decision table updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "decision-tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Decision table unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"double\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"datetime\"\n    }\n  ],\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": true\n    }\n  ],\n  \"createdTime\": \"1946-06-15T11:41:51.044Z\",\n  \"modifiedTime\": \"1951-05-02T21:38:37.134Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5d11df7-5154-468e-b8ff-2e35bfbf3105",
+              "name": "The request body or parameters are invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "decision-tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Decision table unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "abd7f998-d299-4a71-bdd4-8e9484c76b63",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "decision-tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Decision table unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3243ddde-e0e2-4f48-a583-539b96593f41",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "decision-tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Decision table unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c9ee0af-10bc-4b71-b4af-841366b5917b",
+          "name": "Delete a decision table",
+          "request": {
+            "name": "Delete a decision table",
+            "description": {
+              "content": "Delete a decision table from the project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "decision-tables",
+                ":tableId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tableId",
+                  "description": "(Required) Decision table unique identifier"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3c159eb-533b-4e83-a9c3-f547899dcc99",
+              "name": "Decision table deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "decision-tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Decision table unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "15738514-a9e1-41ce-a772-7561b451dfe4",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "decision-tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Decision table unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b70d4438-2bc5-4f26-bb22-23dd7982db3a",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "decision-tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Decision table unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d1d2d823-df2f-4c97-b85c-536a9fb94afd",
+      "name": "Events",
+      "description": {
+        "content": "Submit and query complex events",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5d104e8f-16b5-4f22-9ee6-0823e3274f50",
+          "name": "Submit an event",
+          "request": {
+            "name": "Submit an event",
+            "description": {
+              "content": "Submit a complex event for processing by the inference engine.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"payload\": {\n    \"key_0\": 839.3091039639622,\n    \"key_1\": 8254\n  },\n  \"correlationId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1496cbed-5539-4a15-bd04-bb54d216d257",
+              "name": "Event accepted for processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"payload\": {\n    \"key_0\": true,\n    \"key_1\": true\n  },\n  \"correlationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"correlationId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c27c211b-9842-4826-ad1f-91c5e5b9605b",
+              "name": "The request body or parameters are invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"payload\": {\n    \"key_0\": true,\n    \"key_1\": true\n  },\n  \"correlationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2ceef8e5-aeba-4a4a-b585-ce89b4a4e5ca",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"payload\": {\n    \"key_0\": true,\n    \"key_1\": true\n  },\n  \"correlationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2011c437-93b8-4e84-9233-c6661044c922",
+          "name": "List processed events",
+          "request": {
+            "name": "List processed events",
+            "description": {
+              "content": "Retrieve a list of processed events with optional filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "eventType",
+                  "value": "<string>",
+                  "description": "Filter by event type"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<dateTime>",
+                  "description": "Filter events after this time"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<dateTime>",
+                  "description": "Filter events before this time"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83f56db1-4a95-4844-bf2f-111371d05c81",
+              "name": "List of events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalCount\": 1216,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"payload\": {\n        \"key_0\": \"string\",\n        \"key_1\": 150,\n        \"key_2\": 780\n      },\n      \"timestamp\": \"1968-05-03T06:45:20.574Z\",\n      \"status\": \"error\",\n      \"result\": {\n        \"key_0\": 8209.343904720141,\n        \"key_1\": 3508\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"payload\": {\n        \"key_0\": false,\n        \"key_1\": 7809.613230022113,\n        \"key_2\": \"string\"\n      },\n      \"timestamp\": \"1957-05-18T21:38:20.045Z\",\n      \"status\": \"processing\",\n      \"result\": {\n        \"key_0\": true\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b49377f7-88a4-4a0d-a4fc-f9ddf7e55ffd",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "eventType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f9e6706-be25-46d0-8ee7-0a7f32c114b1",
+          "name": "Get an event",
+          "request": {
+            "name": "Get an event",
+            "description": {
+              "content": "Retrieve details and processing result of a specific event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                ":eventId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "eventId",
+                  "description": "(Required) Event unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6d212ac1-4ba4-4c34-8e7d-b4a7671365cf",
+              "name": "Event details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":eventId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventId",
+                      "description": "(Required) Event unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"string\",\n  \"payload\": {\n    \"key_0\": \"string\",\n    \"key_1\": 3561.317123459783,\n    \"key_2\": false\n  },\n  \"timestamp\": \"2019-11-08T07:56:40.165Z\",\n  \"status\": \"received\",\n  \"result\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab1dd450-4b71-4c5f-b8f8-101ac425e744",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":eventId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventId",
+                      "description": "(Required) Event unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "117822dd-ae5d-4e04-b31b-964f65c9d4db",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":eventId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventId",
+                      "description": "(Required) Event unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "eaa399df-fa12-4c89-8e6b-2ad6c3e529eb",
+      "name": "Rules",
+      "description": {
+        "content": "Manage business rules and rule sets",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "035ce352-bbc0-43be-b098-ab9c8904b800",
+          "name": "List business rules",
+          "request": {
+            "name": "List business rules",
+            "description": {
+              "content": "Retrieve all business rules defined in the project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4dac8bf-c361-4831-b079-a3c19444112e",
+              "name": "List of business rules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalCount\": 2961,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"priority\": 969,\n      \"condition\": \"string\",\n      \"action\": \"string\",\n      \"enabled\": false,\n      \"ruleSetId\": \"string\",\n      \"createdTime\": \"1987-08-31T10:11:54.208Z\",\n      \"modifiedTime\": \"1973-10-17T17:42:03.482Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"priority\": 2154,\n      \"condition\": \"string\",\n      \"action\": \"string\",\n      \"enabled\": false,\n      \"ruleSetId\": \"string\",\n      \"createdTime\": \"2021-10-06T13:44:06.557Z\",\n      \"modifiedTime\": \"1964-07-20T13:06:50.943Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "160022b7-ec70-4b81-9132-66e75f052780",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fbb7687-f240-4d65-a348-f1031867bbe7",
+          "name": "Create a business rule",
+          "request": {
+            "name": "Create a business rule",
+            "description": {
+              "content": "Create a new business rule in the project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"action\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": 5,\n  \"enabled\": true,\n  \"ruleSetId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0d1db745-83d8-4a32-9cac-46ec9c5cbe3a",
+              "name": "Rule created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"action\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": 5,\n  \"enabled\": true,\n  \"ruleSetId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"priority\": 1911,\n  \"condition\": \"string\",\n  \"action\": \"string\",\n  \"enabled\": false,\n  \"ruleSetId\": \"string\",\n  \"createdTime\": \"1981-12-11T00:49:16.234Z\",\n  \"modifiedTime\": \"1977-01-21T05:19:33.025Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "594d2d38-50b3-49d0-8e1b-6b8756b4cb66",
+              "name": "The request body or parameters are invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"action\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": 5,\n  \"enabled\": true,\n  \"ruleSetId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "67aee76b-2724-4ec1-a4b9-b7f0b1f1ebdd",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"action\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": 5,\n  \"enabled\": true,\n  \"ruleSetId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "112f74fe-e2d8-401c-bbb8-4c7869701ea8",
+          "name": "Get a business rule",
+          "request": {
+            "name": "Get a business rule",
+            "description": {
+              "content": "Retrieve details of a specific business rule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) Rule unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b3f796a-4312-4752-af36-b68274e47ed8",
+              "name": "Rule details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) Rule unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"priority\": 1911,\n  \"condition\": \"string\",\n  \"action\": \"string\",\n  \"enabled\": false,\n  \"ruleSetId\": \"string\",\n  \"createdTime\": \"1981-12-11T00:49:16.234Z\",\n  \"modifiedTime\": \"1977-01-21T05:19:33.025Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6254f33-bb02-4572-a31b-d2812d5f100f",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) Rule unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b4bb51dc-c069-458f-a46d-9c3518bf1c6c",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) Rule unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4bf56e5b-d667-46e9-a8f6-536f8dfb5e6d",
+          "name": "Update a business rule",
+          "request": {
+            "name": "Update a business rule",
+            "description": {
+              "content": "Update an existing business rule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) Rule unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"action\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": 5,\n  \"enabled\": true,\n  \"ruleSetId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c8fbcca-34cd-454c-a5da-51e376f69277",
+              "name": "Rule updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) Rule unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"action\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": 5,\n  \"enabled\": true,\n  \"ruleSetId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"priority\": 1911,\n  \"condition\": \"string\",\n  \"action\": \"string\",\n  \"enabled\": false,\n  \"ruleSetId\": \"string\",\n  \"createdTime\": \"1981-12-11T00:49:16.234Z\",\n  \"modifiedTime\": \"1977-01-21T05:19:33.025Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac078f8a-12c2-4a9a-bca6-1cf1aebb67ea",
+              "name": "The request body or parameters are invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) Rule unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"action\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": 5,\n  \"enabled\": true,\n  \"ruleSetId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1883517c-e9f5-40fb-a41a-f8bf305bcdc7",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) Rule unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"action\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": 5,\n  \"enabled\": true,\n  \"ruleSetId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "725afd79-3fc5-4a95-9caf-1cde11bbf865",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) Rule unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"condition\": \"<string>\",\n  \"action\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": 5,\n  \"enabled\": true,\n  \"ruleSetId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d8405a0-e340-4b34-9d81-422ad095c4ee",
+          "name": "Delete a business rule",
+          "request": {
+            "name": "Delete a business rule",
+            "description": {
+              "content": "Delete a business rule from the project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rules",
+                ":ruleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ruleId",
+                  "description": "(Required) Rule unique identifier"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c556a13-6b1e-40a7-a922-26db19c8a3ac",
+              "name": "Rule deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) Rule unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "20454cc8-6609-4291-a292-daba704eef10",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) Rule unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "37c68e46-4883-4c8c-a318-ab3441105c86",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rules",
+                    ":ruleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ruleId",
+                      "description": "(Required) Rule unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f13f7f48-3b29-40d1-8d2b-5e2f8b384407",
+      "name": "Scorecards",
+      "description": {
+        "content": "Manage metric scorecards and dashboards",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "28291f50-3364-4060-88f0-203ef2cff9ab",
+          "name": "List scorecards",
+          "request": {
+            "name": "List scorecards",
+            "description": {
+              "content": "Retrieve all metric scorecards for monitoring rule performance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scorecards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "52a9523e-4ab4-48ec-9e2d-837beed51a2c",
+              "name": "List of scorecards",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"metrics\": [\n        {\n          \"name\": \"string\",\n          \"value\": 4456.503609347604,\n          \"unit\": \"string\",\n          \"threshold\": 5320.365083140524\n        },\n        {\n          \"name\": \"string\",\n          \"value\": 2304.4152408881414,\n          \"unit\": \"string\",\n          \"threshold\": 1167.5593230694546\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"metrics\": [\n        {\n          \"name\": \"string\",\n          \"value\": 2119.736878226688,\n          \"unit\": \"string\",\n          \"threshold\": 7821.38191446942\n        },\n        {\n          \"name\": \"string\",\n          \"value\": 3094.991713970241,\n          \"unit\": \"string\",\n          \"threshold\": 1288.694612427157\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25ce9d8f-4944-40e8-b6ee-d765dd9500f9",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tibco.com/businessevents/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a76f4618-51bb-4b0f-b88c-9655b831844c",
+    "name": "TIBCO BusinessEvents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
+      "type": "text/plain"
+    }
+  }
+}

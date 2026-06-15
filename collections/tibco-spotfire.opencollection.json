@@ -1,0 +1,574 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIBCO Spotfire Analytics API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Library",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List library items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/library",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "query",
+                "description": "Library folder path to list items from"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by item type"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search query for item names"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              }
+            ]
+          },
+          "docs": "Retrieve library items from the Spotfire library with optional filtering by path, type, or search query."
+        },
+        {
+          "info": {
+            "name": "Get a library item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/library/:itemId",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "Library item unique identifier (GUID)"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific library item by ID."
+        },
+        {
+          "info": {
+            "name": "Update a library item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/library/:itemId",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "Library item unique identifier (GUID)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update metadata of a library item such as name or description."
+        },
+        {
+          "info": {
+            "name": "Delete a library item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/library/:itemId",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "Library item unique identifier (GUID)"
+              }
+            ]
+          },
+          "docs": "Delete a library item by ID."
+        },
+        {
+          "info": {
+            "name": "Get library item permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/library/:itemId/permissions",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "Library item unique identifier (GUID)"
+              }
+            ]
+          },
+          "docs": "Retrieve access permissions for a specific library item."
+        },
+        {
+          "info": {
+            "name": "Update library item permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/library/:itemId/permissions",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "Library item unique identifier (GUID)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update access permissions for a specific library item."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Analyses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List analyses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/analyses",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              }
+            ]
+          },
+          "docs": "Retrieve all Spotfire analysis files accessible to the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Get an analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/analyses/:analysisId",
+            "params": [
+              {
+                "name": "analysisId",
+                "value": "",
+                "type": "path",
+                "description": "Analysis unique identifier (GUID)"
+              }
+            ]
+          },
+          "docs": "Retrieve details and metadata of a specific analysis file."
+        },
+        {
+          "info": {
+            "name": "Export an analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/analyses/:analysisId/export",
+            "params": [
+              {
+                "name": "analysisId",
+                "value": "",
+                "type": "path",
+                "description": "Analysis unique identifier (GUID)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Export an analysis to a specified format (PDF, image, data)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Data Sources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List data sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/datasources"
+          },
+          "docs": "Retrieve all configured data source connections."
+        },
+        {
+          "info": {
+            "name": "Create a data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/datasources",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new data source connection."
+        },
+        {
+          "info": {
+            "name": "Get a data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/datasources/:dataSourceId",
+            "params": [
+              {
+                "name": "dataSourceId",
+                "value": "",
+                "type": "path",
+                "description": "Data source unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific data source connection."
+        },
+        {
+          "info": {
+            "name": "Delete a data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/datasources/:dataSourceId",
+            "params": [
+              {
+                "name": "dataSourceId",
+                "value": "",
+                "type": "path",
+                "description": "Data source unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete a data source connection."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/users",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              }
+            ]
+          },
+          "docs": "Retrieve all Spotfire Server users."
+        },
+        {
+          "info": {
+            "name": "Get a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific Spotfire user."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/groups"
+          },
+          "docs": "Retrieve all user groups on the Spotfire Server."
+        },
+        {
+          "info": {
+            "name": "Create a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new user group."
+        },
+        {
+          "info": {
+            "name": "Get a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "Group unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific user group."
+        },
+        {
+          "info": {
+            "name": "Delete a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "Group unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete a user group."
+        },
+        {
+          "info": {
+            "name": "List group members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/groups/:groupId/members",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "Group unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve all members of a specific group."
+        },
+        {
+          "info": {
+            "name": "Add a member to a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/groups/:groupId/members",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "Group unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a user to a specific group."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scheduled Updates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List scheduled updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/scheduled-updates"
+          },
+          "docs": "Retrieve all scheduled analysis update tasks."
+        },
+        {
+          "info": {
+            "name": "Create a scheduled update",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/scheduled-updates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new scheduled update task for an analysis."
+        },
+        {
+          "info": {
+            "name": "Get a scheduled update",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/scheduled-updates/:updateId",
+            "params": [
+              {
+                "name": "updateId",
+                "value": "",
+                "type": "path",
+                "description": "Scheduled update unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific scheduled update task."
+        },
+        {
+          "info": {
+            "name": "Delete a scheduled update",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/scheduled-updates/:updateId",
+            "params": [
+              {
+                "name": "updateId",
+                "value": "",
+                "type": "path",
+                "description": "Scheduled update unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete a scheduled update task."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Nodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List server nodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://spotfire.cloud.tibco.com/api/rest/v1/nodes"
+          },
+          "docs": "Retrieve all Spotfire Server nodes and their status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

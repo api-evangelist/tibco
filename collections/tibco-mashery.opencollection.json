@@ -1,0 +1,645 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIBCO Mashery API Management",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.mashery.com/v3/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Default",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List API services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mashery.com/v3/rest/services",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter expression for narrowing results"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort expression (field and direction)"
+              }
+            ]
+          },
+          "docs": "Retrieve all API service definitions managed by the platform."
+        },
+        {
+          "info": {
+            "name": "Create an API service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mashery.com/v3/rest/services",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new API service definition."
+        },
+        {
+          "info": {
+            "name": "Get an API service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mashery.com/v3/rest/services/:serviceId",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific API service definition."
+        },
+        {
+          "info": {
+            "name": "Update an API service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.mashery.com/v3/rest/services/:serviceId",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing API service definition."
+        },
+        {
+          "info": {
+            "name": "Delete an API service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mashery.com/v3/rest/services/:serviceId",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete an API service definition."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List service endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mashery.com/v3/rest/services/:serviceId/endpoints",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve all endpoints for a specific API service."
+        },
+        {
+          "info": {
+            "name": "Create a service endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mashery.com/v3/rest/services/:serviceId/endpoints",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new endpoint for an API service."
+        },
+        {
+          "info": {
+            "name": "Get a service endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mashery.com/v3/rest/services/:serviceId/endpoints/:endpointId",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              },
+              {
+                "name": "endpointId",
+                "value": "",
+                "type": "path",
+                "description": "Endpoint unique identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific service endpoint."
+        },
+        {
+          "info": {
+            "name": "Update a service endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.mashery.com/v3/rest/services/:serviceId/endpoints/:endpointId",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              },
+              {
+                "name": "endpointId",
+                "value": "",
+                "type": "path",
+                "description": "Endpoint unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing service endpoint."
+        },
+        {
+          "info": {
+            "name": "Delete a service endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mashery.com/v3/rest/services/:serviceId/endpoints/:endpointId",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              },
+              {
+                "name": "endpointId",
+                "value": "",
+                "type": "path",
+                "description": "Endpoint unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete a specific service endpoint."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Packages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List packages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mashery.com/v3/rest/packages",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve all API packages for the organization."
+        },
+        {
+          "info": {
+            "name": "Create a package",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mashery.com/v3/rest/packages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new API package for bundling services."
+        },
+        {
+          "info": {
+            "name": "Get a package",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mashery.com/v3/rest/packages/:packageId",
+            "params": [
+              {
+                "name": "packageId",
+                "value": "",
+                "type": "path",
+                "description": "Package unique identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific API package."
+        },
+        {
+          "info": {
+            "name": "Update a package",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.mashery.com/v3/rest/packages/:packageId",
+            "params": [
+              {
+                "name": "packageId",
+                "value": "",
+                "type": "path",
+                "description": "Package unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing API package."
+        },
+        {
+          "info": {
+            "name": "Delete a package",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mashery.com/v3/rest/packages/:packageId",
+            "params": [
+              {
+                "name": "packageId",
+                "value": "",
+                "type": "path",
+                "description": "Package unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete an API package."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List plans in a package",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mashery.com/v3/rest/packages/:packageId/plans",
+            "params": [
+              {
+                "name": "packageId",
+                "value": "",
+                "type": "path",
+                "description": "Package unique identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve all subscription plans within an API package."
+        },
+        {
+          "info": {
+            "name": "Create a plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mashery.com/v3/rest/packages/:packageId/plans",
+            "params": [
+              {
+                "name": "packageId",
+                "value": "",
+                "type": "path",
+                "description": "Package unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new subscription plan within an API package."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List applications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mashery.com/v3/rest/applications",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve all registered developer applications."
+        },
+        {
+          "info": {
+            "name": "Get an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mashery.com/v3/rest/applications/:applicationId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "Application unique identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific developer application."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Members",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List portal members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mashery.com/v3/rest/members",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve all developer portal members."
+        },
+        {
+          "info": {
+            "name": "Get a portal member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mashery.com/v3/rest/members/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path",
+                "description": "Member unique identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific developer portal member."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get API call report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mashery.com/v3/rest/reports/calls",
+            "params": [
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Report start date (ISO 8601)"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "Report end date (ISO 8601)"
+              },
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by service ID"
+              },
+              {
+                "name": "endpointId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by endpoint ID"
+              }
+            ]
+          },
+          "docs": "Retrieve API call volume and performance metrics for the specified time range."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
