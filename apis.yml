@@ -68,7 +68,7 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.tibco.com/products/tibco-businessevents
-      - type: SDK
+      - type: SDKs
         url: https://docs.tibco.com/products/tibco-businessevents/sdk
       - type: OpenAPI
         url: openapi/tibco-businessevents-openapi.yml
@@ -137,7 +137,7 @@ common:
     url: rules/tibco-rules.yml
   - type: Vocabulary
     url: vocabulary/tibco-vocabulary.yml
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.tibco.com/llms.txt
 maintainers:
   - FN: Kin Lane
