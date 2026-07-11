@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tibco-mashery-openapi.yml
+docs: https://developer.mashery.com/docs/read/mashery_api/30/Authentication
+note: >-
+  TIBCO does not publish a named OAuth scope catalog — the Mashery V3 API's scope
+  parameter carries the customer's Mashery Area UUID rather than permissions
+  (https://developer.mashery.com/docs/read/mashery_api/30/Authentication), and TIBCO
+  Cloud access tokens are scoped to product domains (e.g. TSC, TCI) with permissions
+  governed by user roles rather than documented scopes.
+schemes:
+- name: oauth2
+  source: openapi/tibco-mashery-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.mashery.com/v3/token
+  description: OAuth 2.0 client credentials for Mashery API access
+scopes: []
