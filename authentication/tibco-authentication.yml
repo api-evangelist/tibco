@@ -1,0 +1,35 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tibco-businessevents-openapi.yml, openapi/tibco-cloud-integration-openapi.yml,
+  openapi/tibco-mashery-openapi.yml, openapi/tibco-spotfire-openapi.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+  sources:
+  - openapi/tibco-businessevents-openapi.yml
+  - openapi/tibco-cloud-integration-openapi.yml
+  - openapi/tibco-spotfire-openapi.yml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.mashery.com/v3/token
+    scopes: 0
+  description: OAuth 2.0 client credentials for Mashery API access
+  sources:
+  - openapi/tibco-mashery-openapi.yml
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: Basic authentication for on-premise Spotfire Server
+  sources:
+  - openapi/tibco-spotfire-openapi.yml
