@@ -3,16 +3,13 @@
   "feeds": [
     {
       "source": "https://www.tibco.com/blog/feed/",
-      "feed_url": "https://www.tibco.com/blog/feed/",
-      "title": "",
-      "saved": 0,
-      "method": "feed"
+      "error": "HTTPError"
     },
     {
       "source": "https://status.tibco.com",
       "error": "URLError"
     }
   ],
-  "post_count": 20,
-  "fetched": "2026-06-27T12:03:07Z"
+  "post_count": 21,
+  "fetched": "2026-07-11T11:50:51Z"
 }
