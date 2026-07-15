@@ -107,6 +107,8 @@ apis:
       - type: OpenAPI
         url: openapi/tibco-spotfire-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/tibco-agentic-access.yml
   - type: DomainSecurity
     url: security/tibco-domain-security.yml
   - type: Authentication
