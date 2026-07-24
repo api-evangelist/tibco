@@ -1,0 +1,215 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Analyses API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Analyses
+  description: Manage Spotfire analysis files
+paths:
+  /analyses:
+    get:
+      operationId: listAnalyses
+      summary: List analyses
+      description: Retrieve all Spotfire analysis files accessible to the authenticated user.
+      tags:
+      - Analyses
+      parameters:
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: List of analyses
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Analysis'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /analyses/{analysisId}:
+    get:
+      operationId: getAnalysis
+      summary: Get an analysis
+      description: Retrieve details and metadata of a specific analysis file.
+      tags:
+      - Analyses
+      parameters:
+      - $ref: '#/components/parameters/analysisId'
+      responses:
+        '200':
+          description: Analysis details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Analysis'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /analyses/{analysisId}/export:
+    post:
+      operationId: exportAnalysis
+      summary: Export an analysis
+      description: Export an analysis to a specified format (PDF, image, data).
+      tags:
+      - Analyses
+      parameters:
+      - $ref: '#/components/parameters/analysisId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportRequest'
+      responses:
+        '200':
+          description: Exported content
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  schemas:
+    Analysis:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the analysis
+        title:
+          type: string
+          description: Analysis title
+        description:
+          type: string
+          description: Analysis description
+        path:
+          type: string
+          description: Library path of the analysis
+        version:
+          type: string
+          description: Analysis version
+        pages:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              title:
+                type: string
+          description: Analysis pages
+        dataTables:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              rowCount:
+                type: integer
+              columnCount:
+                type: integer
+          description: Data tables within the analysis
+        createdBy:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+        modifiedDate:
+          type: string
+          format: date-time
+    ExportRequest:
+      type: object
+      required:
+      - format
+      properties:
+        format:
+          type: string
+          enum:
+          - pdf
+          - png
+          - jpg
+          - csv
+          - xlsx
+          description: Export format
+        pageIndex:
+          type: integer
+          description: Specific page to export (0-based index)
+        width:
+          type: integer
+          description: Export width in pixels (for image formats)
+        height:
+          type: integer
+          description: Export height in pixels (for image formats)
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    analysisId:
+      name: analysisId
+      in: path
+      required: true
+      description: Analysis unique identifier (GUID)
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

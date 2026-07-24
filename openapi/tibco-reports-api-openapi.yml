@@ -1,0 +1,112 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Reports API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Reports
+  description: API usage reporting and analytics
+paths:
+  /rest/reports/calls:
+    get:
+      operationId: getCallReport
+      summary: Get API call report
+      description: Retrieve API call volume and performance metrics for the specified time range.
+      tags:
+      - Reports
+      parameters:
+      - name: startDate
+        in: query
+        required: true
+        description: Report start date (ISO 8601)
+        schema:
+          type: string
+          format: date-time
+      - name: endDate
+        in: query
+        required: true
+        description: Report end date (ISO 8601)
+        schema:
+          type: string
+          format: date-time
+      - name: serviceId
+        in: query
+        description: Filter by service ID
+        schema:
+          type: string
+      - name: endpointId
+        in: query
+        description: Filter by endpoint ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Call report data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallReport'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    CallReport:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        totalCalls:
+          type: integer
+          description: Total API call count
+        successfulCalls:
+          type: integer
+          description: Number of successful calls
+        blockedCalls:
+          type: integer
+          description: Number of blocked calls
+        otherCalls:
+          type: integer
+          description: Number of other calls
+        averageResponseTime:
+          type: number
+          format: double
+          description: Average response time in milliseconds
+        callsByEndpoint:
+          type: array
+          items:
+            type: object
+            properties:
+              endpointId:
+                type: string
+              endpointName:
+                type: string
+              totalCalls:
+                type: integer
+              averageResponseTime:
+                type: number
+                format: double
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

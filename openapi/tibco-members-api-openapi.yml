@@ -1,0 +1,128 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Members API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Members
+  description: Manage developer portal members
+paths:
+  /rest/members:
+    get:
+      operationId: listMembers
+      summary: List portal members
+      description: Retrieve all developer portal members.
+      tags:
+      - Members
+      parameters:
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: List of members
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Member'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /rest/members/{memberId}:
+    get:
+      operationId: getMember
+      summary: Get a portal member
+      description: Retrieve details of a specific developer portal member.
+      tags:
+      - Members
+      parameters:
+      - $ref: '#/components/parameters/memberId'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Member details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Member:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the member
+        username:
+          type: string
+          description: Portal username
+        email:
+          type: string
+          format: email
+          description: Member email address
+        displayName:
+          type: string
+          description: Display name
+        company:
+          type: string
+          description: Company name
+        registrationDate:
+          type: string
+          format: date-time
+          description: When the member registered
+  parameters:
+    memberId:
+      name: memberId
+      in: path
+      required: true
+      description: Member unique identifier
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+    fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 20
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

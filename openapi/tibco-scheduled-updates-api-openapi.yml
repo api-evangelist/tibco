@@ -1,0 +1,203 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Scheduled Updates API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Scheduled Updates
+  description: Manage scheduled analysis updates
+paths:
+  /scheduled-updates:
+    get:
+      operationId: listScheduledUpdates
+      summary: List scheduled updates
+      description: Retrieve all scheduled analysis update tasks.
+      tags:
+      - Scheduled Updates
+      responses:
+        '200':
+          description: List of scheduled updates
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ScheduledUpdate'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createScheduledUpdate
+      summary: Create a scheduled update
+      description: Create a new scheduled update task for an analysis.
+      tags:
+      - Scheduled Updates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateScheduledUpdateRequest'
+      responses:
+        '201':
+          description: Scheduled update created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduledUpdate'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /scheduled-updates/{updateId}:
+    get:
+      operationId: getScheduledUpdate
+      summary: Get a scheduled update
+      description: Retrieve details of a specific scheduled update task.
+      tags:
+      - Scheduled Updates
+      parameters:
+      - $ref: '#/components/parameters/updateId'
+      responses:
+        '200':
+          description: Scheduled update details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduledUpdate'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteScheduledUpdate
+      summary: Delete a scheduled update
+      description: Delete a scheduled update task.
+      tags:
+      - Scheduled Updates
+      parameters:
+      - $ref: '#/components/parameters/updateId'
+      responses:
+        '204':
+          description: Scheduled update deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  schemas:
+    ScheduledUpdate:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Scheduled update unique identifier
+        analysisId:
+          type: string
+          format: uuid
+          description: Target analysis ID
+        analysisPath:
+          type: string
+          description: Target analysis library path
+        schedule:
+          type: object
+          properties:
+            frequency:
+              type: string
+              enum:
+              - once
+              - daily
+              - weekly
+              - monthly
+            startTime:
+              type: string
+              format: date-time
+            endTime:
+              type: string
+              format: date-time
+            interval:
+              type: integer
+              description: Interval between runs
+          description: Update schedule configuration
+        enabled:
+          type: boolean
+          description: Whether the scheduled update is enabled
+        lastRunTime:
+          type: string
+          format: date-time
+          description: When the update last ran
+        lastRunStatus:
+          type: string
+          enum:
+          - success
+          - failure
+          - running
+          description: Last run status
+    CreateScheduledUpdateRequest:
+      type: object
+      required:
+      - analysisId
+      - schedule
+      properties:
+        analysisId:
+          type: string
+          format: uuid
+        schedule:
+          type: object
+          required:
+          - frequency
+          - startTime
+          properties:
+            frequency:
+              type: string
+              enum:
+              - once
+              - daily
+              - weekly
+              - monthly
+            startTime:
+              type: string
+              format: date-time
+            endTime:
+              type: string
+              format: date-time
+            interval:
+              type: integer
+        enabled:
+          type: boolean
+          default: true
+  parameters:
+    updateId:
+      name: updateId
+      in: path
+      required: true
+      description: Scheduled update unique identifier
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

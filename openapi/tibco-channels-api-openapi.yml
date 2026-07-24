@@ -1,0 +1,79 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Channels API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Channels
+  description: Manage event channels and destinations
+paths:
+  /channels:
+    get:
+      operationId: listChannels
+      summary: List event channels
+      description: Retrieve all configured event channels and destinations.
+      tags:
+      - Channels
+      responses:
+        '200':
+          description: List of channels
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Channel'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    Channel:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the channel
+        name:
+          type: string
+          description: Channel name
+        type:
+          type: string
+          enum:
+          - jms
+          - http
+          - kafka
+          - local
+          description: Channel transport type
+        destination:
+          type: string
+          description: Channel destination name or URI
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+          description: Channel status
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

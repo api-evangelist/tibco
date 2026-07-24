@@ -1,0 +1,166 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Plans API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Plans
+  description: Manage subscription plans within packages
+paths:
+  /rest/packages/{packageId}/plans:
+    get:
+      operationId: listPlans
+      summary: List plans in a package
+      description: Retrieve all subscription plans within an API package.
+      tags:
+      - Plans
+      parameters:
+      - $ref: '#/components/parameters/packageId'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: List of plans
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Plan'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createPlan
+      summary: Create a plan
+      description: Create a new subscription plan within an API package.
+      tags:
+      - Plans
+      parameters:
+      - $ref: '#/components/parameters/packageId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlanRequest'
+      responses:
+        '200':
+          description: Plan created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  parameters:
+    packageId:
+      name: packageId
+      in: path
+      required: true
+      description: Package unique identifier
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response
+      schema:
+        type: string
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  schemas:
+    CreatePlanRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        maxNumKeysAllowed:
+          type: integer
+        qpsLimitCeiling:
+          type: integer
+        rateLimitCeiling:
+          type: integer
+        rateLimitPeriod:
+          type: string
+          enum:
+          - second
+          - minute
+          - hour
+          - day
+          - month
+    Plan:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the plan
+        name:
+          type: string
+          description: Plan name
+        description:
+          type: string
+          description: Plan description
+        maxNumKeysAllowed:
+          type: integer
+          description: Maximum number of keys allowed
+        numKeysBeforeReview:
+          type: integer
+          description: Number of keys before review required
+        qpsLimitCeiling:
+          type: integer
+          description: QPS limit ceiling for this plan
+        rateLimitCeiling:
+          type: integer
+          description: Rate limit ceiling
+        rateLimitPeriod:
+          type: string
+          enum:
+          - second
+          - minute
+          - hour
+          - day
+          - month
+          description: Rate limit period
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+          description: Plan status
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

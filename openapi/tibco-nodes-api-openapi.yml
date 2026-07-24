@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Nodes API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Nodes
+  description: Manage Spotfire Server nodes and services
+paths:
+  /nodes:
+    get:
+      operationId: listNodes
+      summary: List server nodes
+      description: Retrieve all Spotfire Server nodes and their status.
+      tags:
+      - Nodes
+      responses:
+        '200':
+          description: List of server nodes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Node'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  schemas:
+    Node:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Node unique identifier
+        hostName:
+          type: string
+          description: Server hostname
+        port:
+          type: integer
+          description: Server port
+        status:
+          type: string
+          enum:
+          - online
+          - offline
+          - degraded
+          description: Node status
+        services:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              status:
+                type: string
+                enum:
+                - running
+                - stopped
+                - error
+          description: Services running on this node
+        startTime:
+          type: string
+          format: date-time
+          description: When the node was started
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

@@ -1,0 +1,191 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Data Sources API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Data Sources
+  description: Manage data source connections
+paths:
+  /datasources:
+    get:
+      operationId: listDataSources
+      summary: List data sources
+      description: Retrieve all configured data source connections.
+      tags:
+      - Data Sources
+      responses:
+        '200':
+          description: List of data sources
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DataSource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createDataSource
+      summary: Create a data source
+      description: Create a new data source connection.
+      tags:
+      - Data Sources
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDataSourceRequest'
+      responses:
+        '201':
+          description: Data source created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /datasources/{dataSourceId}:
+    get:
+      operationId: getDataSource
+      summary: Get a data source
+      description: Retrieve details of a specific data source connection.
+      tags:
+      - Data Sources
+      parameters:
+      - $ref: '#/components/parameters/dataSourceId'
+      responses:
+        '200':
+          description: Data source details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteDataSource
+      summary: Delete a data source
+      description: Delete a data source connection.
+      tags:
+      - Data Sources
+      parameters:
+      - $ref: '#/components/parameters/dataSourceId'
+      responses:
+        '204':
+          description: Data source deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  parameters:
+    dataSourceId:
+      name: dataSourceId
+      in: path
+      required: true
+      description: Data source unique identifier
+      schema:
+        type: string
+  schemas:
+    DataSource:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the data source
+        name:
+          type: string
+          description: Data source name
+        type:
+          type: string
+          enum:
+          - database
+          - file
+          - web-service
+          - information-link
+          - custom
+          description: Data source type
+        connectionString:
+          type: string
+          description: Connection string (masked)
+        provider:
+          type: string
+          description: Database provider name
+        status:
+          type: string
+          enum:
+          - connected
+          - disconnected
+          - error
+          description: Data source connection status
+        createdDate:
+          type: string
+          format: date-time
+        modifiedDate:
+          type: string
+          format: date-time
+    CreateDataSourceRequest:
+      type: object
+      required:
+      - name
+      - type
+      - connectionString
+      properties:
+        name:
+          type: string
+          description: Data source name
+        type:
+          type: string
+          enum:
+          - database
+          - file
+          - web-service
+          - information-link
+          - custom
+        connectionString:
+          type: string
+          description: Connection string
+        provider:
+          type: string
+          description: Database provider name
+        username:
+          type: string
+          description: Connection username
+        password:
+          type: string
+          format: password
+          description: Connection password
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

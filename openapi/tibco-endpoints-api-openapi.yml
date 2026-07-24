@@ -1,0 +1,275 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Endpoints API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Endpoints
+  description: Manage API endpoints within services
+paths:
+  /rest/services/{serviceId}/endpoints:
+    get:
+      operationId: listEndpoints
+      summary: List service endpoints
+      description: Retrieve all endpoints for a specific API service.
+      tags:
+      - Endpoints
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: List of endpoints
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Endpoint'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createEndpoint
+      summary: Create a service endpoint
+      description: Create a new endpoint for an API service.
+      tags:
+      - Endpoints
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEndpointRequest'
+      responses:
+        '200':
+          description: Endpoint created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /rest/services/{serviceId}/endpoints/{endpointId}:
+    get:
+      operationId: getEndpoint
+      summary: Get a service endpoint
+      description: Retrieve details of a specific service endpoint.
+      tags:
+      - Endpoints
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/endpointId'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Endpoint details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateEndpoint
+      summary: Update a service endpoint
+      description: Update an existing service endpoint.
+      tags:
+      - Endpoints
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/endpointId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEndpointRequest'
+      responses:
+        '200':
+          description: Endpoint updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    delete:
+      operationId: deleteEndpoint
+      summary: Delete a service endpoint
+      description: Delete a specific service endpoint.
+      tags:
+      - Endpoints
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/endpointId'
+      responses:
+        '200':
+          description: Endpoint deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    CreateEndpointRequest:
+      type: object
+      required:
+      - name
+      - requestAuthenticationType
+      - requestProtocol
+      properties:
+        name:
+          type: string
+          description: Endpoint name
+        requestAuthenticationType:
+          type: string
+          enum:
+          - apiKey
+          - apiKeyAndSecret
+          - oauth
+        requestProtocol:
+          type: string
+          enum:
+          - rest
+          - soap
+          - xml-rpc
+        requestPathAlias:
+          type: string
+        publicDomains:
+          type: array
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+        systemDomains:
+          type: array
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+        supportedHttpMethods:
+          type: array
+          items:
+            type: string
+    Endpoint:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the endpoint
+        name:
+          type: string
+          description: Endpoint name
+        requestAuthenticationType:
+          type: string
+          enum:
+          - apiKey
+          - apiKeyAndSecret
+          - oauth
+          description: Authentication type required
+        requestProtocol:
+          type: string
+          enum:
+          - rest
+          - soap
+          - xml-rpc
+          description: Request protocol
+        publicDomains:
+          type: array
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+          description: Public-facing domain addresses
+        systemDomains:
+          type: array
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+          description: Backend system domain addresses
+        requestPathAlias:
+          type: string
+          description: Public path alias for the endpoint
+        supportedHttpMethods:
+          type: array
+          items:
+            type: string
+            enum:
+            - get
+            - post
+            - put
+            - delete
+            - head
+            - patch
+            - options
+          description: Supported HTTP methods
+        trafficManagerDomain:
+          type: string
+          description: Traffic manager domain for the endpoint
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  parameters:
+    endpointId:
+      name: endpointId
+      in: path
+      required: true
+      description: Endpoint unique identifier
+      schema:
+        type: string
+    serviceId:
+      name: serviceId
+      in: path
+      required: true
+      description: API service unique identifier
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

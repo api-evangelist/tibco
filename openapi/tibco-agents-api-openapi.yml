@@ -1,0 +1,155 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Agents
+  description: Manage inference agents
+paths:
+  /agents:
+    get:
+      operationId: listAgents
+      summary: List inference agents
+      description: Retrieve all inference agents and their current status.
+      tags:
+      - Agents
+      responses:
+        '200':
+          description: List of agents
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Agent'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /agents/{agentId}:
+    get:
+      operationId: getAgent
+      summary: Get an inference agent
+      description: Retrieve details and status of a specific inference agent.
+      tags:
+      - Agents
+      parameters:
+      - $ref: '#/components/parameters/agentId'
+      responses:
+        '200':
+          description: Agent details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /agents/{agentId}/start:
+    post:
+      operationId: startAgent
+      summary: Start an inference agent
+      description: Start a stopped inference agent.
+      tags:
+      - Agents
+      parameters:
+      - $ref: '#/components/parameters/agentId'
+      responses:
+        '200':
+          description: Agent started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /agents/{agentId}/stop:
+    post:
+      operationId: stopAgent
+      summary: Stop an inference agent
+      description: Stop a running inference agent.
+      tags:
+      - Agents
+      parameters:
+      - $ref: '#/components/parameters/agentId'
+      responses:
+        '200':
+          description: Agent stopped
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+    NotFound:
+      description: The requested resource was not found
+  parameters:
+    agentId:
+      name: agentId
+      in: path
+      required: true
+      description: Agent unique identifier
+      schema:
+        type: string
+  schemas:
+    Agent:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the agent
+        name:
+          type: string
+          description: Agent name
+        status:
+          type: string
+          enum:
+          - running
+          - stopped
+          - error
+          description: Agent status
+        type:
+          type: string
+          description: Agent type
+        rulesLoaded:
+          type: integer
+          description: Number of rules loaded by the agent
+        eventsProcessed:
+          type: integer
+          description: Total events processed by the agent
+        startTime:
+          type: string
+          format: date-time
+          description: When the agent was last started
+        uptime:
+          type: string
+          description: Agent uptime duration
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

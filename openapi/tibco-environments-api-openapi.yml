@@ -1,0 +1,109 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Environments API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Environments
+  description: Manage deployment environments
+paths:
+  /environments:
+    get:
+      operationId: listEnvironments
+      summary: List environments
+      description: Retrieve all deployment environments configured for the organization.
+      tags:
+      - Environments
+      responses:
+        '200':
+          description: List of environments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Environment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /environments/{environmentId}:
+    get:
+      operationId: getEnvironment
+      summary: Get an environment
+      description: Retrieve details of a specific deployment environment.
+      tags:
+      - Environments
+      parameters:
+      - $ref: '#/components/parameters/environmentId'
+      responses:
+        '200':
+          description: Environment details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Environment'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Environment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the environment
+        name:
+          type: string
+          description: Environment name
+        type:
+          type: string
+          enum:
+          - dev
+          - test
+          - staging
+          - production
+          description: Environment type
+        region:
+          type: string
+          description: Cloud region for the environment
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+          description: Environment status
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+    NotFound:
+      description: The requested resource was not found
+  parameters:
+    environmentId:
+      name: environmentId
+      in: path
+      required: true
+      description: Environment unique identifier
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

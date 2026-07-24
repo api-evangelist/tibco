@@ -1,0 +1,204 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Events API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Events
+  description: Submit and query complex events
+paths:
+  /events:
+    post:
+      operationId: submitEvent
+      summary: Submit an event
+      description: Submit a complex event for processing by the inference engine.
+      tags:
+      - Events
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitEventRequest'
+      responses:
+        '202':
+          description: Event accepted for processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    get:
+      operationId: listEvents
+      summary: List processed events
+      description: Retrieve a list of processed events with optional filters.
+      tags:
+      - Events
+      parameters:
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - name: eventType
+        in: query
+        description: Filter by event type
+        schema:
+          type: string
+      - name: startTime
+        in: query
+        description: Filter events after this time
+        schema:
+          type: string
+          format: date-time
+      - name: endTime
+        in: query
+        description: Filter events before this time
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: List of events
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Event'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /events/{eventId}:
+    get:
+      operationId: getEvent
+      summary: Get an event
+      description: Retrieve details and processing result of a specific event.
+      tags:
+      - Events
+      parameters:
+      - $ref: '#/components/parameters/eventId'
+      responses:
+        '200':
+          description: Event details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    EventResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Assigned event identifier
+        status:
+          type: string
+          description: Initial processing status
+        correlationId:
+          type: string
+          description: Correlation identifier
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the event
+        type:
+          type: string
+          description: Event type name
+        payload:
+          type: object
+          additionalProperties: true
+          description: Event data payload
+        timestamp:
+          type: string
+          format: date-time
+          description: When the event occurred
+        status:
+          type: string
+          enum:
+          - received
+          - processing
+          - processed
+          - error
+          description: Event processing status
+        result:
+          type: object
+          additionalProperties: true
+          description: Processing result data
+    SubmitEventRequest:
+      type: object
+      required:
+      - type
+      - payload
+      properties:
+        type:
+          type: string
+          description: Event type name
+        payload:
+          type: object
+          additionalProperties: true
+          description: Event data payload
+        correlationId:
+          type: string
+          description: Correlation identifier for event tracking
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  parameters:
+    eventId:
+      name: eventId
+      in: path
+      required: true
+      description: Event unique identifier
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

@@ -1,0 +1,133 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Users API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Users
+  description: Manage Spotfire users
+paths:
+  /users:
+    get:
+      operationId: listUsers
+      summary: List users
+      description: Retrieve all Spotfire Server users.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /users/{userId}:
+    get:
+      operationId: getUser
+      summary: Get a user
+      description: Retrieve details of a specific Spotfire user.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          description: User details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: User unique identifier
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          description: User unique identifier
+        userName:
+          type: string
+          description: Username
+        displayName:
+          type: string
+          description: User display name
+        email:
+          type: string
+          format: email
+          description: User email address
+        enabled:
+          type: boolean
+          description: Whether the user account is enabled
+        lastLoginDate:
+          type: string
+          format: date-time
+          description: When the user last logged in
+        groups:
+          type: array
+          items:
+            type: string
+          description: Group names the user belongs to
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

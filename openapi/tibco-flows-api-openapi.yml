@@ -1,0 +1,94 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Flows API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Flows
+  description: Manage Flogo flows and activities
+paths:
+  /apps/{appId}/flows:
+    get:
+      operationId: listFlows
+      summary: List flows in an app
+      description: Retrieve all flows defined within an integration application.
+      tags:
+      - Flows
+      parameters:
+      - $ref: '#/components/parameters/appId'
+      responses:
+        '200':
+          description: List of flows
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Flow'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Flow:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the flow
+        name:
+          type: string
+          description: Flow name
+        description:
+          type: string
+          description: Flow description
+        type:
+          type: string
+          description: Flow trigger type
+        activities:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              type:
+                type: string
+          description: Activities in the flow
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+    NotFound:
+      description: The requested resource was not found
+  parameters:
+    appId:
+      name: appId
+      in: path
+      required: true
+      description: Integration app unique identifier
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

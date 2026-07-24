@@ -1,0 +1,79 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Scorecards API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Scorecards
+  description: Manage metric scorecards and dashboards
+paths:
+  /scorecards:
+    get:
+      operationId: listScorecards
+      summary: List scorecards
+      description: Retrieve all metric scorecards for monitoring rule performance.
+      tags:
+      - Scorecards
+      responses:
+        '200':
+          description: List of scorecards
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Scorecard'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    Scorecard:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the scorecard
+        name:
+          type: string
+          description: Scorecard name
+        description:
+          type: string
+          description: Scorecard description
+        metrics:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: number
+              unit:
+                type: string
+              threshold:
+                type: number
+          description: Metrics tracked by the scorecard
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

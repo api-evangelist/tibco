@@ -1,0 +1,292 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Library API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Library
+  description: Manage Spotfire library items and folders
+paths:
+  /library:
+    get:
+      operationId: listLibraryItems
+      summary: List library items
+      description: Retrieve library items from the Spotfire library with optional filtering by path, type, or search query.
+      tags:
+      - Library
+      parameters:
+      - name: path
+        in: query
+        description: Library folder path to list items from
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Filter by item type
+        schema:
+          type: string
+          enum:
+          - spotfire.dxp
+          - spotfire.folder
+          - spotfire.sbdf
+          - spotfire.dataconnection
+          - spotfire.colorscheme
+          - spotfire.mod
+      - name: search
+        in: query
+        description: Search query for item names
+        schema:
+          type: string
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: List of library items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LibraryItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /library/{itemId}:
+    get:
+      operationId: getLibraryItem
+      summary: Get a library item
+      description: Retrieve details of a specific library item by ID.
+      tags:
+      - Library
+      parameters:
+      - $ref: '#/components/parameters/itemId'
+      responses:
+        '200':
+          description: Library item details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryItem'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateLibraryItem
+      summary: Update a library item
+      description: Update metadata of a library item such as name or description.
+      tags:
+      - Library
+      parameters:
+      - $ref: '#/components/parameters/itemId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateLibraryItemRequest'
+      responses:
+        '200':
+          description: Library item updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryItem'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteLibraryItem
+      summary: Delete a library item
+      description: Delete a library item by ID.
+      tags:
+      - Library
+      parameters:
+      - $ref: '#/components/parameters/itemId'
+      responses:
+        '204':
+          description: Library item deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /library/{itemId}/permissions:
+    get:
+      operationId: getLibraryItemPermissions
+      summary: Get library item permissions
+      description: Retrieve access permissions for a specific library item.
+      tags:
+      - Library
+      parameters:
+      - $ref: '#/components/parameters/itemId'
+      responses:
+        '200':
+          description: Item permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permissions'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateLibraryItemPermissions
+      summary: Update library item permissions
+      description: Update access permissions for a specific library item.
+      tags:
+      - Library
+      parameters:
+      - $ref: '#/components/parameters/itemId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Permissions'
+      responses:
+        '200':
+          description: Permissions updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permissions'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    LibraryItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the library item
+        title:
+          type: string
+          description: Item display title
+        description:
+          type: string
+          description: Item description
+        path:
+          type: string
+          description: Full library path (e.g., /Users/analyst/reports)
+        type:
+          type: string
+          description: Item content type
+        size:
+          type: integer
+          description: Item size in bytes
+        createdBy:
+          type: string
+          description: User who created the item
+        createdDate:
+          type: string
+          format: date-time
+          description: When the item was created
+        modifiedBy:
+          type: string
+          description: User who last modified the item
+        modifiedDate:
+          type: string
+          format: date-time
+          description: When the item was last modified
+        parentId:
+          type: string
+          format: uuid
+          description: Parent folder ID
+    UpdateLibraryItemRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Updated item title
+        description:
+          type: string
+          description: Updated item description
+    Permissions:
+      type: object
+      properties:
+        owner:
+          type: string
+          description: Item owner username
+        entries:
+          type: array
+          items:
+            type: object
+            properties:
+              principal:
+                type: string
+                description: User or group name
+              principalType:
+                type: string
+                enum:
+                - user
+                - group
+              permission:
+                type: string
+                enum:
+                - read
+                - write
+                - full-control
+          description: Permission entries
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  parameters:
+    itemId:
+      name: itemId
+      in: path
+      required: true
+      description: Library item unique identifier (GUID)
+      schema:
+        type: string
+        format: uuid
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

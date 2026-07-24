@@ -1,0 +1,304 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Rest API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Rest
+paths:
+  /rest/services:
+    get:
+      operationId: listServices
+      summary: List API services
+      description: Retrieve all API service definitions managed by the platform.
+      tags:
+      - Rest
+      parameters:
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/sort'
+      responses:
+        '200':
+          description: List of API services
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Service'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createService
+      summary: Create an API service
+      description: Create a new API service definition.
+      tags:
+      - Rest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServiceRequest'
+      responses:
+        '200':
+          description: Service created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /rest/services/{serviceId}:
+    get:
+      operationId: getService
+      summary: Get an API service
+      description: Retrieve details of a specific API service definition.
+      tags:
+      - Rest
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Service details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateService
+      summary: Update an API service
+      description: Update an existing API service definition.
+      tags:
+      - Rest
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServiceRequest'
+      responses:
+        '200':
+          description: Service updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteService
+      summary: Delete an API service
+      description: Delete an API service definition.
+      tags:
+      - Rest
+      parameters:
+      - $ref: '#/components/parameters/serviceId'
+      responses:
+        '200':
+          description: Service deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  schemas:
+    Endpoint:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the endpoint
+        name:
+          type: string
+          description: Endpoint name
+        requestAuthenticationType:
+          type: string
+          enum:
+          - apiKey
+          - apiKeyAndSecret
+          - oauth
+          description: Authentication type required
+        requestProtocol:
+          type: string
+          enum:
+          - rest
+          - soap
+          - xml-rpc
+          description: Request protocol
+        publicDomains:
+          type: array
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+          description: Public-facing domain addresses
+        systemDomains:
+          type: array
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+          description: Backend system domain addresses
+        requestPathAlias:
+          type: string
+          description: Public path alias for the endpoint
+        supportedHttpMethods:
+          type: array
+          items:
+            type: string
+            enum:
+            - get
+            - post
+            - put
+            - delete
+            - head
+            - patch
+            - options
+          description: Supported HTTP methods
+        trafficManagerDomain:
+          type: string
+          description: Traffic manager domain for the endpoint
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+    CreateServiceRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: API service name
+          minLength: 1
+        description:
+          type: string
+          description: Service description
+        version:
+          type: string
+          description: Service version
+        qpsLimitOverall:
+          type: integer
+          description: Overall queries-per-second rate limit
+    Service:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the API service
+        name:
+          type: string
+          description: API service name
+        description:
+          type: string
+          description: Service description
+        version:
+          type: string
+          description: Service version
+        qpsLimitOverall:
+          type: integer
+          description: Overall queries-per-second rate limit
+        revisionNumber:
+          type: integer
+          description: Service revision number
+        robotsPolicy:
+          type: string
+          description: Robots policy for the service
+        created:
+          type: string
+          format: date-time
+          description: When the service was created
+        updated:
+          type: string
+          format: date-time
+          description: When the service was last updated
+        endpoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/Endpoint'
+          description: Endpoints associated with this service
+  parameters:
+    filter:
+      name: filter
+      in: query
+      description: Filter expression for narrowing results
+      schema:
+        type: string
+    serviceId:
+      name: serviceId
+      in: path
+      required: true
+      description: API service unique identifier
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+    fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 20
+    sort:
+      name: sort
+      in: query
+      description: Sort expression (field and direction)
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents

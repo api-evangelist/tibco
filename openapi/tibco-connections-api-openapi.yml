@@ -1,0 +1,192 @@
+openapi: 3.1.0
+info:
+  title: TIBCO BusinessEvents Agents Connections API
+  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  version: '1.0'
+  contact:
+    name: TIBCO Support
+    url: https://support.tibco.com
+  termsOfService: https://www.tibco.com/legal/terms-of-use
+servers:
+- url: https://api.tibco.com/businessevents/v1
+  description: TIBCO BusinessEvents Production
+security:
+- bearerAuth: []
+tags:
+- name: Connections
+  description: Manage connector connections
+paths:
+  /connections:
+    get:
+      operationId: listConnections
+      summary: List connections
+      description: Retrieve all configured connector connections for the organization.
+      tags:
+      - Connections
+      parameters:
+      - $ref: '#/components/parameters/offset'
+      - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: List of connections
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Connection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createConnection
+      summary: Create a connection
+      description: Create a new connector connection with the specified configuration.
+      tags:
+      - Connections
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateConnectionRequest'
+      responses:
+        '201':
+          description: Connection created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /connections/{connectionId}:
+    get:
+      operationId: getConnection
+      summary: Get a connection
+      description: Retrieve details of a specific connection by ID.
+      tags:
+      - Connections
+      parameters:
+      - $ref: '#/components/parameters/connectionId'
+      responses:
+        '200':
+          description: Connection details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteConnection
+      summary: Delete a connection
+      description: Delete a connector connection by ID.
+      tags:
+      - Connections
+      parameters:
+      - $ref: '#/components/parameters/connectionId'
+      responses:
+        '204':
+          description: Connection deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    connectionId:
+      name: connectionId
+      in: path
+      required: true
+      description: Connection unique identifier
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  schemas:
+    CreateConnectionRequest:
+      type: object
+      required:
+      - name
+      - type
+      properties:
+        name:
+          type: string
+          description: Connection display name
+        type:
+          type: string
+          description: Connector type
+        configuration:
+          type: object
+          additionalProperties: true
+          description: Connector-specific configuration
+    Connection:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the connection
+        name:
+          type: string
+          description: Connection display name
+        type:
+          type: string
+          description: Connector type (e.g., REST, Database, Salesforce)
+        status:
+          type: string
+          enum:
+          - connected
+          - disconnected
+          - error
+          description: Connection health status
+        configuration:
+          type: object
+          additionalProperties: true
+          description: Connector-specific configuration properties
+        createdTime:
+          type: string
+          format: date-time
+          description: When the connection was created
+        modifiedTime:
+          type: string
+          format: date-time
+          description: When the connection was last modified
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+externalDocs:
+  description: TIBCO BusinessEvents Documentation
+  url: https://docs.tibco.com/products/tibco-businessevents
