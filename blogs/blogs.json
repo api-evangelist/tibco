@@ -2,14 +2,10 @@
   "repo": "tibco",
   "feeds": [
     {
-      "source": "https://www.tibco.com/blog/feed/",
-      "error": "HTTPError"
-    },
-    {
       "source": "https://status.tibco.com",
       "error": "URLError"
     }
   ],
   "post_count": 21,
-  "fetched": "2026-07-11T11:50:51Z"
+  "fetched": "2026-08-01T15:49:00Z"
 }
