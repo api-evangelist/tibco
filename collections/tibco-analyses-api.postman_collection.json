@@ -1,0 +1,671 @@
+{
+  "item": [
+    {
+      "id": "db601abb-8f31-4c0b-bc12-c4476f28fcc7",
+      "name": "Analyses",
+      "description": {
+        "content": "Manage Spotfire analysis files",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "41d17f28-9bed-4c90-b14d-687b11867ad6",
+          "name": "List analyses",
+          "request": {
+            "name": "List analyses",
+            "description": {
+              "content": "Retrieve all Spotfire analysis files accessible to the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analyses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "474306dd-fb13-4d21-a583-2c22149299c6",
+              "name": "List of analyses",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analyses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalCount\": 8812,\n  \"items\": [\n    {\n      \"id\": \"1c6d5cba-eb6b-d40d-d6a1-31e610323ba2\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"path\": \"string\",\n      \"version\": \"string\",\n      \"pages\": [\n        {\n          \"id\": \"string\",\n          \"title\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"title\": \"string\"\n        }\n      ],\n      \"dataTables\": [\n        {\n          \"name\": \"string\",\n          \"rowCount\": 1795,\n          \"columnCount\": 1597\n        },\n        {\n          \"name\": \"string\",\n          \"rowCount\": 3242,\n          \"columnCount\": 9159\n        }\n      ],\n      \"createdBy\": \"string\",\n      \"createdDate\": \"2026-05-30T13:22:14.584Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedDate\": \"2017-04-17T14:54:31.126Z\"\n    },\n    {\n      \"id\": \"4f7ec288-ac0c-f168-4763-8f6813f5f05b\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"path\": \"string\",\n      \"version\": \"string\",\n      \"pages\": [\n        {\n          \"id\": \"string\",\n          \"title\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"title\": \"string\"\n        }\n      ],\n      \"dataTables\": [\n        {\n          \"name\": \"string\",\n          \"rowCount\": 6107,\n          \"columnCount\": 2119\n        },\n        {\n          \"name\": \"string\",\n          \"rowCount\": 5969,\n          \"columnCount\": 636\n        }\n      ],\n      \"createdBy\": \"string\",\n      \"createdDate\": \"1954-11-19T20:46:22.612Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedDate\": \"1946-09-20T11:18:20.529Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77716290-f690-49c8-8d04-9524f59da3e1",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analyses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c295b9cd-e0fc-435b-aa86-6975ba9ec3e1",
+          "name": "Get an analysis",
+          "request": {
+            "name": "Get an analysis",
+            "description": {
+              "content": "Retrieve details and metadata of a specific analysis file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analyses",
+                ":analysisId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "analysisId",
+                  "description": "(Required) Analysis unique identifier (GUID)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c203eb6-fe3b-4d28-bdd8-060dd3480851",
+              "name": "Analysis details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analyses",
+                    ":analysisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) Analysis unique identifier (GUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"f31889d2-cd40-847f-5df5-bf259f2fa2b5\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"path\": \"string\",\n  \"version\": \"string\",\n  \"pages\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\"\n    }\n  ],\n  \"dataTables\": [\n    {\n      \"name\": \"string\",\n      \"rowCount\": 928,\n      \"columnCount\": 6530\n    },\n    {\n      \"name\": \"string\",\n      \"rowCount\": 8067,\n      \"columnCount\": 8186\n    }\n  ],\n  \"createdBy\": \"string\",\n  \"createdDate\": \"2005-09-08T15:16:34.584Z\",\n  \"modifiedBy\": \"string\",\n  \"modifiedDate\": \"1973-08-25T06:13:05.065Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8fb7054-6958-4578-a4ac-2127cd3a0820",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analyses",
+                    ":analysisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) Analysis unique identifier (GUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6cca05c9-07b4-4b3f-a359-0056d68493ad",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analyses",
+                    ":analysisId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) Analysis unique identifier (GUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1598fb36-e9cc-4e5e-9523-0336a67ea797",
+          "name": "Export an analysis",
+          "request": {
+            "name": "Export an analysis",
+            "description": {
+              "content": "Export an analysis to a specified format (PDF, image, data).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "analyses",
+                ":analysisId",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "analysisId",
+                  "description": "(Required) Analysis unique identifier (GUID)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"format\": \"<string>\",\n  \"pageIndex\": \"<integer>\",\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "317c7016-5e59-40c7-aadd-8c3c200623fc",
+              "name": "Exported content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analyses",
+                    ":analysisId",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) Analysis unique identifier (GUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"format\": \"<string>\",\n  \"pageIndex\": \"<integer>\",\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a1998f90-ca37-4746-b35a-d007d17c7558",
+              "name": "The request body or parameters are invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analyses",
+                    ":analysisId",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) Analysis unique identifier (GUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"format\": \"<string>\",\n  \"pageIndex\": \"<integer>\",\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2ee8a54f-d6be-4dd5-9ce6-eb2d0c5c0efe",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analyses",
+                    ":analysisId",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) Analysis unique identifier (GUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"format\": \"<string>\",\n  \"pageIndex\": \"<integer>\",\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c74dd747-2763-4840-8ae3-c746b5d2c126",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "analyses",
+                    ":analysisId",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "analysisId",
+                      "description": "(Required) Analysis unique identifier (GUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"format\": \"<string>\",\n  \"pageIndex\": \"<integer>\",\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tibco.com/businessevents/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "acf9389e-2961-4fc0-b343-9b8275d1c03e",
+    "name": "TIBCO BusinessEvents Agents Analyses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
+      "type": "text/plain"
+    }
+  }
+}

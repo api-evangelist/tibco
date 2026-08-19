@@ -1,0 +1,158 @@
+{
+  "item": [
+    {
+      "id": "8fb19af1-a17c-4504-9f25-0d93f9c90418",
+      "name": "Nodes",
+      "description": {
+        "content": "Manage Spotfire Server nodes and services",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "44f46d27-01c8-442c-aa12-2b4efc1e9ec8",
+          "name": "List server nodes",
+          "request": {
+            "name": "List server nodes",
+            "description": {
+              "content": "Retrieve all Spotfire Server nodes and their status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "nodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0482f228-a1b3-45ad-8add-aec93723ee42",
+              "name": "List of server nodes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"hostName\": \"string\",\n      \"port\": 2843,\n      \"status\": \"online\",\n      \"services\": [\n        {\n          \"name\": \"string\",\n          \"status\": \"stopped\"\n        },\n        {\n          \"name\": \"string\",\n          \"status\": \"stopped\"\n        }\n      ],\n      \"startTime\": \"1979-09-28T13:46:43.934Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"hostName\": \"string\",\n      \"port\": 6377,\n      \"status\": \"online\",\n      \"services\": [\n        {\n          \"name\": \"string\",\n          \"status\": \"running\"\n        },\n        {\n          \"name\": \"string\",\n          \"status\": \"stopped\"\n        }\n      ],\n      \"startTime\": \"2003-06-04T13:15:36.603Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a28d1fe-d7e1-4434-bb7a-58150b73ee24",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tibco.com/businessevents/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ad0b1e96-1517-4749-b944-337e71eaf470",
+    "name": "TIBCO BusinessEvents Agents Nodes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
+      "type": "text/plain"
+    }
+  }
+}

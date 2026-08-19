@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIBCO BusinessEvents Agents Rules API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List business rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/rules",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              }
+            ]
+          },
+          "docs": "Retrieve all business rules defined in the project."
+        },
+        {
+          "info": {
+            "name": "Create a business rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tibco.com/businessevents/v1/rules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new business rule in the project."
+        },
+        {
+          "info": {
+            "name": "Get a business rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/rules/:ruleId",
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "Rule unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific business rule."
+        },
+        {
+          "info": {
+            "name": "Update a business rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tibco.com/businessevents/v1/rules/:ruleId",
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "Rule unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing business rule."
+        },
+        {
+          "info": {
+            "name": "Delete a business rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tibco.com/businessevents/v1/rules/:ruleId",
+            "params": [
+              {
+                "name": "ruleId",
+                "value": "",
+                "type": "path",
+                "description": "Rule unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete a business rule from the project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,170 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIBCO BusinessEvents Agents Library API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Library",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List library items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/library",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "query",
+                "description": "Library folder path to list items from"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by item type"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search query for item names"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              }
+            ]
+          },
+          "docs": "Retrieve library items from the Spotfire library with optional filtering by path, type, or search query."
+        },
+        {
+          "info": {
+            "name": "Get a library item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/library/:itemId",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "Library item unique identifier (GUID)"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific library item by ID."
+        },
+        {
+          "info": {
+            "name": "Update a library item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tibco.com/businessevents/v1/library/:itemId",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "Library item unique identifier (GUID)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update metadata of a library item such as name or description."
+        },
+        {
+          "info": {
+            "name": "Delete a library item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tibco.com/businessevents/v1/library/:itemId",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "Library item unique identifier (GUID)"
+              }
+            ]
+          },
+          "docs": "Delete a library item by ID."
+        },
+        {
+          "info": {
+            "name": "Get library item permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/library/:itemId/permissions",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "Library item unique identifier (GUID)"
+              }
+            ]
+          },
+          "docs": "Retrieve access permissions for a specific library item."
+        },
+        {
+          "info": {
+            "name": "Update library item permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tibco.com/businessevents/v1/library/:itemId/permissions",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "Library item unique identifier (GUID)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update access permissions for a specific library item."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

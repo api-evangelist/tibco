@@ -6,5 +6,14 @@
     "source_type": "Documentation",
     "file": "tibco-2026-06-20T195332.png",
     "bytes": 5002
+  },
+  {
+    "repo": "tibco",
+    "captured_at": "2026-08-17T082218",
+    "source_url": "https://docs.tibco.com",
+    "source_type": "Documentation",
+    "file": "tibco-2026-08-17T082218.png",
+    "bytes": 253893,
+    "capture": "playwright-local"
   }
 ]

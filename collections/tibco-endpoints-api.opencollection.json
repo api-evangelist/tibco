@@ -1,0 +1,157 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIBCO BusinessEvents Agents Endpoints API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List service endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/rest/services/:serviceId/endpoints",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve all endpoints for a specific API service."
+        },
+        {
+          "info": {
+            "name": "Create a service endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tibco.com/businessevents/v1/rest/services/:serviceId/endpoints",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new endpoint for an API service."
+        },
+        {
+          "info": {
+            "name": "Get a service endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/rest/services/:serviceId/endpoints/:endpointId",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              },
+              {
+                "name": "endpointId",
+                "value": "",
+                "type": "path",
+                "description": "Endpoint unique identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific service endpoint."
+        },
+        {
+          "info": {
+            "name": "Update a service endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tibco.com/businessevents/v1/rest/services/:serviceId/endpoints/:endpointId",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              },
+              {
+                "name": "endpointId",
+                "value": "",
+                "type": "path",
+                "description": "Endpoint unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing service endpoint."
+        },
+        {
+          "info": {
+            "name": "Delete a service endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tibco.com/businessevents/v1/rest/services/:serviceId/endpoints/:endpointId",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              },
+              {
+                "name": "endpointId",
+                "value": "",
+                "type": "path",
+                "description": "Endpoint unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete a specific service endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

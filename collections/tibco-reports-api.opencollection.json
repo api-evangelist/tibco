@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIBCO BusinessEvents Agents Reports API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get API call report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/rest/reports/calls",
+            "params": [
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Report start date (ISO 8601)"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "Report end date (ISO 8601)"
+              },
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by service ID"
+              },
+              {
+                "name": "endpointId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by endpoint ID"
+              }
+            ]
+          },
+          "docs": "Retrieve API call volume and performance metrics for the specified time range."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

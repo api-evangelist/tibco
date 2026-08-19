@@ -1,0 +1,500 @@
+{
+  "item": [
+    {
+      "id": "f61e8a3e-7b76-4379-ade8-bd2fa27d74e6",
+      "name": "Plans",
+      "description": {
+        "content": "Manage subscription plans within packages",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "991e9dee-5407-41a8-a948-c64029d4f44c",
+          "name": "List plans in a package",
+          "request": {
+            "name": "List plans in a package",
+            "description": {
+              "content": "Retrieve all subscription plans within an API package.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "packages",
+                ":packageId",
+                "plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "packageId",
+                  "description": "(Required) Package unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3587fb38-0712-41d1-b346-4b6c6c8b43ce",
+              "name": "List of plans",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "packages",
+                    ":packageId",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "packageId",
+                      "description": "(Required) Package unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"maxNumKeysAllowed\": 1517,\n    \"numKeysBeforeReview\": 5407,\n    \"qpsLimitCeiling\": 7171,\n    \"rateLimitCeiling\": 449,\n    \"rateLimitPeriod\": \"day\",\n    \"status\": \"inactive\",\n    \"created\": \"1999-12-27T12:03:50.808Z\",\n    \"updated\": \"1996-01-08T18:12:10.913Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"maxNumKeysAllowed\": 4524,\n    \"numKeysBeforeReview\": 3086,\n    \"qpsLimitCeiling\": 6165,\n    \"rateLimitCeiling\": 9921,\n    \"rateLimitPeriod\": \"day\",\n    \"status\": \"inactive\",\n    \"created\": \"1968-07-18T02:34:22.277Z\",\n    \"updated\": \"1963-06-23T11:11:45.910Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5385a3ac-b6bb-41f4-96e6-5ff7d5646d47",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "packages",
+                    ":packageId",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "packageId",
+                      "description": "(Required) Package unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "23f8046d-bd75-48b1-97b8-4ff6ef9e9ccd",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "packages",
+                    ":packageId",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "packageId",
+                      "description": "(Required) Package unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c2459d4-0af7-4172-bf3b-2c55b521fb46",
+          "name": "Create a plan",
+          "request": {
+            "name": "Create a plan",
+            "description": {
+              "content": "Create a new subscription plan within an API package.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "packages",
+                ":packageId",
+                "plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "packageId",
+                  "description": "(Required) Package unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"maxNumKeysAllowed\": \"<integer>\",\n  \"qpsLimitCeiling\": \"<integer>\",\n  \"rateLimitCeiling\": \"<integer>\",\n  \"rateLimitPeriod\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b33f20e9-ee08-4395-aa32-82c9bb3ba52b",
+              "name": "Plan created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "packages",
+                    ":packageId",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "packageId",
+                      "description": "(Required) Package unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"maxNumKeysAllowed\": \"<integer>\",\n  \"qpsLimitCeiling\": \"<integer>\",\n  \"rateLimitCeiling\": \"<integer>\",\n  \"rateLimitPeriod\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"maxNumKeysAllowed\": 3137,\n  \"numKeysBeforeReview\": 4805,\n  \"qpsLimitCeiling\": 6462,\n  \"rateLimitCeiling\": 2355,\n  \"rateLimitPeriod\": \"hour\",\n  \"status\": \"inactive\",\n  \"created\": \"1960-06-06T01:49:53.500Z\",\n  \"updated\": \"2021-02-12T00:16:28.838Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f98fac4-64fe-4cbb-97e5-bdf867b7620f",
+              "name": "The request body or parameters are invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "packages",
+                    ":packageId",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "packageId",
+                      "description": "(Required) Package unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"maxNumKeysAllowed\": \"<integer>\",\n  \"qpsLimitCeiling\": \"<integer>\",\n  \"rateLimitCeiling\": \"<integer>\",\n  \"rateLimitPeriod\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9356cbe5-7aa6-4db7-b1a5-eccf2a8497ea",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "packages",
+                    ":packageId",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "packageId",
+                      "description": "(Required) Package unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"maxNumKeysAllowed\": \"<integer>\",\n  \"qpsLimitCeiling\": \"<integer>\",\n  \"rateLimitCeiling\": \"<integer>\",\n  \"rateLimitPeriod\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tibco.com/businessevents/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "69c4fb43-2d3e-4ab8-ade8-5e8c3085853e",
+    "name": "TIBCO BusinessEvents Agents Plans API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
+      "type": "text/plain"
+    }
+  }
+}

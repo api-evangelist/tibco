@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIBCO BusinessEvents Agents Data Sources API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Sources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List data sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/datasources"
+          },
+          "docs": "Retrieve all configured data source connections."
+        },
+        {
+          "info": {
+            "name": "Create a data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tibco.com/businessevents/v1/datasources",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new data source connection."
+        },
+        {
+          "info": {
+            "name": "Get a data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/datasources/:dataSourceId",
+            "params": [
+              {
+                "name": "dataSourceId",
+                "value": "",
+                "type": "path",
+                "description": "Data source unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific data source connection."
+        },
+        {
+          "info": {
+            "name": "Delete a data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tibco.com/businessevents/v1/datasources/:dataSourceId",
+            "params": [
+              {
+                "name": "dataSourceId",
+                "value": "",
+                "type": "path",
+                "description": "Data source unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete a data source connection."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

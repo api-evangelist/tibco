@@ -1,0 +1,149 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIBCO BusinessEvents Agents Rest API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List API services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/rest/services",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter expression for narrowing results"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort expression (field and direction)"
+              }
+            ]
+          },
+          "docs": "Retrieve all API service definitions managed by the platform."
+        },
+        {
+          "info": {
+            "name": "Create an API service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tibco.com/businessevents/v1/rest/services",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new API service definition."
+        },
+        {
+          "info": {
+            "name": "Get an API service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/rest/services/:serviceId",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific API service definition."
+        },
+        {
+          "info": {
+            "name": "Update an API service",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tibco.com/businessevents/v1/rest/services/:serviceId",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing API service definition."
+        },
+        {
+          "info": {
+            "name": "Delete an API service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tibco.com/businessevents/v1/rest/services/:serviceId",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "API service unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete an API service definition."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

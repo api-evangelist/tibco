@@ -1,0 +1,424 @@
+{
+  "item": [
+    {
+      "id": "0be7a808-1458-43b0-8e2d-8eea78c51004",
+      "name": "Applications",
+      "description": {
+        "content": "Manage developer applications",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac609dc8-dde0-473c-b675-51524d4ba586",
+          "name": "List applications",
+          "request": {
+            "name": "List applications",
+            "description": {
+              "content": "Retrieve all registered developer applications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "applications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum number of items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "219ab366-e8b0-468e-b9aa-cefa0aaec292",
+              "name": "List of applications",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"username\": \"string\",\n    \"isPackaged\": true,\n    \"created\": \"2026-06-25T11:07:03.195Z\",\n    \"updated\": \"1975-01-20T08:02:47.228Z\",\n    \"keys\": [\n      {\n        \"id\": \"string\",\n        \"apikey\": \"string\",\n        \"secret\": \"string\",\n        \"status\": \"active\",\n        \"rateLimitCeiling\": 3019,\n        \"qpsLimitCeiling\": 9184,\n        \"created\": \"2016-05-06T18:11:02.292Z\"\n      },\n      {\n        \"id\": \"string\",\n        \"apikey\": \"string\",\n        \"secret\": \"string\",\n        \"status\": \"waiting\",\n        \"rateLimitCeiling\": 2554,\n        \"qpsLimitCeiling\": 763,\n        \"created\": \"1988-05-04T09:01:26.199Z\"\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"username\": \"string\",\n    \"isPackaged\": true,\n    \"created\": \"1993-04-10T10:30:51.740Z\",\n    \"updated\": \"2009-05-17T22:18:24.553Z\",\n    \"keys\": [\n      {\n        \"id\": \"string\",\n        \"apikey\": \"string\",\n        \"secret\": \"string\",\n        \"status\": \"waiting\",\n        \"rateLimitCeiling\": 4841,\n        \"qpsLimitCeiling\": 6742,\n        \"created\": \"1995-07-03T14:54:02.031Z\"\n      },\n      {\n        \"id\": \"string\",\n        \"apikey\": \"string\",\n        \"secret\": \"string\",\n        \"status\": \"disabled\",\n        \"rateLimitCeiling\": 1093,\n        \"qpsLimitCeiling\": 6915,\n        \"created\": \"1985-12-23T18:00:31.542Z\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47472591-81fe-4d82-b2a3-83b6e0ae44f5",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2137bfa8-47d4-4c73-b953-33c1308733bf",
+          "name": "Get an application",
+          "request": {
+            "name": "Get an application",
+            "description": {
+              "content": "Retrieve details of a specific developer application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "applications",
+                ":applicationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "applicationId",
+                  "description": "(Required) Application unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d124fd72-e357-46dd-adc4-b89c0fc5bed9",
+              "name": "Application details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) Application unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"username\": \"string\",\n  \"isPackaged\": false,\n  \"created\": \"2017-10-24T21:44:45.751Z\",\n  \"updated\": \"1987-03-02T23:03:45.180Z\",\n  \"keys\": [\n    {\n      \"id\": \"string\",\n      \"apikey\": \"string\",\n      \"secret\": \"string\",\n      \"status\": \"active\",\n      \"rateLimitCeiling\": 4612,\n      \"qpsLimitCeiling\": 6934,\n      \"created\": \"1990-04-02T07:43:53.274Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"apikey\": \"string\",\n      \"secret\": \"string\",\n      \"status\": \"active\",\n      \"rateLimitCeiling\": 6615,\n      \"qpsLimitCeiling\": 1105,\n      \"created\": \"2021-03-24T18:10:30.653Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c79be59b-38d9-429f-94fd-e374f57008c5",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) Application unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf9dc5eb-3591-438d-9711-c903ebb2a85d",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "applications",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "applicationId",
+                      "description": "(Required) Application unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tibco.com/businessevents/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9cfae1a4-9c36-4ff7-8048-9aa418538980",
+    "name": "TIBCO BusinessEvents Agents Applications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIBCO BusinessEvents Agents Plans API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List plans in a package",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/rest/packages/:packageId/plans",
+            "params": [
+              {
+                "name": "packageId",
+                "value": "",
+                "type": "path",
+                "description": "Package unique identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response"
+              }
+            ]
+          },
+          "docs": "Retrieve all subscription plans within an API package."
+        },
+        {
+          "info": {
+            "name": "Create a plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tibco.com/businessevents/v1/rest/packages/:packageId/plans",
+            "params": [
+              {
+                "name": "packageId",
+                "value": "",
+                "type": "path",
+                "description": "Package unique identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new subscription plan within an API package."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1245 @@
+{
+  "item": [
+    {
+      "id": "92d27aa4-eaa1-44fc-9d55-8e1db4b352cb",
+      "name": "Endpoints",
+      "description": {
+        "content": "Manage API endpoints within services",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d2d16003-c4bb-4995-96ee-6a4e1466171a",
+          "name": "List service endpoints",
+          "request": {
+            "name": "List service endpoints",
+            "description": {
+              "content": "Retrieve all endpoints for a specific API service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "services",
+                ":serviceId",
+                "endpoints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceId",
+                  "description": "(Required) API service unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6edfc502-1dd6-4d48-a963-bac9839c5078",
+              "name": "List of endpoints",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "services",
+                    ":serviceId",
+                    "endpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) API service unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"requestAuthenticationType\": \"oauth\",\n    \"requestProtocol\": \"xml-rpc\",\n    \"publicDomains\": [\n      {\n        \"address\": \"string\"\n      },\n      {\n        \"address\": \"string\"\n      }\n    ],\n    \"systemDomains\": [\n      {\n        \"address\": \"string\"\n      },\n      {\n        \"address\": \"string\"\n      }\n    ],\n    \"requestPathAlias\": \"string\",\n    \"supportedHttpMethods\": [\n      \"delete\",\n      \"patch\"\n    ],\n    \"trafficManagerDomain\": \"string\",\n    \"created\": \"2013-07-17T16:19:47.929Z\",\n    \"updated\": \"2009-02-25T19:20:45.897Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"requestAuthenticationType\": \"apiKeyAndSecret\",\n    \"requestProtocol\": \"soap\",\n    \"publicDomains\": [\n      {\n        \"address\": \"string\"\n      },\n      {\n        \"address\": \"string\"\n      }\n    ],\n    \"systemDomains\": [\n      {\n        \"address\": \"string\"\n      },\n      {\n        \"address\": \"string\"\n      }\n    ],\n    \"requestPathAlias\": \"string\",\n    \"supportedHttpMethods\": [\n      \"patch\",\n      \"put\"\n    ],\n    \"trafficManagerDomain\": \"string\",\n    \"created\": \"1959-12-04T04:28:18.521Z\",\n    \"updated\": \"1985-06-22T18:19:26.257Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b1a2564-78f9-4718-a609-dfd49f6815ec",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "services",
+                    ":serviceId",
+                    "endpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) API service unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c93e3bcc-6733-4f14-8305-2f5f2b3cc9ff",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "services",
+                    ":serviceId",
+                    "endpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) API service unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc6424b0-cefd-4dd5-84c2-13ee7a80630f",
+          "name": "Create a service endpoint",
+          "request": {
+            "name": "Create a service endpoint",
+            "description": {
+              "content": "Create a new endpoint for an API service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "services",
+                ":serviceId",
+                "endpoints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceId",
+                  "description": "(Required) API service unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"requestAuthenticationType\": \"<string>\",\n  \"requestProtocol\": \"<string>\",\n  \"requestPathAlias\": \"<string>\",\n  \"publicDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"systemDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"supportedHttpMethods\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e84f6e0e-3367-4115-a4dc-884edc036c79",
+              "name": "Endpoint created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "services",
+                    ":serviceId",
+                    "endpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) API service unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"requestAuthenticationType\": \"<string>\",\n  \"requestProtocol\": \"<string>\",\n  \"requestPathAlias\": \"<string>\",\n  \"publicDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"systemDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"supportedHttpMethods\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"requestAuthenticationType\": \"oauth\",\n  \"requestProtocol\": \"soap\",\n  \"publicDomains\": [\n    {\n      \"address\": \"string\"\n    },\n    {\n      \"address\": \"string\"\n    }\n  ],\n  \"systemDomains\": [\n    {\n      \"address\": \"string\"\n    },\n    {\n      \"address\": \"string\"\n    }\n  ],\n  \"requestPathAlias\": \"string\",\n  \"supportedHttpMethods\": [\n    \"options\",\n    \"get\"\n  ],\n  \"trafficManagerDomain\": \"string\",\n  \"created\": \"1961-11-17T03:03:49.333Z\",\n  \"updated\": \"1958-06-21T21:50:34.431Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fdcb9c3d-3123-4f6d-abd1-9897bcbbcdf2",
+              "name": "The request body or parameters are invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "services",
+                    ":serviceId",
+                    "endpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) API service unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"requestAuthenticationType\": \"<string>\",\n  \"requestProtocol\": \"<string>\",\n  \"requestPathAlias\": \"<string>\",\n  \"publicDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"systemDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"supportedHttpMethods\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c4b5036d-1c74-46a1-a036-ffa0ddd60807",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "services",
+                    ":serviceId",
+                    "endpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) API service unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"requestAuthenticationType\": \"<string>\",\n  \"requestProtocol\": \"<string>\",\n  \"requestPathAlias\": \"<string>\",\n  \"publicDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"systemDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"supportedHttpMethods\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d98b674-5fad-4deb-b984-93bf30ab15c7",
+          "name": "Get a service endpoint",
+          "request": {
+            "name": "Get a service endpoint",
+            "description": {
+              "content": "Retrieve details of a specific service endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "services",
+                ":serviceId",
+                "endpoints",
+                ":endpointId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceId",
+                  "description": "(Required) API service unique identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "endpointId",
+                  "description": "(Required) Endpoint unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22235b5c-da10-477e-bbad-1d485a185cb9",
+              "name": "Endpoint details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "services",
+                    ":serviceId",
+                    "endpoints",
+                    ":endpointId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) API service unique identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpointId",
+                      "description": "(Required) Endpoint unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"requestAuthenticationType\": \"oauth\",\n  \"requestProtocol\": \"soap\",\n  \"publicDomains\": [\n    {\n      \"address\": \"string\"\n    },\n    {\n      \"address\": \"string\"\n    }\n  ],\n  \"systemDomains\": [\n    {\n      \"address\": \"string\"\n    },\n    {\n      \"address\": \"string\"\n    }\n  ],\n  \"requestPathAlias\": \"string\",\n  \"supportedHttpMethods\": [\n    \"options\",\n    \"get\"\n  ],\n  \"trafficManagerDomain\": \"string\",\n  \"created\": \"1961-11-17T03:03:49.333Z\",\n  \"updated\": \"1958-06-21T21:50:34.431Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b401c6e-c1e1-4f0b-90ff-38b053d07b7f",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "services",
+                    ":serviceId",
+                    "endpoints",
+                    ":endpointId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) API service unique identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpointId",
+                      "description": "(Required) Endpoint unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "17844f39-cf3e-4d44-ab8e-78e339234997",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "services",
+                    ":serviceId",
+                    "endpoints",
+                    ":endpointId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) API service unique identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpointId",
+                      "description": "(Required) Endpoint unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f18ba95-4f44-42c0-9b8d-5f4fdfc7a3d5",
+          "name": "Update a service endpoint",
+          "request": {
+            "name": "Update a service endpoint",
+            "description": {
+              "content": "Update an existing service endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "services",
+                ":serviceId",
+                "endpoints",
+                ":endpointId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceId",
+                  "description": "(Required) API service unique identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "endpointId",
+                  "description": "(Required) Endpoint unique identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"requestAuthenticationType\": \"<string>\",\n  \"requestProtocol\": \"<string>\",\n  \"requestPathAlias\": \"<string>\",\n  \"publicDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"systemDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"supportedHttpMethods\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c42ddb86-d7b0-4d0f-a402-26d9c6147eec",
+              "name": "Endpoint updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "services",
+                    ":serviceId",
+                    "endpoints",
+                    ":endpointId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) API service unique identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpointId",
+                      "description": "(Required) Endpoint unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"requestAuthenticationType\": \"<string>\",\n  \"requestProtocol\": \"<string>\",\n  \"requestPathAlias\": \"<string>\",\n  \"publicDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"systemDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"supportedHttpMethods\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"requestAuthenticationType\": \"oauth\",\n  \"requestProtocol\": \"soap\",\n  \"publicDomains\": [\n    {\n      \"address\": \"string\"\n    },\n    {\n      \"address\": \"string\"\n    }\n  ],\n  \"systemDomains\": [\n    {\n      \"address\": \"string\"\n    },\n    {\n      \"address\": \"string\"\n    }\n  ],\n  \"requestPathAlias\": \"string\",\n  \"supportedHttpMethods\": [\n    \"options\",\n    \"get\"\n  ],\n  \"trafficManagerDomain\": \"string\",\n  \"created\": \"1961-11-17T03:03:49.333Z\",\n  \"updated\": \"1958-06-21T21:50:34.431Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9a200aa-45cd-41a7-93c4-40d45db9bd18",
+              "name": "The request body or parameters are invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "services",
+                    ":serviceId",
+                    "endpoints",
+                    ":endpointId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) API service unique identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpointId",
+                      "description": "(Required) Endpoint unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"requestAuthenticationType\": \"<string>\",\n  \"requestProtocol\": \"<string>\",\n  \"requestPathAlias\": \"<string>\",\n  \"publicDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"systemDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"supportedHttpMethods\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "87e5a997-be2a-40bb-a780-d5e9da4000e1",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "services",
+                    ":serviceId",
+                    "endpoints",
+                    ":endpointId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) API service unique identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpointId",
+                      "description": "(Required) Endpoint unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"requestAuthenticationType\": \"<string>\",\n  \"requestProtocol\": \"<string>\",\n  \"requestPathAlias\": \"<string>\",\n  \"publicDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"systemDomains\": [\n    {\n      \"address\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\"\n    }\n  ],\n  \"supportedHttpMethods\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82f66714-cf4a-4c2a-a85e-b14c1eaf199a",
+          "name": "Delete a service endpoint",
+          "request": {
+            "name": "Delete a service endpoint",
+            "description": {
+              "content": "Delete a specific service endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "services",
+                ":serviceId",
+                "endpoints",
+                ":endpointId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceId",
+                  "description": "(Required) API service unique identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "endpointId",
+                  "description": "(Required) Endpoint unique identifier"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47126429-ad17-4705-a48e-19550ac621c1",
+              "name": "Endpoint deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "services",
+                    ":serviceId",
+                    "endpoints",
+                    ":endpointId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) API service unique identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpointId",
+                      "description": "(Required) Endpoint unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c713d51-f6c3-4e2d-adf9-be00598b557a",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "services",
+                    ":serviceId",
+                    "endpoints",
+                    ":endpointId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) API service unique identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpointId",
+                      "description": "(Required) Endpoint unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c408dfc8-92bc-423b-b403-0d4ca698cfde",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "services",
+                    ":serviceId",
+                    "endpoints",
+                    ":endpointId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) API service unique identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpointId",
+                      "description": "(Required) Endpoint unique identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tibco.com/businessevents/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e1e50459-774e-48f8-a2fa-3fbfd3a7ae3b",
+    "name": "TIBCO BusinessEvents Agents Endpoints API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
+      "type": "text/plain"
+    }
+  }
+}

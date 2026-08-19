@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIBCO BusinessEvents Agents Analyses API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Analyses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List analyses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/analyses",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return"
+              }
+            ]
+          },
+          "docs": "Retrieve all Spotfire analysis files accessible to the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Get an analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/analyses/:analysisId",
+            "params": [
+              {
+                "name": "analysisId",
+                "value": "",
+                "type": "path",
+                "description": "Analysis unique identifier (GUID)"
+              }
+            ]
+          },
+          "docs": "Retrieve details and metadata of a specific analysis file."
+        },
+        {
+          "info": {
+            "name": "Export an analysis",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tibco.com/businessevents/v1/analyses/:analysisId/export",
+            "params": [
+              {
+                "name": "analysisId",
+                "value": "",
+                "type": "path",
+                "description": "Analysis unique identifier (GUID)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Export an analysis to a specified format (PDF, image, data)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

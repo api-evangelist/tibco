@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIBCO BusinessEvents Agents API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List inference agents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/agents"
+          },
+          "docs": "Retrieve all inference agents and their current status."
+        },
+        {
+          "info": {
+            "name": "Get an inference agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/agents/:agentId",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "Agent unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details and status of a specific inference agent."
+        },
+        {
+          "info": {
+            "name": "Start an inference agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tibco.com/businessevents/v1/agents/:agentId/start",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "Agent unique identifier"
+              }
+            ]
+          },
+          "docs": "Start a stopped inference agent."
+        },
+        {
+          "info": {
+            "name": "Stop an inference agent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tibco.com/businessevents/v1/agents/:agentId/stop",
+            "params": [
+              {
+                "name": "agentId",
+                "value": "",
+                "type": "path",
+                "description": "Agent unique identifier"
+              }
+            ]
+          },
+          "docs": "Stop a running inference agent."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

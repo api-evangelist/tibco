@@ -1,0 +1,158 @@
+{
+  "item": [
+    {
+      "id": "3e3f1f3c-bd6e-4aa1-897a-91c36d4fdf46",
+      "name": "Scorecards",
+      "description": {
+        "content": "Manage metric scorecards and dashboards",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1e6a55a4-d70d-4bf9-94f3-79bbe22e9173",
+          "name": "List scorecards",
+          "request": {
+            "name": "List scorecards",
+            "description": {
+              "content": "Retrieve all metric scorecards for monitoring rule performance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scorecards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "695ba6f9-63d6-4db5-86c2-df9599ff046a",
+              "name": "List of scorecards",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"metrics\": [\n        {\n          \"name\": \"string\",\n          \"value\": 3518.5558703872543,\n          \"unit\": \"string\",\n          \"threshold\": 6868.5175428196935\n        },\n        {\n          \"name\": \"string\",\n          \"value\": 5523.462920535299,\n          \"unit\": \"string\",\n          \"threshold\": 6003.958196634778\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"metrics\": [\n        {\n          \"name\": \"string\",\n          \"value\": 9902.724115699451,\n          \"unit\": \"string\",\n          \"threshold\": 6380.8431754941175\n        },\n        {\n          \"name\": \"string\",\n          \"value\": 7779.210108265385,\n          \"unit\": \"string\",\n          \"threshold\": 741.9710208504238\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6188254d-483a-4afc-a6f5-48c9c6d51286",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scorecards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tibco.com/businessevents/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "764e6ac2-e60e-4bf7-8865-3bceb6b0dff0",
+    "name": "TIBCO BusinessEvents Agents Scorecards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
+      "type": "text/plain"
+    }
+  }
+}

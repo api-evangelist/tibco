@@ -1,0 +1,223 @@
+{
+  "item": [
+    {
+      "id": "603e8f0d-b6bb-41d1-a36b-b9813f206002",
+      "name": "Reports",
+      "description": {
+        "content": "API usage reporting and analytics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "54f58565-8644-4997-87fc-e452795870f6",
+          "name": "Get API call report",
+          "request": {
+            "name": "Get API call report",
+            "description": {
+              "content": "Retrieve API call volume and performance metrics for the specified time range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "reports",
+                "calls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) Report start date (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) Report end date (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "serviceId",
+                  "value": "<string>",
+                  "description": "Filter by service ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "endpointId",
+                  "value": "<string>",
+                  "description": "Filter by endpoint ID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "048d9498-39fe-4e63-b5cc-f61101997873",
+              "name": "Call report data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "reports",
+                    "calls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "serviceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endpointId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"startDate\": \"2004-10-12T00:24:44.709Z\",\n  \"endDate\": \"1990-05-04T20:12:06.561Z\",\n  \"totalCalls\": 1101,\n  \"successfulCalls\": 4614,\n  \"blockedCalls\": 387,\n  \"otherCalls\": 8620,\n  \"averageResponseTime\": 261.5362035155622,\n  \"callsByEndpoint\": [\n    {\n      \"endpointId\": \"string\",\n      \"endpointName\": \"string\",\n      \"totalCalls\": 9073,\n      \"averageResponseTime\": 2625.0949937867817\n    },\n    {\n      \"endpointId\": \"string\",\n      \"endpointName\": \"string\",\n      \"totalCalls\": 7999,\n      \"averageResponseTime\": 6517.792963417377\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48e79f0f-ea73-41c9-b04c-4eebb220adad",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "reports",
+                    "calls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "serviceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endpointId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tibco.com/businessevents/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b4180cf2-3edf-4aa3-993b-e37ad7be8658",
+    "name": "TIBCO BusinessEvents Agents Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
+      "type": "text/plain"
+    }
+  }
+}

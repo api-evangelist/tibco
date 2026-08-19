@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TIBCO BusinessEvents Agents Scheduled Updates API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scheduled Updates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List scheduled updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/scheduled-updates"
+          },
+          "docs": "Retrieve all scheduled analysis update tasks."
+        },
+        {
+          "info": {
+            "name": "Create a scheduled update",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tibco.com/businessevents/v1/scheduled-updates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new scheduled update task for an analysis."
+        },
+        {
+          "info": {
+            "name": "Get a scheduled update",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tibco.com/businessevents/v1/scheduled-updates/:updateId",
+            "params": [
+              {
+                "name": "updateId",
+                "value": "",
+                "type": "path",
+                "description": "Scheduled update unique identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific scheduled update task."
+        },
+        {
+          "info": {
+            "name": "Delete a scheduled update",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tibco.com/businessevents/v1/scheduled-updates/:updateId",
+            "params": [
+              {
+                "name": "updateId",
+                "value": "",
+                "type": "path",
+                "description": "Scheduled update unique identifier"
+              }
+            ]
+          },
+          "docs": "Delete a scheduled update task."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
