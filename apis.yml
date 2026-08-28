@@ -8,13 +8,13 @@ deliveryModel:
   model: saas
   open_source: false
   commercial: true
-  callable_host: true
+  callable_host: false
   label: Hosted service · you call their endpoint
-  confidence: high
+  confidence: medium
   source:
   - openapi
   - pricing
-  generated: '2026-08-11'
+  generated: '2026-08-28'
   method: derived
 accessModel:
   pricing: enterprise
@@ -805,6 +805,9 @@ apis:
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 common:
+  - type: CapabilityMap
+    url: capabilities/tibco-capability-edges.yml
+    name: TIBCO Business Capability Map
   - type: AgenticAccess
     url: agentic-access/tibco-agentic-access.yml
   - type: DomainSecurity

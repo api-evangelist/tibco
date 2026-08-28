@@ -1,0 +1,37 @@
+slug: tibco
+provider: TIBCO
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Deployments
+  spec_file: tibco-deployments-api-openapi.yml
+  capability_id: BC-4210.40
+  capability_id_l1: BC-4210
+  capability_name: Deployment Orchestration
+  confidence: 0.7
+  evidence: POST /apps/{appId}/push deployApp 'Deploy an integration app'; DELETE /deployments/{deploymentId}
+    undeployApp; POST /deployments/{deploymentId}/scale scaleDeployment
+  reason: Deploy, undeploy and scale application deployments is deployment orchestration of software to
+    a runtime environment. Some overlap with capacity management via 'scale'.
+- tag: Groups
+  spec_file: tibco-groups-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: 'POST /groups createGroup; GET /groups/{groupId}/members listGroupMembers; POST /groups/{groupId}/members
+    addGroupMember; schemas: User, Group'
+  reason: Group and group-membership administration with User schema is access-control administration
+    on the platform, i.e. Identity & Access Management. Not HR org structure — the entities are platform
+    users, so the cross-industry IAM capability is the honest read.
