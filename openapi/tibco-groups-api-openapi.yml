@@ -1,17 +1,24 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TIBCO BusinessEvents Agents Groups API
-  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  title: TIBCO Spotfire Analytics Groups API
+  description: Analytics and data visualization REST API for TIBCO Spotfire Server. Provides programmatic access to manage analysis files, library items, data sources, users, groups, and scheduled tasks for embedded analytics and automated reporting workflows.
   version: '1.0'
   contact:
     name: TIBCO Support
     url: https://support.tibco.com
   termsOfService: https://www.tibco.com/legal/terms-of-use
 servers:
-- url: https://api.tibco.com/businessevents/v1
-  description: TIBCO BusinessEvents Production
+- url: https://spotfire.cloud.tibco.com/api/rest/v1
+  description: TIBCO Spotfire Cloud Production
+- url: https://{spotfire-server}/spotfire/api/rest/v1
+  description: TIBCO Spotfire Server On-Premise
+  variables:
+    spotfire-server:
+      default: localhost
+      description: On-premise Spotfire Server hostname
 security:
 - bearerAuth: []
+- basicAuth: []
 tags:
 - name: Groups
   description: Manage user groups
@@ -209,6 +216,13 @@ components:
         createdDate:
           type: string
           format: date-time
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   parameters:
     groupId:
       name: groupId
@@ -217,19 +231,16 @@ components:
       description: Group unique identifier
       schema:
         type: string
-  responses:
-    NotFound:
-      description: The requested resource was not found
-    BadRequest:
-      description: The request body or parameters are invalid
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
-      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+      description: OAuth 2.0 bearer token for Spotfire API access
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Basic authentication for on-premise Spotfire Server
 externalDocs:
-  description: TIBCO BusinessEvents Documentation
-  url: https://docs.tibco.com/products/tibco-businessevents
+  description: TIBCO Spotfire Server API Documentation
+  url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TIBCO BusinessEvents Agents Decision Tables API
+  title: TIBCO BusinessEvents Decision Tables API
   description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
   version: '1.0'
   contact:
@@ -128,7 +128,26 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    BadRequest:
+      description: The request body or parameters are invalid
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   schemas:
+    DecisionTableRow:
+      type: object
+      properties:
+        id:
+          type: string
+        values:
+          type: array
+          items:
+            type: string
+          description: Cell values in column order
+        enabled:
+          type: boolean
     CreateDecisionTableRequest:
       type: object
       required:
@@ -147,38 +166,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DecisionTableRow'
-    DecisionTableColumn:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-          enum:
-          - condition
-          - action
-        dataType:
-          type: string
-          enum:
-          - string
-          - integer
-          - double
-          - boolean
-          - datetime
-    DecisionTableRow:
-      type: object
-      properties:
-        id:
-          type: string
-        values:
-          type: array
-          items:
-            type: string
-          description: Cell values in column order
-        enabled:
-          type: boolean
     DecisionTable:
       type: object
       properties:
@@ -207,13 +194,26 @@ components:
         modifiedTime:
           type: string
           format: date-time
-  responses:
-    NotFound:
-      description: The requested resource was not found
-    BadRequest:
-      description: The request body or parameters are invalid
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
+    DecisionTableColumn:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - condition
+          - action
+        dataType:
+          type: string
+          enum:
+          - string
+          - integer
+          - double
+          - boolean
+          - datetime
   parameters:
     tableId:
       name: tableId

@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: TIBCO BusinessEvents Agents API
   description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
@@ -99,18 +99,10 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
     NotFound:
       description: The requested resource was not found
-  parameters:
-    agentId:
-      name: agentId
-      in: path
-      required: true
-      description: Agent unique identifier
-      schema:
-        type: string
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   schemas:
     Agent:
       type: object
@@ -144,6 +136,14 @@ components:
         uptime:
           type: string
           description: Agent uptime duration
+  parameters:
+    agentId:
+      name: agentId
+      in: path
+      required: true
+      description: Agent unique identifier
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

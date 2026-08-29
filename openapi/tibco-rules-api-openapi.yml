@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TIBCO BusinessEvents Agents Rules API
+  title: TIBCO BusinessEvents Rules API
   description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
   version: '1.0'
   contact:
@@ -129,10 +129,10 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    NotFound:
-      description: The requested resource was not found
     BadRequest:
       description: The request body or parameters are invalid
+    NotFound:
+      description: The requested resource was not found
     Unauthorized:
       description: Authentication credentials are missing or invalid
   parameters:
@@ -161,33 +161,6 @@ components:
         minimum: 1
         maximum: 100
   schemas:
-    CreateRuleRequest:
-      type: object
-      required:
-      - name
-      - condition
-      - action
-      properties:
-        name:
-          type: string
-          description: Rule name
-          minLength: 1
-        description:
-          type: string
-        priority:
-          type: integer
-          default: 5
-        condition:
-          type: string
-          description: Rule condition expression
-        action:
-          type: string
-          description: Rule action expression
-        enabled:
-          type: boolean
-          default: true
-        ruleSetId:
-          type: string
     Rule:
       type: object
       properties:
@@ -221,6 +194,33 @@ components:
         modifiedTime:
           type: string
           format: date-time
+    CreateRuleRequest:
+      type: object
+      required:
+      - name
+      - condition
+      - action
+      properties:
+        name:
+          type: string
+          description: Rule name
+          minLength: 1
+        description:
+          type: string
+        priority:
+          type: integer
+          default: 5
+        condition:
+          type: string
+          description: Rule condition expression
+        action:
+          type: string
+          description: Rule action expression
+        enabled:
+          type: boolean
+          default: true
+        ruleSetId:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

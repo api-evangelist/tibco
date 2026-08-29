@@ -1,17 +1,24 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TIBCO BusinessEvents Agents Analyses API
-  description: Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.
+  title: TIBCO Spotfire Analytics Analyses API
+  description: Analytics and data visualization REST API for TIBCO Spotfire Server. Provides programmatic access to manage analysis files, library items, data sources, users, groups, and scheduled tasks for embedded analytics and automated reporting workflows.
   version: '1.0'
   contact:
     name: TIBCO Support
     url: https://support.tibco.com
   termsOfService: https://www.tibco.com/legal/terms-of-use
 servers:
-- url: https://api.tibco.com/businessevents/v1
-  description: TIBCO BusinessEvents Production
+- url: https://spotfire.cloud.tibco.com/api/rest/v1
+  description: TIBCO Spotfire Cloud Production
+- url: https://{spotfire-server}/spotfire/api/rest/v1
+  description: TIBCO Spotfire Server On-Premise
+  variables:
+    spotfire-server:
+      default: localhost
+      description: On-premise Spotfire Server hostname
 security:
 - bearerAuth: []
+- basicAuth: []
 tags:
 - name: Analyses
   description: Manage Spotfire analysis files
@@ -97,13 +104,36 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    NotFound:
-      description: The requested resource was not found
     BadRequest:
       description: The request body or parameters are invalid
+    NotFound:
+      description: The requested resource was not found
     Unauthorized:
       description: Authentication credentials are missing or invalid
   schemas:
+    ExportRequest:
+      type: object
+      required:
+      - format
+      properties:
+        format:
+          type: string
+          enum:
+          - pdf
+          - png
+          - jpg
+          - csv
+          - xlsx
+          description: Export format
+        pageIndex:
+          type: integer
+          description: Specific page to export (0-based index)
+        width:
+          type: integer
+          description: Export width in pixels (for image formats)
+        height:
+          type: integer
+          description: Export height in pixels (for image formats)
     Analysis:
       type: object
       properties:
@@ -155,39 +185,7 @@ components:
         modifiedDate:
           type: string
           format: date-time
-    ExportRequest:
-      type: object
-      required:
-      - format
-      properties:
-        format:
-          type: string
-          enum:
-          - pdf
-          - png
-          - jpg
-          - csv
-          - xlsx
-          description: Export format
-        pageIndex:
-          type: integer
-          description: Specific page to export (0-based index)
-        width:
-          type: integer
-          description: Export width in pixels (for image formats)
-        height:
-          type: integer
-          description: Export height in pixels (for image formats)
   parameters:
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        default: 25
-        minimum: 1
-        maximum: 100
     offset:
       name: offset
       in: query
@@ -204,12 +202,25 @@ components:
       schema:
         type: string
         format: uuid
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
-      description: OAuth 2.0 bearer token for TIBCO BusinessEvents API access
+      description: OAuth 2.0 bearer token for Spotfire API access
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Basic authentication for on-premise Spotfire Server
 externalDocs:
-  description: TIBCO BusinessEvents Documentation
-  url: https://docs.tibco.com/products/tibco-businessevents
+  description: TIBCO Spotfire Server API Documentation
+  url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
