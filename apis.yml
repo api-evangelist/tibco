@@ -52,7 +52,7 @@ apis:
   tags:
   - JMS
   - Messaging
-  - Publish-Subscribe
+  - Publish Subscribe
   tags_raw:
   - JMS
   - Messaging
