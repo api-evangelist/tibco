@@ -1,9 +1,8 @@
 name: TIBCO
 segments:
-  - iPaaS
-description: >-
-  APIs and services provided by TIBCO Software Inc., a global leader in integration, API management, and analytics
-  software.
+- iPaaS
+description: APIs and services provided by TIBCO Software Inc., a global leader in integration, API management,
+  and analytics software.
 deliveryModel:
   model: saas
   open_source: false
@@ -32,20 +31,20 @@ accessModel:
 image: https://www.tibco.com/sites/tibco/files/media_entity/2021-04/TIBCO-logo.svg
 url: https://www.tibco.com
 created: '2024'
-modified: '2026-05-19'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 tags:
-  - Analytics
-  - API Management
-  - Cloud
-  - Enterprise Software
-  - Integration
-  - Messaging
-  - Real-Time Data
+- Analytics
+- API Management
+- Cloud
+- Enterprise Software
+- Integration
+- Messaging
+- Real-Time Data
 apis:
 - name: TIBCO Messaging API
-  description: >-
-    Enterprise messaging API supporting EMS (Enterprise Message Service) and FTL (Fast Transport Layer).
+  description: Enterprise messaging API supporting EMS (Enterprise Message Service) and FTL (Fast Transport
+    Layer).
   image: https://www.tibco.com/sites/tibco/files/media_entity/2021-04/TIBCO-logo.svg
   humanURL: https://www.tibco.com/products/tibco-enterprise-message-service
   baseURL: https://messaging.cloud.tibco.com/api/v1
@@ -89,8 +88,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-analyses-api
@@ -118,8 +116,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-applications-api
@@ -149,8 +146,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-apps-api
@@ -180,8 +176,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-channels-api
@@ -209,8 +204,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-connections-api
@@ -238,8 +232,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-data-sources-api
@@ -267,8 +260,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-decision-tables-api
@@ -296,8 +288,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-deployments-api
@@ -327,8 +318,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-endpoints-api
@@ -357,8 +347,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-environments-api
@@ -386,8 +375,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-events-api
@@ -417,8 +405,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-flows-api
@@ -446,8 +433,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-groups-api
@@ -477,8 +463,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-library-api
@@ -506,8 +491,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-members-api
@@ -535,8 +519,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-nodes-api
@@ -564,8 +547,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-packages-api
@@ -593,8 +575,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-plans-api
@@ -622,8 +603,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-reports-api
@@ -651,8 +631,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-rest-api
@@ -682,8 +661,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-rules-api
@@ -711,8 +689,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-scheduled-updates-api
@@ -740,8 +717,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-scorecards-api
@@ -769,8 +745,7 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 - aid: tibco:tibco-users-api
@@ -800,54 +775,55 @@ apis:
   - type: Documentation
     url: https://docs.tibco.com/products/tibco-spotfire/latest
   - type: APIReference
-    url: >-
-      https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
+    url: https://docs.tibco.com/pub/spotfire_server/latest/doc/api/TIB_sfire_server_tsas_admin_api/index.html
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 common:
-  - type: CapabilityMap
-    url: capabilities/tibco-capability-edges.yml
-    name: TIBCO Business Capability Map
-  - type: AgenticAccess
-    url: agentic-access/tibco-agentic-access.yml
-  - type: DomainSecurity
-    url: security/tibco-domain-security.yml
-  - type: Authentication
-    url: authentication/tibco-authentication.yml
-  - type: OAuthScopes
-    url: scopes/tibco-scopes.yml
-  - type: Portal
-    url: https://developer.tibco.com
-  - type: Documentation
-    url: https://docs.tibco.com
-  - type: Support
-    url: https://support.tibco.com
-  - type: StatusPage
-    url: https://status.tibco.com
-  - type: Blog
-    url: https://www.tibco.com/blog
-  - type: GitHub
-    url: https://github.com/tibco
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/tibco
-  - type: Twitter
-    url: https://twitter.com/tibco
-  - type: TermsOfService
-    url: https://www.tibco.com/legal/terms-of-use
-  - type: PrivacyPolicy
-    url: https://www.tibco.com/legal/privacy
-  - type: JSONLD
-    url: json-ld/tibco-context.jsonld
-  - type: JSONSchema
-    url: json-schema/tibco-integration-app-schema.json
-  - type: JSONSchema
-    url: json-schema/tibco-api-service-schema.json
-  - type: Spectral
-    url: rules/tibco-rules.yml
-  - type: Vocabulary
-    url: vocabulary/tibco-vocabulary.yml
-  - type: LlmsText
-    url: https://docs.tibco.com/llms.txt
+- type: Website
+  url: https://tibco.com
+- type: CapabilityMap
+  url: capabilities/tibco-capability-edges.yml
+  name: TIBCO Business Capability Map
+- type: AgenticAccess
+  url: agentic-access/tibco-agentic-access.yml
+- type: DomainSecurity
+  url: security/tibco-domain-security.yml
+- type: Authentication
+  url: authentication/tibco-authentication.yml
+- type: OAuthScopes
+  url: scopes/tibco-scopes.yml
+- type: Portal
+  url: https://developer.tibco.com
+- type: Documentation
+  url: https://docs.tibco.com
+- type: Support
+  url: https://support.tibco.com
+- type: StatusPage
+  url: https://status.tibco.com
+- type: Blog
+  url: https://www.tibco.com/blog
+- type: GitHub
+  url: https://github.com/tibco
+- type: LinkedIn
+  url: https://www.linkedin.com/company/tibco
+- type: Twitter
+  url: https://twitter.com/tibco
+- type: TermsOfService
+  url: https://www.tibco.com/legal/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.tibco.com/legal/privacy
+- type: JSONLD
+  url: json-ld/tibco-context.jsonld
+- type: JSONSchema
+  url: json-schema/tibco-integration-app-schema.json
+- type: JSONSchema
+  url: json-schema/tibco-api-service-schema.json
+- type: Spectral
+  url: rules/tibco-rules.yml
+- type: Vocabulary
+  url: vocabulary/tibco-vocabulary.yml
+- type: LlmsText
+  url: https://docs.tibco.com/llms.txt
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
