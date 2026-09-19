@@ -356,6 +356,8 @@ apis:
   humanURL: https://integration.cloud.tibco.com/
   baseURL: https://integration.cloud.tibco.com/api/v1
   tags:
+  - Environment
+  tags_raw:
   - Environments
   properties:
   - type: OpenAPI
@@ -414,6 +416,8 @@ apis:
   humanURL: https://integration.cloud.tibco.com/
   baseURL: https://integration.cloud.tibco.com/api/v1
   tags:
+  - Flow
+  tags_raw:
   - Flows
   properties:
   - type: OpenAPI
@@ -528,6 +532,8 @@ apis:
   humanURL: https://integration.cloud.tibco.com/
   baseURL: https://integration.cloud.tibco.com/api/v1
   tags:
+  - Node
+  tags_raw:
   - Nodes
   properties:
   - type: OpenAPI
