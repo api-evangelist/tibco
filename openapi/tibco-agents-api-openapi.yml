@@ -99,10 +99,18 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    NotFound:
-      description: The requested resource was not found
     Unauthorized:
       description: Authentication credentials are missing or invalid
+    NotFound:
+      description: The requested resource was not found
+  parameters:
+    agentId:
+      name: agentId
+      in: path
+      required: true
+      description: Agent unique identifier
+      schema:
+        type: string
   schemas:
     Agent:
       type: object
@@ -136,14 +144,6 @@ components:
         uptime:
           type: string
           description: Agent uptime duration
-  parameters:
-    agentId:
-      name: agentId
-      in: path
-      required: true
-      description: Agent unique identifier
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

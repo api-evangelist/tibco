@@ -128,13 +128,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    BadRequest:
-      description: The request body or parameters are invalid
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
   parameters:
     ruleId:
       name: ruleId
@@ -221,6 +214,13 @@ components:
           default: true
         ruleSetId:
           type: string
+  responses:
+    BadRequest:
+      description: The request body or parameters are invalid
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   securitySchemes:
     bearerAuth:
       type: http

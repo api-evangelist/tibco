@@ -128,44 +128,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    BadRequest:
-      description: The request body or parameters are invalid
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
   schemas:
-    DecisionTableRow:
-      type: object
-      properties:
-        id:
-          type: string
-        values:
-          type: array
-          items:
-            type: string
-          description: Cell values in column order
-        enabled:
-          type: boolean
-    CreateDecisionTableRequest:
-      type: object
-      required:
-      - name
-      - columns
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/DecisionTableColumn'
-        rows:
-          type: array
-          items:
-            $ref: '#/components/schemas/DecisionTableRow'
     DecisionTable:
       type: object
       properties:
@@ -194,6 +157,24 @@ components:
         modifiedTime:
           type: string
           format: date-time
+    CreateDecisionTableRequest:
+      type: object
+      required:
+      - name
+      - columns
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/DecisionTableColumn'
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/DecisionTableRow'
     DecisionTableColumn:
       type: object
       properties:
@@ -214,6 +195,18 @@ components:
           - double
           - boolean
           - datetime
+    DecisionTableRow:
+      type: object
+      properties:
+        id:
+          type: string
+        values:
+          type: array
+          items:
+            type: string
+          description: Cell values in column order
+        enabled:
+          type: boolean
   parameters:
     tableId:
       name: tableId
@@ -239,6 +232,13 @@ components:
         default: 25
         minimum: 1
         maximum: 100
+  responses:
+    BadRequest:
+      description: The request body or parameters are invalid
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   securitySchemes:
     bearerAuth:
       type: http

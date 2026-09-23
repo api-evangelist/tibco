@@ -103,13 +103,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    BadRequest:
-      description: The request body or parameters are invalid
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
   schemas:
     ExportRequest:
       type: object
@@ -185,15 +178,14 @@ components:
         modifiedDate:
           type: string
           format: date-time
+  responses:
+    BadRequest:
+      description: The request body or parameters are invalid
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   parameters:
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
     analysisId:
       name: analysisId
       in: path
@@ -202,6 +194,14 @@ components:
       schema:
         type: string
         format: uuid
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
     limit:
       name: limit
       in: query

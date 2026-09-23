@@ -45,6 +45,9 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   schemas:
     Node:
       type: object
@@ -83,9 +86,6 @@ components:
           type: string
           format: date-time
           description: When the node was started
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
   securitySchemes:
     bearerAuth:
       type: http

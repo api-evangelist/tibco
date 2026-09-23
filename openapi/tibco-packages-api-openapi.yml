@@ -123,13 +123,34 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    BadRequest:
-      description: The request body or parameters are invalid
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response
+      schema:
+        type: string
+    packageId:
+      name: packageId
+      in: path
+      required: true
+      description: Package unique identifier
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 20
   schemas:
     CreatePackageRequest:
       type: object
@@ -178,34 +199,13 @@ components:
         updated:
           type: string
           format: date-time
-  parameters:
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-    packageId:
-      name: packageId
-      in: path
-      required: true
-      description: Package unique identifier
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        default: 20
-    fields:
-      name: fields
-      in: query
-      description: Comma-separated list of fields to include in the response
-      schema:
-        type: string
+  responses:
+    BadRequest:
+      description: The request body or parameters are invalid
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   securitySchemes:
     oauth2:
       type: oauth2

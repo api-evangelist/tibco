@@ -103,38 +103,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    BadRequest:
-      description: The request body or parameters are invalid
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-  parameters:
-    eventId:
-      name: eventId
-      in: path
-      required: true
-      description: Event unique identifier
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        default: 25
-        minimum: 1
-        maximum: 100
   schemas:
     Event:
       type: object
@@ -193,6 +161,38 @@ components:
         correlationId:
           type: string
           description: Correlation identifier
+  responses:
+    BadRequest:
+      description: The request body or parameters are invalid
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  parameters:
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+    eventId:
+      name: eventId
+      in: path
+      required: true
+      description: Event unique identifier
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

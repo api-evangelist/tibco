@@ -179,23 +179,33 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    BadRequest:
-      description: The request body or parameters are invalid
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
+  parameters:
+    itemId:
+      name: itemId
+      in: path
+      required: true
+      description: Library item unique identifier (GUID)
+      schema:
+        type: string
+        format: uuid
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
   schemas:
-    UpdateLibraryItemRequest:
-      type: object
-      properties:
-        title:
-          type: string
-          description: Updated item title
-        description:
-          type: string
-          description: Updated item description
     LibraryItem:
       type: object
       properties:
@@ -262,32 +272,22 @@ components:
                 - write
                 - full-control
           description: Permission entries
-  parameters:
-    itemId:
-      name: itemId
-      in: path
-      required: true
-      description: Library item unique identifier (GUID)
-      schema:
-        type: string
-        format: uuid
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        default: 25
-        minimum: 1
-        maximum: 100
+    UpdateLibraryItemRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Updated item title
+        description:
+          type: string
+          description: Updated item description
+  responses:
+    BadRequest:
+      description: The request body or parameters are invalid
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   securitySchemes:
     bearerAuth:
       type: http

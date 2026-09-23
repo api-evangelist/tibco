@@ -38,6 +38,9 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   schemas:
     Scorecard:
       type: object
@@ -65,9 +68,6 @@ components:
               threshold:
                 type: number
           description: Metrics tracked by the scorecard
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
   securitySchemes:
     bearerAuth:
       type: http

@@ -103,6 +103,14 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    updateId:
+      name: updateId
+      in: path
+      required: true
+      description: Scheduled update unique identifier
+      schema:
+        type: string
   responses:
     BadRequest:
       description: The request body or parameters are invalid
@@ -111,39 +119,6 @@ components:
     Unauthorized:
       description: Authentication credentials are missing or invalid
   schemas:
-    CreateScheduledUpdateRequest:
-      type: object
-      required:
-      - analysisId
-      - schedule
-      properties:
-        analysisId:
-          type: string
-          format: uuid
-        schedule:
-          type: object
-          required:
-          - frequency
-          - startTime
-          properties:
-            frequency:
-              type: string
-              enum:
-              - once
-              - daily
-              - weekly
-              - monthly
-            startTime:
-              type: string
-              format: date-time
-            endTime:
-              type: string
-              format: date-time
-            interval:
-              type: integer
-        enabled:
-          type: boolean
-          default: true
     ScheduledUpdate:
       type: object
       properties:
@@ -191,14 +166,39 @@ components:
           - failure
           - running
           description: Last run status
-  parameters:
-    updateId:
-      name: updateId
-      in: path
-      required: true
-      description: Scheduled update unique identifier
-      schema:
-        type: string
+    CreateScheduledUpdateRequest:
+      type: object
+      required:
+      - analysisId
+      - schedule
+      properties:
+        analysisId:
+          type: string
+          format: uuid
+        schedule:
+          type: object
+          required:
+          - frequency
+          - startTime
+          properties:
+            frequency:
+              type: string
+              enum:
+              - once
+              - daily
+              - weekly
+              - monthly
+            startTime:
+              type: string
+              format: date-time
+            endTime:
+              type: string
+              format: date-time
+            interval:
+              type: integer
+        enabled:
+          type: boolean
+          default: true
   securitySchemes:
     bearerAuth:
       type: http

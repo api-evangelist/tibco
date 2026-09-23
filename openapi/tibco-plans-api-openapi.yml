@@ -65,6 +65,20 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response
+      schema:
+        type: string
+    packageId:
+      name: packageId
+      in: path
+      required: true
+      description: Package unique identifier
+      schema:
+        type: string
   responses:
     BadRequest:
       description: The request body or parameters are invalid
@@ -141,20 +155,6 @@ components:
           - hour
           - day
           - month
-  parameters:
-    packageId:
-      name: packageId
-      in: path
-      required: true
-      description: Package unique identifier
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      description: Comma-separated list of fields to include in the response
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

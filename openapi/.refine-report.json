@@ -47,7 +47,8 @@
     "tibco-mashery-openapi.yml: tagged paths PUT /rest/services/{serviceId} -> Rest",
     "tibco-mashery-openapi.yml: tagged paths DELETE /rest/services/{serviceId} -> Rest",
     "tibco-mashery-openapi.yml: declared missing tag: Rest",
-    "tibco-spotfire-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+    "tibco-spotfire-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "tibco-agents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
