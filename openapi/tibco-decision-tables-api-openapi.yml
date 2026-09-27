@@ -129,6 +129,44 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    DecisionTableColumn:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - condition
+          - action
+        dataType:
+          type: string
+          enum:
+          - string
+          - integer
+          - double
+          - boolean
+          - datetime
+    CreateDecisionTableRequest:
+      type: object
+      required:
+      - name
+      - columns
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/DecisionTableColumn'
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/DecisionTableRow'
     DecisionTable:
       type: object
       properties:
@@ -157,44 +195,6 @@ components:
         modifiedTime:
           type: string
           format: date-time
-    CreateDecisionTableRequest:
-      type: object
-      required:
-      - name
-      - columns
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/DecisionTableColumn'
-        rows:
-          type: array
-          items:
-            $ref: '#/components/schemas/DecisionTableRow'
-    DecisionTableColumn:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-          enum:
-          - condition
-          - action
-        dataType:
-          type: string
-          enum:
-          - string
-          - integer
-          - double
-          - boolean
-          - datetime
     DecisionTableRow:
       type: object
       properties:
@@ -208,13 +208,6 @@ components:
         enabled:
           type: boolean
   parameters:
-    tableId:
-      name: tableId
-      in: path
-      required: true
-      description: Decision table unique identifier
-      schema:
-        type: string
     offset:
       name: offset
       in: query
@@ -223,6 +216,13 @@ components:
         type: integer
         default: 0
         minimum: 0
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      description: Decision table unique identifier
+      schema:
+        type: string
     limit:
       name: limit
       in: query
@@ -233,12 +233,12 @@ components:
         minimum: 1
         maximum: 100
   responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
     BadRequest:
       description: The request body or parameters are invalid
     NotFound:
       description: The requested resource was not found
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
   securitySchemes:
     bearerAuth:
       type: http

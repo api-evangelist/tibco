@@ -123,49 +123,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Comma-separated list of fields to include in the response
-      schema:
-        type: string
-    packageId:
-      name: packageId
-      in: path
-      required: true
-      description: Package unique identifier
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        default: 20
   schemas:
-    CreatePackageRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Package name
-        description:
-          type: string
-        notifyDeveloperNearQuota:
-          type: boolean
-        notifyDeveloperOverQuota:
-          type: boolean
     Package:
       type: object
       properties:
@@ -199,13 +157,55 @@ components:
         updated:
           type: string
           format: date-time
+    CreatePackageRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Package name
+        description:
+          type: string
+        notifyDeveloperNearQuota:
+          type: boolean
+        notifyDeveloperOverQuota:
+          type: boolean
+  parameters:
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 20
+    packageId:
+      name: packageId
+      in: path
+      required: true
+      description: Package unique identifier
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response
+      schema:
+        type: string
   responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
     BadRequest:
       description: The request body or parameters are invalid
     NotFound:
       description: The requested resource was not found
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
   securitySchemes:
     oauth2:
       type: oauth2

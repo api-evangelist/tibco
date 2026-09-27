@@ -103,21 +103,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    dataSourceId:
-      name: dataSourceId
-      in: path
-      required: true
-      description: Data source unique identifier
-      schema:
-        type: string
-  responses:
-    BadRequest:
-      description: The request body or parameters are invalid
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
   schemas:
     CreateDataSourceRequest:
       type: object
@@ -187,6 +172,21 @@ components:
         modifiedDate:
           type: string
           format: date-time
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+    BadRequest:
+      description: The request body or parameters are invalid
+    NotFound:
+      description: The requested resource was not found
+  parameters:
+    dataSourceId:
+      name: dataSourceId
+      in: path
+      required: true
+      description: Data source unique identifier
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

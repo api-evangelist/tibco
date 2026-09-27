@@ -61,19 +61,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   parameters:
-    fields:
-      name: fields
-      in: query
-      description: Comma-separated list of fields to include in the response
-      schema:
-        type: string
-    memberId:
-      name: memberId
-      in: path
-      required: true
-      description: Member unique identifier
-      schema:
-        type: string
     offset:
       name: offset
       in: query
@@ -81,6 +68,13 @@ components:
       schema:
         type: integer
         default: 0
+    memberId:
+      name: memberId
+      in: path
+      required: true
+      description: Member unique identifier
+      schema:
+        type: string
     limit:
       name: limit
       in: query
@@ -88,6 +82,12 @@ components:
       schema:
         type: integer
         default: 20
+    fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response
+      schema:
+        type: string
   schemas:
     Member:
       type: object
@@ -113,10 +113,10 @@ components:
           format: date-time
           description: When the member registered
   responses:
-    NotFound:
-      description: The requested resource was not found
     Unauthorized:
       description: Authentication credentials are missing or invalid
+    NotFound:
+      description: The requested resource was not found
   securitySchemes:
     oauth2:
       type: oauth2

@@ -61,19 +61,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   parameters:
-    fields:
-      name: fields
-      in: query
-      description: Comma-separated list of fields to include in the response
-      schema:
-        type: string
-    applicationId:
-      name: applicationId
-      in: path
-      required: true
-      description: Application unique identifier
-      schema:
-        type: string
     offset:
       name: offset
       in: query
@@ -81,6 +68,12 @@ components:
       schema:
         type: integer
         default: 0
+    fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response
+      schema:
+        type: string
     limit:
       name: limit
       in: query
@@ -88,33 +81,14 @@ components:
       schema:
         type: integer
         default: 20
+    applicationId:
+      name: applicationId
+      in: path
+      required: true
+      description: Application unique identifier
+      schema:
+        type: string
   schemas:
-    Key:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the key
-        apikey:
-          type: string
-          description: API key value
-        secret:
-          type: string
-          description: API key secret
-        status:
-          type: string
-          enum:
-          - active
-          - waiting
-          - disabled
-          description: Key status
-        rateLimitCeiling:
-          type: integer
-        qpsLimitCeiling:
-          type: integer
-        created:
-          type: string
-          format: date-time
     Application:
       type: object
       properties:
@@ -143,11 +117,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Key'
+    Key:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the key
+        apikey:
+          type: string
+          description: API key value
+        secret:
+          type: string
+          description: API key secret
+        status:
+          type: string
+          enum:
+          - active
+          - waiting
+          - disabled
+          description: Key status
+        rateLimitCeiling:
+          type: integer
+        qpsLimitCeiling:
+          type: integer
+        created:
+          type: string
+          format: date-time
   responses:
-    NotFound:
-      description: The requested resource was not found
     Unauthorized:
       description: Authentication credentials are missing or invalid
+    NotFound:
+      description: The requested resource was not found
   securitySchemes:
     oauth2:
       type: oauth2

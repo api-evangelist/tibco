@@ -60,11 +60,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-    NotFound:
-      description: The requested resource was not found
   schemas:
     Environment:
       type: object
@@ -92,6 +87,11 @@ components:
           - active
           - inactive
           description: Environment status
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   parameters:
     environmentId:
       name: environmentId

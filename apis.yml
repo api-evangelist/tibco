@@ -41,6 +41,7 @@ tags:
 - Integration
 - Messaging
 - Real-Time Data
+- Real-Time
 apis:
 - name: TIBCO Messaging API
   description: Enterprise messaging API supporting EMS (Enterprise Message Service) and FTL (Fast Transport

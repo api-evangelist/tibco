@@ -103,22 +103,40 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    updateId:
-      name: updateId
-      in: path
-      required: true
-      description: Scheduled update unique identifier
-      schema:
-        type: string
-  responses:
-    BadRequest:
-      description: The request body or parameters are invalid
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
   schemas:
+    CreateScheduledUpdateRequest:
+      type: object
+      required:
+      - analysisId
+      - schedule
+      properties:
+        analysisId:
+          type: string
+          format: uuid
+        schedule:
+          type: object
+          required:
+          - frequency
+          - startTime
+          properties:
+            frequency:
+              type: string
+              enum:
+              - once
+              - daily
+              - weekly
+              - monthly
+            startTime:
+              type: string
+              format: date-time
+            endTime:
+              type: string
+              format: date-time
+            interval:
+              type: integer
+        enabled:
+          type: boolean
+          default: true
     ScheduledUpdate:
       type: object
       properties:
@@ -166,39 +184,21 @@ components:
           - failure
           - running
           description: Last run status
-    CreateScheduledUpdateRequest:
-      type: object
-      required:
-      - analysisId
-      - schedule
-      properties:
-        analysisId:
-          type: string
-          format: uuid
-        schedule:
-          type: object
-          required:
-          - frequency
-          - startTime
-          properties:
-            frequency:
-              type: string
-              enum:
-              - once
-              - daily
-              - weekly
-              - monthly
-            startTime:
-              type: string
-              format: date-time
-            endTime:
-              type: string
-              format: date-time
-            interval:
-              type: integer
-        enabled:
-          type: boolean
-          default: true
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+    BadRequest:
+      description: The request body or parameters are invalid
+    NotFound:
+      description: The requested resource was not found
+  parameters:
+    updateId:
+      name: updateId
+      in: path
+      required: true
+      description: Scheduled update unique identifier
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

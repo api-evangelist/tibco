@@ -176,6 +176,18 @@ components:
         createdDate:
           type: string
           format: date-time
+    CreateGroupRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Group name
+          minLength: 1
+        description:
+          type: string
+          description: Group description
     User:
       type: object
       properties:
@@ -204,25 +216,13 @@ components:
           items:
             type: string
           description: Group names the user belongs to
-    CreateGroupRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Group name
-          minLength: 1
-        description:
-          type: string
-          description: Group description
   responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
     BadRequest:
       description: The request body or parameters are invalid
     NotFound:
       description: The requested resource was not found
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
   parameters:
     groupId:
       name: groupId
