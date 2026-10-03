@@ -65,28 +65,30 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-    BadRequest:
-      description: The request body or parameters are invalid
-    NotFound:
-      description: The requested resource was not found
-  parameters:
-    packageId:
-      name: packageId
-      in: path
-      required: true
-      description: Package unique identifier
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      description: Comma-separated list of fields to include in the response
-      schema:
-        type: string
   schemas:
+    CreatePlanRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        maxNumKeysAllowed:
+          type: integer
+        qpsLimitCeiling:
+          type: integer
+        rateLimitCeiling:
+          type: integer
+        rateLimitPeriod:
+          type: string
+          enum:
+          - second
+          - minute
+          - hour
+          - day
+          - month
     Plan:
       type: object
       properties:
@@ -132,29 +134,27 @@ components:
         updated:
           type: string
           format: date-time
-    CreatePlanRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        maxNumKeysAllowed:
-          type: integer
-        qpsLimitCeiling:
-          type: integer
-        rateLimitCeiling:
-          type: integer
-        rateLimitPeriod:
-          type: string
-          enum:
-          - second
-          - minute
-          - hour
-          - day
-          - month
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response
+      schema:
+        type: string
+    packageId:
+      name: packageId
+      in: path
+      required: true
+      description: Package unique identifier
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

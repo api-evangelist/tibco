@@ -143,6 +143,13 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   parameters:
     offset:
       name: offset
@@ -152,6 +159,13 @@ components:
         type: integer
         default: 0
         minimum: 0
+    appId:
+      name: appId
+      in: path
+      required: true
+      description: Integration app unique identifier
+      schema:
+        type: string
     limit:
       name: limit
       in: query
@@ -168,32 +182,7 @@ components:
       description: Deployment unique identifier
       schema:
         type: string
-    appId:
-      name: appId
-      in: path
-      required: true
-      description: Integration app unique identifier
-      schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-    BadRequest:
-      description: The request body or parameters are invalid
-    NotFound:
-      description: The requested resource was not found
   schemas:
-    DeployRequest:
-      type: object
-      properties:
-        environmentId:
-          type: string
-          description: Target environment for deployment
-        instanceCount:
-          type: integer
-          minimum: 1
-          default: 1
-          description: Number of instances to deploy
     Deployment:
       type: object
       properties:
@@ -232,6 +221,17 @@ components:
           type: string
           format: date-time
           description: When the deployment was last modified
+    DeployRequest:
+      type: object
+      properties:
+        environmentId:
+          type: string
+          description: Target environment for deployment
+        instanceCount:
+          type: integer
+          minimum: 1
+          default: 1
+          description: Number of instances to deploy
   securitySchemes:
     bearerAuth:
       type: http

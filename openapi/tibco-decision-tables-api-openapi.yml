@@ -128,6 +128,38 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  parameters:
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      description: Decision table unique identifier
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
   schemas:
     DecisionTableColumn:
       type: object
@@ -149,24 +181,18 @@ components:
           - double
           - boolean
           - datetime
-    CreateDecisionTableRequest:
+    DecisionTableRow:
       type: object
-      required:
-      - name
-      - columns
       properties:
-        name:
+        id:
           type: string
-        description:
-          type: string
-        columns:
+        values:
           type: array
           items:
-            $ref: '#/components/schemas/DecisionTableColumn'
-        rows:
-          type: array
-          items:
-            $ref: '#/components/schemas/DecisionTableRow'
+            type: string
+          description: Cell values in column order
+        enabled:
+          type: boolean
     DecisionTable:
       type: object
       properties:
@@ -195,50 +221,24 @@ components:
         modifiedTime:
           type: string
           format: date-time
-    DecisionTableRow:
+    CreateDecisionTableRequest:
       type: object
+      required:
+      - name
+      - columns
       properties:
-        id:
+        name:
           type: string
-        values:
+        description:
+          type: string
+        columns:
           type: array
           items:
-            type: string
-          description: Cell values in column order
-        enabled:
-          type: boolean
-  parameters:
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
-    tableId:
-      name: tableId
-      in: path
-      required: true
-      description: Decision table unique identifier
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        default: 25
-        minimum: 1
-        maximum: 100
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-    BadRequest:
-      description: The request body or parameters are invalid
-    NotFound:
-      description: The requested resource was not found
+            $ref: '#/components/schemas/DecisionTableColumn'
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/DecisionTableRow'
   securitySchemes:
     bearerAuth:
       type: http

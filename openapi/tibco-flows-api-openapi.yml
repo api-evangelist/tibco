@@ -44,6 +44,19 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+  parameters:
+    appId:
+      name: appId
+      in: path
+      required: true
+      description: Integration app unique identifier
+      schema:
+        type: string
   schemas:
     Flow:
       type: object
@@ -72,19 +85,6 @@ components:
               type:
                 type: string
           description: Activities in the flow
-  responses:
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-  parameters:
-    appId:
-      name: appId
-      in: path
-      required: true
-      description: Integration app unique identifier
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

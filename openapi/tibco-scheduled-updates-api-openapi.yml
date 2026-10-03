@@ -103,40 +103,14 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   schemas:
-    CreateScheduledUpdateRequest:
-      type: object
-      required:
-      - analysisId
-      - schedule
-      properties:
-        analysisId:
-          type: string
-          format: uuid
-        schedule:
-          type: object
-          required:
-          - frequency
-          - startTime
-          properties:
-            frequency:
-              type: string
-              enum:
-              - once
-              - daily
-              - weekly
-              - monthly
-            startTime:
-              type: string
-              format: date-time
-            endTime:
-              type: string
-              format: date-time
-            interval:
-              type: integer
-        enabled:
-          type: boolean
-          default: true
     ScheduledUpdate:
       type: object
       properties:
@@ -184,13 +158,39 @@ components:
           - failure
           - running
           description: Last run status
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-    BadRequest:
-      description: The request body or parameters are invalid
-    NotFound:
-      description: The requested resource was not found
+    CreateScheduledUpdateRequest:
+      type: object
+      required:
+      - analysisId
+      - schedule
+      properties:
+        analysisId:
+          type: string
+          format: uuid
+        schedule:
+          type: object
+          required:
+          - frequency
+          - startTime
+          properties:
+            frequency:
+              type: string
+              enum:
+              - once
+              - daily
+              - weekly
+              - monthly
+            startTime:
+              type: string
+              format: date-time
+            endTime:
+              type: string
+              format: date-time
+            interval:
+              type: integer
+        enabled:
+          type: boolean
+          default: true
   parameters:
     updateId:
       name: updateId

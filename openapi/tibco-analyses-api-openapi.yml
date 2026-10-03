@@ -103,7 +103,22 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+    BadRequest:
+      description: The request body or parameters are invalid
   parameters:
+    analysisId:
+      name: analysisId
+      in: path
+      required: true
+      description: Analysis unique identifier (GUID)
+      schema:
+        type: string
+        format: uuid
     offset:
       name: offset
       in: query
@@ -121,22 +136,30 @@ components:
         default: 25
         minimum: 1
         maximum: 100
-    analysisId:
-      name: analysisId
-      in: path
-      required: true
-      description: Analysis unique identifier (GUID)
-      schema:
-        type: string
-        format: uuid
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-    BadRequest:
-      description: The request body or parameters are invalid
-    NotFound:
-      description: The requested resource was not found
   schemas:
+    ExportRequest:
+      type: object
+      required:
+      - format
+      properties:
+        format:
+          type: string
+          enum:
+          - pdf
+          - png
+          - jpg
+          - csv
+          - xlsx
+          description: Export format
+        pageIndex:
+          type: integer
+          description: Specific page to export (0-based index)
+        width:
+          type: integer
+          description: Export width in pixels (for image formats)
+        height:
+          type: integer
+          description: Export height in pixels (for image formats)
     Analysis:
       type: object
       properties:
@@ -188,29 +211,6 @@ components:
         modifiedDate:
           type: string
           format: date-time
-    ExportRequest:
-      type: object
-      required:
-      - format
-      properties:
-        format:
-          type: string
-          enum:
-          - pdf
-          - png
-          - jpg
-          - csv
-          - xlsx
-          description: Export format
-        pageIndex:
-          type: integer
-          description: Specific page to export (0-based index)
-        width:
-          type: integer
-          description: Export width in pixels (for image formats)
-        height:
-          type: integer
-          description: Export height in pixels (for image formats)
   securitySchemes:
     bearerAuth:
       type: http

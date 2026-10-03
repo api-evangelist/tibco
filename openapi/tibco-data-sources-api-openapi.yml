@@ -103,38 +103,14 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   schemas:
-    CreateDataSourceRequest:
-      type: object
-      required:
-      - name
-      - type
-      - connectionString
-      properties:
-        name:
-          type: string
-          description: Data source name
-        type:
-          type: string
-          enum:
-          - database
-          - file
-          - web-service
-          - information-link
-          - custom
-        connectionString:
-          type: string
-          description: Connection string
-        provider:
-          type: string
-          description: Database provider name
-        username:
-          type: string
-          description: Connection username
-        password:
-          type: string
-          format: password
-          description: Connection password
     DataSource:
       type: object
       properties:
@@ -172,13 +148,37 @@ components:
         modifiedDate:
           type: string
           format: date-time
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-    BadRequest:
-      description: The request body or parameters are invalid
-    NotFound:
-      description: The requested resource was not found
+    CreateDataSourceRequest:
+      type: object
+      required:
+      - name
+      - type
+      - connectionString
+      properties:
+        name:
+          type: string
+          description: Data source name
+        type:
+          type: string
+          enum:
+          - database
+          - file
+          - web-service
+          - information-link
+          - custom
+        connectionString:
+          type: string
+          description: Connection string
+        provider:
+          type: string
+          description: Database provider name
+        username:
+          type: string
+          description: Connection username
+        password:
+          type: string
+          format: password
+          description: Connection password
   parameters:
     dataSourceId:
       name: dataSourceId

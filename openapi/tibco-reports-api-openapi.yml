@@ -58,9 +58,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
   schemas:
     CallReport:
       type: object
@@ -101,6 +98,9 @@ components:
               averageResponseTime:
                 type: number
                 format: double
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   securitySchemes:
     oauth2:
       type: oauth2
