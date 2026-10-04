@@ -65,30 +65,14 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+    NotFound:
+      description: The requested resource was not found
   schemas:
-    CreatePlanRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        maxNumKeysAllowed:
-          type: integer
-        qpsLimitCeiling:
-          type: integer
-        rateLimitCeiling:
-          type: integer
-        rateLimitPeriod:
-          type: string
-          enum:
-          - second
-          - minute
-          - hour
-          - day
-          - month
     Plan:
       type: object
       properties:
@@ -134,13 +118,29 @@ components:
         updated:
           type: string
           format: date-time
-  responses:
-    NotFound:
-      description: The requested resource was not found
-    BadRequest:
-      description: The request body or parameters are invalid
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
+    CreatePlanRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        maxNumKeysAllowed:
+          type: integer
+        qpsLimitCeiling:
+          type: integer
+        rateLimitCeiling:
+          type: integer
+        rateLimitPeriod:
+          type: string
+          enum:
+          - second
+          - minute
+          - hour
+          - day
+          - month
   parameters:
     fields:
       name: fields

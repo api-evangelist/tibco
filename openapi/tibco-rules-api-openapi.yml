@@ -128,13 +128,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found
-    BadRequest:
-      description: The request body or parameters are invalid
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
   parameters:
     offset:
       name: offset
@@ -144,13 +137,6 @@ components:
         type: integer
         default: 0
         minimum: 0
-    ruleId:
-      name: ruleId
-      in: path
-      required: true
-      description: Rule unique identifier
-      schema:
-        type: string
     limit:
       name: limit
       in: query
@@ -160,7 +146,48 @@ components:
         default: 25
         minimum: 1
         maximum: 100
+    ruleId:
+      name: ruleId
+      in: path
+      required: true
+      description: Rule unique identifier
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+    NotFound:
+      description: The requested resource was not found
   schemas:
+    CreateRuleRequest:
+      type: object
+      required:
+      - name
+      - condition
+      - action
+      properties:
+        name:
+          type: string
+          description: Rule name
+          minLength: 1
+        description:
+          type: string
+        priority:
+          type: integer
+          default: 5
+        condition:
+          type: string
+          description: Rule condition expression
+        action:
+          type: string
+          description: Rule action expression
+        enabled:
+          type: boolean
+          default: true
+        ruleSetId:
+          type: string
     Rule:
       type: object
       properties:
@@ -194,33 +221,6 @@ components:
         modifiedTime:
           type: string
           format: date-time
-    CreateRuleRequest:
-      type: object
-      required:
-      - name
-      - condition
-      - action
-      properties:
-        name:
-          type: string
-          description: Rule name
-          minLength: 1
-        description:
-          type: string
-        priority:
-          type: integer
-          default: 5
-        condition:
-          type: string
-          description: Rule condition expression
-        action:
-          type: string
-          description: Rule action expression
-        enabled:
-          type: boolean
-          default: true
-        ruleSetId:
-          type: string
   securitySchemes:
     bearerAuth:
       type: http

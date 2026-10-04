@@ -129,35 +129,56 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    endpointId:
-      name: endpointId
-      in: path
-      required: true
-      description: Endpoint unique identifier
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      description: Comma-separated list of fields to include in the response
-      schema:
-        type: string
-    serviceId:
-      name: serviceId
-      in: path
-      required: true
-      description: API service unique identifier
-      schema:
-        type: string
   responses:
-    NotFound:
-      description: The requested resource was not found
     BadRequest:
       description: The request body or parameters are invalid
     Unauthorized:
       description: Authentication credentials are missing or invalid
+    NotFound:
+      description: The requested resource was not found
   schemas:
+    CreateEndpointRequest:
+      type: object
+      required:
+      - name
+      - requestAuthenticationType
+      - requestProtocol
+      properties:
+        name:
+          type: string
+          description: Endpoint name
+        requestAuthenticationType:
+          type: string
+          enum:
+          - apiKey
+          - apiKeyAndSecret
+          - oauth
+        requestProtocol:
+          type: string
+          enum:
+          - rest
+          - soap
+          - xml-rpc
+        requestPathAlias:
+          type: string
+        publicDomains:
+          type: array
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+        systemDomains:
+          type: array
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+        supportedHttpMethods:
+          type: array
+          items:
+            type: string
     Endpoint:
       type: object
       properties:
@@ -222,48 +243,27 @@ components:
         updated:
           type: string
           format: date-time
-    CreateEndpointRequest:
-      type: object
-      required:
-      - name
-      - requestAuthenticationType
-      - requestProtocol
-      properties:
-        name:
-          type: string
-          description: Endpoint name
-        requestAuthenticationType:
-          type: string
-          enum:
-          - apiKey
-          - apiKeyAndSecret
-          - oauth
-        requestProtocol:
-          type: string
-          enum:
-          - rest
-          - soap
-          - xml-rpc
-        requestPathAlias:
-          type: string
-        publicDomains:
-          type: array
-          items:
-            type: object
-            properties:
-              address:
-                type: string
-        systemDomains:
-          type: array
-          items:
-            type: object
-            properties:
-              address:
-                type: string
-        supportedHttpMethods:
-          type: array
-          items:
-            type: string
+  parameters:
+    serviceId:
+      name: serviceId
+      in: path
+      required: true
+      description: API service unique identifier
+      schema:
+        type: string
+    endpointId:
+      name: endpointId
+      in: path
+      required: true
+      description: Endpoint unique identifier
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

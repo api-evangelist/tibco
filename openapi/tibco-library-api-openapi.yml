@@ -180,15 +180,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    UpdateLibraryItemRequest:
-      type: object
-      properties:
-        title:
-          type: string
-          description: Updated item title
-        description:
-          type: string
-          description: Updated item description
     LibraryItem:
       type: object
       properties:
@@ -229,6 +220,15 @@ components:
           type: string
           format: uuid
           description: Parent folder ID
+    UpdateLibraryItemRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Updated item title
+        description:
+          type: string
+          description: Updated item description
     Permissions:
       type: object
       properties:
@@ -255,22 +255,7 @@ components:
                 - write
                 - full-control
           description: Permission entries
-  responses:
-    NotFound:
-      description: The requested resource was not found
-    BadRequest:
-      description: The request body or parameters are invalid
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
   parameters:
-    itemId:
-      name: itemId
-      in: path
-      required: true
-      description: Library item unique identifier (GUID)
-      schema:
-        type: string
-        format: uuid
     offset:
       name: offset
       in: query
@@ -288,6 +273,21 @@ components:
         default: 25
         minimum: 1
         maximum: 100
+    itemId:
+      name: itemId
+      in: path
+      required: true
+      description: Library item unique identifier (GUID)
+      schema:
+        type: string
+        format: uuid
+  responses:
+    BadRequest:
+      description: The request body or parameters are invalid
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+    NotFound:
+      description: The requested resource was not found
   securitySchemes:
     bearerAuth:
       type: http
