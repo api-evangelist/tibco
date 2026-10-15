@@ -1,18 +1,51 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/tibco-mashery-openapi.yml
-docs: https://developer.mashery.com/docs/read/mashery_api/30/Authentication
-note: >-
-  TIBCO does not publish a named OAuth scope catalog — the Mashery V3 API's scope
-  parameter carries the customer's Mashery Area UUID rather than permissions
-  (https://developer.mashery.com/docs/read/mashery_api/30/Authentication), and TIBCO
-  Cloud access tokens are scoped to product domains (e.g. TSC, TCI) with permissions
-  governed by user roles rather than documented scopes.
+generated: '2026-10-14'
+method: none
+source: openapi/tibco-applications-api-openapi.yml, openapi/tibco-endpoints-api-openapi.yml,
+  openapi/tibco-members-api-openapi.yml, openapi/tibco-packages-api-openapi.yml, openapi/tibco-plans-api-openapi.yml,
+  openapi/tibco-reports-api-openapi.yml, openapi/tibco-rest-api-openapi.yml
 schemes:
 - name: oauth2
-  source: openapi/tibco-mashery-openapi.yml
+  source: openapi/tibco-applications-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.mashery.com/v3/token
+  description: OAuth 2.0 client credentials for Mashery API access
+- name: oauth2
+  source: openapi/tibco-endpoints-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.mashery.com/v3/token
+  description: OAuth 2.0 client credentials for Mashery API access
+- name: oauth2
+  source: openapi/tibco-members-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.mashery.com/v3/token
+  description: OAuth 2.0 client credentials for Mashery API access
+- name: oauth2
+  source: openapi/tibco-packages-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.mashery.com/v3/token
+  description: OAuth 2.0 client credentials for Mashery API access
+- name: oauth2
+  source: openapi/tibco-plans-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.mashery.com/v3/token
+  description: OAuth 2.0 client credentials for Mashery API access
+- name: oauth2
+  source: openapi/tibco-reports-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.mashery.com/v3/token
+  description: OAuth 2.0 client credentials for Mashery API access
+- name: oauth2
+  source: openapi/tibco-rest-api-openapi.yml
   flows:
   - flow: clientCredentials
     tokenUrl: https://api.mashery.com/v3/token
   description: OAuth 2.0 client credentials for Mashery API access
 scopes: []
+note: The OAuth2 security scheme(s) in the OpenAPI declare no scopes, and no security requirement
+  references one.
