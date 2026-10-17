@@ -98,11 +98,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
   parameters:
     agentId:
       name: agentId
@@ -111,6 +106,11 @@ components:
       description: Agent unique identifier
       schema:
         type: string
+  responses:
+    NotFound:
+      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
   schemas:
     Agent:
       type: object

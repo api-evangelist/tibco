@@ -157,48 +157,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    appId:
-      name: appId
-      in: path
-      required: true
-      description: Integration app unique identifier
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of items to return
-      schema:
-        type: integer
-        default: 25
-        minimum: 1
-        maximum: 100
-  responses:
-    BadRequest:
-      description: The request body or parameters are invalid
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-    NotFound:
-      description: The requested resource was not found
   schemas:
-    UpdateAppRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Updated app name
-        description:
-          type: string
-          description: Updated description
     CreateAppRequest:
       type: object
       required:
@@ -220,6 +179,15 @@ components:
           - businessworks
           - node
           description: Integration app type
+    UpdateAppRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Updated app name
+        description:
+          type: string
+          description: Updated description
     App:
       type: object
       properties:
@@ -261,6 +229,38 @@ components:
         version:
           type: string
           description: App version
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+    NotFound:
+      description: The requested resource was not found
+    BadRequest:
+      description: The request body or parameters are invalid
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    appId:
+      name: appId
+      in: path
+      required: true
+      description: Integration app unique identifier
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http
