@@ -786,6 +786,8 @@ apis:
   - type: JavaScript API
     url: https://docs.tibco.com/pub/spotfire/latest/doc/api/TIB_sfire-jsapi/index.html
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/tibco/overview
 - type: Plans
   url: plans/tibco-plans-pricing.yml
 - type: RateLimits
