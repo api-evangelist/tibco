@@ -1,149 +1,459 @@
 {
+  "info": {
+    "_postman_id": "6c9a4f3a-54bb-4dc2-9b20-cdb59c2589da",
+    "name": "TIBCO Spotfire Analytics Scheduled Updates API",
+    "description": "Analytics and data visualization REST API for TIBCO Spotfire Server. Provides programmatic access to manage analysis files, library items, data sources, users, groups, and scheduled tasks for embedded analytics and automated reporting workflows.\n\nContact Support:\n Name: TIBCO Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:49:29.000Z",
+    "updatedAt": "2026-10-21T20:49:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6c9a4f3a-54bb-4dc2-9b20-cdb59c2589da"
+  },
   "item": [
     {
-      "id": "b30d6c54-d61e-4139-834c-df9103853baf",
-      "name": "Scheduled Updates",
-      "description": {
-        "content": "Manage scheduled analysis updates",
-        "type": "text/plain"
-      },
+      "name": "scheduled-updates",
       "item": [
         {
-          "id": "c2d072f1-54b2-46df-9412-604bd87fae94",
+          "name": "{updateId}",
+          "item": [
+            {
+              "name": "Get a scheduled update",
+              "id": "0e997738-e6c8-465d-b141-e815429814c2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/scheduled-updates/:updateId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scheduled-updates",
+                    ":updateId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4021300b-15d0-40c1-9437-6359ef1a74ce",
+                      "key": "updateId",
+                      "value": "<string>",
+                      "description": "(Required) Scheduled update unique identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific scheduled update task."
+              },
+              "response": [
+                {
+                  "id": "2d4b5af9-464b-426b-b803-6187e8704edf",
+                  "name": "Scheduled update details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduled-updates/:updateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduled-updates",
+                        ":updateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "updateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"analysisId\": \"<uuid>\",\n  \"analysisPath\": \"<string>\",\n  \"schedule\": {\n    \"frequency\": \"once\",\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\",\n    \"interval\": \"<integer>\"\n  },\n  \"enabled\": \"<boolean>\",\n  \"lastRunTime\": \"<dateTime>\",\n  \"lastRunStatus\": \"failure\"\n}",
+                  "createdAt": "2026-10-21T20:49:29.000Z",
+                  "updatedAt": "2026-10-21T20:49:29.000Z",
+                  "uid": "35240-2d4b5af9-464b-426b-b803-6187e8704edf"
+                },
+                {
+                  "id": "96d3e51c-8b95-4a4d-b366-dbe4bb26e30b",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduled-updates/:updateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduled-updates",
+                        ":updateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "updateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:49:29.000Z",
+                  "updatedAt": "2026-10-21T20:49:29.000Z",
+                  "uid": "35240-96d3e51c-8b95-4a4d-b366-dbe4bb26e30b"
+                },
+                {
+                  "id": "7f865571-c5ec-49b4-b814-d9ff10570370",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduled-updates/:updateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduled-updates",
+                        ":updateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "updateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:49:29.000Z",
+                  "updatedAt": "2026-10-21T20:49:29.000Z",
+                  "uid": "35240-7f865571-c5ec-49b4-b814-d9ff10570370"
+                }
+              ],
+              "createdAt": "2026-10-21T20:49:29.000Z",
+              "updatedAt": "2026-10-21T20:49:29.000Z",
+              "uid": "35240-0e997738-e6c8-465d-b141-e815429814c2"
+            },
+            {
+              "name": "Delete a scheduled update",
+              "id": "b7f2ee1b-f9ff-45de-a46e-ac681f1bdcaa",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/scheduled-updates/:updateId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scheduled-updates",
+                    ":updateId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "3c8080c2-2222-4e7e-8044-dda8cd6fcfa2",
+                      "key": "updateId",
+                      "value": "<string>",
+                      "description": "(Required) Scheduled update unique identifier"
+                    }
+                  ]
+                },
+                "description": "Delete a scheduled update task."
+              },
+              "response": [
+                {
+                  "id": "37533f14-394a-40f9-bedc-b55b645afbfe",
+                  "name": "Scheduled update deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduled-updates/:updateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduled-updates",
+                        ":updateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "updateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:49:29.000Z",
+                  "updatedAt": "2026-10-21T20:49:29.000Z",
+                  "uid": "35240-37533f14-394a-40f9-bedc-b55b645afbfe"
+                },
+                {
+                  "id": "589fcc2b-db2f-4c3c-addf-de9b863d3a59",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduled-updates/:updateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduled-updates",
+                        ":updateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "updateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:49:29.000Z",
+                  "updatedAt": "2026-10-21T20:49:29.000Z",
+                  "uid": "35240-589fcc2b-db2f-4c3c-addf-de9b863d3a59"
+                },
+                {
+                  "id": "92207802-aa8c-443c-9879-f971c7042fbd",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/scheduled-updates/:updateId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "scheduled-updates",
+                        ":updateId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "updateId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:49:29.000Z",
+                  "updatedAt": "2026-10-21T20:49:29.000Z",
+                  "uid": "35240-92207802-aa8c-443c-9879-f971c7042fbd"
+                }
+              ],
+              "createdAt": "2026-10-21T20:49:29.000Z",
+              "updatedAt": "2026-10-21T20:49:29.000Z",
+              "uid": "35240-b7f2ee1b-f9ff-45de-a46e-ac681f1bdcaa"
+            }
+          ],
+          "id": "21bf6089-6d07-4563-920f-150d673a970f",
+          "createdAt": "2026-10-21T20:49:29.000Z",
+          "updatedAt": "2026-10-21T20:49:29.000Z",
+          "uid": "35240-21bf6089-6d07-4563-920f-150d673a970f"
+        },
+        {
           "name": "List scheduled updates",
+          "id": "14221d17-aa0f-464b-ad87-55e46c819058",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List scheduled updates",
-            "description": {
-              "content": "Retrieve all scheduled analysis update tasks.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "scheduled-updates"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/scheduled-updates",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "scheduled-updates"
+              ]
+            },
+            "description": "Retrieve all scheduled analysis update tasks."
           },
           "response": [
             {
-              "id": "22213617-5add-4554-9ed3-f072a65baa01",
+              "id": "c1f260d0-a34a-4cde-a6d0-1be99e61ff39",
               "name": "List of scheduled updates",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "scheduled-updates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/scheduled-updates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scheduled-updates"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"analysisId\": \"285549ac-26d4-8f8e-68b1-2f22bebfe18f\",\n      \"analysisPath\": \"string\",\n      \"schedule\": {\n        \"frequency\": \"weekly\",\n        \"startTime\": \"1978-09-01T00:47:24.029Z\",\n        \"endTime\": \"1974-05-11T05:40:19.246Z\",\n        \"interval\": 1189\n      },\n      \"enabled\": false,\n      \"lastRunTime\": \"1971-09-04T17:35:24.262Z\",\n      \"lastRunStatus\": \"failure\"\n    },\n    {\n      \"id\": \"string\",\n      \"analysisId\": \"c89067a3-86f7-894d-9125-5e7ff3c8efb4\",\n      \"analysisPath\": \"string\",\n      \"schedule\": {\n        \"frequency\": \"once\",\n        \"startTime\": \"1973-10-22T20:29:07.507Z\",\n        \"endTime\": \"1965-02-26T09:51:43.980Z\",\n        \"interval\": 3067\n      },\n      \"enabled\": true,\n      \"lastRunTime\": \"1959-12-15T02:32:57.663Z\",\n      \"lastRunStatus\": \"success\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"analysisId\": \"<uuid>\",\n      \"analysisPath\": \"<string>\",\n      \"schedule\": {\n        \"frequency\": \"weekly\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"interval\": \"<integer>\"\n      },\n      \"enabled\": \"<boolean>\",\n      \"lastRunTime\": \"<dateTime>\",\n      \"lastRunStatus\": \"failure\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"analysisId\": \"<uuid>\",\n      \"analysisPath\": \"<string>\",\n      \"schedule\": {\n        \"frequency\": \"monthly\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"interval\": \"<integer>\"\n      },\n      \"enabled\": \"<boolean>\",\n      \"lastRunTime\": \"<dateTime>\",\n      \"lastRunStatus\": \"success\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:49:29.000Z",
+              "updatedAt": "2026-10-21T20:49:29.000Z",
+              "uid": "35240-c1f260d0-a34a-4cde-a6d0-1be99e61ff39"
             },
             {
-              "id": "d91cf912-8d8e-458c-bc61-86b432633ace",
+              "id": "f88d7c68-9b05-486d-8fb6-681f216cc211",
               "name": "Authentication credentials are missing or invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "scheduled-updates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/scheduled-updates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scheduled-updates"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:49:29.000Z",
+              "updatedAt": "2026-10-21T20:49:29.000Z",
+              "uid": "35240-f88d7c68-9b05-486d-8fb6-681f216cc211"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:49:29.000Z",
+          "updatedAt": "2026-10-21T20:49:29.000Z",
+          "uid": "35240-14221d17-aa0f-464b-ad87-55e46c819058"
         },
         {
-          "id": "5fefb2ae-69e2-459a-830c-ef3913fc4549",
           "name": "Create a scheduled update",
+          "id": "a7470154-e17b-4289-a917-9eb212a1511b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Create a scheduled update",
-            "description": {
-              "content": "Create a new scheduled update task for an analysis.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "scheduled-updates"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -154,554 +464,188 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"analysisId\": \"<uuid>\",\n  \"schedule\": {\n    \"frequency\": \"<string>\",\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\",\n    \"interval\": \"<integer>\"\n  },\n  \"enabled\": true\n}",
+              "raw": "{\n  \"analysisId\": \"<uuid>\",\n  \"schedule\": {\n    \"frequency\": \"once\",\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\",\n    \"interval\": \"<integer>\"\n  },\n  \"enabled\": true\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/scheduled-updates",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "scheduled-updates"
+              ]
+            },
+            "description": "Create a new scheduled update task for an analysis."
           },
           "response": [
             {
-              "id": "74e603b5-4d2a-41c8-ad85-110c65693064",
+              "id": "a81d3802-3030-439f-94e8-836109d59263",
               "name": "Scheduled update created",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "scheduled-updates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"analysisId\": \"<uuid>\",\n  \"schedule\": {\n    \"frequency\": \"<string>\",\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\",\n    \"interval\": \"<integer>\"\n  },\n  \"enabled\": true\n}",
+                  "raw": "{\n  \"analysisId\": \"<uuid>\",\n  \"schedule\": {\n    \"frequency\": \"once\",\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\",\n    \"interval\": \"<integer>\"\n  },\n  \"enabled\": true\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/scheduled-updates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scheduled-updates"
+                  ]
                 }
               },
               "status": "Created",
               "code": 201,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"analysisId\": \"bee0b278-6643-2692-fe69-e4c9cde225f6\",\n  \"analysisPath\": \"string\",\n  \"schedule\": {\n    \"frequency\": \"daily\",\n    \"startTime\": \"2014-02-21T07:29:52.052Z\",\n    \"endTime\": \"2003-03-17T19:21:51.665Z\",\n    \"interval\": 4194\n  },\n  \"enabled\": true,\n  \"lastRunTime\": \"2015-03-10T21:24:56.191Z\",\n  \"lastRunStatus\": \"failure\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"analysisId\": \"<uuid>\",\n  \"analysisPath\": \"<string>\",\n  \"schedule\": {\n    \"frequency\": \"once\",\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\",\n    \"interval\": \"<integer>\"\n  },\n  \"enabled\": \"<boolean>\",\n  \"lastRunTime\": \"<dateTime>\",\n  \"lastRunStatus\": \"failure\"\n}",
+              "createdAt": "2026-10-21T20:49:29.000Z",
+              "updatedAt": "2026-10-21T20:49:29.000Z",
+              "uid": "35240-a81d3802-3030-439f-94e8-836109d59263"
             },
             {
-              "id": "2f80b70e-7863-4038-8276-620d597987e3",
+              "id": "bcb50290-a832-4c1c-be8c-8076ee1e5c58",
               "name": "The request body or parameters are invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "scheduled-updates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"analysisId\": \"<uuid>\",\n  \"schedule\": {\n    \"frequency\": \"<string>\",\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\",\n    \"interval\": \"<integer>\"\n  },\n  \"enabled\": true\n}",
+                  "raw": "{\n  \"analysisId\": \"<uuid>\",\n  \"schedule\": {\n    \"frequency\": \"once\",\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\",\n    \"interval\": \"<integer>\"\n  },\n  \"enabled\": true\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/scheduled-updates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scheduled-updates"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:49:29.000Z",
+              "updatedAt": "2026-10-21T20:49:29.000Z",
+              "uid": "35240-bcb50290-a832-4c1c-be8c-8076ee1e5c58"
             },
             {
-              "id": "c7b2d0e1-fe4a-44c4-9fae-25852735dd3c",
+              "id": "c8f87459-5d46-4211-9d69-0e99125e982f",
               "name": "Authentication credentials are missing or invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "scheduled-updates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"analysisId\": \"<uuid>\",\n  \"schedule\": {\n    \"frequency\": \"<string>\",\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\",\n    \"interval\": \"<integer>\"\n  },\n  \"enabled\": true\n}",
+                  "raw": "{\n  \"analysisId\": \"<uuid>\",\n  \"schedule\": {\n    \"frequency\": \"once\",\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\",\n    \"interval\": \"<integer>\"\n  },\n  \"enabled\": true\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/scheduled-updates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "scheduled-updates"
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:49:29.000Z",
+              "updatedAt": "2026-10-21T20:49:29.000Z",
+              "uid": "35240-c8f87459-5d46-4211-9d69-0e99125e982f"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "fa1a5051-330c-4d0d-b76e-26775571b7a8",
-          "name": "Get a scheduled update",
-          "request": {
-            "name": "Get a scheduled update",
-            "description": {
-              "content": "Retrieve details of a specific scheduled update task.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "scheduled-updates",
-                ":updateId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "updateId",
-                  "description": "(Required) Scheduled update unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "9dc26916-ef89-416c-a47f-4f6afcd6d28a",
-              "name": "Scheduled update details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "scheduled-updates",
-                    ":updateId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "updateId",
-                      "description": "(Required) Scheduled update unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"analysisId\": \"bee0b278-6643-2692-fe69-e4c9cde225f6\",\n  \"analysisPath\": \"string\",\n  \"schedule\": {\n    \"frequency\": \"daily\",\n    \"startTime\": \"2014-02-21T07:29:52.052Z\",\n    \"endTime\": \"2003-03-17T19:21:51.665Z\",\n    \"interval\": 4194\n  },\n  \"enabled\": true,\n  \"lastRunTime\": \"2015-03-10T21:24:56.191Z\",\n  \"lastRunStatus\": \"failure\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2c2f2ba8-06a7-48d3-b2ca-d133e368c067",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "scheduled-updates",
-                    ":updateId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "updateId",
-                      "description": "(Required) Scheduled update unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "63af5947-7d0d-46a8-ac90-3e60bb108680",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "scheduled-updates",
-                    ":updateId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "updateId",
-                      "description": "(Required) Scheduled update unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "742992a0-25f8-4870-9540-0e291b8efcf1",
-          "name": "Delete a scheduled update",
-          "request": {
-            "name": "Delete a scheduled update",
-            "description": {
-              "content": "Delete a scheduled update task.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "scheduled-updates",
-                ":updateId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "updateId",
-                  "description": "(Required) Scheduled update unique identifier"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "4893971c-d7f8-4802-9de4-f45fc840b7ec",
-              "name": "Scheduled update deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "scheduled-updates",
-                    ":updateId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "updateId",
-                      "description": "(Required) Scheduled update unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ff5ff78c-b1a0-4769-9183-36d6107ef6fb",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "scheduled-updates",
-                    ":updateId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "updateId",
-                      "description": "(Required) Scheduled update unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b3b38248-6be6-4f4e-a2a3-76beb05e3594",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "scheduled-updates",
-                    ":updateId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "updateId",
-                      "description": "(Required) Scheduled update unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:49:29.000Z",
+          "updatedAt": "2026-10-21T20:49:29.000Z",
+          "uid": "35240-a7470154-e17b-4289-a917-9eb212a1511b"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tibco.com/businessevents/v1",
-      "key": "baseUrl"
+      "id": "247db3b1-50f0-4a69-9934-e5863f7b4cb7",
+      "createdAt": "2026-10-21T20:49:29.000Z",
+      "updatedAt": "2026-10-21T20:49:29.000Z",
+      "uid": "35240-247db3b1-50f0-4a69-9934-e5863f7b4cb7"
     }
   ],
   "auth": {
@@ -709,17 +653,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "eb78608f-20b9-4cbb-9551-1a0fa863caea",
-    "name": "TIBCO BusinessEvents Agents Scheduled Updates API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://spotfire.cloud.tibco.com/api/rest/v1"
     }
-  }
+  ]
 }

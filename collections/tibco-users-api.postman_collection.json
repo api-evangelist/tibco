@@ -1,363 +1,340 @@
 {
+  "info": {
+    "_postman_id": "3ca62940-c3f1-4c29-be2c-1a990d384e5e",
+    "name": "TIBCO Spotfire Analytics Users API",
+    "description": "Analytics and data visualization REST API for TIBCO Spotfire Server. Provides programmatic access to manage analysis files, library items, data sources, users, groups, and scheduled tasks for embedded analytics and automated reporting workflows.\n\nContact Support:\n Name: TIBCO Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:49:37.000Z",
+    "updatedAt": "2026-10-21T20:49:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3ca62940-c3f1-4c29-be2c-1a990d384e5e"
+  },
   "item": [
     {
-      "id": "50c25b03-23d8-41ba-957c-2a3b88198dff",
-      "name": "Users",
-      "description": {
-        "content": "Manage Spotfire users",
-        "type": "text/plain"
-      },
+      "name": "users",
       "item": [
         {
-          "id": "a1701a95-b3e8-4f70-8c21-c36e70343788",
+          "name": "{userId}",
+          "item": [
+            {
+              "name": "Get a user",
+              "id": "be6d3440-2891-43d3-a287-70eb64f59216",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/:userId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":userId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "9e6c09ad-bfb7-4a81-bcd4-84526c82681a",
+                      "key": "userId",
+                      "value": "<string>",
+                      "description": "(Required) User unique identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific Spotfire user."
+              },
+              "response": [
+                {
+                  "id": "f35f0f49-6cb5-42b3-83f3-64e16504ca17",
+                  "name": "User details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:userId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":userId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "userId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"email\": \"<email>\",\n  \"enabled\": \"<boolean>\",\n  \"lastLoginDate\": \"<dateTime>\",\n  \"groups\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-10-21T20:49:38.000Z",
+                  "updatedAt": "2026-10-21T20:49:38.000Z",
+                  "uid": "35240-f35f0f49-6cb5-42b3-83f3-64e16504ca17"
+                },
+                {
+                  "id": "03018efc-a599-4f59-aacd-21b1c28e392f",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:userId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":userId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "userId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:49:38.000Z",
+                  "updatedAt": "2026-10-21T20:49:38.000Z",
+                  "uid": "35240-03018efc-a599-4f59-aacd-21b1c28e392f"
+                },
+                {
+                  "id": "2b6493cc-758c-412b-bb4b-e4f00cafabd7",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:userId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":userId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "userId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:49:38.000Z",
+                  "updatedAt": "2026-10-21T20:49:38.000Z",
+                  "uid": "35240-2b6493cc-758c-412b-bb4b-e4f00cafabd7"
+                }
+              ],
+              "createdAt": "2026-10-21T20:49:38.000Z",
+              "updatedAt": "2026-10-21T20:49:38.000Z",
+              "uid": "35240-be6d3440-2891-43d3-a287-70eb64f59216"
+            }
+          ],
+          "id": "aef0f196-2ec7-485d-8551-2f8a8dde2669",
+          "createdAt": "2026-10-21T20:49:38.000Z",
+          "updatedAt": "2026-10-21T20:49:38.000Z",
+          "uid": "35240-aef0f196-2ec7-485d-8551-2f8a8dde2669"
+        },
+        {
           "name": "List users",
+          "id": "4f4ffab7-c6a8-4426-9dd2-024337f59bd3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List users",
-            "description": {
-              "content": "Retrieve all Spotfire Server users.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/users?offset=0&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "users"
               ],
-              "host": [
-                "{{baseUrl}}"
-              ],
               "query": [
                 {
-                  "disabled": false,
+                  "description": "Number of items to skip for pagination",
                   "key": "offset",
-                  "value": "0",
-                  "description": "Number of items to skip for pagination"
+                  "value": "0"
                 },
                 {
-                  "disabled": false,
+                  "description": "Maximum number of items to return",
                   "key": "limit",
-                  "value": "25",
-                  "description": "Maximum number of items to return"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "c545c6e3-ed39-4c96-8a53-e0d295fe8cd4",
-              "name": "List of users",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "users"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "25"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"totalCount\": 9969,\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"userName\": \"string\",\n      \"displayName\": \"string\",\n      \"email\": \"YIqsYzQNEq3esC2@VAmSyoLBXsoyUTGskZKk.iz\",\n      \"enabled\": false,\n      \"lastLoginDate\": \"1959-08-02T18:14:27.744Z\",\n      \"groups\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"userName\": \"string\",\n      \"displayName\": \"string\",\n      \"email\": \"0zMw-lH@XBWqpYYozAM.car\",\n      \"enabled\": false,\n      \"lastLoginDate\": \"1955-12-23T09:29:22.017Z\",\n      \"groups\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "211a1690-60d6-424a-be59-a3d0b6658827",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "users"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "25"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9fc2ddde-87f9-46fb-83da-ad96260f2901",
-          "name": "Get a user",
-          "request": {
-            "name": "Get a user",
-            "description": {
-              "content": "Retrieve details of a specific Spotfire user.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "users",
-                ":userId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "userId",
-                  "description": "(Required) User unique identifier"
+                  "value": "25"
                 }
               ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "Retrieve all Spotfire Server users."
           },
           "response": [
             {
-              "id": "28457802-7e64-406e-9039-7587cc149246",
-              "name": "User details",
+              "id": "186a06f5-6e9a-437a-9cde-707cb38882fd",
+              "name": "List of users",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "users",
-                    ":userId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userId",
-                      "description": "(Required) User unique identifier"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/users?offset=0&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to skip for pagination",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of items to return",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"userName\": \"string\",\n  \"displayName\": \"string\",\n  \"email\": \"9SI29dWyRko@thgDhfi.loyr\",\n  \"enabled\": false,\n  \"lastLoginDate\": \"2006-11-30T07:05:42.054Z\",\n  \"groups\": [\n    \"string\",\n    \"string\"\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"totalCount\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"userName\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<email>\",\n      \"enabled\": \"<boolean>\",\n      \"lastLoginDate\": \"<dateTime>\",\n      \"groups\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"userName\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<email>\",\n      \"enabled\": \"<boolean>\",\n      \"lastLoginDate\": \"<dateTime>\",\n      \"groups\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:49:38.000Z",
+              "updatedAt": "2026-10-21T20:49:38.000Z",
+              "uid": "35240-186a06f5-6e9a-437a-9cde-707cb38882fd"
             },
             {
-              "id": "046c4d71-e447-42d2-879b-2cdd4d611eb2",
+              "id": "f2604911-b688-4e9c-94e1-e552a6102a29",
               "name": "Authentication credentials are missing or invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "users",
-                    ":userId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userId",
-                      "description": "(Required) User unique identifier"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/users?offset=0&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to skip for pagination",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of items to return",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "295caed0-9ed3-4e13-808f-025f042e52b4",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "users",
-                    ":userId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userId",
-                      "description": "(Required) User unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:49:38.000Z",
+              "updatedAt": "2026-10-21T20:49:38.000Z",
+              "uid": "35240-f2604911-b688-4e9c-94e1-e552a6102a29"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:49:38.000Z",
+          "updatedAt": "2026-10-21T20:49:38.000Z",
+          "uid": "35240-4f4ffab7-c6a8-4426-9dd2-024337f59bd3"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tibco.com/businessevents/v1",
-      "key": "baseUrl"
+      "id": "0894d8c3-1dad-41e0-8471-925099629791",
+      "createdAt": "2026-10-21T20:49:38.000Z",
+      "updatedAt": "2026-10-21T20:49:38.000Z",
+      "uid": "35240-0894d8c3-1dad-41e0-8471-925099629791"
     }
   ],
   "auth": {
@@ -365,17 +342,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "530c8dc9-8b8b-47a7-ac98-34aeaca18045",
-    "name": "TIBCO BusinessEvents Agents Users API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://spotfire.cloud.tibco.com/api/rest/v1"
     }
-  }
+  ]
 }

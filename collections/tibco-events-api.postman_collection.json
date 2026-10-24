@@ -1,32 +1,201 @@
 {
+  "info": {
+    "_postman_id": "d908000b-ca53-4a7a-a1d4-d07135e7d67c",
+    "name": "TIBCO BusinessEvents Events API",
+    "description": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:48:31.000Z",
+    "updatedAt": "2026-10-21T20:48:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d908000b-ca53-4a7a-a1d4-d07135e7d67c"
+  },
   "item": [
     {
-      "id": "753e8145-7778-48f2-b6be-8d202a31c3b4",
-      "name": "Events",
-      "description": {
-        "content": "Submit and query complex events",
-        "type": "text/plain"
-      },
+      "name": "events",
       "item": [
         {
-          "id": "78e29518-79f0-4b90-afc8-1ccc4bdde2c0",
+          "name": "{eventId}",
+          "item": [
+            {
+              "name": "Get an event",
+              "id": "a139f090-4698-4c3e-a7cb-57dcb6742a83",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events/:eventId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events",
+                    ":eventId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a672ace5-7d91-4f63-936d-02cffc3be808",
+                      "key": "eventId",
+                      "value": "<string>",
+                      "description": "(Required) Event unique identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve details and processing result of a specific event."
+              },
+              "response": [
+                {
+                  "id": "1e6eccbd-6f96-4b96-af7c-bfc80c8c8304",
+                  "name": "Event details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/:eventId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        ":eventId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "eventId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"payload\": {\n    \"dolor_aae\": 29507836\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"status\": \"error\",\n  \"result\": {\n    \"dolor_099\": -75918060,\n    \"magna_6d\": 58523051,\n    \"nostrud_f\": -49889338.799686775\n  }\n}",
+                  "createdAt": "2026-10-21T20:48:32.000Z",
+                  "updatedAt": "2026-10-21T20:48:32.000Z",
+                  "uid": "35240-1e6eccbd-6f96-4b96-af7c-bfc80c8c8304"
+                },
+                {
+                  "id": "690a307a-519e-4aa4-b125-5339b6377e13",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/:eventId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        ":eventId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "eventId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:32.000Z",
+                  "updatedAt": "2026-10-21T20:48:32.000Z",
+                  "uid": "35240-690a307a-519e-4aa4-b125-5339b6377e13"
+                },
+                {
+                  "id": "24c4f81d-23e3-4ff6-9eeb-76d33082892e",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/:eventId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        ":eventId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "eventId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:32.000Z",
+                  "updatedAt": "2026-10-21T20:48:32.000Z",
+                  "uid": "35240-24c4f81d-23e3-4ff6-9eeb-76d33082892e"
+                }
+              ],
+              "createdAt": "2026-10-21T20:48:32.000Z",
+              "updatedAt": "2026-10-21T20:48:32.000Z",
+              "uid": "35240-a139f090-4698-4c3e-a7cb-57dcb6742a83"
+            }
+          ],
+          "id": "b4b8407f-cfdd-41c6-9642-5b63d2675679",
+          "createdAt": "2026-10-21T20:48:32.000Z",
+          "updatedAt": "2026-10-21T20:48:32.000Z",
+          "uid": "35240-b4b8407f-cfdd-41c6-9642-5b63d2675679"
+        },
+        {
           "name": "Submit an event",
+          "id": "b98dec62-ef89-4bd2-9519-0fc1e0d3d3fa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Submit an event",
-            "description": {
-              "content": "Submit a complex event for processing by the inference engine.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "events"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -37,562 +206,375 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"type\": \"<string>\",\n  \"payload\": {\n    \"key_0\": false,\n    \"key_1\": false\n  },\n  \"correlationId\": \"<string>\"\n}",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"payload\": {\n    \"exercitation8\": true,\n    \"magnaf84\": \"dolore proident sunt\"\n  },\n  \"correlationId\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/events",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events"
+              ]
+            },
+            "description": "Submit a complex event for processing by the inference engine."
           },
           "response": [
             {
-              "id": "a39f4746-02a7-4025-94d0-b126925d27c4",
+              "id": "a805e643-ad10-4ea0-8f3f-9e7573f4e162",
               "name": "Event accepted for processing",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "events"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"type\": \"<string>\",\n  \"payload\": {\n    \"key_0\": \"string\",\n    \"key_1\": 5970\n  },\n  \"correlationId\": \"<string>\"\n}",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"payload\": {\n    \"exercitation8\": true,\n    \"magnaf84\": \"dolore proident sunt\"\n  },\n  \"correlationId\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/events",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ]
                 }
               },
               "status": "Accepted",
               "code": 202,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"correlationId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"correlationId\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:48:32.000Z",
+              "updatedAt": "2026-10-21T20:48:32.000Z",
+              "uid": "35240-a805e643-ad10-4ea0-8f3f-9e7573f4e162"
             },
             {
-              "id": "8851b110-0a24-4d2e-ba5b-27cac63be0e5",
+              "id": "a5e8c26f-ce6c-40e1-b459-10d5bcb99bdb",
               "name": "The request body or parameters are invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "events"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"type\": \"<string>\",\n  \"payload\": {\n    \"key_0\": \"string\",\n    \"key_1\": 5970\n  },\n  \"correlationId\": \"<string>\"\n}",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"payload\": {\n    \"exercitation8\": true,\n    \"magnaf84\": \"dolore proident sunt\"\n  },\n  \"correlationId\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/events",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:48:32.000Z",
+              "updatedAt": "2026-10-21T20:48:32.000Z",
+              "uid": "35240-a5e8c26f-ce6c-40e1-b459-10d5bcb99bdb"
             },
             {
-              "id": "90261aa6-63f5-4b10-9591-78c552f6706e",
+              "id": "646944e5-20f5-4669-8864-ffa4bcc91d2c",
               "name": "Authentication credentials are missing or invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "events"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"type\": \"<string>\",\n  \"payload\": {\n    \"key_0\": \"string\",\n    \"key_1\": 5970\n  },\n  \"correlationId\": \"<string>\"\n}",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"payload\": {\n    \"exercitation8\": true,\n    \"magnaf84\": \"dolore proident sunt\"\n  },\n  \"correlationId\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/events",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:48:32.000Z",
+              "updatedAt": "2026-10-21T20:48:32.000Z",
+              "uid": "35240-646944e5-20f5-4669-8864-ffa4bcc91d2c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:48:32.000Z",
+          "updatedAt": "2026-10-21T20:48:32.000Z",
+          "uid": "35240-b98dec62-ef89-4bd2-9519-0fc1e0d3d3fa"
         },
         {
-          "id": "f41ff6f8-f295-455e-9e0c-579baae959cb",
           "name": "List processed events",
+          "id": "c0db54c0-98b6-4da7-b5de-605d182ecb86",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List processed events",
-            "description": {
-              "content": "Retrieve a list of processed events with optional filters.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/events?offset=0&limit=25&eventType=<string>&startTime=<dateTime>&endTime=<dateTime>",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "events"
               ],
-              "host": [
-                "{{baseUrl}}"
-              ],
               "query": [
                 {
-                  "disabled": false,
+                  "description": "Number of items to skip for pagination",
                   "key": "offset",
-                  "value": "0",
-                  "description": "Number of items to skip for pagination"
+                  "value": "0"
                 },
                 {
-                  "disabled": false,
+                  "description": "Maximum number of items to return",
                   "key": "limit",
-                  "value": "25",
-                  "description": "Maximum number of items to return"
+                  "value": "25"
                 },
                 {
-                  "disabled": false,
+                  "description": "Filter by event type",
                   "key": "eventType",
-                  "value": "<string>",
-                  "description": "Filter by event type"
+                  "value": "<string>"
                 },
                 {
-                  "disabled": false,
+                  "description": "Filter events after this time",
                   "key": "startTime",
-                  "value": "<dateTime>",
-                  "description": "Filter events after this time"
+                  "value": "<dateTime>"
                 },
                 {
-                  "disabled": false,
+                  "description": "Filter events before this time",
                   "key": "endTime",
-                  "value": "<dateTime>",
-                  "description": "Filter events before this time"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "7e645e6e-1096-4719-813c-5d762fe68e45",
-              "name": "List of events",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "events"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "25"
-                    },
-                    {
-                      "key": "eventType",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "startTime",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "endTime",
-                      "value": "<dateTime>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"totalCount\": 6628,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"payload\": {\n        \"key_0\": false,\n        \"key_1\": \"string\"\n      },\n      \"timestamp\": \"1978-06-20T11:41:51.955Z\",\n      \"status\": \"received\",\n      \"result\": {\n        \"key_0\": true\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"payload\": {\n        \"key_0\": 3304,\n        \"key_1\": 5150.170691342165,\n        \"key_2\": true\n      },\n      \"timestamp\": \"2003-01-26T08:02:14.669Z\",\n      \"status\": \"processing\",\n      \"result\": {\n        \"key_0\": 6298.139765333949,\n        \"key_1\": 3454.3837446917146,\n        \"key_2\": 9629,\n        \"key_3\": true,\n        \"key_4\": 7778\n      }\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "adbdf7cf-a2ad-407d-bc10-55b5ee0af1e0",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "events"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "25"
-                    },
-                    {
-                      "key": "eventType",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "startTime",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "endTime",
-                      "value": "<dateTime>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e1dde7e6-09c1-4394-a4f3-2c61fb91d485",
-          "name": "Get an event",
-          "request": {
-            "name": "Get an event",
-            "description": {
-              "content": "Retrieve details and processing result of a specific event.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "events",
-                ":eventId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "eventId",
-                  "description": "(Required) Event unique identifier"
+                  "value": "<dateTime>"
                 }
               ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "Retrieve a list of processed events with optional filters."
           },
           "response": [
             {
-              "id": "981cd372-3028-49e4-9107-6e0a663c7da1",
-              "name": "Event details",
+              "id": "66288fe0-5ac7-4a4b-ad2c-a9701115ad45",
+              "name": "List of events",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "events",
-                    ":eventId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "eventId",
-                      "description": "(Required) Event unique identifier"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/events?offset=0&limit=25&eventType=<string>&startTime=<dateTime>&endTime=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to skip for pagination",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of items to return",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Filter by event type",
+                      "key": "eventType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter events after this time",
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter events before this time",
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"type\": \"string\",\n  \"payload\": {\n    \"key_0\": false,\n    \"key_1\": false,\n    \"key_2\": 2069\n  },\n  \"timestamp\": \"1974-11-15T16:41:36.931Z\",\n  \"status\": \"processing\",\n  \"result\": {\n    \"key_0\": \"string\"\n  }\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"totalCount\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"payload\": {\n        \"velit1f\": \"cillum occaecat quis\"\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"status\": \"processing\",\n      \"result\": {\n        \"amet_cbb\": false\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"payload\": {\n        \"eu_a2b\": -87650953.88520186\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"status\": \"received\",\n      \"result\": {\n        \"quis_9d\": -75066163.89240395,\n        \"dolored9a\": 27595686.18351978,\n        \"quis1b7\": \"cillum commodo minim Duis\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:48:32.000Z",
+              "updatedAt": "2026-10-21T20:48:32.000Z",
+              "uid": "35240-66288fe0-5ac7-4a4b-ad2c-a9701115ad45"
             },
             {
-              "id": "1aa46a5d-28b6-4002-9f22-1d6ab5fd3b51",
+              "id": "7c524fcb-4422-41f1-b9c4-b0f173d255d9",
               "name": "Authentication credentials are missing or invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "events",
-                    ":eventId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "eventId",
-                      "description": "(Required) Event unique identifier"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/events?offset=0&limit=25&eventType=<string>&startTime=<dateTime>&endTime=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to skip for pagination",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of items to return",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Filter by event type",
+                      "key": "eventType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter events after this time",
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter events before this time",
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d33591bb-d8dd-49ca-8dcb-1f1d4e3c02db",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "events",
-                    ":eventId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "eventId",
-                      "description": "(Required) Event unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:48:32.000Z",
+              "updatedAt": "2026-10-21T20:48:32.000Z",
+              "uid": "35240-7c524fcb-4422-41f1-b9c4-b0f173d255d9"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:48:32.000Z",
+          "updatedAt": "2026-10-21T20:48:32.000Z",
+          "uid": "35240-c0db54c0-98b6-4da7-b5de-605d182ecb86"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tibco.com/businessevents/v1",
-      "key": "baseUrl"
+      "id": "8fc2662f-06f1-426d-b08e-f7546b2c1e25",
+      "createdAt": "2026-10-21T20:48:32.000Z",
+      "updatedAt": "2026-10-21T20:48:32.000Z",
+      "uid": "35240-8fc2662f-06f1-426d-b08e-f7546b2c1e25"
     }
   ],
   "auth": {
@@ -600,17 +582,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "794de2de-a57b-4215-8dad-39fbc8ab8de9",
-    "name": "TIBCO BusinessEvents Agents Events API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tibco.com/businessevents/v1"
     }
-  }
+  ]
 }

@@ -1,332 +1,304 @@
 {
+  "info": {
+    "_postman_id": "a248d1e8-ae0c-44d5-a5b8-864002720409",
+    "name": "TIBCO Cloud Integration Environments API",
+    "description": "API for TIBCO Cloud Integration (TCI) platform enabling application integration, API management, and business process automation. Provides programmatic access to manage Flogo apps, Business Studio apps, connections, and deployment environments.\n\nContact Support:\n Name: TIBCO Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:48:28.000Z",
+    "updatedAt": "2026-10-21T20:48:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a248d1e8-ae0c-44d5-a5b8-864002720409"
+  },
   "item": [
     {
-      "id": "1bbbf90d-8fb5-4724-8645-99246664e059",
-      "name": "Environments",
-      "description": {
-        "content": "Manage deployment environments",
-        "type": "text/plain"
-      },
+      "name": "environments",
       "item": [
         {
-          "id": "5293b60b-df12-4b13-8006-06a02232e19b",
-          "name": "List environments",
-          "request": {
-            "name": "List environments",
-            "description": {
-              "content": "Retrieve all deployment environments configured for the organization.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "environments"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{environmentId}",
+          "item": [
             {
-              "id": "bd6d57e1-77c4-486a-938a-45399e06b246",
-              "name": "List of environments",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environments"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Get an environment",
+              "id": "371764e5-ddc6-4fa9-b11a-b0678c301696",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"test\",\n      \"region\": \"string\",\n      \"status\": \"active\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"staging\",\n      \"region\": \"string\",\n      \"status\": \"inactive\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "46b2e7b1-e08c-4de5-b3d7-1c358c2c3efb",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "environments"
-                  ],
+                  "raw": "{{baseUrl}}/environments/:environmentId",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
+                  "path": [
+                    "environments",
+                    ":environmentId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "93332ccb-349f-49cf-8dd5-aaeaab67b724",
+                      "key": "environmentId",
+                      "value": "<string>",
+                      "description": "(Required) Environment unique identifier"
+                    }
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve details of a specific deployment environment."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "0d6efd7e-76a9-4f6a-a571-d3932f20fba6",
+                  "name": "Environment details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environments/:environmentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environments",
+                        ":environmentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environmentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"test\",\n  \"region\": \"<string>\",\n  \"status\": \"inactive\"\n}",
+                  "createdAt": "2026-10-21T20:48:29.000Z",
+                  "updatedAt": "2026-10-21T20:48:29.000Z",
+                  "uid": "35240-0d6efd7e-76a9-4f6a-a571-d3932f20fba6"
+                },
+                {
+                  "id": "bbabf39a-9886-4713-a210-8f7768561d33",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environments/:environmentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environments",
+                        ":environmentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environmentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:29.000Z",
+                  "updatedAt": "2026-10-21T20:48:29.000Z",
+                  "uid": "35240-bbabf39a-9886-4713-a210-8f7768561d33"
+                },
+                {
+                  "id": "5bc685ba-9c67-4278-876a-e25d54cceff5",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environments/:environmentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environments",
+                        ":environmentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environmentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:29.000Z",
+                  "updatedAt": "2026-10-21T20:48:29.000Z",
+                  "uid": "35240-5bc685ba-9c67-4278-876a-e25d54cceff5"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:48:29.000Z",
+              "updatedAt": "2026-10-21T20:48:29.000Z",
+              "uid": "35240-371764e5-ddc6-4fa9-b11a-b0678c301696"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "88f17620-2e3b-4f68-84de-1853a97e8e7a",
+          "createdAt": "2026-10-21T20:48:29.000Z",
+          "updatedAt": "2026-10-21T20:48:29.000Z",
+          "uid": "35240-88f17620-2e3b-4f68-84de-1853a97e8e7a"
         },
         {
-          "id": "3d9f53e4-0a7f-466d-b6f7-6ad7c3284e2e",
-          "name": "Get an environment",
+          "name": "List environments",
+          "id": "eb4e6c79-133d-4d8a-b38d-e3bb039d57c5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Get an environment",
-            "description": {
-              "content": "Retrieve details of a specific deployment environment.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "environments",
-                ":environmentId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "environmentId",
-                  "description": "(Required) Environment unique identifier"
-                }
-              ]
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/environments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "environments"
+              ]
+            },
+            "description": "Retrieve all deployment environments configured for the organization."
           },
           "response": [
             {
-              "id": "25c9cae6-134a-4a36-ac9c-d25372544a81",
-              "name": "Environment details",
+              "id": "f87ad952-e96f-489a-97d2-8b63d7b5b85c",
+              "name": "List of environments",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environments",
-                    ":environmentId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environmentId",
-                      "description": "(Required) Environment unique identifier"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environments"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"staging\",\n  \"region\": \"string\",\n  \"status\": \"active\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"production\",\n      \"region\": \"<string>\",\n      \"status\": \"inactive\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"production\",\n      \"region\": \"<string>\",\n      \"status\": \"active\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:48:29.000Z",
+              "updatedAt": "2026-10-21T20:48:29.000Z",
+              "uid": "35240-f87ad952-e96f-489a-97d2-8b63d7b5b85c"
             },
             {
-              "id": "d78468d9-7f3f-4a97-a13b-e837aa55d5ec",
+              "id": "2d58a24d-4fec-4c46-a756-7cec6dbe4456",
               "name": "Authentication credentials are missing or invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environments",
-                    ":environmentId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environmentId",
-                      "description": "(Required) Environment unique identifier"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environments"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6b92ea4e-45c7-4551-969f-f9eeae64f3a3",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environments",
-                    ":environmentId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environmentId",
-                      "description": "(Required) Environment unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:48:29.000Z",
+              "updatedAt": "2026-10-21T20:48:29.000Z",
+              "uid": "35240-2d58a24d-4fec-4c46-a756-7cec6dbe4456"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:48:29.000Z",
+          "updatedAt": "2026-10-21T20:48:29.000Z",
+          "uid": "35240-eb4e6c79-133d-4d8a-b38d-e3bb039d57c5"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tibco.com/businessevents/v1",
-      "key": "baseUrl"
+      "id": "18b5ba0a-32dd-4c2d-affe-db2d3f4242e7",
+      "createdAt": "2026-10-21T20:48:29.000Z",
+      "updatedAt": "2026-10-21T20:48:29.000Z",
+      "uid": "35240-18b5ba0a-32dd-4c2d-affe-db2d3f4242e7"
     }
   ],
   "auth": {
@@ -334,17 +306,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "a23e2e0f-5208-4ad2-9316-f4501daa1502",
-    "name": "TIBCO BusinessEvents Agents Environments API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://integration.cloud.tibco.com/api/v1"
     }
-  }
+  ]
 }

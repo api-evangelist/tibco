@@ -1,1040 +1,1001 @@
 {
+  "info": {
+    "_postman_id": "7fc43d2c-6905-48b5-a738-a8da5ab1c012",
+    "name": "TIBCO Mashery API Management Packages API",
+    "description": "API management platform for designing, building, securing, and analyzing APIs. The Mashery V3 API provides programmatic access to manage API definitions, packages, plans, keys, services, endpoints, and analytics data within the TIBCO API management platform.\n\nContact Support:\n Name: TIBCO Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:49:01.000Z",
+    "updatedAt": "2026-10-21T20:49:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7fc43d2c-6905-48b5-a738-a8da5ab1c012"
+  },
   "item": [
     {
-      "id": "466490df-c05e-46f9-b7fb-e47298cf9c87",
-      "name": "Packages",
-      "description": {
-        "content": "Manage API packages for bundling services",
-        "type": "text/plain"
-      },
+      "name": "rest",
       "item": [
         {
-          "id": "8e825019-0937-4dee-ae4e-f03704009ef6",
-          "name": "List packages",
-          "request": {
-            "name": "List packages",
-            "description": {
-              "content": "Retrieve all API packages for the organization.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "packages"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "packages",
+          "item": [
+            {
+              "name": "{packageId}",
+              "item": [
                 {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0",
-                  "description": "Number of items to skip for pagination"
+                  "name": "Get a package",
+                  "id": "65381b40-f54a-4825-98a1-36689198fbf2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/packages/:packageId?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "packages",
+                        ":packageId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of fields to include in the response",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "f4453023-39ea-4b02-a997-d4c8bfd795b3",
+                          "key": "packageId",
+                          "value": "<string>",
+                          "description": "(Required) Package unique identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details of a specific API package."
+                  },
+                  "response": [
+                    {
+                      "id": "d484bd53-12a9-4832-8dbc-d10b26d06c53",
+                      "name": "Package details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/packages/:packageId?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "packages",
+                            ":packageId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of fields to include in the response",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "packageId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperPeriod\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\",\n  \"notifyAdminPeriod\": \"<string>\",\n  \"notifyAdminNearQuota\": \"<boolean>\",\n  \"notifyAdminOverQuota\": \"<boolean>\",\n  \"created\": \"<dateTime>\",\n  \"updated\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-10-21T20:49:02.000Z",
+                      "updatedAt": "2026-10-21T20:49:02.000Z",
+                      "uid": "35240-d484bd53-12a9-4832-8dbc-d10b26d06c53"
+                    },
+                    {
+                      "id": "b94af439-34dc-4e81-a7e7-194a5902444a",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/packages/:packageId?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "packages",
+                            ":packageId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of fields to include in the response",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "packageId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:49:02.000Z",
+                      "updatedAt": "2026-10-21T20:49:02.000Z",
+                      "uid": "35240-b94af439-34dc-4e81-a7e7-194a5902444a"
+                    },
+                    {
+                      "id": "323873a0-e4ca-4138-8b63-a5db7a2520c2",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/packages/:packageId?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "packages",
+                            ":packageId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of fields to include in the response",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "packageId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:49:02.000Z",
+                      "updatedAt": "2026-10-21T20:49:02.000Z",
+                      "uid": "35240-323873a0-e4ca-4138-8b63-a5db7a2520c2"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:49:02.000Z",
+                  "updatedAt": "2026-10-21T20:49:02.000Z",
+                  "uid": "35240-65381b40-f54a-4825-98a1-36689198fbf2"
                 },
                 {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "20",
-                  "description": "Maximum number of items to return"
+                  "name": "Update a package",
+                  "id": "60131cca-53df-478c-83f7-6b8aadc4cc7c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/packages/:packageId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "packages",
+                        ":packageId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8a31742c-2435-46ed-8f29-81f5b31ba4e6",
+                          "key": "packageId",
+                          "value": "<string>",
+                          "description": "(Required) Package unique identifier"
+                        }
+                      ]
+                    },
+                    "description": "Update an existing API package."
+                  },
+                  "response": [
+                    {
+                      "id": "bccf85db-dce2-4c8f-9685-9506c541f87c",
+                      "name": "Package updated",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/packages/:packageId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "packages",
+                            ":packageId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "packageId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperPeriod\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\",\n  \"notifyAdminPeriod\": \"<string>\",\n  \"notifyAdminNearQuota\": \"<boolean>\",\n  \"notifyAdminOverQuota\": \"<boolean>\",\n  \"created\": \"<dateTime>\",\n  \"updated\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-10-21T20:49:02.000Z",
+                      "updatedAt": "2026-10-21T20:49:02.000Z",
+                      "uid": "35240-bccf85db-dce2-4c8f-9685-9506c541f87c"
+                    },
+                    {
+                      "id": "c9eefd4e-fb83-4674-b39f-b425db56c1f8",
+                      "name": "The request body or parameters are invalid",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/packages/:packageId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "packages",
+                            ":packageId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "packageId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:49:02.000Z",
+                      "updatedAt": "2026-10-21T20:49:02.000Z",
+                      "uid": "35240-c9eefd4e-fb83-4674-b39f-b425db56c1f8"
+                    },
+                    {
+                      "id": "d36c306f-c9cc-4a59-94ea-c80effb1d866",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/packages/:packageId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "packages",
+                            ":packageId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "packageId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:49:02.000Z",
+                      "updatedAt": "2026-10-21T20:49:02.000Z",
+                      "uid": "35240-d36c306f-c9cc-4a59-94ea-c80effb1d866"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:49:02.000Z",
+                  "updatedAt": "2026-10-21T20:49:02.000Z",
+                  "uid": "35240-60131cca-53df-478c-83f7-6b8aadc4cc7c"
                 },
                 {
-                  "disabled": false,
-                  "key": "fields",
-                  "value": "<string>",
-                  "description": "Comma-separated list of fields to include in the response"
+                  "name": "Delete a package",
+                  "id": "e53eeb93-1dfd-4945-b340-6e2e5fc0e65c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/packages/:packageId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "packages",
+                        ":packageId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0edeb3b5-3749-4fb4-93af-b605a11915b2",
+                          "key": "packageId",
+                          "value": "<string>",
+                          "description": "(Required) Package unique identifier"
+                        }
+                      ]
+                    },
+                    "description": "Delete an API package."
+                  },
+                  "response": [
+                    {
+                      "id": "b5610f45-4e76-4a6a-b4d6-7ea2e7a01e0b",
+                      "name": "Package deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/packages/:packageId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "packages",
+                            ":packageId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "packageId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:49:02.000Z",
+                      "updatedAt": "2026-10-21T20:49:02.000Z",
+                      "uid": "35240-b5610f45-4e76-4a6a-b4d6-7ea2e7a01e0b"
+                    },
+                    {
+                      "id": "7f3ee2e8-1880-4efc-866d-7250718685e9",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/packages/:packageId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "packages",
+                            ":packageId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "packageId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:49:02.000Z",
+                      "updatedAt": "2026-10-21T20:49:02.000Z",
+                      "uid": "35240-7f3ee2e8-1880-4efc-866d-7250718685e9"
+                    },
+                    {
+                      "id": "f7881326-99d8-4538-b3ff-be68094a0ee8",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/packages/:packageId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "packages",
+                            ":packageId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "packageId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:49:02.000Z",
+                      "updatedAt": "2026-10-21T20:49:02.000Z",
+                      "uid": "35240-f7881326-99d8-4538-b3ff-be68094a0ee8"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:49:02.000Z",
+                  "updatedAt": "2026-10-21T20:49:02.000Z",
+                  "uid": "35240-e53eeb93-1dfd-4945-b340-6e2e5fc0e65c"
                 }
               ],
-              "variable": []
+              "id": "e3d88134-258b-4289-b647-6bad0edd1a4f",
+              "createdAt": "2026-10-21T20:49:02.000Z",
+              "updatedAt": "2026-10-21T20:49:02.000Z",
+              "uid": "35240-e3d88134-258b-4289-b647-6bad0edd1a4f"
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
             {
-              "id": "47ad89f5-9d5e-4d5b-a208-48ffb30b845f",
-              "name": "List of packages",
-              "originalRequest": {
+              "name": "List packages",
+              "id": "3d4e5cee-9687-47e3-8ef3-3f2341aacf40",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/rest/packages?offset=0&limit=20&fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "rest",
                     "packages"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Number of items to skip for pagination",
                       "key": "offset",
                       "value": "0"
                     },
                     {
+                      "description": "Maximum number of items to return",
                       "key": "limit",
                       "value": "20"
                     },
                     {
+                      "description": "Comma-separated list of fields to include in the response",
                       "key": "fields",
                       "value": "<string>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve all API packages for the organization."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"notifyDeveloperPeriod\": \"string\",\n    \"notifyDeveloperNearQuota\": false,\n    \"notifyDeveloperOverQuota\": false,\n    \"notifyAdminPeriod\": \"string\",\n    \"notifyAdminNearQuota\": false,\n    \"notifyAdminOverQuota\": true,\n    \"created\": \"1992-09-16T23:56:31.175Z\",\n    \"updated\": \"1979-04-30T08:54:14.774Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"notifyDeveloperPeriod\": \"string\",\n    \"notifyDeveloperNearQuota\": false,\n    \"notifyDeveloperOverQuota\": false,\n    \"notifyAdminPeriod\": \"string\",\n    \"notifyAdminNearQuota\": false,\n    \"notifyAdminOverQuota\": false,\n    \"created\": \"1957-11-20T12:45:33.361Z\",\n    \"updated\": \"1947-06-08T15:13:30.550Z\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8a7c8480-80d6-48da-a95b-5582a0ed9a76",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "97bef1a5-8d94-4db0-ae87-4352cf3172de",
+                  "name": "List of packages",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/packages?offset=0&limit=20&fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "packages"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to skip for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Maximum number of items to return",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Comma-separated list of fields to include in the response",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "20"
-                    },
-                    {
-                      "key": "fields",
-                      "value": "<string>"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"notifyDeveloperPeriod\": \"<string>\",\n    \"notifyDeveloperNearQuota\": \"<boolean>\",\n    \"notifyDeveloperOverQuota\": \"<boolean>\",\n    \"notifyAdminPeriod\": \"<string>\",\n    \"notifyAdminNearQuota\": \"<boolean>\",\n    \"notifyAdminOverQuota\": \"<boolean>\",\n    \"created\": \"<dateTime>\",\n    \"updated\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"notifyDeveloperPeriod\": \"<string>\",\n    \"notifyDeveloperNearQuota\": \"<boolean>\",\n    \"notifyDeveloperOverQuota\": \"<boolean>\",\n    \"notifyAdminPeriod\": \"<string>\",\n    \"notifyAdminNearQuota\": \"<boolean>\",\n    \"notifyAdminOverQuota\": \"<boolean>\",\n    \"created\": \"<dateTime>\",\n    \"updated\": \"<dateTime>\"\n  }\n]",
+                  "createdAt": "2026-10-21T20:49:02.000Z",
+                  "updatedAt": "2026-10-21T20:49:02.000Z",
+                  "uid": "35240-97bef1a5-8d94-4db0-ae87-4352cf3172de"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ed24bdb9-4751-4d8a-abfc-7d092eb8a9c2",
-          "name": "Create a package",
-          "request": {
-            "name": "Create a package",
-            "description": {
-              "content": "Create a new API package for bundling services.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "packages"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "ac204daa-5135-4685-a2a4-8e15852dc690",
-              "name": "Package created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                  "id": "7879b2fd-f05a-42cd-9c01-ea59fd0fd5b4",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/packages?offset=0&limit=20&fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "packages"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to skip for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Maximum number of items to return",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Comma-separated list of fields to include in the response",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:49:02.000Z",
+                  "updatedAt": "2026-10-21T20:49:02.000Z",
+                  "uid": "35240-7879b2fd-f05a-42cd-9c01-ea59fd0fd5b4"
+                }
+              ],
+              "createdAt": "2026-10-21T20:49:02.000Z",
+              "updatedAt": "2026-10-21T20:49:02.000Z",
+              "uid": "35240-3d4e5cee-9687-47e3-8ef3-3f2341aacf40"
+            },
+            {
+              "name": "Create a package",
+              "id": "fd33398a-a659-4710-ba33-3fe2df445473",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
                 "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"notifyDeveloperPeriod\": \"string\",\n  \"notifyDeveloperNearQuota\": false,\n  \"notifyDeveloperOverQuota\": false,\n  \"notifyAdminPeriod\": \"string\",\n  \"notifyAdminNearQuota\": false,\n  \"notifyAdminOverQuota\": false,\n  \"created\": \"1960-08-28T14:15:19.282Z\",\n  \"updated\": \"1992-09-26T12:54:42.921Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4fb8386f-d816-4af1-b2f2-39ff033c6411",
-              "name": "The request body or parameters are invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7fe26f38-ed21-4f9b-bea7-383b420aa278",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4979220f-b560-45ad-87cb-fbe37293d929",
-          "name": "Get a package",
-          "request": {
-            "name": "Get a package",
-            "description": {
-              "content": "Retrieve details of a specific API package.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "packages",
-                ":packageId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "fields",
-                  "value": "<string>",
-                  "description": "Comma-separated list of fields to include in the response"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "packageId",
-                  "description": "(Required) Package unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "94dcec12-93d0-4e3e-821e-11c103fe84ba",
-              "name": "Package details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages",
-                    ":packageId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "packageId",
-                      "description": "(Required) Package unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"notifyDeveloperPeriod\": \"string\",\n  \"notifyDeveloperNearQuota\": false,\n  \"notifyDeveloperOverQuota\": false,\n  \"notifyAdminPeriod\": \"string\",\n  \"notifyAdminNearQuota\": false,\n  \"notifyAdminOverQuota\": false,\n  \"created\": \"1960-08-28T14:15:19.282Z\",\n  \"updated\": \"1992-09-26T12:54:42.921Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "dad6dbce-758e-4927-a67a-95e1a31d7126",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages",
-                    ":packageId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "packageId",
-                      "description": "(Required) Package unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
                   }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "411fcf35-c986-480a-a8cb-49c6affdf15b",
-              "name": "The requested resource was not found",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "rest",
-                    "packages",
-                    ":packageId"
-                  ],
+                  "raw": "{{baseUrl}}/rest/packages",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "packageId",
-                      "description": "(Required) Package unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "cee71c57-eb38-4aa5-9780-a078840d64cb",
-          "name": "Update a package",
-          "request": {
-            "name": "Update a package",
-            "description": {
-              "content": "Update an existing API package.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "packages",
-                ":packageId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "packageId",
-                  "description": "(Required) Package unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "b07fd522-256d-4be6-97a6-122e0de0ea7b",
-              "name": "Package updated",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "rest",
-                    "packages",
-                    ":packageId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "packageId",
-                      "description": "(Required) Package unique identifier"
-                    }
+                    "packages"
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                "description": "Create a new API package for bundling services."
+              },
+              "response": [
+                {
+                  "id": "a6927a8f-8adc-4e16-bd75-f0dfdd095841",
+                  "name": "Package created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/packages",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "packages"
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"notifyDeveloperPeriod\": \"string\",\n  \"notifyDeveloperNearQuota\": false,\n  \"notifyDeveloperOverQuota\": false,\n  \"notifyAdminPeriod\": \"string\",\n  \"notifyAdminNearQuota\": false,\n  \"notifyAdminOverQuota\": false,\n  \"created\": \"1960-08-28T14:15:19.282Z\",\n  \"updated\": \"1992-09-26T12:54:42.921Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "500226c4-413f-4019-8b06-fe9f77ed9300",
-              "name": "The request body or parameters are invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages",
-                    ":packageId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "packageId",
-                      "description": "(Required) Package unique identifier"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperPeriod\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\",\n  \"notifyAdminPeriod\": \"<string>\",\n  \"notifyAdminNearQuota\": \"<boolean>\",\n  \"notifyAdminOverQuota\": \"<boolean>\",\n  \"created\": \"<dateTime>\",\n  \"updated\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-10-21T20:49:02.000Z",
+                  "updatedAt": "2026-10-21T20:49:02.000Z",
+                  "uid": "35240-a6927a8f-8adc-4e16-bd75-f0dfdd095841"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "77039b3e-8dce-4144-8393-a963939315a7",
+                  "name": "The request body or parameters are invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/packages",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "packages"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:49:02.000Z",
+                  "updatedAt": "2026-10-21T20:49:02.000Z",
+                  "uid": "35240-77039b3e-8dce-4144-8393-a963939315a7"
+                },
+                {
+                  "id": "dc5c239b-905e-4d54-bc5d-f0a6b70c1e76",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/packages",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "packages"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:49:02.000Z",
+                  "updatedAt": "2026-10-21T20:49:02.000Z",
+                  "uid": "35240-dc5c239b-905e-4d54-bc5d-f0a6b70c1e76"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4ae7d7a5-cd27-445d-95be-1a1149123def",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages",
-                    ":packageId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "packageId",
-                      "description": "(Required) Package unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"notifyDeveloperNearQuota\": \"<boolean>\",\n  \"notifyDeveloperOverQuota\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:49:02.000Z",
+              "updatedAt": "2026-10-21T20:49:02.000Z",
+              "uid": "35240-fd33398a-a659-4710-ba33-3fe2df445473"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "5fc73834-34ea-469b-944b-5d18a4703478",
-          "name": "Delete a package",
-          "request": {
-            "name": "Delete a package",
-            "description": {
-              "content": "Delete an API package.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "packages",
-                ":packageId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "packageId",
-                  "description": "(Required) Package unique identifier"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "678d0298-4629-4abd-a500-dfc5d408432f",
-              "name": "Package deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages",
-                    ":packageId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "packageId",
-                      "description": "(Required) Package unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9decff9b-034b-4f1b-ab3a-cf429a35ec58",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages",
-                    ":packageId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "packageId",
-                      "description": "(Required) Package unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "8ce46387-d213-43af-8001-4a3315e2f553",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages",
-                    ":packageId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "packageId",
-                      "description": "(Required) Package unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "9d88554f-61ab-4bb8-a645-670c072019df",
+          "createdAt": "2026-10-21T20:49:02.000Z",
+          "updatedAt": "2026-10-21T20:49:02.000Z",
+          "uid": "35240-9d88554f-61ab-4bb8-a645-670c072019df"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tibco.com/businessevents/v1",
-      "key": "baseUrl"
+      "id": "71957ad9-6e60-433b-9452-3f0e9ae2dca9",
+      "createdAt": "2026-10-21T20:49:02.000Z",
+      "updatedAt": "2026-10-21T20:49:02.000Z",
+      "uid": "35240-71957ad9-6e60-433b-9452-3f0e9ae2dca9"
     }
   ],
   "auth": {
-    "type": "bearer",
-    "bearer": [
+    "type": "oauth2",
+    "oauth2": [
       {
-        "key": "token",
-        "value": "{{bearerToken}}"
+        "key": "accessTokenUrl",
+        "value": "https://api.mashery.com/v3/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "443608b7-b98a-47eb-a414-a3902a3f758f",
-    "name": "TIBCO BusinessEvents Agents Packages API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mashery.com/v3"
     }
-  }
+  ]
 }

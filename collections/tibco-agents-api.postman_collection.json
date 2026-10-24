@@ -1,724 +1,662 @@
 {
+  "info": {
+    "_postman_id": "310ebc40-4cce-4546-915c-14f09fb6eb1a",
+    "name": "TIBCO BusinessEvents Agents API",
+    "description": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:47:34.000Z",
+    "updatedAt": "2026-10-21T20:47:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-310ebc40-4cce-4546-915c-14f09fb6eb1a"
+  },
   "item": [
     {
-      "id": "7cf3d128-b8fc-449f-80ac-1cde18fe212f",
-      "name": "Agents",
-      "description": {
-        "content": "Manage inference agents",
-        "type": "text/plain"
-      },
+      "name": "agents",
       "item": [
         {
-          "id": "d43ee599-a6c5-45e4-bcf8-fe8ec4bfaaed",
-          "name": "List inference agents",
-          "request": {
-            "name": "List inference agents",
-            "description": {
-              "content": "Retrieve all inference agents and their current status.",
-              "type": "text/plain"
+          "name": "{agentId}",
+          "item": [
+            {
+              "name": "start",
+              "item": [
+                {
+                  "name": "Start an inference agent",
+                  "id": "25db0b99-7b76-466b-a99e-661c41e49dec",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/:agentId/start",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        ":agentId",
+                        "start"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e537de40-9099-4a0e-8d9c-20795b1ab0ff",
+                          "key": "agentId",
+                          "value": "<string>",
+                          "description": "(Required) Agent unique identifier"
+                        }
+                      ]
+                    },
+                    "description": "Start a stopped inference agent."
+                  },
+                  "response": [
+                    {
+                      "id": "10f44041-7cdc-436d-bbd5-f92ecfbbec13",
+                      "name": "Agent started",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agents/:agentId/start",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agents",
+                            ":agentId",
+                            "start"
+                          ],
+                          "variable": [
+                            {
+                              "key": "agentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"error\",\n  \"type\": \"<string>\",\n  \"rulesLoaded\": \"<integer>\",\n  \"eventsProcessed\": \"<integer>\",\n  \"startTime\": \"<dateTime>\",\n  \"uptime\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:47:35.000Z",
+                      "updatedAt": "2026-10-21T20:47:35.000Z",
+                      "uid": "35240-10f44041-7cdc-436d-bbd5-f92ecfbbec13"
+                    },
+                    {
+                      "id": "5ffc7256-dd63-411c-b2c7-bf73eeefca59",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agents/:agentId/start",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agents",
+                            ":agentId",
+                            "start"
+                          ],
+                          "variable": [
+                            {
+                              "key": "agentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:47:35.000Z",
+                      "updatedAt": "2026-10-21T20:47:35.000Z",
+                      "uid": "35240-5ffc7256-dd63-411c-b2c7-bf73eeefca59"
+                    },
+                    {
+                      "id": "bac5af90-1954-4647-9130-a1f47ed2e651",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agents/:agentId/start",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agents",
+                            ":agentId",
+                            "start"
+                          ],
+                          "variable": [
+                            {
+                              "key": "agentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:47:35.000Z",
+                      "updatedAt": "2026-10-21T20:47:35.000Z",
+                      "uid": "35240-bac5af90-1954-4647-9130-a1f47ed2e651"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:47:35.000Z",
+                  "updatedAt": "2026-10-21T20:47:35.000Z",
+                  "uid": "35240-25db0b99-7b76-466b-a99e-661c41e49dec"
+                }
+              ],
+              "id": "863a79b5-a42f-4564-b30f-32f60f50a95d",
+              "createdAt": "2026-10-21T20:47:35.000Z",
+              "updatedAt": "2026-10-21T20:47:35.000Z",
+              "uid": "35240-863a79b5-a42f-4564-b30f-32f60f50a95d"
             },
+            {
+              "name": "stop",
+              "item": [
+                {
+                  "name": "Stop an inference agent",
+                  "id": "e3d15410-3f96-417d-9099-363214a213d5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/:agentId/stop",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        ":agentId",
+                        "stop"
+                      ],
+                      "variable": [
+                        {
+                          "id": "cfbb25f8-ceb2-4c55-bbe7-b08a154439ca",
+                          "key": "agentId",
+                          "value": "<string>",
+                          "description": "(Required) Agent unique identifier"
+                        }
+                      ]
+                    },
+                    "description": "Stop a running inference agent."
+                  },
+                  "response": [
+                    {
+                      "id": "d812f5a8-306a-4d89-96ec-1fa7e994abfa",
+                      "name": "Agent stopped",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agents/:agentId/stop",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agents",
+                            ":agentId",
+                            "stop"
+                          ],
+                          "variable": [
+                            {
+                              "key": "agentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"error\",\n  \"type\": \"<string>\",\n  \"rulesLoaded\": \"<integer>\",\n  \"eventsProcessed\": \"<integer>\",\n  \"startTime\": \"<dateTime>\",\n  \"uptime\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:47:35.000Z",
+                      "updatedAt": "2026-10-21T20:47:35.000Z",
+                      "uid": "35240-d812f5a8-306a-4d89-96ec-1fa7e994abfa"
+                    },
+                    {
+                      "id": "d94c909e-035e-4085-ae13-4cedac3f8fa1",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agents/:agentId/stop",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agents",
+                            ":agentId",
+                            "stop"
+                          ],
+                          "variable": [
+                            {
+                              "key": "agentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:47:35.000Z",
+                      "updatedAt": "2026-10-21T20:47:35.000Z",
+                      "uid": "35240-d94c909e-035e-4085-ae13-4cedac3f8fa1"
+                    },
+                    {
+                      "id": "4c170ee4-e11e-4fda-8dcf-a90f0046cca0",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/agents/:agentId/stop",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "agents",
+                            ":agentId",
+                            "stop"
+                          ],
+                          "variable": [
+                            {
+                              "key": "agentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:47:35.000Z",
+                      "updatedAt": "2026-10-21T20:47:35.000Z",
+                      "uid": "35240-4c170ee4-e11e-4fda-8dcf-a90f0046cca0"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:47:35.000Z",
+                  "updatedAt": "2026-10-21T20:47:35.000Z",
+                  "uid": "35240-e3d15410-3f96-417d-9099-363214a213d5"
+                }
+              ],
+              "id": "61a9dfb8-f604-4e88-aef0-8790e58a6dd8",
+              "createdAt": "2026-10-21T20:47:35.000Z",
+              "updatedAt": "2026-10-21T20:47:35.000Z",
+              "uid": "35240-61a9dfb8-f604-4e88-aef0-8790e58a6dd8"
+            },
+            {
+              "name": "Get an inference agent",
+              "id": "631d5122-7f5a-4a76-aa01-6ecce4cb7f77",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/agents/:agentId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "agents",
+                    ":agentId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "0ceab319-5f27-449c-afa4-aed7cdcd2a71",
+                      "key": "agentId",
+                      "value": "<string>",
+                      "description": "(Required) Agent unique identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve details and status of a specific inference agent."
+              },
+              "response": [
+                {
+                  "id": "9ee6f3c3-e782-4543-af01-54a45d65f741",
+                  "name": "Agent details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/:agentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        ":agentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "agentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"error\",\n  \"type\": \"<string>\",\n  \"rulesLoaded\": \"<integer>\",\n  \"eventsProcessed\": \"<integer>\",\n  \"startTime\": \"<dateTime>\",\n  \"uptime\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:47:35.000Z",
+                  "updatedAt": "2026-10-21T20:47:35.000Z",
+                  "uid": "35240-9ee6f3c3-e782-4543-af01-54a45d65f741"
+                },
+                {
+                  "id": "b6ee5f12-22bf-4f70-aeea-db6947538f59",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/:agentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        ":agentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "agentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:47:35.000Z",
+                  "updatedAt": "2026-10-21T20:47:35.000Z",
+                  "uid": "35240-b6ee5f12-22bf-4f70-aeea-db6947538f59"
+                },
+                {
+                  "id": "cba00b24-0745-49e1-9ba1-ed60beaa1ca5",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/agents/:agentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "agents",
+                        ":agentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "agentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:47:35.000Z",
+                  "updatedAt": "2026-10-21T20:47:35.000Z",
+                  "uid": "35240-cba00b24-0745-49e1-9ba1-ed60beaa1ca5"
+                }
+              ],
+              "createdAt": "2026-10-21T20:47:35.000Z",
+              "updatedAt": "2026-10-21T20:47:35.000Z",
+              "uid": "35240-631d5122-7f5a-4a76-aa01-6ecce4cb7f77"
+            }
+          ],
+          "id": "c59b1497-bf21-4bf4-ac23-8f173e75501d",
+          "createdAt": "2026-10-21T20:47:35.000Z",
+          "updatedAt": "2026-10-21T20:47:35.000Z",
+          "uid": "35240-c59b1497-bf21-4bf4-ac23-8f173e75501d"
+        },
+        {
+          "name": "List inference agents",
+          "id": "6f9f0afb-b217-43f7-9d91-4cc8be28bf17",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/agents",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "agents"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
+              ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "Retrieve all inference agents and their current status."
           },
           "response": [
             {
-              "id": "3cbc4e79-d62f-4f24-a3de-815cdb2cfdfa",
+              "id": "daa565dd-782f-4fbd-b554-e24aaa6e0964",
               "name": "List of agents",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/agents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "agents"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"error\",\n      \"type\": \"string\",\n      \"rulesLoaded\": 1311,\n      \"eventsProcessed\": 487,\n      \"startTime\": \"1954-07-24T03:47:31.199Z\",\n      \"uptime\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"running\",\n      \"type\": \"string\",\n      \"rulesLoaded\": 7054,\n      \"eventsProcessed\": 9944,\n      \"startTime\": \"1960-10-07T11:03:19.102Z\",\n      \"uptime\": \"string\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"running\",\n      \"type\": \"<string>\",\n      \"rulesLoaded\": \"<integer>\",\n      \"eventsProcessed\": \"<integer>\",\n      \"startTime\": \"<dateTime>\",\n      \"uptime\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"stopped\",\n      \"type\": \"<string>\",\n      \"rulesLoaded\": \"<integer>\",\n      \"eventsProcessed\": \"<integer>\",\n      \"startTime\": \"<dateTime>\",\n      \"uptime\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:47:35.000Z",
+              "updatedAt": "2026-10-21T20:47:35.000Z",
+              "uid": "35240-daa565dd-782f-4fbd-b554-e24aaa6e0964"
             },
             {
-              "id": "de6f2abb-ce5a-4c19-b5b0-19c657072026",
+              "id": "fcf6375a-52df-43fb-ad5a-0245450fec5e",
               "name": "Authentication credentials are missing or invalid",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/agents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "agents"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:47:35.000Z",
+              "updatedAt": "2026-10-21T20:47:35.000Z",
+              "uid": "35240-fcf6375a-52df-43fb-ad5a-0245450fec5e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "dc2043a4-6d0d-4585-a409-435653ab7b40",
-          "name": "Get an inference agent",
-          "request": {
-            "name": "Get an inference agent",
-            "description": {
-              "content": "Retrieve details and status of a specific inference agent.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "agents",
-                ":agentId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "agentId",
-                  "description": "(Required) Agent unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "3c764ac8-b894-4eed-885a-7082d9b17161",
-              "name": "Agent details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "agents",
-                    ":agentId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "agentId",
-                      "description": "(Required) Agent unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"running\",\n  \"type\": \"string\",\n  \"rulesLoaded\": 5888,\n  \"eventsProcessed\": 2942,\n  \"startTime\": \"1990-01-09T15:10:14.594Z\",\n  \"uptime\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "326e603f-a0fd-4d0b-8941-b44835848870",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "agents",
-                    ":agentId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "agentId",
-                      "description": "(Required) Agent unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b57dfa8e-1cbf-4ff0-ad9c-97287e06e787",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "agents",
-                    ":agentId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "agentId",
-                      "description": "(Required) Agent unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8f899a6a-292f-4c44-921a-4977711c63bf",
-          "name": "Start an inference agent",
-          "request": {
-            "name": "Start an inference agent",
-            "description": {
-              "content": "Start a stopped inference agent.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "agents",
-                ":agentId",
-                "start"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "agentId",
-                  "description": "(Required) Agent unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "b79752b6-9b5e-4c7b-ad31-e23d71829274",
-              "name": "Agent started",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "agents",
-                    ":agentId",
-                    "start"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "agentId",
-                      "description": "(Required) Agent unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"running\",\n  \"type\": \"string\",\n  \"rulesLoaded\": 5888,\n  \"eventsProcessed\": 2942,\n  \"startTime\": \"1990-01-09T15:10:14.594Z\",\n  \"uptime\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "db08cbdb-a768-45fb-be25-b7ff1d07048a",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "agents",
-                    ":agentId",
-                    "start"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "agentId",
-                      "description": "(Required) Agent unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f1ea4eb3-4c81-450e-a40e-4ab608b4ee1b",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "agents",
-                    ":agentId",
-                    "start"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "agentId",
-                      "description": "(Required) Agent unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "db48d89e-31a7-4f50-9c0c-fefc2fffac4f",
-          "name": "Stop an inference agent",
-          "request": {
-            "name": "Stop an inference agent",
-            "description": {
-              "content": "Stop a running inference agent.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "agents",
-                ":agentId",
-                "stop"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "agentId",
-                  "description": "(Required) Agent unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "8b40f66a-c804-478f-ac4e-6a098e706bac",
-              "name": "Agent stopped",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "agents",
-                    ":agentId",
-                    "stop"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "agentId",
-                      "description": "(Required) Agent unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"running\",\n  \"type\": \"string\",\n  \"rulesLoaded\": 5888,\n  \"eventsProcessed\": 2942,\n  \"startTime\": \"1990-01-09T15:10:14.594Z\",\n  \"uptime\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "86d27cf7-9f6f-4621-a6cf-bc7b764b2330",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "agents",
-                    ":agentId",
-                    "stop"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "agentId",
-                      "description": "(Required) Agent unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "19f3f9ae-36ac-4a76-8403-85bb3aad5675",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "agents",
-                    ":agentId",
-                    "stop"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "agentId",
-                      "description": "(Required) Agent unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:47:35.000Z",
+          "updatedAt": "2026-10-21T20:47:35.000Z",
+          "uid": "35240-6f9f0afb-b217-43f7-9d91-4cc8be28bf17"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tibco.com/businessevents/v1",
-      "key": "baseUrl"
+      "id": "d6d92c49-293d-4185-8092-87603b8bbd8a",
+      "createdAt": "2026-10-21T20:47:35.000Z",
+      "updatedAt": "2026-10-21T20:47:35.000Z",
+      "uid": "35240-d6d92c49-293d-4185-8092-87603b8bbd8a"
     }
   ],
   "auth": {
@@ -726,17 +664,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "c762f481-6cc9-40c6-83b7-e784e6b6ad5c",
-    "name": "TIBCO BusinessEvents Agents API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tibco.com/businessevents/v1"
     }
-  }
+  ]
 }

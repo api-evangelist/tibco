@@ -1,180 +1,770 @@
 {
+  "info": {
+    "_postman_id": "2d886a21-0b2f-4a30-a597-268615e3b178",
+    "name": "TIBCO BusinessEvents Decision Tables API",
+    "description": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:48:14.000Z",
+    "updatedAt": "2026-10-21T20:48:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2d886a21-0b2f-4a30-a597-268615e3b178"
+  },
   "item": [
     {
-      "id": "479888a3-4362-43e9-bbe8-25f72c2fc764",
-      "name": "Decision Tables",
-      "description": {
-        "content": "Manage decision tables for rule evaluation",
-        "type": "text/plain"
-      },
+      "name": "decision-tables",
       "item": [
         {
-          "id": "d1ec4e43-db74-43dd-96a0-2100a0d16325",
-          "name": "List decision tables",
-          "request": {
-            "name": "List decision tables",
-            "description": {
-              "content": "Retrieve all decision tables in the project.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "decision-tables"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0",
-                  "description": "Number of items to skip for pagination"
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "25",
-                  "description": "Maximum number of items to return"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{tableId}",
+          "item": [
             {
-              "id": "4a5f1739-62e4-4ad5-80e6-5a2df19d8004",
-              "name": "List of decision tables",
-              "originalRequest": {
+              "name": "Get a decision table",
+              "id": "a856dcf7-08bb-4f0f-977d-f2bb9e5b6533",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "decision-tables"
-                  ],
+                  "raw": "{{baseUrl}}/decision-tables/:tableId",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [
+                  "path": [
+                    "decision-tables",
+                    ":tableId"
+                  ],
+                  "variable": [
                     {
-                      "key": "offset",
-                      "value": "0"
-                    },
+                      "id": "91325050-e328-4b8b-9951-e963d219ce03",
+                      "key": "tableId",
+                      "value": "<string>",
+                      "description": "(Required) Decision table unique identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific decision table."
+              },
+              "response": [
+                {
+                  "id": "106ff701-c060-4b52-bfda-215f301a6c69",
+                  "name": "Decision table details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/decision-tables/:tableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "decision-tables",
+                        ":tableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "limit",
-                      "value": "25"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"action\",\n      \"dataType\": \"integer\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"action\",\n      \"dataType\": \"integer\"\n    }\n  ],\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ],\n  \"createdTime\": \"<dateTime>\",\n  \"modifiedTime\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-10-21T20:48:14.000Z",
+                  "updatedAt": "2026-10-21T20:48:14.000Z",
+                  "uid": "35240-106ff701-c060-4b52-bfda-215f301a6c69"
                 },
+                {
+                  "id": "9a1481f9-b0e9-43e4-8c6b-118f2869721c",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/decision-tables/:tableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "decision-tables",
+                        ":tableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:14.000Z",
+                  "updatedAt": "2026-10-21T20:48:14.000Z",
+                  "uid": "35240-9a1481f9-b0e9-43e4-8c6b-118f2869721c"
+                },
+                {
+                  "id": "3f1516ca-70cf-4d74-bdbd-cac03bfe6640",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/decision-tables/:tableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "decision-tables",
+                        ":tableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:14.000Z",
+                  "updatedAt": "2026-10-21T20:48:14.000Z",
+                  "uid": "35240-3f1516ca-70cf-4d74-bdbd-cac03bfe6640"
+                }
+              ],
+              "createdAt": "2026-10-21T20:48:14.000Z",
+              "updatedAt": "2026-10-21T20:48:14.000Z",
+              "uid": "35240-a856dcf7-08bb-4f0f-977d-f2bb9e5b6533"
+            },
+            {
+              "name": "Update a decision table",
+              "id": "871c7f33-2723-4e37-b14d-488a8a2fcd56",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/decision-tables/:tableId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "decision-tables",
+                    ":tableId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "127e6488-49bf-4a4b-99de-723bef485232",
+                      "key": "tableId",
+                      "value": "<string>",
+                      "description": "(Required) Decision table unique identifier"
+                    }
+                  ]
+                },
+                "description": "Update an existing decision table."
+              },
+              "response": [
+                {
+                  "id": "85a3ec09-9491-4625-a334-5c8edfbcd386",
+                  "name": "Decision table updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/decision-tables/:tableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "decision-tables",
+                        ":tableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"action\",\n      \"dataType\": \"integer\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"action\",\n      \"dataType\": \"integer\"\n    }\n  ],\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ],\n  \"createdTime\": \"<dateTime>\",\n  \"modifiedTime\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-10-21T20:48:14.000Z",
+                  "updatedAt": "2026-10-21T20:48:14.000Z",
+                  "uid": "35240-85a3ec09-9491-4625-a334-5c8edfbcd386"
+                },
+                {
+                  "id": "94a169db-6d87-44fc-8c3e-eb117617de5e",
+                  "name": "The request body or parameters are invalid",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/decision-tables/:tableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "decision-tables",
+                        ":tableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:14.000Z",
+                  "updatedAt": "2026-10-21T20:48:14.000Z",
+                  "uid": "35240-94a169db-6d87-44fc-8c3e-eb117617de5e"
+                },
+                {
+                  "id": "0a870e42-20fc-490e-8c7f-456a76666450",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/decision-tables/:tableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "decision-tables",
+                        ":tableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:14.000Z",
+                  "updatedAt": "2026-10-21T20:48:14.000Z",
+                  "uid": "35240-0a870e42-20fc-490e-8c7f-456a76666450"
+                },
+                {
+                  "id": "b3f4f7e6-6875-4a5e-a124-f2ac40548115",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/decision-tables/:tableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "decision-tables",
+                        ":tableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:14.000Z",
+                  "updatedAt": "2026-10-21T20:48:14.000Z",
+                  "uid": "35240-b3f4f7e6-6875-4a5e-a124-f2ac40548115"
+                }
+              ],
+              "createdAt": "2026-10-21T20:48:14.000Z",
+              "updatedAt": "2026-10-21T20:48:14.000Z",
+              "uid": "35240-871c7f33-2723-4e37-b14d-488a8a2fcd56"
+            },
+            {
+              "name": "Delete a decision table",
+              "id": "fcb1cb2b-0be7-44be-92aa-c8ddbb83d7db",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/decision-tables/:tableId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "decision-tables",
+                    ":tableId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a8aed501-c006-4cf4-a2ef-e7be0152d665",
+                      "key": "tableId",
+                      "value": "<string>",
+                      "description": "(Required) Decision table unique identifier"
+                    }
+                  ]
+                },
+                "description": "Delete a decision table from the project."
+              },
+              "response": [
+                {
+                  "id": "084b1336-e46b-410f-9eff-59e26a3bf369",
+                  "name": "Decision table deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/decision-tables/:tableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "decision-tables",
+                        ":tableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:14.000Z",
+                  "updatedAt": "2026-10-21T20:48:14.000Z",
+                  "uid": "35240-084b1336-e46b-410f-9eff-59e26a3bf369"
+                },
+                {
+                  "id": "e8dd826a-d399-4657-8f94-cbfdf249bdfd",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/decision-tables/:tableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "decision-tables",
+                        ":tableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:14.000Z",
+                  "updatedAt": "2026-10-21T20:48:14.000Z",
+                  "uid": "35240-e8dd826a-d399-4657-8f94-cbfdf249bdfd"
+                },
+                {
+                  "id": "cb40a28c-139c-4906-a543-1f88bf38a740",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/decision-tables/:tableId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "decision-tables",
+                        ":tableId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tableId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:14.000Z",
+                  "updatedAt": "2026-10-21T20:48:14.000Z",
+                  "uid": "35240-cb40a28c-139c-4906-a543-1f88bf38a740"
+                }
+              ],
+              "createdAt": "2026-10-21T20:48:14.000Z",
+              "updatedAt": "2026-10-21T20:48:14.000Z",
+              "uid": "35240-fcb1cb2b-0be7-44be-92aa-c8ddbb83d7db"
+            }
+          ],
+          "id": "6a980def-62bd-49e5-85dc-33098f4350ca",
+          "createdAt": "2026-10-21T20:48:14.000Z",
+          "updatedAt": "2026-10-21T20:48:14.000Z",
+          "uid": "35240-6a980def-62bd-49e5-85dc-33098f4350ca"
+        },
+        {
+          "name": "List decision tables",
+          "id": "d4f65d20-48f3-4bb7-ac7d-90dca5a2060f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/decision-tables?offset=0&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "decision-tables"
+              ],
+              "query": [
+                {
+                  "description": "Number of items to skip for pagination",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Maximum number of items to return",
+                  "key": "limit",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Retrieve all decision tables in the project."
+          },
+          "response": [
+            {
+              "id": "51305006-4348-47a3-90db-fe2aee0251ca",
+              "name": "List of decision tables",
+              "originalRequest": {
                 "method": "GET",
-                "body": {}
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/decision-tables?offset=0&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "decision-tables"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to skip for pagination",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of items to return",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"totalCount\": 8643,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"columns\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"condition\",\n          \"dataType\": \"boolean\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"condition\",\n          \"dataType\": \"integer\"\n        }\n      ],\n      \"rows\": [\n        {\n          \"id\": \"string\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"enabled\": false\n        },\n        {\n          \"id\": \"string\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"enabled\": true\n        }\n      ],\n      \"createdTime\": \"1957-10-25T02:25:11.282Z\",\n      \"modifiedTime\": \"2022-10-30T13:03:03.651Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"columns\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"condition\",\n          \"dataType\": \"boolean\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"action\",\n          \"dataType\": \"double\"\n        }\n      ],\n      \"rows\": [\n        {\n          \"id\": \"string\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"enabled\": true\n        },\n        {\n          \"id\": \"string\",\n          \"values\": [\n            \"string\",\n            \"string\"\n          ],\n          \"enabled\": true\n        }\n      ],\n      \"createdTime\": \"1993-09-30T23:23:58.927Z\",\n      \"modifiedTime\": \"2012-09-13T07:37:08.473Z\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"totalCount\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"columns\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"action\",\n          \"dataType\": \"string\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"action\",\n          \"dataType\": \"string\"\n        }\n      ],\n      \"rows\": [\n        {\n          \"id\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"enabled\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"enabled\": \"<boolean>\"\n        }\n      ],\n      \"createdTime\": \"<dateTime>\",\n      \"modifiedTime\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"columns\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"condition\",\n          \"dataType\": \"boolean\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"condition\",\n          \"dataType\": \"double\"\n        }\n      ],\n      \"rows\": [\n        {\n          \"id\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"enabled\": \"<boolean>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"enabled\": \"<boolean>\"\n        }\n      ],\n      \"createdTime\": \"<dateTime>\",\n      \"modifiedTime\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:48:14.000Z",
+              "updatedAt": "2026-10-21T20:48:14.000Z",
+              "uid": "35240-51305006-4348-47a3-90db-fe2aee0251ca"
             },
             {
-              "id": "41169370-b4c5-4ce2-9bbb-544698c5add5",
+              "id": "4a962c1b-250d-44a0-b113-99c2d73ed27a",
               "name": "Authentication credentials are missing or invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "decision-tables"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "25"
-                    }
-                  ],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/decision-tables?offset=0&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "decision-tables"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to skip for pagination",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of items to return",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:48:14.000Z",
+              "updatedAt": "2026-10-21T20:48:14.000Z",
+              "uid": "35240-4a962c1b-250d-44a0-b113-99c2d73ed27a"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:48:14.000Z",
+          "updatedAt": "2026-10-21T20:48:14.000Z",
+          "uid": "35240-d4f65d20-48f3-4bb7-ac7d-90dca5a2060f"
         },
         {
-          "id": "1203ab33-b3ce-4d73-83a9-ecb4d1821b6c",
           "name": "Create a decision table",
+          "id": "7fd3939d-1404-4a4d-ba03-60721a25c71e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Create a decision table",
-            "description": {
-              "content": "Create a new decision table in the project.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "decision-tables"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -185,839 +775,188 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"dataType\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"dataType\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/decision-tables",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "decision-tables"
+              ]
+            },
+            "description": "Create a new decision table in the project."
           },
           "response": [
             {
-              "id": "6039b56c-9467-47ce-9033-463bbfaa8d80",
+              "id": "ec44307b-91db-42a5-868b-647ccf0f8a5a",
               "name": "Decision table created",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "decision-tables"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"integer\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ]\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/decision-tables",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "decision-tables"
+                  ]
                 }
               },
               "status": "Created",
               "code": 201,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"integer\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"string\"\n    }\n  ],\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ],\n  \"createdTime\": \"2010-07-16T23:11:52.307Z\",\n  \"modifiedTime\": \"2013-07-05T01:33:35.489Z\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"action\",\n      \"dataType\": \"integer\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"action\",\n      \"dataType\": \"integer\"\n    }\n  ],\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ],\n  \"createdTime\": \"<dateTime>\",\n  \"modifiedTime\": \"<dateTime>\"\n}",
+              "createdAt": "2026-10-21T20:48:14.000Z",
+              "updatedAt": "2026-10-21T20:48:14.000Z",
+              "uid": "35240-ec44307b-91db-42a5-868b-647ccf0f8a5a"
             },
             {
-              "id": "d60d9673-f473-4f9d-9a9f-fb227ecc5f1d",
+              "id": "2b8fcdda-c8fb-4221-b890-4baf4dd117ae",
               "name": "The request body or parameters are invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "decision-tables"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"integer\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ]\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/decision-tables",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "decision-tables"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:48:14.000Z",
+              "updatedAt": "2026-10-21T20:48:14.000Z",
+              "uid": "35240-2b8fcdda-c8fb-4221-b890-4baf4dd117ae"
             },
             {
-              "id": "d95f6cee-9027-45f5-9273-6f21de5761fb",
+              "id": "7bc62c59-b6f3-4753-8dd7-bffa5914213f",
               "name": "Authentication credentials are missing or invalid",
               "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"double\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"condition\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/decision-tables",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "decision-tables"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"integer\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:48:14.000Z",
+              "updatedAt": "2026-10-21T20:48:14.000Z",
+              "uid": "35240-7bc62c59-b6f3-4753-8dd7-bffa5914213f"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "7aebfe00-f590-47b1-9900-b611d08dbfa7",
-          "name": "Get a decision table",
-          "request": {
-            "name": "Get a decision table",
-            "description": {
-              "content": "Retrieve details of a specific decision table.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "decision-tables",
-                ":tableId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "tableId",
-                  "description": "(Required) Decision table unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "1c0a609b-fbb0-414b-9718-10d9d6cd7d9c",
-              "name": "Decision table details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "decision-tables",
-                    ":tableId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tableId",
-                      "description": "(Required) Decision table unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"integer\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"string\"\n    }\n  ],\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ],\n  \"createdTime\": \"2010-07-16T23:11:52.307Z\",\n  \"modifiedTime\": \"2013-07-05T01:33:35.489Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1bae408b-b103-4f74-bb10-5c63ab1fdb77",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "decision-tables",
-                    ":tableId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tableId",
-                      "description": "(Required) Decision table unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "1c0a3a44-23ee-463b-bea1-c207b297a20f",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "decision-tables",
-                    ":tableId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tableId",
-                      "description": "(Required) Decision table unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f1e42d27-bd49-4287-9918-fce5b6d70fbb",
-          "name": "Update a decision table",
-          "request": {
-            "name": "Update a decision table",
-            "description": {
-              "content": "Update an existing decision table.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "decision-tables",
-                ":tableId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "tableId",
-                  "description": "(Required) Decision table unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"dataType\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"dataType\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\"\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "ef8f50f3-8190-4386-8838-488142bc6d2c",
-              "name": "Decision table updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "decision-tables",
-                    ":tableId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tableId",
-                      "description": "(Required) Decision table unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"integer\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"integer\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"condition\",\n      \"dataType\": \"string\"\n    }\n  ],\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ],\n  \"createdTime\": \"2010-07-16T23:11:52.307Z\",\n  \"modifiedTime\": \"2013-07-05T01:33:35.489Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5a668498-fafd-463d-97a9-ca5060c83891",
-              "name": "The request body or parameters are invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "decision-tables",
-                    ":tableId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tableId",
-                      "description": "(Required) Decision table unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"integer\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "aa13afa2-98d1-4108-9134-9216c98820c6",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "decision-tables",
-                    ":tableId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tableId",
-                      "description": "(Required) Decision table unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"integer\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "10253a66-eca1-4ae6-9121-62d50f27e417",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "decision-tables",
-                    ":tableId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tableId",
-                      "description": "(Required) Decision table unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"integer\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"action\",\n      \"dataType\": \"boolean\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"rows\": [\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    },\n    {\n      \"id\": \"string\",\n      \"values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "05143567-826c-42ff-aff7-4055c1106f47",
-          "name": "Delete a decision table",
-          "request": {
-            "name": "Delete a decision table",
-            "description": {
-              "content": "Delete a decision table from the project.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "decision-tables",
-                ":tableId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "tableId",
-                  "description": "(Required) Decision table unique identifier"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "1d7c20d9-a772-4f5b-8e57-519c0012d0ea",
-              "name": "Decision table deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "decision-tables",
-                    ":tableId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tableId",
-                      "description": "(Required) Decision table unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3ba2b653-8651-4dbe-b113-0970724f747c",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "decision-tables",
-                    ":tableId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tableId",
-                      "description": "(Required) Decision table unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f2fd25a5-5c49-427d-9df2-853c329a02bc",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "decision-tables",
-                    ":tableId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tableId",
-                      "description": "(Required) Decision table unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:48:14.000Z",
+          "updatedAt": "2026-10-21T20:48:14.000Z",
+          "uid": "35240-7fd3939d-1404-4a4d-ba03-60721a25c71e"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tibco.com/businessevents/v1",
-      "key": "baseUrl"
+      "id": "ee55a13c-6f14-4d5b-801f-f7c50f51e96e",
+      "createdAt": "2026-10-21T20:48:14.000Z",
+      "updatedAt": "2026-10-21T20:48:14.000Z",
+      "uid": "35240-ee55a13c-6f14-4d5b-801f-f7c50f51e96e"
     }
   ],
   "auth": {
@@ -1025,17 +964,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "db0d9840-7ec8-4611-9070-c9b9a321f7ac",
-    "name": "TIBCO BusinessEvents Agents Decision Tables API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tibco.com/businessevents/v1"
     }
-  }
+  ]
 }

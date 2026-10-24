@@ -1,149 +1,459 @@
 {
+  "info": {
+    "_postman_id": "63088285-e719-469c-aa41-f4fd2af7b1b3",
+    "name": "TIBCO Spotfire Analytics Data Sources API",
+    "description": "Analytics and data visualization REST API for TIBCO Spotfire Server. Provides programmatic access to manage analysis files, library items, data sources, users, groups, and scheduled tasks for embedded analytics and automated reporting workflows.\n\nContact Support:\n Name: TIBCO Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:48:08.000Z",
+    "updatedAt": "2026-10-21T20:48:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-63088285-e719-469c-aa41-f4fd2af7b1b3"
+  },
   "item": [
     {
-      "id": "f2aeb426-41b5-4fa1-bfcf-f12ddcafcf10",
-      "name": "Data Sources",
-      "description": {
-        "content": "Manage data source connections",
-        "type": "text/plain"
-      },
+      "name": "datasources",
       "item": [
         {
-          "id": "c2f61dbc-22fb-427f-ac97-25c0b4aa80e2",
+          "name": "{dataSourceId}",
+          "item": [
+            {
+              "name": "Get a data source",
+              "id": "6f183ada-39a6-4847-85a8-19f74d9444df",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/datasources/:dataSourceId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasources",
+                    ":dataSourceId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b5a9c1a9-e21b-4821-b80f-cea2d80b22ef",
+                      "key": "dataSourceId",
+                      "value": "<string>",
+                      "description": "(Required) Data source unique identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific data source connection."
+              },
+              "response": [
+                {
+                  "id": "597e0fc2-865c-4383-aa45-75f962b6b387",
+                  "name": "Data source details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasources/:dataSourceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasources",
+                        ":dataSourceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "dataSourceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"file\",\n  \"connectionString\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"status\": \"error\",\n  \"createdDate\": \"<dateTime>\",\n  \"modifiedDate\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-10-21T20:48:09.000Z",
+                  "updatedAt": "2026-10-21T20:48:09.000Z",
+                  "uid": "35240-597e0fc2-865c-4383-aa45-75f962b6b387"
+                },
+                {
+                  "id": "32755312-6a77-4df1-a698-9dd4cb701145",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasources/:dataSourceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasources",
+                        ":dataSourceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "dataSourceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:09.000Z",
+                  "updatedAt": "2026-10-21T20:48:09.000Z",
+                  "uid": "35240-32755312-6a77-4df1-a698-9dd4cb701145"
+                },
+                {
+                  "id": "67369963-64e9-4cfc-b61f-c21ddf07623e",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasources/:dataSourceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasources",
+                        ":dataSourceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "dataSourceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:09.000Z",
+                  "updatedAt": "2026-10-21T20:48:09.000Z",
+                  "uid": "35240-67369963-64e9-4cfc-b61f-c21ddf07623e"
+                }
+              ],
+              "createdAt": "2026-10-21T20:48:09.000Z",
+              "updatedAt": "2026-10-21T20:48:09.000Z",
+              "uid": "35240-6f183ada-39a6-4847-85a8-19f74d9444df"
+            },
+            {
+              "name": "Delete a data source",
+              "id": "88f4162d-a078-4bec-bf1f-addb07e2f999",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/datasources/:dataSourceId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasources",
+                    ":dataSourceId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b90b8b8e-ec7c-457a-a453-7822155ffe20",
+                      "key": "dataSourceId",
+                      "value": "<string>",
+                      "description": "(Required) Data source unique identifier"
+                    }
+                  ]
+                },
+                "description": "Delete a data source connection."
+              },
+              "response": [
+                {
+                  "id": "4c20a068-e53f-4e5a-b940-6552c9e8053a",
+                  "name": "Data source deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasources/:dataSourceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasources",
+                        ":dataSourceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "dataSourceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:09.000Z",
+                  "updatedAt": "2026-10-21T20:48:09.000Z",
+                  "uid": "35240-4c20a068-e53f-4e5a-b940-6552c9e8053a"
+                },
+                {
+                  "id": "e8381f0f-021d-4bcf-8f8c-5e9a29c72422",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasources/:dataSourceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasources",
+                        ":dataSourceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "dataSourceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:09.000Z",
+                  "updatedAt": "2026-10-21T20:48:09.000Z",
+                  "uid": "35240-e8381f0f-021d-4bcf-8f8c-5e9a29c72422"
+                },
+                {
+                  "id": "7743c0ac-ceca-4ebc-8a20-89d79790eb3b",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasources/:dataSourceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasources",
+                        ":dataSourceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "dataSourceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:09.000Z",
+                  "updatedAt": "2026-10-21T20:48:09.000Z",
+                  "uid": "35240-7743c0ac-ceca-4ebc-8a20-89d79790eb3b"
+                }
+              ],
+              "createdAt": "2026-10-21T20:48:09.000Z",
+              "updatedAt": "2026-10-21T20:48:09.000Z",
+              "uid": "35240-88f4162d-a078-4bec-bf1f-addb07e2f999"
+            }
+          ],
+          "id": "096dd422-eac0-476b-bffa-3fa41baf40e1",
+          "createdAt": "2026-10-21T20:48:09.000Z",
+          "updatedAt": "2026-10-21T20:48:09.000Z",
+          "uid": "35240-096dd422-eac0-476b-bffa-3fa41baf40e1"
+        },
+        {
           "name": "List data sources",
+          "id": "1b925e8a-db99-4b65-82ad-1b2ec59a1cf8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List data sources",
-            "description": {
-              "content": "Retrieve all configured data source connections.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "datasources"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/datasources",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "datasources"
+              ]
+            },
+            "description": "Retrieve all configured data source connections."
           },
           "response": [
             {
-              "id": "53678e83-1b70-4969-bd4a-887140e6ac60",
+              "id": "91eb9783-53fd-4446-8e3e-678d8d592159",
               "name": "List of data sources",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "datasources"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/datasources",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasources"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"information-link\",\n      \"connectionString\": \"string\",\n      \"provider\": \"string\",\n      \"status\": \"disconnected\",\n      \"createdDate\": \"1983-12-25T00:10:51.577Z\",\n      \"modifiedDate\": \"1963-06-24T09:36:07.336Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"custom\",\n      \"connectionString\": \"string\",\n      \"provider\": \"string\",\n      \"status\": \"connected\",\n      \"createdDate\": \"1989-01-13T04:31:08.726Z\",\n      \"modifiedDate\": \"2006-12-01T01:33:01.110Z\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"information-link\",\n      \"connectionString\": \"<string>\",\n      \"provider\": \"<string>\",\n      \"status\": \"error\",\n      \"createdDate\": \"<dateTime>\",\n      \"modifiedDate\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"information-link\",\n      \"connectionString\": \"<string>\",\n      \"provider\": \"<string>\",\n      \"status\": \"error\",\n      \"createdDate\": \"<dateTime>\",\n      \"modifiedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:48:09.000Z",
+              "updatedAt": "2026-10-21T20:48:09.000Z",
+              "uid": "35240-91eb9783-53fd-4446-8e3e-678d8d592159"
             },
             {
-              "id": "b3950b56-db89-463b-a572-d2f6f92fff5c",
+              "id": "df260ddf-669a-48b2-b17e-a33e75ce7f70",
               "name": "Authentication credentials are missing or invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "datasources"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/datasources",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasources"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:48:09.000Z",
+              "updatedAt": "2026-10-21T20:48:09.000Z",
+              "uid": "35240-df260ddf-669a-48b2-b17e-a33e75ce7f70"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:48:09.000Z",
+          "updatedAt": "2026-10-21T20:48:09.000Z",
+          "uid": "35240-1b925e8a-db99-4b65-82ad-1b2ec59a1cf8"
         },
         {
-          "id": "73fd6dcc-e725-4226-8048-e515cd22337f",
           "name": "Create a data source",
+          "id": "33f74a03-5be5-4932-8172-c6731949c0ad",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Create a data source",
-            "description": {
-              "content": "Create a new data source connection.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "datasources"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -154,554 +464,188 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"connectionString\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"username\": \"<string>\",\n  \"password\": \"<password>\"\n}",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"information-link\",\n  \"connectionString\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/datasources",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "datasources"
+              ]
+            },
+            "description": "Create a new data source connection."
           },
           "response": [
             {
-              "id": "ac28284f-a388-4a69-9196-d130958cf217",
+              "id": "02199cc2-b1f5-4516-9339-587c9cda4d2f",
               "name": "Data source created",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "datasources"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"connectionString\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"username\": \"<string>\",\n  \"password\": \"<password>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"information-link\",\n  \"connectionString\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/datasources",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasources"
+                  ]
                 }
               },
               "status": "Created",
               "code": 201,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"web-service\",\n  \"connectionString\": \"string\",\n  \"provider\": \"string\",\n  \"status\": \"connected\",\n  \"createdDate\": \"1995-09-07T01:50:20.372Z\",\n  \"modifiedDate\": \"1962-04-12T05:12:11.228Z\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"file\",\n  \"connectionString\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"status\": \"error\",\n  \"createdDate\": \"<dateTime>\",\n  \"modifiedDate\": \"<dateTime>\"\n}",
+              "createdAt": "2026-10-21T20:48:09.000Z",
+              "updatedAt": "2026-10-21T20:48:09.000Z",
+              "uid": "35240-02199cc2-b1f5-4516-9339-587c9cda4d2f"
             },
             {
-              "id": "2107906e-551d-4cdd-b577-9146c2831304",
+              "id": "39d651e9-6e67-410d-87e1-ad65b815a3fb",
               "name": "The request body or parameters are invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "datasources"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"connectionString\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"username\": \"<string>\",\n  \"password\": \"<password>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"information-link\",\n  \"connectionString\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/datasources",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasources"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:48:09.000Z",
+              "updatedAt": "2026-10-21T20:48:09.000Z",
+              "uid": "35240-39d651e9-6e67-410d-87e1-ad65b815a3fb"
             },
             {
-              "id": "d7ab1cc0-fc83-49a0-bdd9-ce2e2b307a0f",
+              "id": "21ff7575-0f4e-4458-8f2c-3f23a2e43825",
               "name": "Authentication credentials are missing or invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "datasources"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"connectionString\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"username\": \"<string>\",\n  \"password\": \"<password>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"information-link\",\n  \"connectionString\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/datasources",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasources"
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:48:09.000Z",
+              "updatedAt": "2026-10-21T20:48:09.000Z",
+              "uid": "35240-21ff7575-0f4e-4458-8f2c-3f23a2e43825"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "42d15524-dcdb-40af-9c89-83277195d5fe",
-          "name": "Get a data source",
-          "request": {
-            "name": "Get a data source",
-            "description": {
-              "content": "Retrieve details of a specific data source connection.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "datasources",
-                ":dataSourceId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "dataSourceId",
-                  "description": "(Required) Data source unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "220da6f4-e6de-44fd-ae5f-d3b32981dada",
-              "name": "Data source details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "datasources",
-                    ":dataSourceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "dataSourceId",
-                      "description": "(Required) Data source unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"type\": \"web-service\",\n  \"connectionString\": \"string\",\n  \"provider\": \"string\",\n  \"status\": \"connected\",\n  \"createdDate\": \"1995-09-07T01:50:20.372Z\",\n  \"modifiedDate\": \"1962-04-12T05:12:11.228Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8921e58a-3657-4df1-a406-ebbf5606e8ec",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "datasources",
-                    ":dataSourceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "dataSourceId",
-                      "description": "(Required) Data source unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7fc97c02-9180-41a2-9ca0-19e74e7a527d",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "datasources",
-                    ":dataSourceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "dataSourceId",
-                      "description": "(Required) Data source unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4878c5d2-2a8c-40ee-b60a-08ea902df65c",
-          "name": "Delete a data source",
-          "request": {
-            "name": "Delete a data source",
-            "description": {
-              "content": "Delete a data source connection.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "datasources",
-                ":dataSourceId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "dataSourceId",
-                  "description": "(Required) Data source unique identifier"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "8f9146c8-0b61-4103-bc02-83f954728713",
-              "name": "Data source deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "datasources",
-                    ":dataSourceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "dataSourceId",
-                      "description": "(Required) Data source unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "786b1cea-6282-41b6-97ce-db3dee1b0371",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "datasources",
-                    ":dataSourceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "dataSourceId",
-                      "description": "(Required) Data source unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b02ebbe0-d865-4e48-b325-79e5dc326cda",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "datasources",
-                    ":dataSourceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "dataSourceId",
-                      "description": "(Required) Data source unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:48:09.000Z",
+          "updatedAt": "2026-10-21T20:48:09.000Z",
+          "uid": "35240-33f74a03-5be5-4932-8172-c6731949c0ad"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tibco.com/businessevents/v1",
-      "key": "baseUrl"
+      "id": "22dad454-94f6-4bed-bdd4-2a0a66f9bdfd",
+      "createdAt": "2026-10-21T20:48:09.000Z",
+      "updatedAt": "2026-10-21T20:48:09.000Z",
+      "uid": "35240-22dad454-94f6-4bed-bdd4-2a0a66f9bdfd"
     }
   ],
   "auth": {
@@ -709,17 +653,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "bc32155a-5f82-4482-80ea-92d767bf51cb",
-    "name": "TIBCO BusinessEvents Agents Data Sources API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://spotfire.cloud.tibco.com/api/rest/v1"
     }
-  }
+  ]
 }

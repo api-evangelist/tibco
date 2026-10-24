@@ -1,424 +1,420 @@
 {
+  "info": {
+    "_postman_id": "8d4b45f7-caf2-4665-8028-bc6b2d3a8dbe",
+    "name": "TIBCO Mashery API Management Members API",
+    "description": "API management platform for designing, building, securing, and analyzing APIs. The Mashery V3 API provides programmatic access to manage API definitions, packages, plans, keys, services, endpoints, and analytics data within the TIBCO API management platform.\n\nContact Support:\n Name: TIBCO Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:48:51.000Z",
+    "updatedAt": "2026-10-21T20:48:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8d4b45f7-caf2-4665-8028-bc6b2d3a8dbe"
+  },
   "item": [
     {
-      "id": "8ad4dbf8-f44c-4cf3-86fe-1bcd331afd84",
-      "name": "Members",
-      "description": {
-        "content": "Manage developer portal members",
-        "type": "text/plain"
-      },
+      "name": "rest",
       "item": [
         {
-          "id": "6c6060aa-27cd-4c04-9e42-4d1b897f0e46",
-          "name": "List portal members",
-          "request": {
-            "name": "List portal members",
-            "description": {
-              "content": "Retrieve all developer portal members.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "members"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0",
-                  "description": "Number of items to skip for pagination"
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "20",
-                  "description": "Maximum number of items to return"
-                },
-                {
-                  "disabled": false,
-                  "key": "fields",
-                  "value": "<string>",
-                  "description": "Comma-separated list of fields to include in the response"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "members",
+          "item": [
             {
-              "id": "e1cf7f67-d7ac-4919-875d-02a1580f7d9f",
-              "name": "List of members",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "members"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "{memberId}",
+              "item": [
+                {
+                  "name": "Get a portal member",
+                  "id": "eeed0410-75b0-4031-8b4b-30b22d11f48f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/members/:memberId?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "members",
+                        ":memberId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of fields to include in the response",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "ac33dea7-57f5-4b84-8989-f698aec58f6b",
+                          "key": "memberId",
+                          "value": "<string>",
+                          "description": "(Required) Member unique identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details of a specific developer portal member."
+                  },
+                  "response": [
                     {
-                      "key": "offset",
-                      "value": "0"
+                      "id": "6e7bafcb-f099-4f75-b5dc-29be23af5ad8",
+                      "name": "Member details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/members/:memberId?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "members",
+                            ":memberId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of fields to include in the response",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "memberId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"username\": \"<string>\",\n  \"email\": \"<email>\",\n  \"displayName\": \"<string>\",\n  \"company\": \"<string>\",\n  \"registrationDate\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-10-21T20:48:52.000Z",
+                      "updatedAt": "2026-10-21T20:48:52.000Z",
+                      "uid": "35240-6e7bafcb-f099-4f75-b5dc-29be23af5ad8"
                     },
                     {
-                      "key": "limit",
-                      "value": "20"
+                      "id": "0cfb4d4c-20ff-4059-8416-b38ed8c7f635",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/members/:memberId?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "members",
+                            ":memberId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of fields to include in the response",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "memberId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:48:52.000Z",
+                      "updatedAt": "2026-10-21T20:48:52.000Z",
+                      "uid": "35240-0cfb4d4c-20ff-4059-8416-b38ed8c7f635"
                     },
                     {
-                      "key": "fields",
-                      "value": "<string>"
+                      "id": "94527da2-b2b2-4de0-81cd-b5bcc4fbe5f7",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/members/:memberId?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "members",
+                            ":memberId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of fields to include in the response",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "memberId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:48:52.000Z",
+                      "updatedAt": "2026-10-21T20:48:52.000Z",
+                      "uid": "35240-94527da2-b2b2-4de0-81cd-b5bcc4fbe5f7"
                     }
                   ],
-                  "variable": []
-                },
+                  "createdAt": "2026-10-21T20:48:52.000Z",
+                  "updatedAt": "2026-10-21T20:48:52.000Z",
+                  "uid": "35240-eeed0410-75b0-4031-8b4b-30b22d11f48f"
+                }
+              ],
+              "id": "c513b020-6488-4288-aae4-3ef9ce77c175",
+              "createdAt": "2026-10-21T20:48:52.000Z",
+              "updatedAt": "2026-10-21T20:48:52.000Z",
+              "uid": "35240-c513b020-6488-4288-aae4-3ef9ce77c175"
+            },
+            {
+              "name": "List portal members",
+              "id": "53d44a93-7816-46cc-b56a-306496d8baf7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"id\": \"string\",\n    \"username\": \"string\",\n    \"email\": \"D5BLap@LGlEiXHjZQrSeNxwaENFdQGth.ctoc\",\n    \"displayName\": \"string\",\n    \"company\": \"string\",\n    \"registrationDate\": \"1981-10-10T06:41:39.781Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"username\": \"string\",\n    \"email\": \"715W@glApzDFJtvRghHNqOlhHBAIcOiW.gep\",\n    \"displayName\": \"string\",\n    \"company\": \"string\",\n    \"registrationDate\": \"1996-10-30T12:33:47.111Z\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "bf1c80d3-888e-4a83-bc45-17c5223e989c",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/rest/members?offset=0&limit=20&fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "rest",
                     "members"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Number of items to skip for pagination",
                       "key": "offset",
                       "value": "0"
                     },
                     {
+                      "description": "Maximum number of items to return",
                       "key": "limit",
                       "value": "20"
                     },
                     {
+                      "description": "Comma-separated list of fields to include in the response",
                       "key": "fields",
                       "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "7d94e464-9475-46cc-ae2f-c7a2e2a58149",
-          "name": "Get a portal member",
-          "request": {
-            "name": "Get a portal member",
-            "description": {
-              "content": "Retrieve details of a specific developer portal member.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "members",
-                ":memberId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "fields",
-                  "value": "<string>",
-                  "description": "Comma-separated list of fields to include in the response"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "memberId",
-                  "description": "(Required) Member unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "05c2fa39-ae4f-45e9-8b57-6d8227169c8e",
-              "name": "Member details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "members",
-                    ":memberId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "memberId",
-                      "description": "(Required) Member unique identifier"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                "description": "Retrieve all developer portal members."
+              },
+              "response": [
+                {
+                  "id": "90e3968e-4b24-443b-9a2a-f96082c9bd39",
+                  "name": "List of members",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/members?offset=0&limit=20&fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "members"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to skip for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Maximum number of items to return",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Comma-separated list of fields to include in the response",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"username\": \"string\",\n  \"email\": \"JWrtu2B2770@DBGcjAGienEGqIihrkNYMJaR.zins\",\n  \"displayName\": \"string\",\n  \"company\": \"string\",\n  \"registrationDate\": \"2012-04-02T14:57:53.848Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "66faab6a-1e07-475a-ad62-5c5a9a919b35",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "members",
-                    ":memberId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "fields",
-                      "value": "<string>"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "memberId",
-                      "description": "(Required) Member unique identifier"
-                    }
-                  ]
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<email>\",\n    \"displayName\": \"<string>\",\n    \"company\": \"<string>\",\n    \"registrationDate\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<email>\",\n    \"displayName\": \"<string>\",\n    \"company\": \"<string>\",\n    \"registrationDate\": \"<dateTime>\"\n  }\n]",
+                  "createdAt": "2026-10-21T20:48:52.000Z",
+                  "updatedAt": "2026-10-21T20:48:52.000Z",
+                  "uid": "35240-90e3968e-4b24-443b-9a2a-f96082c9bd39"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "3a9f3840-e40b-4dfa-befe-9680ab88a9cc",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/members?offset=0&limit=20&fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "members"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to skip for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Maximum number of items to return",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Comma-separated list of fields to include in the response",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:52.000Z",
+                  "updatedAt": "2026-10-21T20:48:52.000Z",
+                  "uid": "35240-3a9f3840-e40b-4dfa-befe-9680ab88a9cc"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d3f31d02-a507-4240-a7ea-98acfc13a54b",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "members",
-                    ":memberId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "memberId",
-                      "description": "(Required) Member unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:48:52.000Z",
+              "updatedAt": "2026-10-21T20:48:52.000Z",
+              "uid": "35240-53d44a93-7816-46cc-b56a-306496d8baf7"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "8ab142a2-be4b-4e66-8a54-b6005d8983e8",
+          "createdAt": "2026-10-21T20:48:52.000Z",
+          "updatedAt": "2026-10-21T20:48:52.000Z",
+          "uid": "35240-8ab142a2-be4b-4e66-8a54-b6005d8983e8"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tibco.com/businessevents/v1",
-      "key": "baseUrl"
+      "id": "87bb6255-695b-4241-bc3c-520af91735fa",
+      "createdAt": "2026-10-21T20:48:52.000Z",
+      "updatedAt": "2026-10-21T20:48:52.000Z",
+      "uid": "35240-87bb6255-695b-4241-bc3c-520af91735fa"
     }
   ],
   "auth": {
-    "type": "bearer",
-    "bearer": [
+    "type": "oauth2",
+    "oauth2": [
       {
-        "key": "token",
-        "value": "{{bearerToken}}"
+        "key": "accessTokenUrl",
+        "value": "https://api.mashery.com/v3/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "e76e99bd-42fb-49b3-8bf5-667fe476c09d",
-    "name": "TIBCO BusinessEvents Agents Members API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mashery.com/v3"
     }
-  }
+  ]
 }

@@ -1,194 +1,964 @@
 {
+  "info": {
+    "_postman_id": "e12a6384-3864-47f8-b7ea-b8b3340103a9",
+    "name": "TIBCO Cloud Integration Apps API",
+    "description": "API for TIBCO Cloud Integration (TCI) platform enabling application integration, API management, and business process automation. Provides programmatic access to manage Flogo apps, Business Studio apps, connections, and deployment environments.\n\nContact Support:\n Name: TIBCO Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:47:50.000Z",
+    "updatedAt": "2026-10-21T20:47:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e12a6384-3864-47f8-b7ea-b8b3340103a9"
+  },
   "item": [
     {
-      "id": "954343ea-2410-465b-a1b8-fb2f7da87d71",
-      "name": "Apps",
-      "description": {
-        "content": "Manage integration applications",
-        "type": "text/plain"
-      },
+      "name": "apps",
       "item": [
         {
-          "id": "bd57515c-5964-42ce-8d52-25a2d63f7cf7",
-          "name": "List integration apps",
-          "request": {
-            "name": "List integration apps",
-            "description": {
-              "content": "Retrieve a list of all integration applications in the organization, including Flogo and Business Studio apps.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "apps"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "{appId}",
+          "item": [
+            {
+              "name": "export",
+              "item": [
                 {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0",
-                  "description": "Number of items to skip for pagination"
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "25",
-                  "description": "Maximum number of items to return"
-                },
-                {
-                  "disabled": false,
-                  "key": "filter",
-                  "value": "<string>",
-                  "description": "Filter expression for app name or type"
+                  "name": "Export an integration app",
+                  "id": "de9ef1c2-f269-480e-ac69-3bb19a238193",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/:appId/export",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        ":appId",
+                        "export"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0cb8e7f3-1962-4cf6-b019-90f2c1a240ff",
+                          "key": "appId",
+                          "value": "<string>",
+                          "description": "(Required) Integration app unique identifier"
+                        }
+                      ]
+                    },
+                    "description": "Export an integration application as a JSON manifest file."
+                  },
+                  "response": [
+                    {
+                      "id": "2ec3d5f9-e4ad-4214-bb3d-051462d49b5f",
+                      "name": "App export data",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/apps/:appId/export",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apps",
+                            ":appId",
+                            "export"
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-10-21T20:47:51.000Z",
+                      "updatedAt": "2026-10-21T20:47:51.000Z",
+                      "uid": "35240-2ec3d5f9-e4ad-4214-bb3d-051462d49b5f"
+                    },
+                    {
+                      "id": "552f7dcf-155e-4e77-bc65-9e460166b36e",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/apps/:appId/export",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apps",
+                            ":appId",
+                            "export"
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:47:51.000Z",
+                      "updatedAt": "2026-10-21T20:47:51.000Z",
+                      "uid": "35240-552f7dcf-155e-4e77-bc65-9e460166b36e"
+                    },
+                    {
+                      "id": "4b6db97c-1780-481a-a9d1-4750a0d9c85a",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/apps/:appId/export",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apps",
+                            ":appId",
+                            "export"
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:47:51.000Z",
+                      "updatedAt": "2026-10-21T20:47:51.000Z",
+                      "uid": "35240-4b6db97c-1780-481a-a9d1-4750a0d9c85a"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-de9ef1c2-f269-480e-ac69-3bb19a238193"
                 }
               ],
-              "variable": []
+              "id": "6322efc3-dcd9-4e5a-843d-fcdeb8d96ff5",
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-6322efc3-dcd9-4e5a-843d-fcdeb8d96ff5"
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
             {
-              "id": "83e64217-6d28-4116-ac06-031f0fe099b7",
-              "name": "List of integration apps",
-              "originalRequest": {
+              "name": "Get an integration app",
+              "id": "bae71bc9-6e03-4eb1-83e5-a4c8cb0df003",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "apps"
-                  ],
+                  "raw": "{{baseUrl}}/apps/:appId",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [
+                  "path": [
+                    "apps",
+                    ":appId"
+                  ],
+                  "variable": [
                     {
-                      "key": "offset",
-                      "value": "0"
-                    },
+                      "id": "f70418cd-1321-422a-bb25-4e7e9ba20349",
+                      "key": "appId",
+                      "value": "<string>",
+                      "description": "(Required) Integration app unique identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific integration application by ID."
+              },
+              "response": [
+                {
+                  "id": "00aecbdd-7d65-47c1-a6f0-64835f89b1cc",
+                  "name": "App details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/:appId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        ":appId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "appId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "limit",
-                      "value": "25"
-                    },
-                    {
-                      "key": "filter",
-                      "value": "<string>"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"type\": \"node\",\n  \"status\": \"stopped\",\n  \"createdTime\": \"<dateTime>\",\n  \"modifiedTime\": \"<dateTime>\",\n  \"createdBy\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-00aecbdd-7d65-47c1-a6f0-64835f89b1cc"
                 },
+                {
+                  "id": "bed18bc7-b224-4442-b1da-41691714b1da",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/:appId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        ":appId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "appId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-bed18bc7-b224-4442-b1da-41691714b1da"
+                },
+                {
+                  "id": "a20aace4-b4a1-4403-bad9-9b57cd2d4cb8",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/:appId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        ":appId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "appId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-a20aace4-b4a1-4403-bad9-9b57cd2d4cb8"
+                }
+              ],
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-bae71bc9-6e03-4eb1-83e5-a4c8cb0df003"
+            },
+            {
+              "name": "Update an integration app",
+              "id": "c0469356-2c82-4b7b-9bdb-3aad33bf4cc7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/apps/:appId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apps",
+                    ":appId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "29d054ba-9ce7-4883-8eeb-2afb36ca7d85",
+                      "key": "appId",
+                      "value": "<string>",
+                      "description": "(Required) Integration app unique identifier"
+                    }
+                  ]
+                },
+                "description": "Update an existing integration application configuration."
+              },
+              "response": [
+                {
+                  "id": "ee879949-7e36-4b3f-83ee-0d994db10ca6",
+                  "name": "App updated successfully",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/:appId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        ":appId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "appId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"type\": \"node\",\n  \"status\": \"stopped\",\n  \"createdTime\": \"<dateTime>\",\n  \"modifiedTime\": \"<dateTime>\",\n  \"createdBy\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-ee879949-7e36-4b3f-83ee-0d994db10ca6"
+                },
+                {
+                  "id": "60947b55-3fd7-4988-9725-274f74c74812",
+                  "name": "The request body or parameters are invalid",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/:appId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        ":appId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "appId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-60947b55-3fd7-4988-9725-274f74c74812"
+                },
+                {
+                  "id": "0f5c7815-df1f-4c37-af01-7e3e41b623e5",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/:appId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        ":appId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "appId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-0f5c7815-df1f-4c37-af01-7e3e41b623e5"
+                },
+                {
+                  "id": "64c1993b-eaff-4779-9eaa-955645cdaf10",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/:appId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        ":appId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "appId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-64c1993b-eaff-4779-9eaa-955645cdaf10"
+                }
+              ],
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-c0469356-2c82-4b7b-9bdb-3aad33bf4cc7"
+            },
+            {
+              "name": "Delete an integration app",
+              "id": "4ca24ec3-d7a3-4a99-b4d8-2c5ccc5f6200",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/apps/:appId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apps",
+                    ":appId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "7daeb848-b50e-4e19-9607-d32bb70db1c5",
+                      "key": "appId",
+                      "value": "<string>",
+                      "description": "(Required) Integration app unique identifier"
+                    }
+                  ]
+                },
+                "description": "Delete an integration application and its associated resources."
+              },
+              "response": [
+                {
+                  "id": "e958eb32-b1e2-4cfc-bf7e-95fd533b5eb3",
+                  "name": "App deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/:appId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        ":appId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "appId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-e958eb32-b1e2-4cfc-bf7e-95fd533b5eb3"
+                },
+                {
+                  "id": "3361267a-b496-4efc-895f-899c930ba82d",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/:appId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        ":appId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "appId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-3361267a-b496-4efc-895f-899c930ba82d"
+                },
+                {
+                  "id": "de2d29c0-efa3-452a-bce2-345bbb140453",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/:appId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        ":appId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "appId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:47:51.000Z",
+                  "updatedAt": "2026-10-21T20:47:51.000Z",
+                  "uid": "35240-de2d29c0-efa3-452a-bce2-345bbb140453"
+                }
+              ],
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-4ca24ec3-d7a3-4a99-b4d8-2c5ccc5f6200"
+            }
+          ],
+          "id": "f6b0beec-4f95-4f60-812b-c8505c9a90ce",
+          "createdAt": "2026-10-21T20:47:51.000Z",
+          "updatedAt": "2026-10-21T20:47:51.000Z",
+          "uid": "35240-f6b0beec-4f95-4f60-812b-c8505c9a90ce"
+        },
+        {
+          "name": "List integration apps",
+          "id": "0e600b00-b20c-4beb-943d-a84a9406f72d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/apps?offset=0&limit=25&filter=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "apps"
+              ],
+              "query": [
+                {
+                  "description": "Number of items to skip for pagination",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Maximum number of items to return",
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "description": "Filter expression for app name or type",
+                  "key": "filter",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve a list of all integration applications in the organization, including Flogo and Business Studio apps."
+          },
+          "response": [
+            {
+              "id": "f896bc5a-0016-401b-ab15-f0a49c31f8e1",
+              "name": "List of integration apps",
+              "originalRequest": {
                 "method": "GET",
-                "body": {}
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apps?offset=0&limit=25&filter=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apps"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to skip for pagination",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of items to return",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Filter expression for app name or type",
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"totalCount\": 1364,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"node\",\n      \"status\": \"error\",\n      \"createdTime\": \"1968-06-25T04:27:14.721Z\",\n      \"modifiedTime\": \"2016-06-07T15:30:25.361Z\",\n      \"createdBy\": \"string\",\n      \"version\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"businessworks\",\n      \"status\": \"stopped\",\n      \"createdTime\": \"1999-05-17T07:21:43.262Z\",\n      \"modifiedTime\": \"1987-12-24T23:10:41.504Z\",\n      \"createdBy\": \"string\",\n      \"version\": \"string\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"totalCount\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"type\": \"businessworks\",\n      \"status\": \"running\",\n      \"createdTime\": \"<dateTime>\",\n      \"modifiedTime\": \"<dateTime>\",\n      \"createdBy\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"type\": \"flogo\",\n      \"status\": \"running\",\n      \"createdTime\": \"<dateTime>\",\n      \"modifiedTime\": \"<dateTime>\",\n      \"createdBy\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-f896bc5a-0016-401b-ab15-f0a49c31f8e1"
             },
             {
-              "id": "629a362c-7c74-4b4d-a5b7-eda4efd49390",
+              "id": "5b5c7ebf-1b15-4dc7-9b43-8c43ad90d947",
               "name": "Authentication credentials are missing or invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "25"
-                    },
-                    {
-                      "key": "filter",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/apps?offset=0&limit=25&filter=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apps"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to skip for pagination",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Maximum number of items to return",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Filter expression for app name or type",
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-5b5c7ebf-1b15-4dc7-9b43-8c43ad90d947"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:47:51.000Z",
+          "updatedAt": "2026-10-21T20:47:51.000Z",
+          "uid": "35240-0e600b00-b20c-4beb-943d-a84a9406f72d"
         },
         {
-          "id": "e89796be-6bf8-43f0-a179-55bcd5e6adf7",
           "name": "Create an integration app",
+          "id": "2a1497c5-ae8b-4eba-9a2f-46de3e0e92f0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Create an integration app",
-            "description": {
-              "content": "Create a new integration application by uploading a Flogo JSON manifest or importing from a template.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "apps"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -199,1035 +969,188 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"businessworks\",\n  \"description\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/apps",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "apps"
+              ]
+            },
+            "description": "Create a new integration application by uploading a Flogo JSON manifest or importing from a template."
           },
           "response": [
             {
-              "id": "a16d2c8d-d221-4b1d-b476-3f0a57c0f8e9",
+              "id": "4c2da466-4391-46ab-b118-09b932f14c90",
               "name": "App created successfully",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"businessworks\",\n  \"description\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/apps",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apps"
+                  ]
                 }
               },
               "status": "Created",
               "code": 201,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"type\": \"flogo\",\n  \"status\": \"stopped\",\n  \"createdTime\": \"1970-04-10T16:50:13.988Z\",\n  \"modifiedTime\": \"2002-08-04T12:55:45.225Z\",\n  \"createdBy\": \"string\",\n  \"version\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"type\": \"node\",\n  \"status\": \"stopped\",\n  \"createdTime\": \"<dateTime>\",\n  \"modifiedTime\": \"<dateTime>\",\n  \"createdBy\": \"<string>\",\n  \"version\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-4c2da466-4391-46ab-b118-09b932f14c90"
             },
             {
-              "id": "10b48bb4-8282-43ec-bfdb-4b49f958046b",
+              "id": "ae5bf673-96c1-48bc-a3c1-4be6e2b15be1",
               "name": "The request body or parameters are invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"businessworks\",\n  \"description\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/apps",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apps"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-ae5bf673-96c1-48bc-a3c1-4be6e2b15be1"
             },
             {
-              "id": "17954633-632b-4631-baa8-402b42e85c1b",
+              "id": "c27394bb-b5fc-49b2-a58b-d01bbc36dca2",
               "name": "Authentication credentials are missing or invalid",
               "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"businessworks\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/apps",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "apps"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:47:51.000Z",
+              "updatedAt": "2026-10-21T20:47:51.000Z",
+              "uid": "35240-c27394bb-b5fc-49b2-a58b-d01bbc36dca2"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0fab1e98-73c1-4b27-ab6e-a7373697b763",
-          "name": "Get an integration app",
-          "request": {
-            "name": "Get an integration app",
-            "description": {
-              "content": "Retrieve details of a specific integration application by ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "apps",
-                ":appId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "appId",
-                  "description": "(Required) Integration app unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "3fd290bc-bb12-4fd6-b9b4-22aff0aaedf7",
-              "name": "App details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"type\": \"flogo\",\n  \"status\": \"stopped\",\n  \"createdTime\": \"1970-04-10T16:50:13.988Z\",\n  \"modifiedTime\": \"2002-08-04T12:55:45.225Z\",\n  \"createdBy\": \"string\",\n  \"version\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e50cf86a-8fcf-47c5-8780-0daf932c2109",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "462bb3c8-4c85-495c-869f-52b19887db3e",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "11e55c40-140c-4288-a27a-eac195ad06bf",
-          "name": "Update an integration app",
-          "request": {
-            "name": "Update an integration app",
-            "description": {
-              "content": "Update an existing integration application configuration.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "apps",
-                ":appId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "appId",
-                  "description": "(Required) Integration app unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "414f830c-4a77-4afb-90d7-a199250038c5",
-              "name": "App updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"type\": \"flogo\",\n  \"status\": \"stopped\",\n  \"createdTime\": \"1970-04-10T16:50:13.988Z\",\n  \"modifiedTime\": \"2002-08-04T12:55:45.225Z\",\n  \"createdBy\": \"string\",\n  \"version\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "27bc873e-b359-453c-b863-1a9451ae8797",
-              "name": "The request body or parameters are invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "84fba241-7a03-4d03-ae50-3e42133a1d72",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "aa281897-065d-43a9-aeb0-15444b431baa",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "35ba54f3-92ce-4171-8012-6783bcfa527d",
-          "name": "Delete an integration app",
-          "request": {
-            "name": "Delete an integration app",
-            "description": {
-              "content": "Delete an integration application and its associated resources.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "apps",
-                ":appId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "appId",
-                  "description": "(Required) Integration app unique identifier"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "c9f4fd75-aa7b-4059-a4de-8f70e5829b1e",
-              "name": "App deleted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "cae391ca-5e21-41ca-9cfa-2bc908c9cc8b",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "dea426dc-924b-4485-a564-20d581f8f752",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "57d66e14-3856-4a2c-9a01-eba0638d5ef3",
-          "name": "Export an integration app",
-          "request": {
-            "name": "Export an integration app",
-            "description": {
-              "content": "Export an integration application as a JSON manifest file.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "apps",
-                ":appId",
-                "export"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "appId",
-                  "description": "(Required) Integration app unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "6a1b1a7e-2198-41e8-b067-f3ca0538b4b7",
-              "name": "App export data",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId",
-                    "export"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0da305e5-0eae-4a9d-a820-bed093fa6a37",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId",
-                    "export"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4f4e7bdf-f857-4de1-8c60-f6ef7eedbfaf",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId",
-                    "export"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:47:51.000Z",
+          "updatedAt": "2026-10-21T20:47:51.000Z",
+          "uid": "35240-2a1497c5-ae8b-4eba-9a2f-46de3e0e92f0"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tibco.com/businessevents/v1",
-      "key": "baseUrl"
+      "id": "4c4c063c-f9bf-49ee-9e5f-88ac46c3e67f",
+      "createdAt": "2026-10-21T20:47:51.000Z",
+      "updatedAt": "2026-10-21T20:47:51.000Z",
+      "uid": "35240-4c4c063c-f9bf-49ee-9e5f-88ac46c3e67f"
     }
   ],
   "auth": {
@@ -1235,17 +1158,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "6b4140a8-7b65-4a06-9014-f3ed19bc251b",
-    "name": "TIBCO BusinessEvents Agents Apps API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://integration.cloud.tibco.com/api/v1"
     }
-  }
+  ]
 }

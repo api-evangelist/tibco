@@ -1,1301 +1,1217 @@
 {
+  "info": {
+    "_postman_id": "8e5f4b5a-44ec-4a27-8926-2fcfec9abe48",
+    "name": "TIBCO Spotfire Analytics Library API",
+    "description": "Analytics and data visualization REST API for TIBCO Spotfire Server. Provides programmatic access to manage analysis files, library items, data sources, users, groups, and scheduled tasks for embedded analytics and automated reporting workflows.\n\nContact Support:\n Name: TIBCO Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:48:46.000Z",
+    "updatedAt": "2026-10-21T20:48:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8e5f4b5a-44ec-4a27-8926-2fcfec9abe48"
+  },
   "item": [
     {
-      "id": "36bc6171-f0d4-482e-b201-bf7c9ec2505f",
-      "name": "Library",
-      "description": {
-        "content": "Manage Spotfire library items and folders",
-        "type": "text/plain"
-      },
+      "name": "library",
       "item": [
         {
-          "id": "acf490e6-da72-4536-8aba-4d44274cf00d",
-          "name": "List library items",
-          "request": {
-            "name": "List library items",
-            "description": {
-              "content": "Retrieve library items from the Spotfire library with optional filtering by path, type, or search query.",
-              "type": "text/plain"
+          "name": "{itemId}",
+          "item": [
+            {
+              "name": "permissions",
+              "item": [
+                {
+                  "name": "Get library item permissions",
+                  "id": "d52fe369-395e-4382-a838-0e99cb747342",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/library/:itemId/permissions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "library",
+                        ":itemId",
+                        "permissions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "27a4e861-08c4-4722-b1cf-555efb087b5a",
+                          "key": "itemId",
+                          "value": "<uuid>",
+                          "description": "(Required) Library item unique identifier (GUID)"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve access permissions for a specific library item."
+                  },
+                  "response": [
+                    {
+                      "id": "ee75d4da-46d6-4845-8026-1248fe6b778a",
+                      "name": "Item permissions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/library/:itemId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "library",
+                            ":itemId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"owner\": \"<string>\",\n  \"entries\": [\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"group\",\n      \"permission\": \"read\"\n    },\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"user\",\n      \"permission\": \"read\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:48:47.000Z",
+                      "updatedAt": "2026-10-21T20:48:47.000Z",
+                      "uid": "35240-ee75d4da-46d6-4845-8026-1248fe6b778a"
+                    },
+                    {
+                      "id": "e26e5ec9-71d8-4aa4-ba60-c827071f034c",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/library/:itemId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "library",
+                            ":itemId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:48:47.000Z",
+                      "updatedAt": "2026-10-21T20:48:47.000Z",
+                      "uid": "35240-e26e5ec9-71d8-4aa4-ba60-c827071f034c"
+                    },
+                    {
+                      "id": "4f80881a-70cf-4ecc-9ca5-9c324df1bb69",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/library/:itemId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "library",
+                            ":itemId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:48:47.000Z",
+                      "updatedAt": "2026-10-21T20:48:47.000Z",
+                      "uid": "35240-4f80881a-70cf-4ecc-9ca5-9c324df1bb69"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:48:47.000Z",
+                  "updatedAt": "2026-10-21T20:48:47.000Z",
+                  "uid": "35240-d52fe369-395e-4382-a838-0e99cb747342"
+                },
+                {
+                  "name": "Update library item permissions",
+                  "id": "1d2ffa69-7c54-4ebe-b6a4-3b2c17a144c0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"owner\": \"<string>\",\n  \"entries\": [\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"group\",\n      \"permission\": \"read\"\n    },\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"user\",\n      \"permission\": \"read\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/library/:itemId/permissions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "library",
+                        ":itemId",
+                        "permissions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4c419493-0296-4b5d-a8a8-922d6a39588e",
+                          "key": "itemId",
+                          "value": "<uuid>",
+                          "description": "(Required) Library item unique identifier (GUID)"
+                        }
+                      ]
+                    },
+                    "description": "Update access permissions for a specific library item."
+                  },
+                  "response": [
+                    {
+                      "id": "cc38cbb6-74f1-4448-a46a-a8e424e3340c",
+                      "name": "Permissions updated",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"owner\": \"<string>\",\n  \"entries\": [\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"group\",\n      \"permission\": \"read\"\n    },\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"user\",\n      \"permission\": \"read\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/library/:itemId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "library",
+                            ":itemId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"owner\": \"<string>\",\n  \"entries\": [\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"group\",\n      \"permission\": \"read\"\n    },\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"user\",\n      \"permission\": \"read\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:48:47.000Z",
+                      "updatedAt": "2026-10-21T20:48:47.000Z",
+                      "uid": "35240-cc38cbb6-74f1-4448-a46a-a8e424e3340c"
+                    },
+                    {
+                      "id": "97d42e51-aa8d-4e91-824e-8f9c400bb742",
+                      "name": "The request body or parameters are invalid",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"owner\": \"<string>\",\n  \"entries\": [\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"group\",\n      \"permission\": \"read\"\n    },\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"user\",\n      \"permission\": \"read\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/library/:itemId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "library",
+                            ":itemId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:48:47.000Z",
+                      "updatedAt": "2026-10-21T20:48:47.000Z",
+                      "uid": "35240-97d42e51-aa8d-4e91-824e-8f9c400bb742"
+                    },
+                    {
+                      "id": "4c9d6c57-4ef2-429b-b08d-069d364b2d30",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"owner\": \"<string>\",\n  \"entries\": [\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"group\",\n      \"permission\": \"read\"\n    },\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"user\",\n      \"permission\": \"read\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/library/:itemId/permissions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "library",
+                            ":itemId",
+                            "permissions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:48:47.000Z",
+                      "updatedAt": "2026-10-21T20:48:47.000Z",
+                      "uid": "35240-4c9d6c57-4ef2-429b-b08d-069d364b2d30"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:48:47.000Z",
+                  "updatedAt": "2026-10-21T20:48:47.000Z",
+                  "uid": "35240-1d2ffa69-7c54-4ebe-b6a4-3b2c17a144c0"
+                }
+              ],
+              "id": "6f888b8c-e03d-4e4e-a22b-2098374d2a46",
+              "createdAt": "2026-10-21T20:48:47.000Z",
+              "updatedAt": "2026-10-21T20:48:47.000Z",
+              "uid": "35240-6f888b8c-e03d-4e4e-a22b-2098374d2a46"
             },
+            {
+              "name": "Get a library item",
+              "id": "264f3f35-d669-47e3-aefb-980716909f54",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/library/:itemId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "library",
+                    ":itemId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b189827c-8ad5-4916-ae8b-faf34f3f1d07",
+                      "key": "itemId",
+                      "value": "<uuid>",
+                      "description": "(Required) Library item unique identifier (GUID)"
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific library item by ID."
+              },
+              "response": [
+                {
+                  "id": "340e8a17-6096-4999-9a4c-4c99e237ee5e",
+                  "name": "Library item details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/library/:itemId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "library",
+                        ":itemId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "itemId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"path\": \"<string>\",\n  \"type\": \"<string>\",\n  \"size\": \"<integer>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"modifiedBy\": \"<string>\",\n  \"modifiedDate\": \"<dateTime>\",\n  \"parentId\": \"<uuid>\"\n}",
+                  "createdAt": "2026-10-21T20:48:47.000Z",
+                  "updatedAt": "2026-10-21T20:48:47.000Z",
+                  "uid": "35240-340e8a17-6096-4999-9a4c-4c99e237ee5e"
+                },
+                {
+                  "id": "dc7bf05f-a6d6-4df8-8056-f149cc0c7c97",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/library/:itemId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "library",
+                        ":itemId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "itemId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:47.000Z",
+                  "updatedAt": "2026-10-21T20:48:47.000Z",
+                  "uid": "35240-dc7bf05f-a6d6-4df8-8056-f149cc0c7c97"
+                },
+                {
+                  "id": "b4d0e5ef-8de8-4d57-8e1b-d070785dec7c",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/library/:itemId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "library",
+                        ":itemId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "itemId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:47.000Z",
+                  "updatedAt": "2026-10-21T20:48:47.000Z",
+                  "uid": "35240-b4d0e5ef-8de8-4d57-8e1b-d070785dec7c"
+                }
+              ],
+              "createdAt": "2026-10-21T20:48:47.000Z",
+              "updatedAt": "2026-10-21T20:48:47.000Z",
+              "uid": "35240-264f3f35-d669-47e3-aefb-980716909f54"
+            },
+            {
+              "name": "Update a library item",
+              "id": "356283ae-69f8-483b-9183-d34ebd3e3e93",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/library/:itemId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "library",
+                    ":itemId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c6e93d19-6452-4663-a61f-5abe4433d9d7",
+                      "key": "itemId",
+                      "value": "<uuid>",
+                      "description": "(Required) Library item unique identifier (GUID)"
+                    }
+                  ]
+                },
+                "description": "Update metadata of a library item such as name or description."
+              },
+              "response": [
+                {
+                  "id": "6993c84d-a5d0-4290-9e56-977c699d90c7",
+                  "name": "Library item updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/library/:itemId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "library",
+                        ":itemId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "itemId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"path\": \"<string>\",\n  \"type\": \"<string>\",\n  \"size\": \"<integer>\",\n  \"createdBy\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"modifiedBy\": \"<string>\",\n  \"modifiedDate\": \"<dateTime>\",\n  \"parentId\": \"<uuid>\"\n}",
+                  "createdAt": "2026-10-21T20:48:47.000Z",
+                  "updatedAt": "2026-10-21T20:48:47.000Z",
+                  "uid": "35240-6993c84d-a5d0-4290-9e56-977c699d90c7"
+                },
+                {
+                  "id": "7e25540a-03fb-4a0b-8f6a-9e3ab8396c31",
+                  "name": "The request body or parameters are invalid",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/library/:itemId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "library",
+                        ":itemId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "itemId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:47.000Z",
+                  "updatedAt": "2026-10-21T20:48:47.000Z",
+                  "uid": "35240-7e25540a-03fb-4a0b-8f6a-9e3ab8396c31"
+                },
+                {
+                  "id": "c0fe895e-5dcd-489f-82f2-7637dc39ccc6",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/library/:itemId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "library",
+                        ":itemId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "itemId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:47.000Z",
+                  "updatedAt": "2026-10-21T20:48:47.000Z",
+                  "uid": "35240-c0fe895e-5dcd-489f-82f2-7637dc39ccc6"
+                },
+                {
+                  "id": "f66a132a-1666-4152-a9f6-341f1d04df06",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/library/:itemId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "library",
+                        ":itemId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "itemId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:47.000Z",
+                  "updatedAt": "2026-10-21T20:48:47.000Z",
+                  "uid": "35240-f66a132a-1666-4152-a9f6-341f1d04df06"
+                }
+              ],
+              "createdAt": "2026-10-21T20:48:47.000Z",
+              "updatedAt": "2026-10-21T20:48:47.000Z",
+              "uid": "35240-356283ae-69f8-483b-9183-d34ebd3e3e93"
+            },
+            {
+              "name": "Delete a library item",
+              "id": "0ed4306b-0710-43ec-813e-1091cff12d72",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/library/:itemId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "library",
+                    ":itemId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d3bbf628-fadd-4894-aa7f-bd3b7d883d2b",
+                      "key": "itemId",
+                      "value": "<uuid>",
+                      "description": "(Required) Library item unique identifier (GUID)"
+                    }
+                  ]
+                },
+                "description": "Delete a library item by ID."
+              },
+              "response": [
+                {
+                  "id": "408dcef6-2771-46c2-9d83-9406c89b8481",
+                  "name": "Library item deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/library/:itemId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "library",
+                        ":itemId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "itemId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:47.000Z",
+                  "updatedAt": "2026-10-21T20:48:47.000Z",
+                  "uid": "35240-408dcef6-2771-46c2-9d83-9406c89b8481"
+                },
+                {
+                  "id": "15166d86-b782-4d22-8b1d-47a9def75564",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/library/:itemId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "library",
+                        ":itemId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "itemId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:47.000Z",
+                  "updatedAt": "2026-10-21T20:48:47.000Z",
+                  "uid": "35240-15166d86-b782-4d22-8b1d-47a9def75564"
+                },
+                {
+                  "id": "b56fce72-603f-4ec9-94f4-9b63b5a95ec6",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/library/:itemId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "library",
+                        ":itemId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "itemId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:48:47.000Z",
+                  "updatedAt": "2026-10-21T20:48:47.000Z",
+                  "uid": "35240-b56fce72-603f-4ec9-94f4-9b63b5a95ec6"
+                }
+              ],
+              "createdAt": "2026-10-21T20:48:47.000Z",
+              "updatedAt": "2026-10-21T20:48:47.000Z",
+              "uid": "35240-0ed4306b-0710-43ec-813e-1091cff12d72"
+            }
+          ],
+          "id": "7617295f-9eaf-462d-a244-78be8ad6d951",
+          "createdAt": "2026-10-21T20:48:47.000Z",
+          "updatedAt": "2026-10-21T20:48:47.000Z",
+          "uid": "35240-7617295f-9eaf-462d-a244-78be8ad6d951"
+        },
+        {
+          "name": "List library items",
+          "id": "3a2b909d-3cd5-4a21-b387-663c8f3055fd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/library?path=<string>&type=spotfire.dataconnection&search=<string>&offset=0&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "library"
               ],
-              "host": [
-                "{{baseUrl}}"
-              ],
               "query": [
                 {
-                  "disabled": false,
+                  "description": "Library folder path to list items from",
                   "key": "path",
-                  "value": "<string>",
-                  "description": "Library folder path to list items from"
+                  "value": "<string>"
                 },
                 {
-                  "disabled": false,
+                  "description": "Filter by item type",
                   "key": "type",
-                  "value": "<string>",
-                  "description": "Filter by item type"
+                  "value": "spotfire.dataconnection"
                 },
                 {
-                  "disabled": false,
+                  "description": "Search query for item names",
                   "key": "search",
-                  "value": "<string>",
-                  "description": "Search query for item names"
+                  "value": "<string>"
                 },
                 {
-                  "disabled": false,
+                  "description": "Number of items to skip for pagination",
                   "key": "offset",
-                  "value": "0",
-                  "description": "Number of items to skip for pagination"
+                  "value": "0"
                 },
                 {
-                  "disabled": false,
+                  "description": "Maximum number of items to return",
                   "key": "limit",
-                  "value": "25",
-                  "description": "Maximum number of items to return"
+                  "value": "25"
                 }
-              ],
-              "variable": []
+              ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "Retrieve library items from the Spotfire library with optional filtering by path, type, or search query."
           },
           "response": [
             {
-              "id": "a6d5fb09-645e-4c84-8010-4883aa41a133",
+              "id": "9ae0c8c6-9b80-4cdc-abea-611ae7cead19",
               "name": "List of library items",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "library"
-                  ],
+                  "raw": "{{baseUrl}}/library?path=<string>&type=spotfire.dataconnection&search=<string>&offset=0&limit=25",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "library"
+                  ],
                   "query": [
                     {
+                      "description": "Library folder path to list items from",
                       "key": "path",
                       "value": "<string>"
                     },
                     {
+                      "description": "Filter by item type",
                       "key": "type",
-                      "value": "<string>"
+                      "value": "spotfire.dataconnection"
                     },
                     {
+                      "description": "Search query for item names",
                       "key": "search",
                       "value": "<string>"
                     },
                     {
+                      "description": "Number of items to skip for pagination",
                       "key": "offset",
                       "value": "0"
                     },
                     {
+                      "description": "Maximum number of items to return",
                       "key": "limit",
                       "value": "25"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"totalCount\": 3302,\n  \"items\": [\n    {\n      \"id\": \"6c2842e0-d227-389a-7183-26d3cfbf2af2\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"path\": \"string\",\n      \"type\": \"string\",\n      \"size\": 3185,\n      \"createdBy\": \"string\",\n      \"createdDate\": \"2004-01-08T07:36:22.156Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedDate\": \"1955-09-23T06:07:48.491Z\",\n      \"parentId\": \"c18c5a2c-01e9-b1ba-3183-7ae23a344aa1\"\n    },\n    {\n      \"id\": \"5f38615f-2634-f872-5193-00aae8dc8460\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"path\": \"string\",\n      \"type\": \"string\",\n      \"size\": 150,\n      \"createdBy\": \"string\",\n      \"createdDate\": \"2019-03-16T23:32:17.653Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedDate\": \"2006-06-10T05:51:48.758Z\",\n      \"parentId\": \"69e8f91c-adc0-4088-c95d-9f579e866345\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"totalCount\": \"<integer>\",\n  \"items\": [\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"path\": \"<string>\",\n      \"type\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\",\n      \"modifiedDate\": \"<dateTime>\",\n      \"parentId\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"path\": \"<string>\",\n      \"type\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\",\n      \"modifiedDate\": \"<dateTime>\",\n      \"parentId\": \"<uuid>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:48:47.000Z",
+              "updatedAt": "2026-10-21T20:48:47.000Z",
+              "uid": "35240-9ae0c8c6-9b80-4cdc-abea-611ae7cead19"
             },
             {
-              "id": "94f6e9ec-755c-4991-80ce-7a500bebbea7",
+              "id": "94ed78b7-f2ba-4c96-be4a-6f3a78dc7c82",
               "name": "Authentication credentials are missing or invalid",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "library"
-                  ],
+                  "raw": "{{baseUrl}}/library?path=<string>&type=spotfire.dataconnection&search=<string>&offset=0&limit=25",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "library"
+                  ],
                   "query": [
                     {
+                      "description": "Library folder path to list items from",
                       "key": "path",
                       "value": "<string>"
                     },
                     {
+                      "description": "Filter by item type",
                       "key": "type",
-                      "value": "<string>"
+                      "value": "spotfire.dataconnection"
                     },
                     {
+                      "description": "Search query for item names",
                       "key": "search",
                       "value": "<string>"
                     },
                     {
+                      "description": "Number of items to skip for pagination",
                       "key": "offset",
                       "value": "0"
                     },
                     {
+                      "description": "Maximum number of items to return",
                       "key": "limit",
                       "value": "25"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e44150bf-fae7-451d-bf6a-81cb889fd338",
-          "name": "Get a library item",
-          "request": {
-            "name": "Get a library item",
-            "description": {
-              "content": "Retrieve details of a specific library item by ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "library",
-                ":itemId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "itemId",
-                  "description": "(Required) Library item unique identifier (GUID)"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "400aecb5-5037-4de7-8f34-2067dfa9664e",
-              "name": "Library item details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"d1ca8178-217a-477f-b189-406cfb9c4f79\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"path\": \"string\",\n  \"type\": \"string\",\n  \"size\": 4870,\n  \"createdBy\": \"string\",\n  \"createdDate\": \"1993-05-25T02:32:29.430Z\",\n  \"modifiedBy\": \"string\",\n  \"modifiedDate\": \"1960-08-08T23:16:56.007Z\",\n  \"parentId\": \"0eb22a9b-4f9d-b7a8-fc56-2dbd3506e7ee\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "56ecdf94-7a28-47bf-af7b-1d8b10ad99c0",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "233f710b-9c03-42f1-a1a6-0366bb92ebb9",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "090ce0df-c2a0-4543-ab38-7cdf5255c3b6",
-          "name": "Update a library item",
-          "request": {
-            "name": "Update a library item",
-            "description": {
-              "content": "Update metadata of a library item such as name or description.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "library",
-                ":itemId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "itemId",
-                  "description": "(Required) Library item unique identifier (GUID)"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "7a0146a7-b095-4cb9-ab99-a688da05a737",
-              "name": "Library item updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"d1ca8178-217a-477f-b189-406cfb9c4f79\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"path\": \"string\",\n  \"type\": \"string\",\n  \"size\": 4870,\n  \"createdBy\": \"string\",\n  \"createdDate\": \"1993-05-25T02:32:29.430Z\",\n  \"modifiedBy\": \"string\",\n  \"modifiedDate\": \"1960-08-08T23:16:56.007Z\",\n  \"parentId\": \"0eb22a9b-4f9d-b7a8-fc56-2dbd3506e7ee\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "02dd2705-6d80-471d-ba76-947eb09fd271",
-              "name": "The request body or parameters are invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7929b107-c573-4895-9eff-511681419cab",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f3776c4c-7927-4e97-b8e0-36b38489ad17",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:48:47.000Z",
+              "updatedAt": "2026-10-21T20:48:47.000Z",
+              "uid": "35240-94ed78b7-f2ba-4c96-be4a-6f3a78dc7c82"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0a460207-4076-4f0b-a930-818c549ae60a",
-          "name": "Delete a library item",
-          "request": {
-            "name": "Delete a library item",
-            "description": {
-              "content": "Delete a library item by ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "library",
-                ":itemId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "itemId",
-                  "description": "(Required) Library item unique identifier (GUID)"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "891c5724-3c18-4ecf-a0bc-c538653125ad",
-              "name": "Library item deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "41101156-5086-4592-966d-3a6078524923",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "41a8b781-4f24-4050-bc1a-b01fbc126282",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "08479ae8-9710-4d59-bcd8-84762b11537e",
-          "name": "Get library item permissions",
-          "request": {
-            "name": "Get library item permissions",
-            "description": {
-              "content": "Retrieve access permissions for a specific library item.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "library",
-                ":itemId",
-                "permissions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "itemId",
-                  "description": "(Required) Library item unique identifier (GUID)"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a786c334-feb4-419e-94ae-d276a4049046",
-              "name": "Item permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId",
-                    "permissions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"owner\": \"string\",\n  \"entries\": [\n    {\n      \"principal\": \"string\",\n      \"principalType\": \"user\",\n      \"permission\": \"read\"\n    },\n    {\n      \"principal\": \"string\",\n      \"principalType\": \"group\",\n      \"permission\": \"read\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ddde413a-530d-4c45-a329-6ef1425343ca",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId",
-                    "permissions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7ff7f443-dc21-4a36-bdb5-6ddcf0fba465",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId",
-                    "permissions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "69f797dc-25bb-43f7-85d4-354132274ca8",
-          "name": "Update library item permissions",
-          "request": {
-            "name": "Update library item permissions",
-            "description": {
-              "content": "Update access permissions for a specific library item.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "library",
-                ":itemId",
-                "permissions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "itemId",
-                  "description": "(Required) Library item unique identifier (GUID)"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"owner\": \"<string>\",\n  \"entries\": [\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"<string>\",\n      \"permission\": \"<string>\"\n    },\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"<string>\",\n      \"permission\": \"<string>\"\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "f3e59acb-17b6-41d6-8cf9-8c54e7b1bae4",
-              "name": "Permissions updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId",
-                    "permissions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"owner\": \"<string>\",\n  \"entries\": [\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"<string>\",\n      \"permission\": \"<string>\"\n    },\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"<string>\",\n      \"permission\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"owner\": \"string\",\n  \"entries\": [\n    {\n      \"principal\": \"string\",\n      \"principalType\": \"user\",\n      \"permission\": \"read\"\n    },\n    {\n      \"principal\": \"string\",\n      \"principalType\": \"group\",\n      \"permission\": \"read\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "45ce6009-1ceb-4621-9f9d-70c492596941",
-              "name": "The request body or parameters are invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId",
-                    "permissions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"owner\": \"<string>\",\n  \"entries\": [\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"<string>\",\n      \"permission\": \"<string>\"\n    },\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"<string>\",\n      \"permission\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d4b74538-5bf7-49bf-af0a-27aa82fbe0f3",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "library",
-                    ":itemId",
-                    "permissions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "itemId",
-                      "description": "(Required) Library item unique identifier (GUID)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"owner\": \"<string>\",\n  \"entries\": [\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"<string>\",\n      \"permission\": \"<string>\"\n    },\n    {\n      \"principal\": \"<string>\",\n      \"principalType\": \"<string>\",\n      \"permission\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:48:47.000Z",
+          "updatedAt": "2026-10-21T20:48:47.000Z",
+          "uid": "35240-3a2b909d-3cd5-4a21-b387-663c8f3055fd"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tibco.com/businessevents/v1",
-      "key": "baseUrl"
+      "id": "98df81bd-8e3b-4fd7-aa00-6fa8d4aef2f4",
+      "createdAt": "2026-10-21T20:48:47.000Z",
+      "updatedAt": "2026-10-21T20:48:47.000Z",
+      "uid": "35240-98df81bd-8e3b-4fd7-aa00-6fa8d4aef2f4"
     }
   ],
   "auth": {
@@ -1303,17 +1219,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "c8535f07-34e8-43a6-87ea-fb019b6547fb",
-    "name": "TIBCO BusinessEvents Agents Library API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://spotfire.cloud.tibco.com/api/rest/v1"
     }
-  }
+  ]
 }

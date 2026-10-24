@@ -1,140 +1,129 @@
 {
+  "info": {
+    "_postman_id": "95d36895-ae6e-4926-826f-5b064f917411",
+    "name": "TIBCO BusinessEvents Channels API",
+    "description": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:47:57.000Z",
+    "updatedAt": "2026-10-21T20:47:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-95d36895-ae6e-4926-826f-5b064f917411"
+  },
   "item": [
     {
-      "id": "77158427-f141-4bf0-853c-85843781fb97",
-      "name": "Channels",
-      "description": {
-        "content": "Manage event channels and destinations",
-        "type": "text/plain"
-      },
+      "name": "channels",
       "item": [
         {
-          "id": "d085445c-b3cd-4351-8b65-60ce5d21aacd",
           "name": "List event channels",
+          "id": "9db620f5-0d32-4ee5-9d29-49b75d08a0e8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List event channels",
-            "description": {
-              "content": "Retrieve all configured event channels and destinations.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "channels"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/channels",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "channels"
+              ]
+            },
+            "description": "Retrieve all configured event channels and destinations."
           },
           "response": [
             {
-              "id": "1265abf8-ad40-4df5-b81c-c1efa63e7a72",
+              "id": "39b66e3b-6d1f-4c7e-a80c-a2ccbbfd6b4b",
               "name": "List of channels",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "channels"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/channels",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "channels"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"http\",\n      \"destination\": \"string\",\n      \"status\": \"active\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"local\",\n      \"destination\": \"string\",\n      \"status\": \"inactive\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"jms\",\n      \"destination\": \"<string>\",\n      \"status\": \"active\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"jms\",\n      \"destination\": \"<string>\",\n      \"status\": \"active\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:47:57.000Z",
+              "updatedAt": "2026-10-21T20:47:57.000Z",
+              "uid": "35240-39b66e3b-6d1f-4c7e-a80c-a2ccbbfd6b4b"
             },
             {
-              "id": "41dec326-ebae-47e1-b090-4aa97e57b46b",
+              "id": "89e484ba-a797-432a-bd1b-3eeef44fe4dd",
               "name": "Authentication credentials are missing or invalid",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "channels"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/channels",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "channels"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:47:57.000Z",
+              "updatedAt": "2026-10-21T20:47:57.000Z",
+              "uid": "35240-89e484ba-a797-432a-bd1b-3eeef44fe4dd"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:47:57.000Z",
+          "updatedAt": "2026-10-21T20:47:57.000Z",
+          "uid": "35240-9db620f5-0d32-4ee5-9d29-49b75d08a0e8"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tibco.com/businessevents/v1",
-      "key": "baseUrl"
+      "id": "2a478745-a80f-4925-b49a-b8bac4f2509a",
+      "createdAt": "2026-10-21T20:47:57.000Z",
+      "updatedAt": "2026-10-21T20:47:57.000Z",
+      "uid": "35240-2a478745-a80f-4925-b49a-b8bac4f2509a"
     }
   ],
   "auth": {
@@ -142,17 +131,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "8961ef6e-6c77-4fd4-9c26-b4338b797171",
-    "name": "TIBCO BusinessEvents Agents Channels API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tibco.com/businessevents/v1"
     }
-  }
+  ]
 }

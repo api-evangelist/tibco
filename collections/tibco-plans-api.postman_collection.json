@@ -1,500 +1,503 @@
 {
+  "info": {
+    "_postman_id": "f5b54b2b-098e-4421-adba-23f87002ddd8",
+    "name": "TIBCO Mashery API Management Plans API",
+    "description": "API management platform for designing, building, securing, and analyzing APIs. The Mashery V3 API provides programmatic access to manage API definitions, packages, plans, keys, services, endpoints, and analytics data within the TIBCO API management platform.\n\nContact Support:\n Name: TIBCO Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:49:05.000Z",
+    "updatedAt": "2026-10-21T20:49:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f5b54b2b-098e-4421-adba-23f87002ddd8"
+  },
   "item": [
     {
-      "id": "f61e8a3e-7b76-4379-ade8-bd2fa27d74e6",
-      "name": "Plans",
-      "description": {
-        "content": "Manage subscription plans within packages",
-        "type": "text/plain"
-      },
+      "name": "rest",
       "item": [
         {
-          "id": "991e9dee-5407-41a8-a948-c64029d4f44c",
-          "name": "List plans in a package",
-          "request": {
-            "name": "List plans in a package",
-            "description": {
-              "content": "Retrieve all subscription plans within an API package.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "packages",
-                ":packageId",
-                "plans"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "fields",
-                  "value": "<string>",
-                  "description": "Comma-separated list of fields to include in the response"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "packageId",
-                  "description": "(Required) Package unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "packages",
+          "item": [
             {
-              "id": "3587fb38-0712-41d1-b346-4b6c6c8b43ce",
-              "name": "List of plans",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages",
-                    ":packageId",
-                    "plans"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "packageId",
-                      "description": "(Required) Package unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{packageId}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "plans",
+                  "item": [
+                    {
+                      "name": "List plans in a package",
+                      "id": "77c0a9e2-26be-413c-962d-cbca6c39fa72",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/packages/:packageId/plans?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "packages",
+                            ":packageId",
+                            "plans"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of fields to include in the response",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "05da1391-3590-47cd-8c55-d52410e4bdd4",
+                              "key": "packageId",
+                              "value": "<string>",
+                              "description": "(Required) Package unique identifier"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve all subscription plans within an API package."
+                      },
+                      "response": [
+                        {
+                          "id": "f5e4c77a-8885-4089-ac6c-bddd46f3b1d0",
+                          "name": "List of plans",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/packages/:packageId/plans?fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "packages",
+                                ":packageId",
+                                "plans"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Comma-separated list of fields to include in the response",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "packageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"maxNumKeysAllowed\": \"<integer>\",\n    \"numKeysBeforeReview\": \"<integer>\",\n    \"qpsLimitCeiling\": \"<integer>\",\n    \"rateLimitCeiling\": \"<integer>\",\n    \"rateLimitPeriod\": \"day\",\n    \"status\": \"active\",\n    \"created\": \"<dateTime>\",\n    \"updated\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"maxNumKeysAllowed\": \"<integer>\",\n    \"numKeysBeforeReview\": \"<integer>\",\n    \"qpsLimitCeiling\": \"<integer>\",\n    \"rateLimitCeiling\": \"<integer>\",\n    \"rateLimitPeriod\": \"hour\",\n    \"status\": \"inactive\",\n    \"created\": \"<dateTime>\",\n    \"updated\": \"<dateTime>\"\n  }\n]",
+                          "createdAt": "2026-10-21T20:49:06.000Z",
+                          "updatedAt": "2026-10-21T20:49:06.000Z",
+                          "uid": "35240-f5e4c77a-8885-4089-ac6c-bddd46f3b1d0"
+                        },
+                        {
+                          "id": "ad9470cb-cbff-49ba-be6a-afa9be3e7c96",
+                          "name": "Authentication credentials are missing or invalid",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/packages/:packageId/plans?fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "packages",
+                                ":packageId",
+                                "plans"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Comma-separated list of fields to include in the response",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "packageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:49:06.000Z",
+                          "updatedAt": "2026-10-21T20:49:06.000Z",
+                          "uid": "35240-ad9470cb-cbff-49ba-be6a-afa9be3e7c96"
+                        },
+                        {
+                          "id": "7faec946-a6b7-4384-a391-6d9a02f1bda8",
+                          "name": "The requested resource was not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/packages/:packageId/plans?fields=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "packages",
+                                ":packageId",
+                                "plans"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Comma-separated list of fields to include in the response",
+                                  "key": "fields",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "packageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:49:06.000Z",
+                          "updatedAt": "2026-10-21T20:49:06.000Z",
+                          "uid": "35240-7faec946-a6b7-4384-a391-6d9a02f1bda8"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:49:06.000Z",
+                      "updatedAt": "2026-10-21T20:49:06.000Z",
+                      "uid": "35240-77c0a9e2-26be-413c-962d-cbca6c39fa72"
+                    },
+                    {
+                      "name": "Create a plan",
+                      "id": "d13d5104-3a1d-4021-8ca6-b631cf08552d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"maxNumKeysAllowed\": \"<integer>\",\n  \"qpsLimitCeiling\": \"<integer>\",\n  \"rateLimitCeiling\": \"<integer>\",\n  \"rateLimitPeriod\": \"second\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/packages/:packageId/plans",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "packages",
+                            ":packageId",
+                            "plans"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c4d24cbc-24ae-40f8-b97b-27bfb209d297",
+                              "key": "packageId",
+                              "value": "<string>",
+                              "description": "(Required) Package unique identifier"
+                            }
+                          ]
+                        },
+                        "description": "Create a new subscription plan within an API package."
+                      },
+                      "response": [
+                        {
+                          "id": "77465977-cc76-4446-9912-ebd0860241b3",
+                          "name": "Plan created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"maxNumKeysAllowed\": \"<integer>\",\n  \"qpsLimitCeiling\": \"<integer>\",\n  \"rateLimitCeiling\": \"<integer>\",\n  \"rateLimitPeriod\": \"second\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/packages/:packageId/plans",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "packages",
+                                ":packageId",
+                                "plans"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "packageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"maxNumKeysAllowed\": \"<integer>\",\n  \"numKeysBeforeReview\": \"<integer>\",\n  \"qpsLimitCeiling\": \"<integer>\",\n  \"rateLimitCeiling\": \"<integer>\",\n  \"rateLimitPeriod\": \"minute\",\n  \"status\": \"inactive\",\n  \"created\": \"<dateTime>\",\n  \"updated\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-10-21T20:49:06.000Z",
+                          "updatedAt": "2026-10-21T20:49:06.000Z",
+                          "uid": "35240-77465977-cc76-4446-9912-ebd0860241b3"
+                        },
+                        {
+                          "id": "4935ac37-29fc-45f2-b4ec-e5aacad5fe0a",
+                          "name": "The request body or parameters are invalid",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"maxNumKeysAllowed\": \"<integer>\",\n  \"qpsLimitCeiling\": \"<integer>\",\n  \"rateLimitCeiling\": \"<integer>\",\n  \"rateLimitPeriod\": \"second\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/packages/:packageId/plans",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "packages",
+                                ":packageId",
+                                "plans"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "packageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:49:06.000Z",
+                          "updatedAt": "2026-10-21T20:49:06.000Z",
+                          "uid": "35240-4935ac37-29fc-45f2-b4ec-e5aacad5fe0a"
+                        },
+                        {
+                          "id": "092afc25-0ad1-4a5c-abd1-b6b11bd40110",
+                          "name": "Authentication credentials are missing or invalid",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"maxNumKeysAllowed\": \"<integer>\",\n  \"qpsLimitCeiling\": \"<integer>\",\n  \"rateLimitCeiling\": \"<integer>\",\n  \"rateLimitPeriod\": \"second\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/rest/packages/:packageId/plans",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rest",
+                                "packages",
+                                ":packageId",
+                                "plans"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "packageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:49:06.000Z",
+                          "updatedAt": "2026-10-21T20:49:06.000Z",
+                          "uid": "35240-092afc25-0ad1-4a5c-abd1-b6b11bd40110"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:49:06.000Z",
+                      "updatedAt": "2026-10-21T20:49:06.000Z",
+                      "uid": "35240-d13d5104-3a1d-4021-8ca6-b631cf08552d"
+                    }
+                  ],
+                  "id": "1effc402-143f-4af0-9154-6ec8df85ca9a",
+                  "createdAt": "2026-10-21T20:49:06.000Z",
+                  "updatedAt": "2026-10-21T20:49:06.000Z",
+                  "uid": "35240-1effc402-143f-4af0-9154-6ec8df85ca9a"
                 }
               ],
-              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"maxNumKeysAllowed\": 1517,\n    \"numKeysBeforeReview\": 5407,\n    \"qpsLimitCeiling\": 7171,\n    \"rateLimitCeiling\": 449,\n    \"rateLimitPeriod\": \"day\",\n    \"status\": \"inactive\",\n    \"created\": \"1999-12-27T12:03:50.808Z\",\n    \"updated\": \"1996-01-08T18:12:10.913Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"maxNumKeysAllowed\": 4524,\n    \"numKeysBeforeReview\": 3086,\n    \"qpsLimitCeiling\": 6165,\n    \"rateLimitCeiling\": 9921,\n    \"rateLimitPeriod\": \"day\",\n    \"status\": \"inactive\",\n    \"created\": \"1968-07-18T02:34:22.277Z\",\n    \"updated\": \"1963-06-23T11:11:45.910Z\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5385a3ac-b6bb-41f4-96e6-5ff7d5646d47",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages",
-                    ":packageId",
-                    "plans"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "packageId",
-                      "description": "(Required) Package unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "23f8046d-bd75-48b1-97b8-4ff6ef9e9ccd",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages",
-                    ":packageId",
-                    "plans"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "packageId",
-                      "description": "(Required) Package unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "4a62e221-3a58-4720-aea9-a7293df8af3d",
+              "createdAt": "2026-10-21T20:49:06.000Z",
+              "updatedAt": "2026-10-21T20:49:06.000Z",
+              "uid": "35240-4a62e221-3a58-4720-aea9-a7293df8af3d"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0c2459d4-0af7-4172-bf3b-2c55b521fb46",
-          "name": "Create a plan",
-          "request": {
-            "name": "Create a plan",
-            "description": {
-              "content": "Create a new subscription plan within an API package.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "packages",
-                ":packageId",
-                "plans"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "packageId",
-                  "description": "(Required) Package unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"maxNumKeysAllowed\": \"<integer>\",\n  \"qpsLimitCeiling\": \"<integer>\",\n  \"rateLimitCeiling\": \"<integer>\",\n  \"rateLimitPeriod\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "b33f20e9-ee08-4395-aa32-82c9bb3ba52b",
-              "name": "Plan created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages",
-                    ":packageId",
-                    "plans"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "packageId",
-                      "description": "(Required) Package unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"maxNumKeysAllowed\": \"<integer>\",\n  \"qpsLimitCeiling\": \"<integer>\",\n  \"rateLimitCeiling\": \"<integer>\",\n  \"rateLimitPeriod\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"maxNumKeysAllowed\": 3137,\n  \"numKeysBeforeReview\": 4805,\n  \"qpsLimitCeiling\": 6462,\n  \"rateLimitCeiling\": 2355,\n  \"rateLimitPeriod\": \"hour\",\n  \"status\": \"inactive\",\n  \"created\": \"1960-06-06T01:49:53.500Z\",\n  \"updated\": \"2021-02-12T00:16:28.838Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1f98fac4-64fe-4cbb-97e5-bdf867b7620f",
-              "name": "The request body or parameters are invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages",
-                    ":packageId",
-                    "plans"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "packageId",
-                      "description": "(Required) Package unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"maxNumKeysAllowed\": \"<integer>\",\n  \"qpsLimitCeiling\": \"<integer>\",\n  \"rateLimitCeiling\": \"<integer>\",\n  \"rateLimitPeriod\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9356cbe5-7aa6-4db7-b1a5-eccf2a8497ea",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "packages",
-                    ":packageId",
-                    "plans"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "packageId",
-                      "description": "(Required) Package unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"maxNumKeysAllowed\": \"<integer>\",\n  \"qpsLimitCeiling\": \"<integer>\",\n  \"rateLimitCeiling\": \"<integer>\",\n  \"rateLimitPeriod\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "7afbfe43-5c39-4c2b-8a99-a72ebdec479f",
+          "createdAt": "2026-10-21T20:49:06.000Z",
+          "updatedAt": "2026-10-21T20:49:06.000Z",
+          "uid": "35240-7afbfe43-5c39-4c2b-8a99-a72ebdec479f"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tibco.com/businessevents/v1",
-      "key": "baseUrl"
+      "id": "3dbf79b8-bfc6-4fe1-b95e-e7fa720a03b9",
+      "createdAt": "2026-10-21T20:49:06.000Z",
+      "updatedAt": "2026-10-21T20:49:06.000Z",
+      "uid": "35240-3dbf79b8-bfc6-4fe1-b95e-e7fa720a03b9"
     }
   ],
   "auth": {
-    "type": "bearer",
-    "bearer": [
+    "type": "oauth2",
+    "oauth2": [
       {
-        "key": "token",
-        "value": "{{bearerToken}}"
+        "key": "accessTokenUrl",
+        "value": "https://api.mashery.com/v3/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "69c4fb43-2d3e-4ab8-ade8-5e8c3085853e",
-    "name": "TIBCO BusinessEvents Agents Plans API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mashery.com/v3"
     }
-  }
+  ]
 }

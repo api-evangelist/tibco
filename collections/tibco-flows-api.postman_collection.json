@@ -1,219 +1,211 @@
 {
+  "info": {
+    "_postman_id": "b3e367a5-ed9f-48a6-9ba6-88f96de0d683",
+    "name": "TIBCO Cloud Integration Flows API",
+    "description": "API for TIBCO Cloud Integration (TCI) platform enabling application integration, API management, and business process automation. Provides programmatic access to manage Flogo apps, Business Studio apps, connections, and deployment environments.\n\nContact Support:\n Name: TIBCO Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:48:35.000Z",
+    "updatedAt": "2026-10-21T20:48:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b3e367a5-ed9f-48a6-9ba6-88f96de0d683"
+  },
   "item": [
     {
-      "id": "cdff888f-cbfb-4b7c-acd5-0b3833429f76",
-      "name": "Flows",
-      "description": {
-        "content": "Manage Flogo flows and activities",
-        "type": "text/plain"
-      },
+      "name": "apps",
       "item": [
         {
-          "id": "e0f0ce01-22fa-4215-81c2-9595b8e12659",
-          "name": "List flows in an app",
-          "request": {
-            "name": "List flows in an app",
-            "description": {
-              "content": "Retrieve all flows defined within an integration application.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "apps",
-                ":appId",
-                "flows"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "appId",
-                  "description": "(Required) Integration app unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{appId}",
+          "item": [
             {
-              "id": "03dffd84-6b4d-4e88-a411-edbe5090a573",
-              "name": "List of flows",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId",
-                    "flows"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+              "name": "flows",
+              "item": [
+                {
+                  "name": "List flows in an app",
+                  "id": "5047b88f-65ee-4d16-a991-7c60694ada91",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"string\",\n      \"activities\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"string\",\n      \"activities\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4670ce25-c87c-489d-b518-3981951f7138",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId",
-                    "flows"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apps/:appId/flows",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apps",
+                        ":appId",
+                        "flows"
+                      ],
+                      "variable": [
+                        {
+                          "id": "33f36222-a2ed-4021-bec5-a77d3561a26d",
+                          "key": "appId",
+                          "value": "<string>",
+                          "description": "(Required) Integration app unique identifier"
+                        }
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "1bf621ff-de44-43b2-a736-91549d649124",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "apps",
-                    ":appId",
-                    "flows"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                    "description": "Retrieve all flows defined within an integration application."
+                  },
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "appId",
-                      "description": "(Required) Integration app unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                      "id": "1a9109c2-984f-421b-a5ce-4a98bcc31830",
+                      "name": "List of flows",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/apps/:appId/flows",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apps",
+                            ":appId",
+                            "flows"
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"type\": \"<string>\",\n      \"activities\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"type\": \"<string>\",\n      \"activities\": [\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:48:36.000Z",
+                      "updatedAt": "2026-10-21T20:48:36.000Z",
+                      "uid": "35240-1a9109c2-984f-421b-a5ce-4a98bcc31830"
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                    {
+                      "id": "9ef72561-62d1-4dee-9620-92cdbd60a316",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/apps/:appId/flows",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apps",
+                            ":appId",
+                            "flows"
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:48:36.000Z",
+                      "updatedAt": "2026-10-21T20:48:36.000Z",
+                      "uid": "35240-9ef72561-62d1-4dee-9620-92cdbd60a316"
+                    },
+                    {
+                      "id": "9fde8246-fc72-479d-aac4-1328e2e9e743",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/apps/:appId/flows",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apps",
+                            ":appId",
+                            "flows"
+                          ],
+                          "variable": [
+                            {
+                              "key": "appId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:48:36.000Z",
+                      "updatedAt": "2026-10-21T20:48:36.000Z",
+                      "uid": "35240-9fde8246-fc72-479d-aac4-1328e2e9e743"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:48:36.000Z",
+                  "updatedAt": "2026-10-21T20:48:36.000Z",
+                  "uid": "35240-5047b88f-65ee-4d16-a991-7c60694ada91"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "cbbc756e-6a48-4045-83ba-a06c7b0579b5",
+              "createdAt": "2026-10-21T20:48:36.000Z",
+              "updatedAt": "2026-10-21T20:48:36.000Z",
+              "uid": "35240-cbbc756e-6a48-4045-83ba-a06c7b0579b5"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "2957b97b-31a6-4f3c-a8af-59e799ab4f05",
+          "createdAt": "2026-10-21T20:48:36.000Z",
+          "updatedAt": "2026-10-21T20:48:36.000Z",
+          "uid": "35240-2957b97b-31a6-4f3c-a8af-59e799ab4f05"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tibco.com/businessevents/v1",
-      "key": "baseUrl"
+      "id": "fa83ba13-a080-43b4-bb93-a0668e11085d",
+      "createdAt": "2026-10-21T20:48:36.000Z",
+      "updatedAt": "2026-10-21T20:48:36.000Z",
+      "uid": "35240-fa83ba13-a080-43b4-bb93-a0668e11085d"
     }
   ],
   "auth": {
@@ -221,17 +213,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "b7094dbe-bd43-480d-9c37-00640509ddee",
-    "name": "TIBCO BusinessEvents Agents Flows API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://integration.cloud.tibco.com/api/v1"
     }
-  }
+  ]
 }

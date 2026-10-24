@@ -1,1125 +1,1085 @@
 {
+  "info": {
+    "_postman_id": "f6160710-e3f3-463a-862b-40c7d412502b",
+    "name": "TIBCO Mashery API Management Rest API",
+    "description": "API management platform for designing, building, securing, and analyzing APIs. The Mashery V3 API provides programmatic access to manage API definitions, packages, plans, keys, services, endpoints, and analytics data within the TIBCO API management platform.\n\nContact Support:\n Name: TIBCO Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:49:15.000Z",
+    "updatedAt": "2026-10-21T20:49:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f6160710-e3f3-463a-862b-40c7d412502b"
+  },
   "item": [
     {
-      "id": "7f1fe427-e6f4-4ae4-98e8-059eb8d20665",
-      "name": "Rest",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "rest",
       "item": [
         {
-          "id": "dc78c9eb-eedc-4ba8-8c6d-cc845a89115a",
-          "name": "List API services",
-          "request": {
-            "name": "List API services",
-            "description": {
-              "content": "Retrieve all API service definitions managed by the platform.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "services"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "services",
+          "item": [
+            {
+              "name": "{serviceId}",
+              "item": [
                 {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0",
-                  "description": "Number of items to skip for pagination"
+                  "name": "Get an API service",
+                  "id": "eb3f5f5a-93ba-4c65-a415-f9292d286cb6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/services/:serviceId?fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "services",
+                        ":serviceId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of fields to include in the response",
+                          "key": "fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "6a19b09a-1ab0-41df-b528-82a4d916b1ae",
+                          "key": "serviceId",
+                          "value": "<string>",
+                          "description": "(Required) API service unique identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details of a specific API service definition."
+                  },
+                  "response": [
+                    {
+                      "id": "8c727888-5f7f-4eb1-82df-21d038b63fe9",
+                      "name": "Service details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/services/:serviceId?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "services",
+                            ":serviceId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of fields to include in the response",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "serviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\",\n  \"revisionNumber\": \"<integer>\",\n  \"robotsPolicy\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"updated\": \"<dateTime>\",\n  \"endpoints\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"requestAuthenticationType\": \"oauth\",\n      \"requestProtocol\": \"soap\",\n      \"publicDomains\": [\n        {\n          \"address\": \"<string>\"\n        },\n        {\n          \"address\": \"<string>\"\n        }\n      ],\n      \"systemDomains\": [\n        {\n          \"address\": \"<string>\"\n        },\n        {\n          \"address\": \"<string>\"\n        }\n      ],\n      \"requestPathAlias\": \"<string>\",\n      \"supportedHttpMethods\": [\n        \"post\",\n        \"options\"\n      ],\n      \"trafficManagerDomain\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"updated\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"requestAuthenticationType\": \"oauth\",\n      \"requestProtocol\": \"rest\",\n      \"publicDomains\": [\n        {\n          \"address\": \"<string>\"\n        },\n        {\n          \"address\": \"<string>\"\n        }\n      ],\n      \"systemDomains\": [\n        {\n          \"address\": \"<string>\"\n        },\n        {\n          \"address\": \"<string>\"\n        }\n      ],\n      \"requestPathAlias\": \"<string>\",\n      \"supportedHttpMethods\": [\n        \"patch\",\n        \"get\"\n      ],\n      \"trafficManagerDomain\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"updated\": \"<dateTime>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:49:15.000Z",
+                      "updatedAt": "2026-10-21T20:49:15.000Z",
+                      "uid": "35240-8c727888-5f7f-4eb1-82df-21d038b63fe9"
+                    },
+                    {
+                      "id": "d570c311-9136-4db3-9e07-e6fced5fdc82",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/services/:serviceId?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "services",
+                            ":serviceId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of fields to include in the response",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "serviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:49:15.000Z",
+                      "updatedAt": "2026-10-21T20:49:15.000Z",
+                      "uid": "35240-d570c311-9136-4db3-9e07-e6fced5fdc82"
+                    },
+                    {
+                      "id": "8755b61b-e23c-4f84-add5-085a524040e4",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/services/:serviceId?fields=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "services",
+                            ":serviceId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma-separated list of fields to include in the response",
+                              "key": "fields",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "serviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:49:15.000Z",
+                      "updatedAt": "2026-10-21T20:49:15.000Z",
+                      "uid": "35240-8755b61b-e23c-4f84-add5-085a524040e4"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:49:15.000Z",
+                  "updatedAt": "2026-10-21T20:49:15.000Z",
+                  "uid": "35240-eb3f5f5a-93ba-4c65-a415-f9292d286cb6"
                 },
                 {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "20",
-                  "description": "Maximum number of items to return"
+                  "name": "Update an API service",
+                  "id": "64032c9d-18fe-4567-93f2-a150df47b5c4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/services/:serviceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "services",
+                        ":serviceId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ba97c390-6640-4966-bf7e-038946b35449",
+                          "key": "serviceId",
+                          "value": "<string>",
+                          "description": "(Required) API service unique identifier"
+                        }
+                      ]
+                    },
+                    "description": "Update an existing API service definition."
+                  },
+                  "response": [
+                    {
+                      "id": "2fff3abe-b55c-4dbe-a249-ee69f2f32646",
+                      "name": "Service updated",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/services/:serviceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "services",
+                            ":serviceId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "serviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\",\n  \"revisionNumber\": \"<integer>\",\n  \"robotsPolicy\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"updated\": \"<dateTime>\",\n  \"endpoints\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"requestAuthenticationType\": \"oauth\",\n      \"requestProtocol\": \"soap\",\n      \"publicDomains\": [\n        {\n          \"address\": \"<string>\"\n        },\n        {\n          \"address\": \"<string>\"\n        }\n      ],\n      \"systemDomains\": [\n        {\n          \"address\": \"<string>\"\n        },\n        {\n          \"address\": \"<string>\"\n        }\n      ],\n      \"requestPathAlias\": \"<string>\",\n      \"supportedHttpMethods\": [\n        \"post\",\n        \"options\"\n      ],\n      \"trafficManagerDomain\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"updated\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"requestAuthenticationType\": \"oauth\",\n      \"requestProtocol\": \"rest\",\n      \"publicDomains\": [\n        {\n          \"address\": \"<string>\"\n        },\n        {\n          \"address\": \"<string>\"\n        }\n      ],\n      \"systemDomains\": [\n        {\n          \"address\": \"<string>\"\n        },\n        {\n          \"address\": \"<string>\"\n        }\n      ],\n      \"requestPathAlias\": \"<string>\",\n      \"supportedHttpMethods\": [\n        \"patch\",\n        \"get\"\n      ],\n      \"trafficManagerDomain\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"updated\": \"<dateTime>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:49:15.000Z",
+                      "updatedAt": "2026-10-21T20:49:15.000Z",
+                      "uid": "35240-2fff3abe-b55c-4dbe-a249-ee69f2f32646"
+                    },
+                    {
+                      "id": "7c47f0db-10ee-4ab9-9b91-6a9427520d8a",
+                      "name": "The request body or parameters are invalid",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/services/:serviceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "services",
+                            ":serviceId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "serviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:49:15.000Z",
+                      "updatedAt": "2026-10-21T20:49:15.000Z",
+                      "uid": "35240-7c47f0db-10ee-4ab9-9b91-6a9427520d8a"
+                    },
+                    {
+                      "id": "e52bfec4-816f-4580-a362-ff9781f7d279",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/services/:serviceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "services",
+                            ":serviceId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "serviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:49:15.000Z",
+                      "updatedAt": "2026-10-21T20:49:15.000Z",
+                      "uid": "35240-e52bfec4-816f-4580-a362-ff9781f7d279"
+                    },
+                    {
+                      "id": "66448d66-a181-43ff-8564-df433c8e3b71",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/services/:serviceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "services",
+                            ":serviceId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "serviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:49:15.000Z",
+                      "updatedAt": "2026-10-21T20:49:15.000Z",
+                      "uid": "35240-66448d66-a181-43ff-8564-df433c8e3b71"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:49:15.000Z",
+                  "updatedAt": "2026-10-21T20:49:15.000Z",
+                  "uid": "35240-64032c9d-18fe-4567-93f2-a150df47b5c4"
                 },
                 {
-                  "disabled": false,
-                  "key": "fields",
-                  "value": "<string>",
-                  "description": "Comma-separated list of fields to include in the response"
-                },
-                {
-                  "disabled": false,
-                  "key": "filter",
-                  "value": "<string>",
-                  "description": "Filter expression for narrowing results"
-                },
-                {
-                  "disabled": false,
-                  "key": "sort",
-                  "value": "<string>",
-                  "description": "Sort expression (field and direction)"
+                  "name": "Delete an API service",
+                  "id": "533fd5c4-ae1d-4164-ac2e-5c3de85b958c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/services/:serviceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "services",
+                        ":serviceId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "af96ed16-8e35-4a24-8aed-9c41d2931ebc",
+                          "key": "serviceId",
+                          "value": "<string>",
+                          "description": "(Required) API service unique identifier"
+                        }
+                      ]
+                    },
+                    "description": "Delete an API service definition."
+                  },
+                  "response": [
+                    {
+                      "id": "ddc7b2fb-f35d-447d-8f85-977387ae1a70",
+                      "name": "Service deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/services/:serviceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "services",
+                            ":serviceId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "serviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:49:15.000Z",
+                      "updatedAt": "2026-10-21T20:49:15.000Z",
+                      "uid": "35240-ddc7b2fb-f35d-447d-8f85-977387ae1a70"
+                    },
+                    {
+                      "id": "b97503d0-534b-43a7-9d74-0a17eb16dc0f",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/services/:serviceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "services",
+                            ":serviceId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "serviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:49:15.000Z",
+                      "updatedAt": "2026-10-21T20:49:15.000Z",
+                      "uid": "35240-b97503d0-534b-43a7-9d74-0a17eb16dc0f"
+                    },
+                    {
+                      "id": "08a36dbb-417e-4ebf-b602-1cc603d92b4a",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rest/services/:serviceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rest",
+                            "services",
+                            ":serviceId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "serviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:49:15.000Z",
+                      "updatedAt": "2026-10-21T20:49:15.000Z",
+                      "uid": "35240-08a36dbb-417e-4ebf-b602-1cc603d92b4a"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:49:15.000Z",
+                  "updatedAt": "2026-10-21T20:49:15.000Z",
+                  "uid": "35240-533fd5c4-ae1d-4164-ac2e-5c3de85b958c"
                 }
               ],
-              "variable": []
+              "id": "7c6dc6ab-6184-47be-858d-ca72d6dedd2a",
+              "createdAt": "2026-10-21T20:49:15.000Z",
+              "updatedAt": "2026-10-21T20:49:15.000Z",
+              "uid": "35240-7c6dc6ab-6184-47be-858d-ca72d6dedd2a"
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
             {
-              "id": "b6692657-6949-4952-b796-b5d815449060",
-              "name": "List of API services",
-              "originalRequest": {
+              "name": "List API services",
+              "id": "658525cf-4378-4e89-9c8c-2f921bd4f459",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/rest/services?offset=0&limit=20&fields=<string>&filter=<string>&sort=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "rest",
                     "services"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Number of items to skip for pagination",
                       "key": "offset",
                       "value": "0"
                     },
                     {
+                      "description": "Maximum number of items to return",
                       "key": "limit",
                       "value": "20"
                     },
                     {
+                      "description": "Comma-separated list of fields to include in the response",
                       "key": "fields",
                       "value": "<string>"
                     },
                     {
+                      "description": "Filter expression for narrowing results",
                       "key": "filter",
                       "value": "<string>"
                     },
                     {
+                      "description": "Sort expression (field and direction)",
                       "key": "sort",
                       "value": "<string>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve all API service definitions managed by the platform."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"version\": \"string\",\n    \"qpsLimitOverall\": 9463,\n    \"revisionNumber\": 6248,\n    \"robotsPolicy\": \"string\",\n    \"created\": \"1978-02-08T17:34:22.285Z\",\n    \"updated\": \"1962-03-05T03:38:06.342Z\",\n    \"endpoints\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"requestAuthenticationType\": \"apiKeyAndSecret\",\n        \"requestProtocol\": \"xml-rpc\",\n        \"publicDomains\": [\n          {\n            \"address\": \"string\"\n          },\n          {\n            \"address\": \"string\"\n          }\n        ],\n        \"systemDomains\": [\n          {\n            \"address\": \"string\"\n          },\n          {\n            \"address\": \"string\"\n          }\n        ],\n        \"requestPathAlias\": \"string\",\n        \"supportedHttpMethods\": [\n          \"delete\",\n          \"options\"\n        ],\n        \"trafficManagerDomain\": \"string\",\n        \"created\": \"1983-07-24T14:05:55.947Z\",\n        \"updated\": \"2016-12-11T08:58:49.620Z\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"requestAuthenticationType\": \"oauth\",\n        \"requestProtocol\": \"xml-rpc\",\n        \"publicDomains\": [\n          {\n            \"address\": \"string\"\n          },\n          {\n            \"address\": \"string\"\n          }\n        ],\n        \"systemDomains\": [\n          {\n            \"address\": \"string\"\n          },\n          {\n            \"address\": \"string\"\n          }\n        ],\n        \"requestPathAlias\": \"string\",\n        \"supportedHttpMethods\": [\n          \"get\",\n          \"options\"\n        ],\n        \"trafficManagerDomain\": \"string\",\n        \"created\": \"1968-11-14T12:49:39.353Z\",\n        \"updated\": \"1971-10-06T06:20:51.926Z\"\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"version\": \"string\",\n    \"qpsLimitOverall\": 9743,\n    \"revisionNumber\": 6505,\n    \"robotsPolicy\": \"string\",\n    \"created\": \"1957-11-09T04:31:23.410Z\",\n    \"updated\": \"1999-09-30T14:08:01.944Z\",\n    \"endpoints\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"requestAuthenticationType\": \"apiKey\",\n        \"requestProtocol\": \"soap\",\n        \"publicDomains\": [\n          {\n            \"address\": \"string\"\n          },\n          {\n            \"address\": \"string\"\n          }\n        ],\n        \"systemDomains\": [\n          {\n            \"address\": \"string\"\n          },\n          {\n            \"address\": \"string\"\n          }\n        ],\n        \"requestPathAlias\": \"string\",\n        \"supportedHttpMethods\": [\n          \"put\",\n          \"head\"\n        ],\n        \"trafficManagerDomain\": \"string\",\n        \"created\": \"1987-06-10T09:03:36.041Z\",\n        \"updated\": \"1962-08-18T16:11:31.902Z\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"requestAuthenticationType\": \"apiKey\",\n        \"requestProtocol\": \"rest\",\n        \"publicDomains\": [\n          {\n            \"address\": \"string\"\n          },\n          {\n            \"address\": \"string\"\n          }\n        ],\n        \"systemDomains\": [\n          {\n            \"address\": \"string\"\n          },\n          {\n            \"address\": \"string\"\n          }\n        ],\n        \"requestPathAlias\": \"string\",\n        \"supportedHttpMethods\": [\n          \"delete\",\n          \"delete\"\n        ],\n        \"trafficManagerDomain\": \"string\",\n        \"created\": \"2003-12-23T10:21:21.575Z\",\n        \"updated\": \"1998-04-27T13:55:53.476Z\"\n      }\n    ]\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a444c80f-0901-4585-aa99-7a3a2c0815b4",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "services"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "094358b1-08b1-473e-8bca-88ea03f2121c",
+                  "name": "List of API services",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/services?offset=0&limit=20&fields=<string>&filter=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "services"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to skip for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Maximum number of items to return",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Comma-separated list of fields to include in the response",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter expression for narrowing results",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort expression (field and direction)",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "20"
-                    },
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "filter",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "sort",
-                      "value": "<string>"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"version\": \"<string>\",\n    \"qpsLimitOverall\": \"<integer>\",\n    \"revisionNumber\": \"<integer>\",\n    \"robotsPolicy\": \"<string>\",\n    \"created\": \"<dateTime>\",\n    \"updated\": \"<dateTime>\",\n    \"endpoints\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"requestAuthenticationType\": \"apiKey\",\n        \"requestProtocol\": \"xml-rpc\",\n        \"publicDomains\": [\n          {\n            \"address\": \"<string>\"\n          },\n          {\n            \"address\": \"<string>\"\n          }\n        ],\n        \"systemDomains\": [\n          {\n            \"address\": \"<string>\"\n          },\n          {\n            \"address\": \"<string>\"\n          }\n        ],\n        \"requestPathAlias\": \"<string>\",\n        \"supportedHttpMethods\": [\n          \"head\",\n          \"get\"\n        ],\n        \"trafficManagerDomain\": \"<string>\",\n        \"created\": \"<dateTime>\",\n        \"updated\": \"<dateTime>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"requestAuthenticationType\": \"oauth\",\n        \"requestProtocol\": \"xml-rpc\",\n        \"publicDomains\": [\n          {\n            \"address\": \"<string>\"\n          },\n          {\n            \"address\": \"<string>\"\n          }\n        ],\n        \"systemDomains\": [\n          {\n            \"address\": \"<string>\"\n          },\n          {\n            \"address\": \"<string>\"\n          }\n        ],\n        \"requestPathAlias\": \"<string>\",\n        \"supportedHttpMethods\": [\n          \"delete\",\n          \"delete\"\n        ],\n        \"trafficManagerDomain\": \"<string>\",\n        \"created\": \"<dateTime>\",\n        \"updated\": \"<dateTime>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"version\": \"<string>\",\n    \"qpsLimitOverall\": \"<integer>\",\n    \"revisionNumber\": \"<integer>\",\n    \"robotsPolicy\": \"<string>\",\n    \"created\": \"<dateTime>\",\n    \"updated\": \"<dateTime>\",\n    \"endpoints\": [\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"requestAuthenticationType\": \"apiKeyAndSecret\",\n        \"requestProtocol\": \"rest\",\n        \"publicDomains\": [\n          {\n            \"address\": \"<string>\"\n          },\n          {\n            \"address\": \"<string>\"\n          }\n        ],\n        \"systemDomains\": [\n          {\n            \"address\": \"<string>\"\n          },\n          {\n            \"address\": \"<string>\"\n          }\n        ],\n        \"requestPathAlias\": \"<string>\",\n        \"supportedHttpMethods\": [\n          \"head\",\n          \"get\"\n        ],\n        \"trafficManagerDomain\": \"<string>\",\n        \"created\": \"<dateTime>\",\n        \"updated\": \"<dateTime>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"requestAuthenticationType\": \"apiKeyAndSecret\",\n        \"requestProtocol\": \"xml-rpc\",\n        \"publicDomains\": [\n          {\n            \"address\": \"<string>\"\n          },\n          {\n            \"address\": \"<string>\"\n          }\n        ],\n        \"systemDomains\": [\n          {\n            \"address\": \"<string>\"\n          },\n          {\n            \"address\": \"<string>\"\n          }\n        ],\n        \"requestPathAlias\": \"<string>\",\n        \"supportedHttpMethods\": [\n          \"options\",\n          \"delete\"\n        ],\n        \"trafficManagerDomain\": \"<string>\",\n        \"created\": \"<dateTime>\",\n        \"updated\": \"<dateTime>\"\n      }\n    ]\n  }\n]",
+                  "createdAt": "2026-10-21T20:49:15.000Z",
+                  "updatedAt": "2026-10-21T20:49:15.000Z",
+                  "uid": "35240-094358b1-08b1-473e-8bca-88ea03f2121c"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "cceb9ce9-c1f9-474f-a050-07734f73423c",
-          "name": "Create an API service",
-          "request": {
-            "name": "Create an API service",
-            "description": {
-              "content": "Create a new API service definition.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "services"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "1cdc05b5-4be0-430e-9eac-5000f6b2aaee",
-              "name": "Service created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "services"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                  "id": "e8754bfc-894d-4579-b685-2d6528f67f01",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/services?offset=0&limit=20&fields=<string>&filter=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "services"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to skip for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Maximum number of items to return",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Comma-separated list of fields to include in the response",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter expression for narrowing results",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort expression (field and direction)",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:49:15.000Z",
+                  "updatedAt": "2026-10-21T20:49:15.000Z",
+                  "uid": "35240-e8754bfc-894d-4579-b685-2d6528f67f01"
+                }
+              ],
+              "createdAt": "2026-10-21T20:49:15.000Z",
+              "updatedAt": "2026-10-21T20:49:15.000Z",
+              "uid": "35240-658525cf-4378-4e89-9c8c-2f921bd4f459"
+            },
+            {
+              "name": "Create an API service",
+              "id": "1dbe5f6c-3d41-4371-9651-4094a710d3b2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
                 "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"version\": \"string\",\n  \"qpsLimitOverall\": 1159,\n  \"revisionNumber\": 1515,\n  \"robotsPolicy\": \"string\",\n  \"created\": \"1988-10-30T21:53:05.271Z\",\n  \"updated\": \"1970-07-05T03:44:07.239Z\",\n  \"endpoints\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"requestAuthenticationType\": \"oauth\",\n      \"requestProtocol\": \"rest\",\n      \"publicDomains\": [\n        {\n          \"address\": \"string\"\n        },\n        {\n          \"address\": \"string\"\n        }\n      ],\n      \"systemDomains\": [\n        {\n          \"address\": \"string\"\n        },\n        {\n          \"address\": \"string\"\n        }\n      ],\n      \"requestPathAlias\": \"string\",\n      \"supportedHttpMethods\": [\n        \"put\",\n        \"delete\"\n      ],\n      \"trafficManagerDomain\": \"string\",\n      \"created\": \"1947-12-23T21:19:54.835Z\",\n      \"updated\": \"1994-04-28T19:59:53.544Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"requestAuthenticationType\": \"apiKeyAndSecret\",\n      \"requestProtocol\": \"rest\",\n      \"publicDomains\": [\n        {\n          \"address\": \"string\"\n        },\n        {\n          \"address\": \"string\"\n        }\n      ],\n      \"systemDomains\": [\n        {\n          \"address\": \"string\"\n        },\n        {\n          \"address\": \"string\"\n        }\n      ],\n      \"requestPathAlias\": \"string\",\n      \"supportedHttpMethods\": [\n        \"head\",\n        \"post\"\n      ],\n      \"trafficManagerDomain\": \"string\",\n      \"created\": \"1973-03-11T00:55:32.443Z\",\n      \"updated\": \"1978-01-02T11:04:54.450Z\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "bd8d2042-5146-4c45-af4a-af43ba3dcaab",
-              "name": "The request body or parameters are invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "services"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b77d0c04-8938-47c8-a1ac-702438690176",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "services"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d8233631-3efe-47c2-8322-dda95174b18f",
-          "name": "Get an API service",
-          "request": {
-            "name": "Get an API service",
-            "description": {
-              "content": "Retrieve details of a specific API service definition.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "services",
-                ":serviceId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "fields",
-                  "value": "<string>",
-                  "description": "Comma-separated list of fields to include in the response"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "serviceId",
-                  "description": "(Required) API service unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "c7f4c3dd-be69-41f2-9ba0-cb1fbd42cfaa",
-              "name": "Service details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "services",
-                    ":serviceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "serviceId",
-                      "description": "(Required) API service unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"version\": \"string\",\n  \"qpsLimitOverall\": 1159,\n  \"revisionNumber\": 1515,\n  \"robotsPolicy\": \"string\",\n  \"created\": \"1988-10-30T21:53:05.271Z\",\n  \"updated\": \"1970-07-05T03:44:07.239Z\",\n  \"endpoints\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"requestAuthenticationType\": \"oauth\",\n      \"requestProtocol\": \"rest\",\n      \"publicDomains\": [\n        {\n          \"address\": \"string\"\n        },\n        {\n          \"address\": \"string\"\n        }\n      ],\n      \"systemDomains\": [\n        {\n          \"address\": \"string\"\n        },\n        {\n          \"address\": \"string\"\n        }\n      ],\n      \"requestPathAlias\": \"string\",\n      \"supportedHttpMethods\": [\n        \"put\",\n        \"delete\"\n      ],\n      \"trafficManagerDomain\": \"string\",\n      \"created\": \"1947-12-23T21:19:54.835Z\",\n      \"updated\": \"1994-04-28T19:59:53.544Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"requestAuthenticationType\": \"apiKeyAndSecret\",\n      \"requestProtocol\": \"rest\",\n      \"publicDomains\": [\n        {\n          \"address\": \"string\"\n        },\n        {\n          \"address\": \"string\"\n        }\n      ],\n      \"systemDomains\": [\n        {\n          \"address\": \"string\"\n        },\n        {\n          \"address\": \"string\"\n        }\n      ],\n      \"requestPathAlias\": \"string\",\n      \"supportedHttpMethods\": [\n        \"head\",\n        \"post\"\n      ],\n      \"trafficManagerDomain\": \"string\",\n      \"created\": \"1973-03-11T00:55:32.443Z\",\n      \"updated\": \"1978-01-02T11:04:54.450Z\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "084fed7a-e1df-404c-a03d-514d03f4a0a7",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "services",
-                    ":serviceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "serviceId",
-                      "description": "(Required) API service unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
                   }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "957a2deb-e9c8-4257-884f-fb8073dcb078",
-              "name": "The requested resource was not found",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "rest",
-                    "services",
-                    ":serviceId"
-                  ],
+                  "raw": "{{baseUrl}}/rest/services",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [
-                    {
-                      "key": "fields",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "serviceId",
-                      "description": "(Required) API service unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "583bf21d-bb89-4698-a537-549819224a00",
-          "name": "Update an API service",
-          "request": {
-            "name": "Update an API service",
-            "description": {
-              "content": "Update an existing API service definition.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "services",
-                ":serviceId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "serviceId",
-                  "description": "(Required) API service unique identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "60c2951c-9c9a-4942-91e6-19ba44d345e8",
-              "name": "Service updated",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "rest",
-                    "services",
-                    ":serviceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "serviceId",
-                      "description": "(Required) API service unique identifier"
-                    }
+                    "services"
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                "description": "Create a new API service definition."
+              },
+              "response": [
+                {
+                  "id": "4fa1d64f-03da-46fa-bf84-eec95c43643a",
+                  "name": "Service created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/services",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "services"
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"version\": \"string\",\n  \"qpsLimitOverall\": 1159,\n  \"revisionNumber\": 1515,\n  \"robotsPolicy\": \"string\",\n  \"created\": \"1988-10-30T21:53:05.271Z\",\n  \"updated\": \"1970-07-05T03:44:07.239Z\",\n  \"endpoints\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"requestAuthenticationType\": \"oauth\",\n      \"requestProtocol\": \"rest\",\n      \"publicDomains\": [\n        {\n          \"address\": \"string\"\n        },\n        {\n          \"address\": \"string\"\n        }\n      ],\n      \"systemDomains\": [\n        {\n          \"address\": \"string\"\n        },\n        {\n          \"address\": \"string\"\n        }\n      ],\n      \"requestPathAlias\": \"string\",\n      \"supportedHttpMethods\": [\n        \"put\",\n        \"delete\"\n      ],\n      \"trafficManagerDomain\": \"string\",\n      \"created\": \"1947-12-23T21:19:54.835Z\",\n      \"updated\": \"1994-04-28T19:59:53.544Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"requestAuthenticationType\": \"apiKeyAndSecret\",\n      \"requestProtocol\": \"rest\",\n      \"publicDomains\": [\n        {\n          \"address\": \"string\"\n        },\n        {\n          \"address\": \"string\"\n        }\n      ],\n      \"systemDomains\": [\n        {\n          \"address\": \"string\"\n        },\n        {\n          \"address\": \"string\"\n        }\n      ],\n      \"requestPathAlias\": \"string\",\n      \"supportedHttpMethods\": [\n        \"head\",\n        \"post\"\n      ],\n      \"trafficManagerDomain\": \"string\",\n      \"created\": \"1973-03-11T00:55:32.443Z\",\n      \"updated\": \"1978-01-02T11:04:54.450Z\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "005572b6-337c-42b8-a0cd-3277564c2014",
-              "name": "The request body or parameters are invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "services",
-                    ":serviceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "serviceId",
-                      "description": "(Required) API service unique identifier"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\",\n  \"revisionNumber\": \"<integer>\",\n  \"robotsPolicy\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"updated\": \"<dateTime>\",\n  \"endpoints\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"requestAuthenticationType\": \"oauth\",\n      \"requestProtocol\": \"soap\",\n      \"publicDomains\": [\n        {\n          \"address\": \"<string>\"\n        },\n        {\n          \"address\": \"<string>\"\n        }\n      ],\n      \"systemDomains\": [\n        {\n          \"address\": \"<string>\"\n        },\n        {\n          \"address\": \"<string>\"\n        }\n      ],\n      \"requestPathAlias\": \"<string>\",\n      \"supportedHttpMethods\": [\n        \"post\",\n        \"options\"\n      ],\n      \"trafficManagerDomain\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"updated\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"requestAuthenticationType\": \"oauth\",\n      \"requestProtocol\": \"rest\",\n      \"publicDomains\": [\n        {\n          \"address\": \"<string>\"\n        },\n        {\n          \"address\": \"<string>\"\n        }\n      ],\n      \"systemDomains\": [\n        {\n          \"address\": \"<string>\"\n        },\n        {\n          \"address\": \"<string>\"\n        }\n      ],\n      \"requestPathAlias\": \"<string>\",\n      \"supportedHttpMethods\": [\n        \"patch\",\n        \"get\"\n      ],\n      \"trafficManagerDomain\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"updated\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:49:15.000Z",
+                  "updatedAt": "2026-10-21T20:49:15.000Z",
+                  "uid": "35240-4fa1d64f-03da-46fa-bf84-eec95c43643a"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "dfa8b595-3e9a-4267-bba7-a6485e6323f0",
+                  "name": "The request body or parameters are invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/services",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "services"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:49:15.000Z",
+                  "updatedAt": "2026-10-21T20:49:15.000Z",
+                  "uid": "35240-dfa8b595-3e9a-4267-bba7-a6485e6323f0"
+                },
+                {
+                  "id": "9f40f00b-afcc-4f3e-b2e2-340daccb90f6",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/rest/services",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rest",
+                        "services"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:49:15.000Z",
+                  "updatedAt": "2026-10-21T20:49:15.000Z",
+                  "uid": "35240-9f40f00b-afcc-4f3e-b2e2-340daccb90f6"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7777ba74-89eb-4aad-8a28-0727310003c6",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "services",
-                    ":serviceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "serviceId",
-                      "description": "(Required) API service unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "eb772aa3-99fa-4606-abcd-371603d58107",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "services",
-                    ":serviceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "serviceId",
-                      "description": "(Required) API service unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"qpsLimitOverall\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:49:15.000Z",
+              "updatedAt": "2026-10-21T20:49:15.000Z",
+              "uid": "35240-1dbe5f6c-3d41-4371-9651-4094a710d3b2"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9d8194b3-cccb-4a9f-bc8b-1619b7650ba1",
-          "name": "Delete an API service",
-          "request": {
-            "name": "Delete an API service",
-            "description": {
-              "content": "Delete an API service definition.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rest",
-                "services",
-                ":serviceId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "serviceId",
-                  "description": "(Required) API service unique identifier"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "700a9d34-94d3-4009-a6ff-b6e8b107e12f",
-              "name": "Service deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "services",
-                    ":serviceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "serviceId",
-                      "description": "(Required) API service unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "93a2efb4-656d-4de5-924e-9fdd915147bd",
-              "name": "Authentication credentials are missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "services",
-                    ":serviceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "serviceId",
-                      "description": "(Required) API service unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "27fd603f-e81d-49b8-b966-a368b4e3bdb3",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rest",
-                    "services",
-                    ":serviceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "serviceId",
-                      "description": "(Required) API service unique identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "6d8479aa-2308-4f26-9b90-2b071a187186",
+          "createdAt": "2026-10-21T20:49:15.000Z",
+          "updatedAt": "2026-10-21T20:49:15.000Z",
+          "uid": "35240-6d8479aa-2308-4f26-9b90-2b071a187186"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.tibco.com/businessevents/v1",
-      "key": "baseUrl"
+      "id": "979d997f-7ac0-4ba6-8360-d64f5cea7660",
+      "createdAt": "2026-10-21T20:49:15.000Z",
+      "updatedAt": "2026-10-21T20:49:15.000Z",
+      "uid": "35240-979d997f-7ac0-4ba6-8360-d64f5cea7660"
     }
   ],
   "auth": {
-    "type": "bearer",
-    "bearer": [
+    "type": "oauth2",
+    "oauth2": [
       {
-        "key": "token",
-        "value": "{{bearerToken}}"
+        "key": "accessTokenUrl",
+        "value": "https://api.mashery.com/v3/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "d13b3eb0-4130-494d-abc5-42cb31215cb9",
-    "name": "TIBCO BusinessEvents Agents Rest API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Complex event processing and decision management API for real-time business operations. Provides programmatic access to manage rules, decision tables, events, agents, and inference sessions within TIBCO BusinessEvents.\n\nContact Support:\n Name: TIBCO Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mashery.com/v3"
     }
-  }
+  ]
 }
